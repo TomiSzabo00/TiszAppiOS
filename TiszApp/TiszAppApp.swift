@@ -15,9 +15,9 @@ struct TiszAppApp: App {
     
     var body: some Scene {
         WindowGroup {
-            let viewModel = AppViewModel()
-            ContentView()
-                .environmentObject(viewModel)
+            NavigationView{
+                LoginView()
+            }
         }
     }
 }
@@ -29,4 +29,11 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         
         return true
     }
+}
+
+extension View {
+  func endTextEditing() {
+    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder),
+                                    to: nil, from: nil, for: nil)
+  }
 }

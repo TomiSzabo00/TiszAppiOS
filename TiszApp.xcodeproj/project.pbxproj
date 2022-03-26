@@ -8,8 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		557B8F9C27EDF6A200312433 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557B8F9B27EDF6A200312433 /* RegisterView.swift */; };
+		557B8F9E27EE1CEF00312433 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557B8F9D27EE1CEF00312433 /* LoginView.swift */; };
+		557B8FA027EE334F00312433 /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557B8F9F27EE334F00312433 /* MainMenuView.swift */; };
+		557B8FA327EE4C4C00312433 /* RegistrationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557B8FA227EE4C4C00312433 /* RegistrationService.swift */; };
+		557B8FA627EE4D9800312433 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557B8FA527EE4D9800312433 /* User.swift */; };
 		55B0E6D227EBDA9B0058A5B9 /* TiszAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B0E6D127EBDA9B0058A5B9 /* TiszAppApp.swift */; };
-		55B0E6D427EBDA9B0058A5B9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B0E6D327EBDA9B0058A5B9 /* ContentView.swift */; };
 		55B0E6D627EBDAA00058A5B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55B0E6D527EBDAA00058A5B9 /* Assets.xcassets */; };
 		55B0E6D927EBDAA00058A5B9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55B0E6D827EBDAA00058A5B9 /* Preview Assets.xcassets */; };
 		55B0E6E027EC53F30058A5B9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 55B0E6DF27EC53F30058A5B9 /* GoogleService-Info.plist */; };
@@ -31,9 +34,12 @@
 
 /* Begin PBXFileReference section */
 		557B8F9B27EDF6A200312433 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		557B8F9D27EE1CEF00312433 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		557B8F9F27EE334F00312433 /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
+		557B8FA227EE4C4C00312433 /* RegistrationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationService.swift; sourceTree = "<group>"; };
+		557B8FA527EE4D9800312433 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		55B0E6CE27EBDA9B0058A5B9 /* TiszApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TiszApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55B0E6D127EBDA9B0058A5B9 /* TiszAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TiszAppApp.swift; sourceTree = "<group>"; };
-		55B0E6D327EBDA9B0058A5B9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		55B0E6D527EBDAA00058A5B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		55B0E6D827EBDAA00058A5B9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		55B0E6DF27EC53F30058A5B9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -64,6 +70,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		557B8FA127EE4C2900312433 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				557B8FA227EE4C4C00312433 /* RegistrationService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		557B8FA427EE4D8900312433 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				557B8FA527EE4D9800312433 /* User.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		55B0E6C527EBDA9B0058A5B9 = {
 			isa = PBXGroup;
 			children = (
@@ -83,12 +105,15 @@
 		55B0E6D027EBDA9B0058A5B9 /* TiszApp */ = {
 			isa = PBXGroup;
 			children = (
+				557B8FA427EE4D8900312433 /* Data */,
+				557B8FA127EE4C2900312433 /* Service */,
 				55B0E6D127EBDA9B0058A5B9 /* TiszAppApp.swift */,
-				55B0E6D327EBDA9B0058A5B9 /* ContentView.swift */,
 				55B0E6D527EBDAA00058A5B9 /* Assets.xcassets */,
 				55B0E6DF27EC53F30058A5B9 /* GoogleService-Info.plist */,
 				55B0E6D727EBDAA00058A5B9 /* Preview Content */,
 				557B8F9B27EDF6A200312433 /* RegisterView.swift */,
+				557B8F9D27EE1CEF00312433 /* LoginView.swift */,
+				557B8F9F27EE334F00312433 /* MainMenuView.swift */,
 			);
 			path = TiszApp;
 			sourceTree = "<group>";
@@ -192,7 +217,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				557B8F9C27EDF6A200312433 /* RegisterView.swift in Sources */,
-				55B0E6D427EBDA9B0058A5B9 /* ContentView.swift in Sources */,
+				557B8FA327EE4C4C00312433 /* RegistrationService.swift in Sources */,
+				557B8FA627EE4D9800312433 /* User.swift in Sources */,
+				557B8F9E27EE1CEF00312433 /* LoginView.swift in Sources */,
+				557B8FA027EE334F00312433 /* MainMenuView.swift in Sources */,
 				55B0E6D227EBDA9B0058A5B9 /* TiszAppApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

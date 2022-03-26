@@ -15,15 +15,14 @@ struct RegisterView: View {
     @State var password = ""
     @State var password2 = ""
     
-    @EnvironmentObject var viewModel: AppViewModel
+    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         NavigationView{
-            
-            
+            ScrollView{
             VStack{
                 Spacer()
-                VStack{
+                VStack(spacing: 20){
                     TextField("Teljes neved", text: $fullName)
                         .padding()
                         .background(Color(.secondarySystemBackground))
@@ -39,7 +38,6 @@ struct RegisterView: View {
                 }
                 .padding()
                 
-                Spacer()
                 
                 VStack{
                     TextField("Felhasználónév", text: $email)
@@ -66,9 +64,9 @@ struct RegisterView: View {
                                 return
                             }
                             
-                            viewModel.signIn(email: email, password: password)
+                            //register
                             
-                        }, label: { Text("Regisztráció").padding()})
+                        }, label: { Text("Regisztrálok").padding()})
                         .frame(width: 200, height: 50)
                         .background(Color.blue)
                         .foregroundColor(Color.white)
@@ -79,11 +77,22 @@ struct RegisterView: View {
                 .padding()
                 Spacer()
             }
-            .navigationTitle("Regisztráció")
+            .navigationBarTitle("Regisztráció", displayMode: .automatic)
+            .toolbar{ToolbarItem(placement: .principal){
+                Button(action: {
+                    presentationMode.wrappedValue.dismiss()
+                }, label: {HStack{
+                    Image(systemName: "arrow.down")}
+                    Text("Vissza")
+                }
+                )}}
+            .onTapGesture {
+                endTextEditing()
+            }
             .padding()
         }
-        
     }
+}
 }
 
 struct RegisterView_Previews: PreviewProvider {
