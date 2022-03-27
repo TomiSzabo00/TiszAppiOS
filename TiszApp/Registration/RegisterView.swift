@@ -6,6 +6,30 @@
 //
 
 import SwiftUI
+import FirebaseAuth
+
+func customError(error: Error) -> String {
+    var myError: String = "No match found for error type..."
+    if let errCode = AuthErrorCode(rawValue: error._code) {
+        switch errCode {
+            case .emailAlreadyInUse:
+                myError = "Ez a felhasználónév már foglalt."
+            case .invalidEmail:
+                myError = "Hibás formátum: A felhasználónév 1 szóból állhat csak, speciális karakterek nélkül."
+            case .userNotFound:
+                myError = "Ilyen felhasználónév nincs regisztrálva."
+            case .networkError:
+                myError = "Hálózat nem elérhető. Kapcsold be a mobilnetet, vagy próbáld meg később."
+            case .weakPassword:
+                myError = "A jelszó túl rövid. Legalább 6 karakter hosszúnak kell lennie."
+            case .wrongPassword:
+                myError = "Hibás jelszó."
+            default:
+                myError = "Ismeretlen a hiba oka."
+            }
+        }
+    return myError
+}
 
 struct RegisterView: View {
 
@@ -58,6 +82,7 @@ struct RegisterView: View {
                         
                             //register
                             vm.register()
+                            print(vm.userDetails.userName)
                             
                         }, label: { Text("Regisztrálok").padding()})
                         .frame(width: 200, height: 50)
@@ -73,7 +98,7 @@ struct RegisterView: View {
             .alert(isPresented: $vm.hasError, content: {
                 if case .failed(let error) = vm.state {
                     return Alert(title: Text("Hiba"),
-                                 message: Text(error.localizedDescription))
+                                 message: Text(customError(error:error)))
                 } else {
                     return Alert(title: Text("Hiba"),
                     message: Text("Valami hiba történt. Próbáld újra."))
@@ -89,9 +114,6 @@ struct RegisterView: View {
                     Text("Vissza")
                 }
                 )}}
-            .onTapGesture {
-                endTextEditing()
-            }
             .padding()
         }
     }
