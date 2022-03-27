@@ -6,10 +6,11 @@
 //
 
 import SwiftUI
+import FirebaseDatabase
+
 
 struct LoginView: View {
-    @State var email = ""
-    @State var password = ""
+    @StateObject private var vm = LoginViewModelImpl(service: LoginServiceImpl())
     
     @State private var showRegistration = false
     
@@ -24,13 +25,13 @@ struct LoginView: View {
             
             VStack{
                 VStack{
-                    TextField("Felhasználónév", text: $email)
+                    TextField("Felhasználónév", text: $vm.details.userName)
                         .padding()
                         .background(Color(.secondarySystemBackground))
                         .cornerRadius(10)
                         .disableAutocorrection(true)
                         .autocapitalization(.none)
-                    SecureField("Jelszó", text: $password)
+                    SecureField("Jelszó", text: $vm.details.password)
                         .padding()
                         .background(Color(.secondarySystemBackground))
                         .cornerRadius(10)
@@ -39,11 +40,8 @@ struct LoginView: View {
                 
                 Button(action: {
                     
-                    guard !email.isEmpty, !password.isEmpty else{
-                        return
-                    }
-                    
                     //login
+                    vm.login()
                     
                 }, label: { Text("Bejelentkezés")})
                 .frame(width: 200, height: 50)
@@ -61,6 +59,15 @@ struct LoginView: View {
                     .sheet(isPresented: $showRegistration, content: { RegisterView()})
                     Spacer()
                 }
+                Button(action: {
+                    let values = ["userName" : "Proba Pista",
+                                  "groupNumber" : 99,
+                                  "isAdmin" : false] as [String : Any]
+                    
+                    Database.database()
+                        .reference().child("test").child("uid").setValue(values)
+                }, label: {Text("Teszt")})
+                .padding()
             }
             Spacer()
             Spacer()

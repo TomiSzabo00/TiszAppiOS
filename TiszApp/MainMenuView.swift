@@ -6,14 +6,27 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct MainMenuView: View {
+    
+    @EnvironmentObject var sessionService: SessionServiceImpl
+    
     var body: some View {
         VStack{
             Spacer()
-            Text("Bejelentkeztél.")
+            VStack {
+                Text("Szia, \(sessionService.userDetails?.fullName ?? "N/A")")
+                    .bold()
+                    .padding()
+                Text("Csapatod: \(sessionService.userDetails?.groupNumber ?? -1)")
+                Text("Admin vagy? \(sessionService.userDetails?.admin ?? false ? "Igen" : "Nem")")
+            }
+            
             Spacer()
             Button(action: {
+                
+                sessionService.logout()
                 
             }, label: {
                 Image(systemName: "rectangle.portrait.and.arrow.right.fill")
@@ -30,7 +43,7 @@ struct MainMenuView: View {
 struct MainMenuView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView{
-            MainMenuView()
+            MainMenuView().environmentObject(SessionServiceImpl())
         }
     }
 }

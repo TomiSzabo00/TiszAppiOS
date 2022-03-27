@@ -8,14 +8,10 @@
 import SwiftUI
 
 struct RegisterView: View {
-    @State var fullName = ""
-    @State var id = ""
-    
-    @State var email = ""
-    @State var password = ""
-    @State var password2 = ""
-    
+
     @Environment(\.presentationMode) var presentationMode
+    
+    @StateObject private var vm = RegistrationViewModelImpl(service: RegistrationServiceImpl())
     
     var body: some View {
         NavigationView{
@@ -23,13 +19,13 @@ struct RegisterView: View {
             VStack{
                 Spacer()
                 VStack(spacing: 20){
-                    TextField("Teljes neved", text: $fullName)
+                    TextField("Teljes neved", text: $vm.userDetails.fullName)
                         .padding()
                         .background(Color(.secondarySystemBackground))
                         .cornerRadius(10)
                         .disableAutocorrection(true)
                         .autocapitalization(.none)
-                    TextField("Egyedi azonosító", text: $id)
+                    TextField("Egyedi azonosító", text: $vm.userDetails.id)
                         .padding()
                         .background(Color(.secondarySystemBackground))
                         .cornerRadius(10)
@@ -40,17 +36,17 @@ struct RegisterView: View {
                 
                 
                 VStack{
-                    TextField("Felhasználónév", text: $email)
+                    TextField("Felhasználónév", text: $vm.userDetails.userName)
                         .padding()
                         .background(Color(.secondarySystemBackground))
                         .cornerRadius(10)
                         .disableAutocorrection(true)
                         .autocapitalization(.none)
-                    SecureField("Jelszó", text: $password)
+                    SecureField("Jelszó", text: $vm.userDetails.password)
                         .padding()
                         .background(Color(.secondarySystemBackground))
                         .cornerRadius(10)
-                    SecureField("Jelszó megint", text: $password2)
+                    SecureField("Jelszó megint", text: $vm.userDetails.password2)
                         .padding()
                         .background(Color(.secondarySystemBackground))
                         .cornerRadius(10)
@@ -59,12 +55,9 @@ struct RegisterView: View {
                     HStack{
                         Spacer()
                         Button(action: {
-                            
-                            guard !email.isEmpty, !password.isEmpty else{
-                                return
-                            }
-                            
+                        
                             //register
+                            vm.register()
                             
                         }, label: { Text("Regisztrálok").padding()})
                         .frame(width: 200, height: 50)

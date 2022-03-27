@@ -7,16 +7,24 @@
 
 import SwiftUI
 import Firebase
+import FirebaseAuth
 
 @main
 struct TiszAppApp: App {
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
+    @StateObject var sessionService = SessionServiceImpl()
+    
     var body: some Scene {
         WindowGroup {
             NavigationView{
-                LoginView()
+                switch sessionService.state {
+                case .loggedIn:
+                    MainMenuView().environmentObject(sessionService)
+                case .loggedOut:
+                    LoginView()
+                }
             }
         }
     }
