@@ -70,6 +70,16 @@ struct RegisterView: View {
                 .padding()
                 Spacer()
             }
+            .alert(isPresented: $vm.hasError, content: {
+                if case .failed(let error) = vm.state {
+                    return Alert(title: Text("Hiba"),
+                                 message: Text(error.localizedDescription))
+                } else {
+                    return Alert(title: Text("Hiba"),
+                    message: Text("Valami hiba történt. Próbáld újra."))
+                }
+                
+            })
             .navigationBarTitle("Regisztráció", displayMode: .automatic)
             .toolbar{ToolbarItem(placement: .principal){
                 Button(action: {

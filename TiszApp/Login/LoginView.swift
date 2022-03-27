@@ -59,19 +59,20 @@ struct LoginView: View {
                     .sheet(isPresented: $showRegistration, content: { RegisterView()})
                     Spacer()
                 }
-                Button(action: {
-                    let values = ["userName" : "Proba Pista",
-                                  "groupNumber" : 99,
-                                  "isAdmin" : false] as [String : Any]
-                    
-                    Database.database()
-                        .reference().child("test").child("uid").setValue(values)
-                }, label: {Text("Teszt")})
-                .padding()
             }
             Spacer()
             Spacer()
         }
+        .alert(isPresented: $vm.hasError, content: {
+            if case .failed(let error) = vm.state {
+                return Alert(title: Text("Hiba"),
+                             message: Text(error.localizedDescription))
+            } else {
+                return Alert(title: Text("Hiba"),
+                message: Text("Valami hiba történt. Próbáld újra."))
+            }
+            
+        })
         .onTapGesture {
             endTextEditing()
         }

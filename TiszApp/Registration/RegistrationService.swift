@@ -20,7 +20,7 @@ final class RegistrationServiceImpl: RegistrationService {
             
             Future { promise in
                 
-                Auth.auth().createUser(withEmail: details.userName+"tiszap.hu", password: details.password, completion: { res, error in
+                Auth.auth().createUser(withEmail: details.userName+"@tiszap.hu", password: details.password, completion: { res, error in
                     
                     if let err = error {
                         promise(.failure(err))

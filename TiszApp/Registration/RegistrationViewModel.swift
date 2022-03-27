@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 enum RegistrationState {
-    case succesfull
+    case successfull
     case failed(error: Error)
     case na
 }
@@ -18,15 +18,18 @@ protocol RegistrationViewModel {
     func register()
     var service: RegistrationService { get }
     var state: RegistrationState { get }
+    var hasError: Bool { get }
     var userDetails: RegistrationDetails { get }
     init(service: RegistrationService)
 }
 
 final class RegistrationViewModelImpl: ObservableObject, RegistrationViewModel {
     
+    @Published var hasError: Bool = false
+    
     let service: RegistrationService
     
-    var state: RegistrationState = .na
+    @Published var state: RegistrationState = .na
     
     var userDetails: RegistrationDetails = RegistrationDetails.new
     
@@ -34,6 +37,7 @@ final class RegistrationViewModelImpl: ObservableObject, RegistrationViewModel {
     
     init(service: RegistrationService) {
         self.service = service
+        setupErrorSubscriptions()
     }
     
     func register() {
@@ -47,8 +51,25 @@ final class RegistrationViewModelImpl: ObservableObject, RegistrationViewModel {
                 }
                 
             } receiveValue: { [weak self] in
-                self?.state = .succesfull
+                self?.state = .successfull
             }
             .store(in: &subscriptions)
+    }
+}
+
+private extension RegistrationViewModelImpl {
+    func setupErrorSubscriptions() {
+        $state
+            .map { state -> Bool in
+                switch state {
+                case .successfull,
+                        .na:
+                    return false
+                case .failed:
+                    return true
+                }
+                
+            }
+            .assign(to: &$hasError)
     }
 }
