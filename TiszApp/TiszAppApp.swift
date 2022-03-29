@@ -24,6 +24,7 @@ struct TiszAppApp: App {
                     MainMenuView().environmentObject(sessionService)
                 case .loggedOut:
                     LoginView()
+                    //PredictedTextTest()
                 }
             }
         }

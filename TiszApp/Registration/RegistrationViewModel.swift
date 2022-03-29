@@ -14,20 +14,30 @@ enum RegistrationState {
     case na
 }
 
+enum AuthErrorType {
+    case noMatchingPasswords
+    case noFullNameInDatabase
+    case noMatchingNameAndID
+    case na
+}
+
 protocol RegistrationViewModel {
     func register()
     var service: RegistrationService { get }
     var state: RegistrationState { get }
     var hasError: Bool { get }
-    var userDetails: RegistrationDetails { get }
+    var userDetails: RegistrationDetails { get set }
+    var errorType: AuthErrorType { get }
     init(service: RegistrationService)
 }
 
 final class RegistrationViewModelImpl: ObservableObject, RegistrationViewModel {
     
+    @Published var errorType: AuthErrorType = .na
+    
     @Published var hasError: Bool = false
     
-    let service: RegistrationService
+    var service: RegistrationService
     
     @Published var state: RegistrationState = .na
     
@@ -41,6 +51,29 @@ final class RegistrationViewModelImpl: ObservableObject, RegistrationViewModel {
     }
     
     func register() {
+        
+        //passwords must match
+        guard userDetails.password == userDetails.password2 else {
+            hasError = true
+            errorType = .noMatchingPasswords
+            return
+        }
+        
+        //persons full name must be in database
+        guard service.allUserNames.contains(userDetails.fullName) else {
+            hasError = true
+            errorType = .noFullNameInDatabase
+            return
+        }
+        
+        //persons full name and id must match
+        guard fullNameHasMatchingID(name: userDetails.fullName, id: userDetails.id) else {
+            hasError = true
+            errorType = .noMatchingNameAndID
+            return
+        }
+        
+        errorType = .na
         service.register(with: userDetails)
             .sink { [weak self] result in
                 
@@ -71,5 +104,24 @@ private extension RegistrationViewModelImpl {
                 
             }
             .assign(to: &$hasError)
+    }
+}
+
+private extension RegistrationViewModelImpl {
+    func fullNameHasMatchingID(name: String, id: String) -> Bool {
+        
+        let filterFromAdmins = service.adminUsers.filter { $0.0 == name && $0.1 == Int(id) }
+        for admin in filterFromAdmins {
+            service.filteredUser = RegisterInfo(fullName: admin.0, groupNumber: 0, admin: true)
+            return true
+        }
+        
+        let filterFromUsers = service.simpleUsers.filter { $0.0 == name && $0.1 == Int(id) }
+        for user in filterFromUsers {
+            service.filteredUser = RegisterInfo(fullName: user.0, groupNumber: user.2, admin: false)
+            return true
+        }
+        
+        return false
     }
 }
