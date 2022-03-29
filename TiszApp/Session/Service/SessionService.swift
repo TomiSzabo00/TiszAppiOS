@@ -18,6 +18,8 @@ enum SessionState {
 protocol SessionService {
     var state: SessionState { get }
     var userDetails: SessionUserDetails? { get }
+    var buttonTitles: [String] { get }
+    var buttonIcons: [String] { get }
     func logout()
 }
 
@@ -25,6 +27,9 @@ final class SessionServiceImpl: ObservableObject, SessionService {
     
     @Published var state: SessionState = .loggedOut
     @Published var userDetails: SessionUserDetails?
+    
+    @Published var buttonTitles: [String] = ["Feltöltés", "Pontállás", "Sportok", "AV Kvíz", "Képek megtekintése", "Szövegek megtekintése"]
+    @Published var buttonIcons: [String] = ["square.and.arrow.up.fill", "chart.bar.xaxis", "flowchart", "play.rectangle.fill", "eye.fill", "eye.fill"]
     
     private var handler: AuthStateDidChangeListenerHandle?
     
@@ -64,6 +69,12 @@ private extension SessionServiceImpl {
             
             DispatchQueue.main.async {
                 self.userDetails = SessionUserDetails(fullName: fullName, groupNumber: groupNumber, admin: admin, uid: uuid)
+                self.buttonTitles = ["Feltöltés", "Pontállás", "Sportok", "AV Kvíz", "Képek megtekintése", "Szövegek megtekintése"]
+                self.buttonIcons = ["square.and.arrow.up.fill", "chart.bar.xaxis", "flowchart", "play.rectangle.fill", "eye.fill", "eye.fill"]
+                if self.userDetails?.admin == true {
+                    self.buttonTitles += ["Képek ellenőrzése", "Pontok feltöltése"]
+                    self.buttonIcons += ["eye.fill", "plus.square.fill"]
+                }
             }
             
         }
