@@ -15,6 +15,8 @@ struct LoginView: View {
     @State private var showRegistration = false
     
     var body: some View {
+        ZStack {
+            Color.offWhite.ignoresSafeArea()
         VStack{
             Spacer()
             Image("icon")
@@ -25,37 +27,25 @@ struct LoginView: View {
             
             VStack{
                 VStack{
-                    TextField("Felhasználónév", text: $vm.details.userName)
-                        .padding()
-                        .background(Color(.secondarySystemBackground))
-                        .cornerRadius(10)
-                        .disableAutocorrection(true)
-                        .autocapitalization(.none)
-                    SecureField("Jelszó", text: $vm.details.password)
-                        .padding()
-                        .background(Color(.secondarySystemBackground))
-                        .cornerRadius(10)
+                    SimpleTextField(textField:
+                    TextField("Felhasználónév", text: $vm.details.userName), imageName: "person.fill")
+                    .padding(.bottom, 5)
+                    SimpleSecureTextField(secureFied: SecureField("Jelszó", text: $vm.details.password), imageName: "lock.fill")
                 }
                 .padding()
                 
                 Button(action: {
-                    
                     //login
                     vm.login()
-                    
-                }, label: { Text("Bejelentkezés")})
-                .frame(width: 200, height: 50)
-                .background(Color.blue)
-                .foregroundColor(Color.white)
-                .cornerRadius(10)
-                .padding(.bottom)
+                }, label: { Text("Bejelentkezés").bold()})
+                .buttonStyle(SimpleButtonStyle())
+                .padding(.bottom, 30)
+                
                 HStack{
                     Text("Nincs még fiókod?")
                     Button(action: {
-                       
                         showRegistration.toggle()
-                        
-                    }, label: {Text("Regisztrálj!")})
+                    }, label: {Text("Regisztrálj!").bold()})
                     .sheet(isPresented: $showRegistration, content: { RegisterView()})
                     Spacer()
                 }
@@ -66,7 +56,7 @@ struct LoginView: View {
         .alert(isPresented: $vm.hasError, content: {
             if case .failed(let error) = vm.state {
                 return Alert(title: Text("Hiba"),
-                             message: Text(error.localizedDescription))
+                             message: Text(customError(error:error)))
             } else {
                 return Alert(title: Text("Hiba"),
                 message: Text("Valami hiba történt. Próbáld újra."))
@@ -78,6 +68,7 @@ struct LoginView: View {
         }
         .padding(.leading)
         .padding(.trailing)
+    }
     }
 }
 

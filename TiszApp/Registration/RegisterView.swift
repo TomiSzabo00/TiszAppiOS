@@ -132,11 +132,6 @@ struct RegisterView: View {
                         
                         
                         HStack{
-                            Button(action: {
-                                print(vm.service.adminUsers)
-                            }, label: {
-                                Text("asd")
-                            })
                             Spacer()
                             Button(action: {
                                 

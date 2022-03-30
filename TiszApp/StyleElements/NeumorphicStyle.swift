@@ -10,6 +10,8 @@ import SwiftUI
 
 extension Color {
     static let offWhite = Color(red: 226 / 255, green: 225 / 255, blue: 235 / 255)
+    static let highlight = Color.white.opacity(0.9)
+    static let shadow = Color.black.opacity(0.2)
 }
 
 extension LinearGradient {
@@ -45,8 +47,8 @@ struct SimpleButton<S: Shape>: View {
             } else {
                 shape
                     .fill(Color.offWhite)
-                    .shadow(color: Color.black.opacity(0.2), radius: 10, x: 10, y: 10)
-                    .shadow(color: Color.white.opacity(0.7), radius: 10, x: -5, y: -5)
+                    .shadow(color: Color.shadow, radius: 10, x: 10, y: 10)
+                    .shadow(color: Color.highlight, radius: 10, x: -5, y: -5)
             }
         }
     }
@@ -60,5 +62,45 @@ struct SimpleButtonStyle: ButtonStyle {
             .background(
                 SimpleButton(isHighlighted: configuration.isPressed, shape: RoundedRectangle(cornerRadius: 20))
             )
+    }
+}
+
+struct SimpleTextField: View {
+    var textField: TextField<Text>
+    var imageName: String
+    
+    var body: some View {
+        HStack{
+            Image(systemName: imageName)
+                .foregroundColor(.black)
+            textField
+                .disableAutocorrection(true)
+                .autocapitalization(.none)
+        }
+        .padding()
+        .background(Color.offWhite)
+        .cornerRadius(10)
+        .shadow(color: Color.shadow, radius: 10, x: 5, y: 5)
+        .shadow(color: Color.highlight, radius: 10, x: -5, y: -5)
+    }
+}
+
+struct SimpleSecureTextField: View {
+    var secureFied: SecureField<Text>
+    var imageName: String
+    
+    var body: some View {
+        HStack {
+            Image(systemName: imageName)
+                .foregroundColor(.black)
+            secureFied
+                .disableAutocorrection(true)
+                .autocapitalization(.none)
+        }
+        .padding()
+        .background(Color.offWhite)
+        .cornerRadius(10)
+        .shadow(color: Color.shadow, radius: 10, x: 5, y: 5)
+        .shadow(color: Color.highlight, radius: 10, x: -5, y: -5)
     }
 }
