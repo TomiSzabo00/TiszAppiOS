@@ -8,41 +8,76 @@
 import SwiftUI
 import FirebaseAuth
 
+struct IconButton: View {
+    private var text: String
+    private var icon: String
+    private var action: () -> Void
+    
+    init(text: String, icon: String, action: @escaping () -> Void) {
+        self.text = text
+        self.icon = icon
+        self.action = action
+    }
+    
+    var body: some View {
+        Button(action: self.action, label: {
+            VStack{
+                Image(systemName: self.icon)
+                    .resizable()
+                    .scaledToFit()
+                    .padding()
+                Text(self.text)
+                    .bold()
+                    .multilineTextAlignment(.center)
+            }
+            .frame(width: 110, height: 110, alignment: .center)
+            
+        })
+        .buttonStyle(SimpleButtonStyle())
+    }
+}
+
 struct MainMenuView: View {
     
     @EnvironmentObject var sessionService: SessionServiceImpl
     
-    //private var gridItemLayout = Array(repeating: GridItem(.adaptive(minimum:100), spacing: 20), count: 2)
-    
     private var gridItemLayout = [GridItem(.fixed(150), spacing: 20), GridItem(.fixed(150), spacing: 20)]
-
+    
     var body: some View {
-        VStack{
-            ScrollView {
-                LazyVGrid(columns: gridItemLayout, spacing: 20) {
-                    ForEach(sessionService.buttonTitles.indices, id: \.self) {
-                        Image(systemName: sessionService.buttonIcons[$0])
-                            .font(.system(size: 30))
-                            .frame(width: 150, height: 150, alignment: .center)
-                            .background(Color.accentColor)
-                            .cornerRadius(10)
-                    }
+        NavigationView{
+            ZStack {
+                Color.offWhite.ignoresSafeArea()
+                VStack{
+                    ScrollView {
+                        LazyVGrid(columns: gridItemLayout, spacing: 20) {
+                            ForEach($sessionService.buttonTitles, id: \.self) { $e in
+                                
+                                IconButton(text: e,
+                                           icon: sessionService.buttonIcons[sessionService.buttonTitles.firstIndex(of: e)!],
+                                           action: sessionService.buttonActions[sessionService.buttonTitles.firstIndex(of: e)!])
+                                
+                            }
+                        }
+                        .padding([.leading, .trailing], 20)
+                    } //ScrollView end
+                    
+                    Spacer()
+                    
+                    Button(action: {
+                        
+                        sessionService.logout()
+                        
+                    }, label: {
+                        Image(systemName: "rectangle.portrait.and.arrow.right.fill")
+                        Text("Kijelentkezés")
+                    })
+                    .padding()
+                    .background(Color.blue)
+                    .foregroundColor(Color.white)
+                    .cornerRadius(15)
+                    
                 }
-                .padding(20)
             }
-            Spacer()
-            Button(action: {
-                
-                sessionService.logout()
-                
-            }, label: {
-                Image(systemName: "rectangle.portrait.and.arrow.right.fill")
-                Text("Kijelentkezés")
-            })
-            .padding()
-            .background(Color.blue)
-            .foregroundColor(Color.white)
-            .cornerRadius(15)
         }
     }
 }

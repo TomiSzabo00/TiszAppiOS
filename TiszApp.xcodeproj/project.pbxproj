@@ -11,6 +11,7 @@
 		557B8F9E27EE1CEF00312433 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557B8F9D27EE1CEF00312433 /* LoginView.swift */; };
 		557B8FA027EE334F00312433 /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557B8F9F27EE334F00312433 /* MainMenuView.swift */; };
 		557B8FA627EE4D9800312433 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557B8FA527EE4D9800312433 /* User.swift */; };
+		5595DBD627F4AFC40063A424 /* NeumorphicStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5595DBD527F4AFC40063A424 /* NeumorphicStyle.swift */; };
 		55AD115A27F3077000BBD350 /* PredictedTextTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AD115927F3077000BBD350 /* PredictedTextTest.swift */; };
 		55B0E6D227EBDA9B0058A5B9 /* TiszAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B0E6D127EBDA9B0058A5B9 /* TiszAppApp.swift */; };
 		55B0E6D627EBDAA00058A5B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55B0E6D527EBDAA00058A5B9 /* Assets.xcassets */; };
@@ -44,6 +45,7 @@
 		557B8F9D27EE1CEF00312433 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		557B8F9F27EE334F00312433 /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
 		557B8FA527EE4D9800312433 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		5595DBD527F4AFC40063A424 /* NeumorphicStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeumorphicStyle.swift; sourceTree = "<group>"; };
 		55AD115927F3077000BBD350 /* PredictedTextTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictedTextTest.swift; sourceTree = "<group>"; };
 		55B0E6CE27EBDA9B0058A5B9 /* TiszApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TiszApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55B0E6D127EBDA9B0058A5B9 /* TiszAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TiszAppApp.swift; sourceTree = "<group>"; };
@@ -92,6 +94,14 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
+		5595DBD427F4AF8D0063A424 /* StyleElements */ = {
+			isa = PBXGroup;
+			children = (
+				5595DBD527F4AFC40063A424 /* NeumorphicStyle.swift */,
+			);
+			path = StyleElements;
+			sourceTree = "<group>";
+		};
 		55B0E6C527EBDA9B0058A5B9 = {
 			isa = PBXGroup;
 			children = (
@@ -111,6 +121,7 @@
 		55B0E6D027EBDA9B0058A5B9 /* TiszApp */ = {
 			isa = PBXGroup;
 			children = (
+				5595DBD427F4AF8D0063A424 /* StyleElements */,
 				55E8003927F0B3A9007181E0 /* Login */,
 				55E8003227F0A1ED007181E0 /* Session */,
 				55E8002D27F07FB6007181E0 /* Registration */,
@@ -280,6 +291,7 @@
 				55AD115A27F3077000BBD350 /* PredictedTextTest.swift in Sources */,
 				55E8003827F0A27E007181E0 /* SessionService.swift in Sources */,
 				55E8003B27F0B416007181E0 /* LoginService.swift in Sources */,
+				5595DBD627F4AFC40063A424 /* NeumorphicStyle.swift in Sources */,
 				55E8002F27F07FCC007181E0 /* RegistrationService.swift in Sources */,
 				55B0E6D227EBDA9B0058A5B9 /* TiszAppApp.swift in Sources */,
 			);
