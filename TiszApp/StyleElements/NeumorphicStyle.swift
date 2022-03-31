@@ -9,9 +9,10 @@ import Foundation
 import SwiftUI
 
 extension Color {
-    static let offWhite = Color(red: 226 / 255, green: 225 / 255, blue: 235 / 255)
+    static let offWhite = Color(red: 235 / 255, green: 236 / 255, blue: 240 / 255)
     static let highlight = Color.white.opacity(0.9)
     static let shadow = Color.black.opacity(0.2)
+    static let offBlack = Color(red: 107 / 255, green: 113 / 255, blue: 131 / 255)
 }
 
 extension LinearGradient {
@@ -47,7 +48,7 @@ struct SimpleButton<S: Shape>: View {
             } else {
                 shape
                     .fill(Color.offWhite)
-                    .shadow(color: Color.shadow, radius: 10, x: 10, y: 10)
+                    .shadow(color: Color.shadow, radius: 10, x: 5, y: 5)
                     .shadow(color: Color.highlight, radius: 10, x: -5, y: -5)
             }
         }
@@ -58,6 +59,7 @@ struct SimpleButtonStyle: ButtonStyle {
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
             .padding(20)
+            .foregroundColor(.offBlack)
             .contentShape(RoundedRectangle(cornerRadius: 20))
             .background(
                 SimpleButton(isHighlighted: configuration.isPressed, shape: RoundedRectangle(cornerRadius: 20))
@@ -72,7 +74,7 @@ struct SimpleTextField: View {
     var body: some View {
         HStack{
             Image(systemName: imageName)
-                .foregroundColor(.black)
+                .foregroundColor(.offBlack)
             textField
                 .disableAutocorrection(true)
                 .autocapitalization(.none)
@@ -80,8 +82,20 @@ struct SimpleTextField: View {
         .padding()
         .background(Color.offWhite)
         .cornerRadius(10)
-        .shadow(color: Color.shadow, radius: 10, x: 5, y: 5)
-        .shadow(color: Color.highlight, radius: 10, x: -5, y: -5)
+        .overlay(
+            RoundedRectangle(cornerRadius: 10)
+                .stroke(Color.gray, lineWidth: 4)
+                .blur(radius: 4)
+                .offset(x: 2, y: 2)
+                .mask(RoundedRectangle(cornerRadius: 10).fill(LinearGradient(Color.black, Color.clear)))
+        )
+        .overlay(
+            RoundedRectangle(cornerRadius: 10)
+                .stroke(Color.white.opacity(0.4), lineWidth: 8)
+                .blur(radius: 4)
+                .offset(x: -2, y: -2)
+                .mask(RoundedRectangle(cornerRadius: 10).fill(LinearGradient(Color.clear, Color.black)))
+        )
     }
 }
 
@@ -92,7 +106,7 @@ struct SimpleSecureTextField: View {
     var body: some View {
         HStack {
             Image(systemName: imageName)
-                .foregroundColor(.black)
+                .foregroundColor(.offBlack)
             secureFied
                 .disableAutocorrection(true)
                 .autocapitalization(.none)
@@ -100,7 +114,19 @@ struct SimpleSecureTextField: View {
         .padding()
         .background(Color.offWhite)
         .cornerRadius(10)
-        .shadow(color: Color.shadow, radius: 10, x: 5, y: 5)
-        .shadow(color: Color.highlight, radius: 10, x: -5, y: -5)
+        .overlay(
+            RoundedRectangle(cornerRadius: 10)
+                .stroke(Color.gray, lineWidth: 4)
+                .blur(radius: 4)
+                .offset(x: 2, y: 2)
+                .mask(RoundedRectangle(cornerRadius: 10).fill(LinearGradient(Color.black, Color.clear)))
+        )
+        .overlay(
+            RoundedRectangle(cornerRadius: 10)
+                .stroke(Color.white.opacity(0.4), lineWidth: 8)
+                .blur(radius: 4)
+                .offset(x: -2, y: -2)
+                .mask(RoundedRectangle(cornerRadius: 10).fill(LinearGradient(Color.clear, Color.black)))
+        )
     }
 }

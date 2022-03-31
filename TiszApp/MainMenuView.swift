@@ -44,7 +44,6 @@ struct MainMenuView: View {
     private var gridItemLayout = [GridItem(.fixed(150), spacing: 20), GridItem(.fixed(150), spacing: 20)]
     
     var body: some View {
-        NavigationView{
             ZStack {
                 Color.offWhite.ignoresSafeArea()
                 VStack{
@@ -57,30 +56,28 @@ struct MainMenuView: View {
                                            action: sessionService.buttonActions[sessionService.buttonTitles.firstIndex(of: e)!])
                                 
                             }
-                        }
+                        } //LazyVGrid end
                         .padding([.leading, .trailing], 20)
                     } //ScrollView end
-                    
-                    Spacer()
                     
                     Button(action: {
                         
                         sessionService.logout()
                         
                     }, label: {
-                        Image(systemName: "rectangle.portrait.and.arrow.right.fill")
-                        Text("Kijelentkezés")
+                        HStack {
+                            Image(systemName: "rectangle.portrait.and.arrow.right.fill")
+                            Text("Kijelentkezés")
+                        }
                     })
                     .padding()
-                    .background(Color.blue)
-                    .foregroundColor(Color.white)
-                    .cornerRadius(15)
+                    .buttonStyle(SimpleButtonStyle())
                     
                 }
             }
+            .navigationBarHidden(true)
         }
     }
-}
 
 struct MainMenuView_Previews: PreviewProvider {
     static var previews: some View {
