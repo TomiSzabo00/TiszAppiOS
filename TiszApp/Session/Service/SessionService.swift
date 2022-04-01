@@ -9,6 +9,7 @@ import Foundation
 import Combine
 import FirebaseAuth
 import FirebaseDatabase
+import SwiftUI
 
 enum SessionState {
     case loggedIn
@@ -20,7 +21,6 @@ protocol SessionService {
     var userDetails: SessionUserDetails? { get }
     var buttonTitles: [String] { get }
     var buttonIcons: [String] { get }
-    var buttonActions: [() -> Void] { get }
     func logout()
 }
 
@@ -31,15 +31,13 @@ final class SessionServiceImpl: ObservableObject, SessionService {
     
     @Published var buttonTitles: [String] = []
     @Published var buttonIcons: [String] = []
-    @Published var buttonActions: [() -> Void] = []
     
     private var userButtonTitles: [String] = ["Feltöltés", "Pontállás", "Sportok", "AV Kvíz", "Képek megtekintése", "Szövegek megtekintése"]
     private var userButtonIcons: [String] = ["square.and.arrow.up.fill", "chart.bar.xaxis", "flowchart", "play.rectangle.fill", "eye.fill", "eye.fill"]
-    private var userButtonActions: [() -> Void] = [{ print("Feltöltés") }, { print("Pontállás") }, { print("Sportok")}, { print("AV Kvíz")}, { print("Képek megt.")}, { print("Szövegek megt.")}]
-    
+   
     private var adminButtonTitles: [String] = ["Képek ellenőrzése", "Pontok feltöltése"]
     private var adminButtonIcons: [String] = ["eye.fill", "plus.square.fill"]
-    private var adminButtonActions: [() -> Void] = [{ print("Képek ell.")}, { print("Pontok felt.")}]
+
     
     private var handler: AuthStateDidChangeListenerHandle?
     
@@ -81,11 +79,9 @@ private extension SessionServiceImpl {
                 self.userDetails = SessionUserDetails(fullName: fullName, groupNumber: groupNumber, admin: admin, uid: uuid)
                 self.buttonTitles = self.userButtonTitles
                 self.buttonIcons = self.userButtonIcons
-                self.buttonActions = self.userButtonActions
                 if self.userDetails?.admin == true {
                     self.buttonTitles += self.adminButtonTitles
                     self.buttonIcons += self.adminButtonIcons
-                    self.buttonActions += self.adminButtonActions
                 }
             }
             
