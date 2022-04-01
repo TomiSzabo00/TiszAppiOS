@@ -32,6 +32,7 @@
 		55B0E6FB27EC54C50058A5B9 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 55B0E6FA27EC54C50058A5B9 /* FirebaseStorageCombine-Community */; };
 		55B0E6FD27EC54C50058A5B9 /* FirebaseStorageSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 55B0E6FC27EC54C50058A5B9 /* FirebaseStorageSwift-Beta */; };
 		55B40DCB27F3125B00B5B065 /* TextFieldInputPrediction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B40DCA27F3125B00B5B065 /* TextFieldInputPrediction.swift */; };
+		55E37E2827F79480002ED658 /* AddScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E37E2727F79480002ED658 /* AddScoreView.swift */; };
 		55E8002F27F07FCC007181E0 /* RegistrationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E8002E27F07FCC007181E0 /* RegistrationService.swift */; };
 		55E8003127F09CBC007181E0 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E8003027F09CBC007181E0 /* RegistrationViewModel.swift */; };
 		55E8003527F0A217007181E0 /* SessionUserDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E8003427F0A217007181E0 /* SessionUserDetails.swift */; };
@@ -53,6 +54,7 @@
 		55B0E6D827EBDAA00058A5B9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		55B0E6DF27EC53F30058A5B9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		55B40DCA27F3125B00B5B065 /* TextFieldInputPrediction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldInputPrediction.swift; sourceTree = "<group>"; };
+		55E37E2727F79480002ED658 /* AddScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddScoreView.swift; sourceTree = "<group>"; };
 		55E8002E27F07FCC007181E0 /* RegistrationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationService.swift; sourceTree = "<group>"; };
 		55E8003027F09CBC007181E0 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		55E8003427F0A217007181E0 /* SessionUserDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionUserDetails.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 		55B0E6D027EBDA9B0058A5B9 /* TiszApp */ = {
 			isa = PBXGroup;
 			children = (
+				55E37E2627F79460002ED658 /* Score */,
 				5595DBD427F4AF8D0063A424 /* StyleElements */,
 				55E8003927F0B3A9007181E0 /* Login */,
 				55E8003227F0A1ED007181E0 /* Session */,
@@ -142,6 +145,14 @@
 				55B0E6D827EBDAA00058A5B9 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		55E37E2627F79460002ED658 /* Score */ = {
+			isa = PBXGroup;
+			children = (
+				55E37E2727F79480002ED658 /* AddScoreView.swift */,
+			);
+			path = Score;
 			sourceTree = "<group>";
 		};
 		55E8002D27F07FB6007181E0 /* Registration */ = {
@@ -280,6 +291,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55E37E2827F79480002ED658 /* AddScoreView.swift in Sources */,
 				557B8F9C27EDF6A200312433 /* RegisterView.swift in Sources */,
 				557B8FA627EE4D9800312433 /* User.swift in Sources */,
 				55E8003D27F0B571007181E0 /* LoginViewModel.swift in Sources */,

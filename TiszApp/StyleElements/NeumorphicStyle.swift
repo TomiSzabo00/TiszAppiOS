@@ -7,10 +7,11 @@
 
 import Foundation
 import SwiftUI
+import Combine
 
 extension Color {
-    static let offWhite = Color(red: 235 / 255, green: 236 / 255, blue: 240 / 255)
-    static let highlight = Color.white.opacity(0.9)
+    static let offWhite = Color(red: 220 / 255, green: 221 / 255, blue: 225 / 255)
+    static let highlight = Color.white
     static let shadow = Color.black.opacity(0.2)
     static let offBlack = Color(red: 107 / 255, green: 113 / 255, blue: 131 / 255)
 }
@@ -67,7 +68,7 @@ struct SimpleButtonStyle: ButtonStyle {
     }
 }
 
-struct SimpleTextField: View {
+struct SimpleTextFieldWithIcon: View {
     var textField: TextField<Text>
     var imageName: String
     
@@ -78,6 +79,7 @@ struct SimpleTextField: View {
             textField
                 .disableAutocorrection(true)
                 .autocapitalization(.none)
+                .foregroundColor(.offBlack)
         }
         .padding()
         .background(Color.offWhite)
@@ -130,3 +132,63 @@ struct SimpleSecureTextField: View {
         )
     }
 }
+
+struct SimpleTextField: View {
+    var textField: TextField<Text>
+    
+    var body: some View {
+        textField
+            .disableAutocorrection(true)
+            .autocapitalization(.none)
+            .foregroundColor(.offBlack)
+            .padding()
+            .background(Color.offWhite)
+            .cornerRadius(10)
+            .overlay(
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(Color.gray, lineWidth: 4)
+                    .blur(radius: 4)
+                    .offset(x: 2, y: 2)
+                    .mask(RoundedRectangle(cornerRadius: 10).fill(LinearGradient(Color.black, Color.clear)))
+            )
+            .overlay(
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(Color.white.opacity(0.4), lineWidth: 8)
+                    .blur(radius: 4)
+                    .offset(x: -2, y: -2)
+                    .mask(RoundedRectangle(cornerRadius: 10).fill(LinearGradient(Color.clear, Color.black)))
+            )
+    }
+}
+
+struct SimpleNumberTextField: View {
+    var text: Binding<String>
+    
+    var body: some View {
+        TextField("0", text: text)
+            .disableAutocorrection(true)
+            .autocapitalization(.none)
+            .keyboardType(.numberPad)
+            .multilineTextAlignment(.center)
+            .font(Font.body.bold())
+            .foregroundColor(.offBlack)
+            .padding()
+            .background(Color.offWhite)
+            .cornerRadius(10)
+            .overlay(
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(Color.gray, lineWidth: 4)
+                    .blur(radius: 4)
+                    .offset(x: 2, y: 2)
+                    .mask(RoundedRectangle(cornerRadius: 10).fill(LinearGradient(Color.black, Color.clear)))
+            )
+            .overlay(
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(Color.white.opacity(0.4), lineWidth: 8)
+                    .blur(radius: 4)
+                    .offset(x: -2, y: -2)
+                    .mask(RoundedRectangle(cornerRadius: 10).fill(LinearGradient(Color.clear, Color.black)))
+            )
+    }
+}
+

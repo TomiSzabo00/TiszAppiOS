@@ -76,7 +76,7 @@ struct MainMenuView: View {
                 
                 NavigationLink(destination: Text("Képek ellenőrzése"), tag: 6, selection: $ID) {EmptyView()}
                 
-                NavigationLink(destination: Text("Pontok feltöltése"), tag: 7, selection: $ID) {EmptyView()}
+                NavigationLink(destination: AddScoreView(), tag: 7, selection: $ID) {EmptyView()}
                 
                 Button(action: {
                     

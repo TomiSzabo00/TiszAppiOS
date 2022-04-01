@@ -27,7 +27,7 @@ struct LoginView: View {
             
             VStack{
                 VStack{
-                    SimpleTextField(textField:
+                    SimpleTextFieldWithIcon(textField:
                     TextField("Felhasználónév", text: $vm.details.userName), imageName: "person.fill")
                     .padding(.bottom, 5)
                     SimpleSecureTextField(secureFied: SecureField("Jelszó", text: $vm.details.password), imageName: "lock.fill")
