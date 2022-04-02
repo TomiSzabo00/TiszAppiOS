@@ -76,6 +76,7 @@ struct ScoresView: View {
             .padding()
         }
         .navigationBarTitleDisplayMode(.inline)
+        .navigationTitle("Pontok megtekintése")
     }
 }
 

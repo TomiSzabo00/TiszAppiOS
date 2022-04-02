@@ -6,10 +6,15 @@
 //
 
 import SwiftUI
+import FirebaseDatabase
+import FirebaseAuth
 
 
 func SanitiseInput(input: String) -> Int{
     var correctLenghtInput = ""
+    if input.count == 0 {
+        return 0
+    }
     if input.count > 3 {
         correctLenghtInput = String(input.prefix(3))
     } else {
@@ -78,7 +83,28 @@ struct AddScoreView: View {
                     Button(action: {
                         
                         //upload sanitised inputs to fb
-                        print(SanitiseInput(input: firstScore))
+                        let score = ["score1" : SanitiseInput(input: firstScore),
+                                     "score2" : SanitiseInput(input: secondScore),
+                                     "score3" : SanitiseInput(input: thirdScore),
+                                     "score4" : SanitiseInput(input: fourthScore),
+                                     "name" : program,
+                                     "author" : Auth.auth().currentUser?.uid] as [String: Any]
+                        
+                        // Create Date
+                        let date = Date()
+                        // Create Date Formatter
+                        let dateFormatter = DateFormatter()
+                        // Set Date Format
+                        dateFormatter.dateFormat = "YYYYMMddHHmmssSSS"
+                        
+                        Database.database().reference().child("scores").child(dateFormatter.string(from: date)).setValue(score)
+                        
+                        //reset textfields
+                        program = ""
+                        firstScore = ""
+                        secondScore = ""
+                        thirdScore = ""
+                        fourthScore = ""
                         
                         
                     }, label: {
@@ -89,11 +115,15 @@ struct AddScoreView: View {
                 }
             }
         }
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationTitle("Pontok feltöltése")
     }
 }
 
 struct AddScoreView_Previews: PreviewProvider {
     static var previews: some View {
-        AddScoreView()
+        NavigationView{
+            AddScoreView()
+        }
     }
 }
