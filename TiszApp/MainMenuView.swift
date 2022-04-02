@@ -64,7 +64,7 @@ struct MainMenuView: View {
                 
                 NavigationLink(destination: Text("Feltöltés"), tag: 0, selection: $ID) {EmptyView()}
                 
-                NavigationLink(destination: Text("Pontállás"), tag: 1, selection: $ID) {EmptyView()}
+                NavigationLink(destination: ScoresView(), tag: 1, selection: $ID) {EmptyView()}
                 
                 NavigationLink(destination: Text("Sportok"), tag: 2, selection: $ID) {EmptyView()}
                 

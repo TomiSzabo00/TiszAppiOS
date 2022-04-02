@@ -11,6 +11,9 @@
 		557B8F9E27EE1CEF00312433 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557B8F9D27EE1CEF00312433 /* LoginView.swift */; };
 		557B8FA027EE334F00312433 /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557B8F9F27EE334F00312433 /* MainMenuView.swift */; };
 		557B8FA627EE4D9800312433 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557B8FA527EE4D9800312433 /* User.swift */; };
+		5591E7A427F877E200C811F8 /* ScoresView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5591E7A327F877E200C811F8 /* ScoresView.swift */; };
+		5591E7A627F88D2100C811F8 /* ScoreItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5591E7A527F88D2100C811F8 /* ScoreItem.swift */; };
+		5591E7A827F8985700C811F8 /* ScoresHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5591E7A727F8985700C811F8 /* ScoresHandler.swift */; };
 		5595DBD627F4AFC40063A424 /* NeumorphicStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5595DBD527F4AFC40063A424 /* NeumorphicStyle.swift */; };
 		55AD115A27F3077000BBD350 /* PredictedTextTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AD115927F3077000BBD350 /* PredictedTextTest.swift */; };
 		55B0E6D227EBDA9B0058A5B9 /* TiszAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B0E6D127EBDA9B0058A5B9 /* TiszAppApp.swift */; };
@@ -46,6 +49,9 @@
 		557B8F9D27EE1CEF00312433 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		557B8F9F27EE334F00312433 /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
 		557B8FA527EE4D9800312433 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		5591E7A327F877E200C811F8 /* ScoresView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoresView.swift; sourceTree = "<group>"; };
+		5591E7A527F88D2100C811F8 /* ScoreItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreItem.swift; sourceTree = "<group>"; };
+		5591E7A727F8985700C811F8 /* ScoresHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoresHandler.swift; sourceTree = "<group>"; };
 		5595DBD527F4AFC40063A424 /* NeumorphicStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeumorphicStyle.swift; sourceTree = "<group>"; };
 		55AD115927F3077000BBD350 /* PredictedTextTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictedTextTest.swift; sourceTree = "<group>"; };
 		55B0E6CE27EBDA9B0058A5B9 /* TiszApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TiszApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -151,6 +157,9 @@
 			isa = PBXGroup;
 			children = (
 				55E37E2727F79480002ED658 /* AddScoreView.swift */,
+				5591E7A327F877E200C811F8 /* ScoresView.swift */,
+				5591E7A527F88D2100C811F8 /* ScoreItem.swift */,
+				5591E7A727F8985700C811F8 /* ScoresHandler.swift */,
 			);
 			path = Score;
 			sourceTree = "<group>";
@@ -291,13 +300,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5591E7A627F88D2100C811F8 /* ScoreItem.swift in Sources */,
 				55E37E2827F79480002ED658 /* AddScoreView.swift in Sources */,
 				557B8F9C27EDF6A200312433 /* RegisterView.swift in Sources */,
 				557B8FA627EE4D9800312433 /* User.swift in Sources */,
 				55E8003D27F0B571007181E0 /* LoginViewModel.swift in Sources */,
 				55B40DCB27F3125B00B5B065 /* TextFieldInputPrediction.swift in Sources */,
+				5591E7A427F877E200C811F8 /* ScoresView.swift in Sources */,
 				557B8F9E27EE1CEF00312433 /* LoginView.swift in Sources */,
 				55E8003127F09CBC007181E0 /* RegistrationViewModel.swift in Sources */,
+				5591E7A827F8985700C811F8 /* ScoresHandler.swift in Sources */,
 				55E8003527F0A217007181E0 /* SessionUserDetails.swift in Sources */,
 				557B8FA027EE334F00312433 /* MainMenuView.swift in Sources */,
 				55AD115A27F3077000BBD350 /* PredictedTextTest.swift in Sources */,

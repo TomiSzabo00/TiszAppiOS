@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+
 func SanitiseInput(input: String) -> Int{
     var correctLenghtInput = ""
     if input.count > 3 {
