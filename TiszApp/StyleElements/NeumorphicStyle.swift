@@ -192,3 +192,30 @@ struct SimpleNumberTextField: View {
     }
 }
 
+struct SimpleText: View {
+    var text: String
+    var trailingPadding: CGFloat
+    var maxLines: Int
+    var maxWidth: CGFloat
+    
+    init(text: String, trailingPadding: CGFloat = 20, maxLines: Int = 1, maxWidth:CGFloat = 50) {
+        self.text = text
+        self.trailingPadding = trailingPadding
+        self.maxLines = maxLines
+        self.maxWidth = maxWidth
+    }
+    
+    var body: some View {
+        Text(self.text)
+            .font(.system(size: 16))
+            .minimumScaleFactor(0.01)
+            .lineLimit(self.maxLines)
+            .foregroundColor(.offBlack)
+            .frame(maxWidth: self.maxWidth)
+            .padding()
+            .background(Color.offWhite)
+            .cornerRadius(10)
+            .shadow(color: Color.shadow, radius: 10, x: 5, y: 5)
+            .shadow(color: Color.highlight, radius: 10, x: -5, y: -5)
+    }
+}

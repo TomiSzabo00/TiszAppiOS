@@ -54,12 +54,16 @@ struct AddScoreView: View {
                 HStack(spacing: 30){
                     Spacer()
                     Text("1.")
+                        .lineLimit(1)
                     Spacer()
                     Text("2.")
+                        .lineLimit(1)
                     Spacer()
                     Text("3.")
+                        .lineLimit(1)
                     Spacer()
                     Text("4.")
+                        .lineLimit(1)
                     Spacer()
                 }
                 .padding(.top, 10)
@@ -88,7 +92,7 @@ struct AddScoreView: View {
                                      "score3" : SanitiseInput(input: thirdScore),
                                      "score4" : SanitiseInput(input: fourthScore),
                                      "name" : program,
-                                     "author" : Auth.auth().currentUser?.uid] as [String: Any]
+                                     "author" : Auth.auth().currentUser?.uid ?? "unknown"] as [String: Any]
                         
                         // Create Date
                         let date = Date()
