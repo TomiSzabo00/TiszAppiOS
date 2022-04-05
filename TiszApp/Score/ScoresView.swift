@@ -21,8 +21,9 @@ struct ScoresView: View {
             VStack{
                 HStack {
                     Spacer()
+                        .frame(minWidth: 100, maxWidth: 140)
                     SimpleText(text: "Csapatok pontjai", maxWidth: 200)
-                        .frame(maxWidth: 200, alignment: .center)
+                        .frame(minWidth: 100)
                         .padding(.trailing)
                 }
                 .padding(.trailing)
@@ -30,15 +31,11 @@ struct ScoresView: View {
                 
                 HStack{
                     SimpleText(text: "Program neve", trailingPadding: 5, maxWidth: 140)
-                        .frame(maxWidth: 140, alignment: .center)
-                    SimpleText(text: "1.")
-                        .frame(maxWidth: 50, alignment: .center)
-                    SimpleText(text: "2.")
-                        .frame(maxWidth: 50, alignment: .center)
-                    SimpleText(text: "3.")
-                        .frame(maxWidth: 50, alignment: .center)
-                    SimpleText(text: "4.")
-                        .frame(maxWidth: 50, alignment: .center)
+                        .frame(minWidth: 100)
+                    SimpleText(text: "1.", maxWidth: 50, isBold: true)
+                    SimpleText(text: "2.", maxWidth: 50, isBold: true)
+                    SimpleText(text: "3.", maxWidth: 50, isBold: true)
+                    SimpleText(text: "4.", maxWidth: 50, isBold: true)
                 }
                 .padding(.trailing)
                 .padding(.leading, 5)
@@ -48,15 +45,11 @@ struct ScoresView: View {
                     ForEach(handler.scoresList) {score in
                         HStack{
                             SimpleText(text: score.name, trailingPadding: 5, maxLines: 3, maxWidth: 140)
-                                .frame(maxWidth: 140, alignment: .center)
-                            SimpleText(text: String(score.score1))
-                                .frame(maxWidth: 50, alignment: .center)
-                            SimpleText(text: String(score.score2))
-                                .frame(maxWidth: 50, alignment: .center)
-                            SimpleText(text: String(score.score3))
-                                .frame(maxWidth: 50, alignment: .center)
-                            SimpleText(text: String(score.score4))
-                                .frame(maxWidth: 50, alignment: .center)
+                                .frame(minWidth: 100)
+                            SimpleText(text: String(score.score1), maxWidth: 50)
+                            SimpleText(text: String(score.score2), maxWidth: 50)
+                            SimpleText(text: String(score.score3), maxWidth: 50)
+                            SimpleText(text: String(score.score4), maxWidth: 50)
                         }
                         .padding(.trailing)
                         .padding(.leading, 5)
@@ -68,16 +61,12 @@ struct ScoresView: View {
                 //end List
                 
                 HStack{
-                    SimpleText(text: "Összesen:", trailingPadding: 5, maxWidth: 140)
-                    //.frame(maxWidth: 140, alignment: .center)
-                    SimpleText(text: String(handler.sum1))
-                        .frame(maxWidth: 60, alignment: .center)
-                    SimpleText(text: String(handler.sum2))
-                        .frame(maxWidth: 60, alignment: .center)
-                    SimpleText(text: String(handler.sum3))
-                        .frame(maxWidth: 60, alignment: .center)
-                    SimpleText(text: String(handler.sum4))
-                        .frame(maxWidth: 60, alignment: .center)
+                    SimpleText(text: "Összesen:", trailingPadding: 5, maxWidth: 140, isBold: true)
+                        .frame(minWidth: 100)
+                    SimpleText(text: String(handler.sum1), maxWidth: 50)
+                    SimpleText(text: String(handler.sum2), maxWidth: 50)
+                    SimpleText(text: String(handler.sum3), maxWidth: 50)
+                    SimpleText(text: String(handler.sum4), maxWidth: 50)
                 }
                 .padding([.top, .trailing], 10)
             }

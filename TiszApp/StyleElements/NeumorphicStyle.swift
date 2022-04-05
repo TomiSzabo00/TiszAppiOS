@@ -197,22 +197,25 @@ struct SimpleText: View {
     var trailingPadding: CGFloat
     var maxLines: Int
     var maxWidth: CGFloat
+    var isBold: Bool
     
-    init(text: String, trailingPadding: CGFloat = 20, maxLines: Int = 1, maxWidth:CGFloat = 50) {
+    init(text: String, trailingPadding: CGFloat = 20, maxLines: Int = 1, maxWidth:CGFloat = 50, isBold: Bool = false) {
         self.text = text
         self.trailingPadding = trailingPadding
         self.maxLines = maxLines
         self.maxWidth = maxWidth
+        self.isBold = isBold
     }
     
     var body: some View {
         Text(self.text)
+            .fontWeight(isBold ? .bold : .regular)
             .font(.system(size: 16))
             .minimumScaleFactor(0.01)
             .lineLimit(self.maxLines)
             .foregroundColor(.offBlack)
-            .frame(maxWidth: self.maxWidth)
-            .padding()
+            .frame(maxWidth: self.maxWidth, alignment: .center)
+            .padding(5)
             .background(Color.offWhite)
             .cornerRadius(10)
             .shadow(color: Color.shadow, radius: 10, x: 5, y: 5)
