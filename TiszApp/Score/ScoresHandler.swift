@@ -32,6 +32,11 @@ final class ScoresHandlerImpl: ScoresHandler, ObservableObject {
     
     func getScores(){
         Database.database().reference().child("scores").observe(DataEventType.value) { snapshot in
+            self.scoresList.removeAll()
+            self.sum1 = 0
+            self.sum2 = 0
+            self.sum3 = 0
+            self.sum4 = 0
             for child in snapshot.children {
                 if let currSnapshot = child as? DataSnapshot,
                    let score = ScoreItem(snapshot: currSnapshot) {
@@ -48,10 +53,5 @@ final class ScoresHandlerImpl: ScoresHandler, ObservableObject {
     
     func deleteScores() {
         Database.database().reference().child("scores").removeValue()
-        self.scoresList.removeAll()
-        self.sum1 = 0
-        self.sum2 = 0
-        self.sum3 = 0
-        self.sum4 = 0
     }
 }
