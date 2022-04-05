@@ -35,12 +35,12 @@ struct AddScoreView: View {
     
     var body: some View {
         ZStack {
-            Color.offWhite.ignoresSafeArea()
+            Color.background.ignoresSafeArea()
             VStack {
                 HStack {
                     Text("Mire adod a pontot?")
                         .padding(.leading)
-                        .foregroundColor(.offBlack)
+                        .foregroundColor(.foreground)
                     Spacer()
                 }
                 SimpleTextFieldWithIcon(textField: TextField("Program neve", text: $program), imageName: "puzzlepiece.fill")
@@ -48,7 +48,7 @@ struct AddScoreView: View {
                 HStack{
                 Text("Hány pontot adsz a csapatoknak?")
                         .padding([.top, .leading])
-                    .foregroundColor(.offBlack)
+                    .foregroundColor(.foreground)
                     Spacer()
                 }
                 HStack(spacing: 30){
@@ -67,7 +67,7 @@ struct AddScoreView: View {
                     Spacer()
                 }
                 .padding(.top, 10)
-                .foregroundColor(.offBlack)
+                .foregroundColor(.foreground)
                 
                 HStack(spacing: 5){
                     Spacer()

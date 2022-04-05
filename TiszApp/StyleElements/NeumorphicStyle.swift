@@ -10,10 +10,12 @@ import SwiftUI
 import Combine
 
 extension Color {
-    static let offWhite = Color(red: 220 / 255, green: 221 / 255, blue: 225 / 255)
-    static let highlight = Color.white
-    static let shadow = Color.black.opacity(0.2)
-    static let offBlack = Color(red: 107 / 255, green: 113 / 255, blue: 131 / 255)
+    static let background = Color("background")
+    static let highlight = Color("highlight")
+    static let shadow = Color("shadow")
+    static let foreground = Color("foreground")
+    static let gradientDark = Color("gradientDark")
+    static let gradientLight = Color("gradientLight")
 }
 
 extension LinearGradient {
@@ -30,27 +32,27 @@ struct SimpleButton<S: Shape>: View {
         ZStack {
             if isHighlighted {
                 shape
-                    .fill(Color.offWhite)
+                    .fill(Color.background)
                     .overlay(
                         shape
-                            .stroke(Color.gray, lineWidth: 4)
+                            .stroke(Color.shadow, lineWidth: 6)
                             .blur(radius: 4)
-                            .offset(x: 2, y: 2)
+                            .offset(x: 3, y: 3)
                             .mask(shape.fill(LinearGradient(Color.black, Color.clear)))
                     )
                     .overlay(
                         shape
-                            .stroke(Color.white, lineWidth: 8)
+                            .stroke(Color.highlight, lineWidth: 4)
                             .blur(radius: 4)
-                            .offset(x: -2, y: -2)
+                            .offset(x: -1, y: -1)
                             .mask(shape.fill(LinearGradient(Color.clear, Color.black)))
                     )
                 
             } else {
                 shape
-                    .fill(Color.offWhite)
-                    .shadow(color: Color.shadow, radius: 10, x: 5, y: 5)
-                    .shadow(color: Color.highlight, radius: 10, x: -5, y: -5)
+                    .fill(Color.background)
+                    .shadow(color: Color.shadow, radius: 3, x: 3, y: 3)
+                    .shadow(color: Color.highlight, radius: 3, x: -2, y: -2)
             }
         }
     }
@@ -60,7 +62,7 @@ struct SimpleButtonStyle: ButtonStyle {
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
             .padding(20)
-            .foregroundColor(.offBlack)
+            .foregroundStyle(LinearGradient(Color.gradientDark, Color.gradientLight))
             .contentShape(RoundedRectangle(cornerRadius: 20))
             .background(
                 SimpleButton(isHighlighted: configuration.isPressed, shape: RoundedRectangle(cornerRadius: 20))
@@ -75,27 +77,27 @@ struct SimpleTextFieldWithIcon: View {
     var body: some View {
         HStack{
             Image(systemName: imageName)
-                .foregroundColor(.offBlack)
+                .foregroundStyle(LinearGradient(Color.gradientDark, Color.gradientLight))
             textField
                 .disableAutocorrection(true)
                 .autocapitalization(.none)
-                .foregroundColor(.offBlack)
+                .foregroundColor(.foreground)
         }
         .padding()
-        .background(Color.offWhite)
+        .background(Color.background)
         .cornerRadius(10)
         .overlay(
             RoundedRectangle(cornerRadius: 10)
-                .stroke(Color.gray, lineWidth: 4)
+                .stroke(Color.shadow, lineWidth: 6)
                 .blur(radius: 4)
-                .offset(x: 2, y: 2)
+                .offset(x: 3, y: 3)
                 .mask(RoundedRectangle(cornerRadius: 10).fill(LinearGradient(Color.black, Color.clear)))
         )
         .overlay(
             RoundedRectangle(cornerRadius: 10)
-                .stroke(Color.white.opacity(0.4), lineWidth: 8)
+                .stroke(Color.highlight, lineWidth: 4)
                 .blur(radius: 4)
-                .offset(x: -2, y: -2)
+                .offset(x: -1, y: -1)
                 .mask(RoundedRectangle(cornerRadius: 10).fill(LinearGradient(Color.clear, Color.black)))
         )
     }
@@ -108,26 +110,26 @@ struct SimpleSecureTextField: View {
     var body: some View {
         HStack {
             Image(systemName: imageName)
-                .foregroundColor(.offBlack)
+                .foregroundStyle(LinearGradient(Color.gradientDark, Color.gradientLight))
             secureFied
                 .disableAutocorrection(true)
                 .autocapitalization(.none)
         }
         .padding()
-        .background(Color.offWhite)
+        .background(Color.background)
         .cornerRadius(10)
         .overlay(
             RoundedRectangle(cornerRadius: 10)
-                .stroke(Color.gray, lineWidth: 4)
+                .stroke(Color.shadow, lineWidth: 6)
                 .blur(radius: 4)
-                .offset(x: 2, y: 2)
+                .offset(x: 3, y: 3)
                 .mask(RoundedRectangle(cornerRadius: 10).fill(LinearGradient(Color.black, Color.clear)))
         )
         .overlay(
             RoundedRectangle(cornerRadius: 10)
-                .stroke(Color.white.opacity(0.4), lineWidth: 8)
+                .stroke(Color.highlight, lineWidth: 4)
                 .blur(radius: 4)
-                .offset(x: -2, y: -2)
+                .offset(x: -1, y: -1)
                 .mask(RoundedRectangle(cornerRadius: 10).fill(LinearGradient(Color.clear, Color.black)))
         )
     }
@@ -140,22 +142,22 @@ struct SimpleTextField: View {
         textField
             .disableAutocorrection(true)
             .autocapitalization(.none)
-            .foregroundColor(.offBlack)
+            .foregroundColor(.foreground)
             .padding()
-            .background(Color.offWhite)
+            .background(Color.background)
             .cornerRadius(10)
             .overlay(
                 RoundedRectangle(cornerRadius: 10)
-                    .stroke(Color.gray, lineWidth: 4)
+                    .stroke(Color.shadow, lineWidth: 6)
                     .blur(radius: 4)
-                    .offset(x: 2, y: 2)
+                    .offset(x: 3, y: 3)
                     .mask(RoundedRectangle(cornerRadius: 10).fill(LinearGradient(Color.black, Color.clear)))
             )
             .overlay(
                 RoundedRectangle(cornerRadius: 10)
-                    .stroke(Color.white.opacity(0.4), lineWidth: 8)
+                    .stroke(Color.highlight, lineWidth: 4)
                     .blur(radius: 4)
-                    .offset(x: -2, y: -2)
+                    .offset(x: -1, y: -1)
                     .mask(RoundedRectangle(cornerRadius: 10).fill(LinearGradient(Color.clear, Color.black)))
             )
     }
@@ -171,22 +173,22 @@ struct SimpleNumberTextField: View {
             .keyboardType(.numberPad)
             .multilineTextAlignment(.center)
             .font(Font.body.bold())
-            .foregroundColor(.offBlack)
+            .foregroundColor(.foreground)
             .padding()
-            .background(Color.offWhite)
+            .background(Color.background)
             .cornerRadius(10)
             .overlay(
                 RoundedRectangle(cornerRadius: 10)
-                    .stroke(Color.gray, lineWidth: 4)
+                    .stroke(Color.shadow, lineWidth: 6)
                     .blur(radius: 4)
-                    .offset(x: 2, y: 2)
+                    .offset(x: 3, y: 3)
                     .mask(RoundedRectangle(cornerRadius: 10).fill(LinearGradient(Color.black, Color.clear)))
             )
             .overlay(
                 RoundedRectangle(cornerRadius: 10)
-                    .stroke(Color.white.opacity(0.4), lineWidth: 8)
+                    .stroke(Color.highlight, lineWidth: 4)
                     .blur(radius: 4)
-                    .offset(x: -2, y: -2)
+                    .offset(x: -1, y: -1)
                     .mask(RoundedRectangle(cornerRadius: 10).fill(LinearGradient(Color.clear, Color.black)))
             )
     }
@@ -198,13 +200,15 @@ struct SimpleText: View {
     var maxLines: Int
     var maxWidth: CGFloat
     var isBold: Bool
+    var isGradient: Bool
     
-    init(text: String, trailingPadding: CGFloat = 20, maxLines: Int = 1, maxWidth:CGFloat = 50, isBold: Bool = false) {
+    init(text: String, trailingPadding: CGFloat = 20, maxLines: Int = 1, maxWidth:CGFloat = 50, isBold: Bool = false, isGradient: Bool = false) {
         self.text = text
         self.trailingPadding = trailingPadding
         self.maxLines = maxLines
         self.maxWidth = maxWidth
         self.isBold = isBold
+        self.isGradient = isGradient
     }
     
     var body: some View {
@@ -213,12 +217,12 @@ struct SimpleText: View {
             .font(.system(size: 16))
             .minimumScaleFactor(0.01)
             .lineLimit(self.maxLines)
-            .foregroundColor(.offBlack)
             .frame(maxWidth: self.maxWidth, alignment: .center)
             .padding(5)
-            .background(Color.offWhite)
+            .background(Color.background)
             .cornerRadius(10)
-            .shadow(color: Color.shadow, radius: 10, x: 5, y: 5)
-            .shadow(color: Color.highlight, radius: 10, x: -5, y: -5)
+            .shadow(color: Color.shadow, radius: 2, x: 3, y: 3)
+            .shadow(color: Color.highlight, radius: 2, x: -2, y: -2)
+            .foregroundStyle(self.isGradient ? LinearGradient(Color.gradientDark, Color.gradientLight) : LinearGradient(Color.foreground, Color.foreground))
     }
 }

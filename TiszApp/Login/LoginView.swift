@@ -16,16 +16,16 @@ struct LoginView: View {
     
     var body: some View {
         ZStack {
-            Color.offWhite.ignoresSafeArea()
+            Color.background.ignoresSafeArea()
             //ScrollView{
                 VStack{
                     Spacer()
                     
-                    Image("icon")
-                        .resizable()
-                        .scaledToFit()
+                    RoundedRectangle(cornerRadius: 20)
                         .frame(width: 180, height: 180)
                         .padding()
+                        .foregroundStyle(LinearGradient(Color.gradientDark, Color.gradientLight))
+                    
                     
                     VStack{
                         VStack{
@@ -47,7 +47,10 @@ struct LoginView: View {
                             Text("Nincs még fiókod?")
                             Button(action: {
                                 showRegistration.toggle()
-                            }, label: {Text("Regisztrálj!").bold()})
+                            }, label: {Text("Regisztrálj!")
+                                .bold()
+                                .foregroundStyle(LinearGradient(Color.gradientDark, Color.gradientLight))
+                            })
                             .sheet(isPresented: $showRegistration, content: { RegisterView()})
                             Spacer()
                         }
@@ -64,13 +67,14 @@ struct LoginView: View {
                     }
                     
                 })
-                .onTapGesture {
-                    endTextEditing()
-                }
+
                 .padding(.leading)
                 .padding(.trailing)
             }
             .navigationBarHidden(true)
+            .onTapGesture {
+                endTextEditing()
+            }
         }
    // }
 }

@@ -22,13 +22,16 @@ struct IconButton: View {
     var body: some View {
         Button(action: self.action, label: {
             VStack{
+                LinearGradient(Color.gradientDark, Color.gradientLight)
+                    .mask(
                 Image(systemName: self.icon)
                     .resizable()
                     .scaledToFit()
-                    .padding()
+                    .padding())
                 Text(self.text)
                     .bold()
                     .multilineTextAlignment(.center)
+                    .foregroundStyle(LinearGradient(Color.gradientDark, Color.gradientLight))
             }
             .frame(width: 110, height: 110, alignment: .center)
             
@@ -47,7 +50,7 @@ struct MainMenuView: View {
     
     var body: some View {
         ZStack {
-            Color.offWhite.ignoresSafeArea()
+            Color.background.ignoresSafeArea()
             VStack{
                 ScrollView {
                     LazyVGrid(columns: gridItemLayout, spacing: 20) {

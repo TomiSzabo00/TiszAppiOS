@@ -17,7 +17,7 @@ struct ScoresView: View {
     
     var body: some View {
         ZStack{
-            Color.offWhite.ignoresSafeArea()
+            Color.background.ignoresSafeArea()
             VStack{
                 HStack {
                     Spacer()
@@ -61,7 +61,7 @@ struct ScoresView: View {
                 //end List
                 
                 HStack{
-                    SimpleText(text: "Összesen:", trailingPadding: 5, maxWidth: 140, isBold: true)
+                    SimpleText(text: "Összesen:", trailingPadding: 5, maxWidth: 140, isBold: true, isGradient: true)
                         .frame(minWidth: 100)
                     SimpleText(text: String(handler.sum1), maxWidth: 50)
                     SimpleText(text: String(handler.sum2), maxWidth: 50)
@@ -76,7 +76,8 @@ struct ScoresView: View {
                 role: .destructive,
                 action: { confirmationShown = true }
             ) {
-                Image(systemName: "trash.fill")
+                Image(systemName: "trash")
+                    .foregroundStyle(LinearGradient(Color.gradientDark, Color.gradientLight))
             } : nil )
             .confirmationDialog(
                 "Biztos ki akarod törölni az összes pontot?",
