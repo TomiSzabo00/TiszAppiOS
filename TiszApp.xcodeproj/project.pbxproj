@@ -14,6 +14,8 @@
 		5591E7A427F877E200C811F8 /* ScoresView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5591E7A327F877E200C811F8 /* ScoresView.swift */; };
 		5591E7A627F88D2100C811F8 /* ScoreItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5591E7A527F88D2100C811F8 /* ScoreItem.swift */; };
 		5591E7A827F8985700C811F8 /* ScoresHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5591E7A727F8985700C811F8 /* ScoresHandler.swift */; };
+		5591E7AB27FD9AA400C811F8 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5591E7AA27FD9AA300C811F8 /* ImagePicker.swift */; };
+		5591E7AD27FDA01000C811F8 /* ImageUploadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5591E7AC27FDA00F00C811F8 /* ImageUploadView.swift */; };
 		5595DBD627F4AFC40063A424 /* NeumorphicStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5595DBD527F4AFC40063A424 /* NeumorphicStyle.swift */; };
 		55AD115A27F3077000BBD350 /* PredictedTextTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AD115927F3077000BBD350 /* PredictedTextTest.swift */; };
 		55B0E6D227EBDA9B0058A5B9 /* TiszAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B0E6D127EBDA9B0058A5B9 /* TiszAppApp.swift */; };
@@ -52,6 +54,8 @@
 		5591E7A327F877E200C811F8 /* ScoresView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoresView.swift; sourceTree = "<group>"; };
 		5591E7A527F88D2100C811F8 /* ScoreItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreItem.swift; sourceTree = "<group>"; };
 		5591E7A727F8985700C811F8 /* ScoresHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoresHandler.swift; sourceTree = "<group>"; };
+		5591E7AA27FD9AA300C811F8 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		5591E7AC27FDA00F00C811F8 /* ImageUploadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageUploadView.swift; sourceTree = "<group>"; };
 		5595DBD527F4AFC40063A424 /* NeumorphicStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeumorphicStyle.swift; sourceTree = "<group>"; };
 		55AD115927F3077000BBD350 /* PredictedTextTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictedTextTest.swift; sourceTree = "<group>"; };
 		55B0E6CE27EBDA9B0058A5B9 /* TiszApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TiszApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -102,6 +106,15 @@
 			path = Data;
 			sourceTree = "<group>";
 		};
+		5591E7A927FD99FF00C811F8 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				5591E7AA27FD9AA300C811F8 /* ImagePicker.swift */,
+				5591E7AC27FDA00F00C811F8 /* ImageUploadView.swift */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
 		5595DBD427F4AF8D0063A424 /* StyleElements */ = {
 			isa = PBXGroup;
 			children = (
@@ -129,6 +142,7 @@
 		55B0E6D027EBDA9B0058A5B9 /* TiszApp */ = {
 			isa = PBXGroup;
 			children = (
+				5591E7A927FD99FF00C811F8 /* Images */,
 				55E37E2627F79460002ED658 /* Score */,
 				5595DBD427F4AF8D0063A424 /* StyleElements */,
 				55E8003927F0B3A9007181E0 /* Login */,
@@ -167,10 +181,10 @@
 		55E8002D27F07FB6007181E0 /* Registration */ = {
 			isa = PBXGroup;
 			children = (
+				55B40DCA27F3125B00B5B065 /* TextFieldInputPrediction.swift */,
 				557B8F9B27EDF6A200312433 /* RegisterView.swift */,
 				55E8002E27F07FCC007181E0 /* RegistrationService.swift */,
 				55E8003027F09CBC007181E0 /* RegistrationViewModel.swift */,
-				55B40DCA27F3125B00B5B065 /* TextFieldInputPrediction.swift */,
 			);
 			path = Registration;
 			sourceTree = "<group>";
@@ -307,6 +321,7 @@
 				55E8003D27F0B571007181E0 /* LoginViewModel.swift in Sources */,
 				55B40DCB27F3125B00B5B065 /* TextFieldInputPrediction.swift in Sources */,
 				5591E7A427F877E200C811F8 /* ScoresView.swift in Sources */,
+				5591E7AB27FD9AA400C811F8 /* ImagePicker.swift in Sources */,
 				557B8F9E27EE1CEF00312433 /* LoginView.swift in Sources */,
 				55E8003127F09CBC007181E0 /* RegistrationViewModel.swift in Sources */,
 				5591E7A827F8985700C811F8 /* ScoresHandler.swift in Sources */,
@@ -318,6 +333,7 @@
 				5595DBD627F4AFC40063A424 /* NeumorphicStyle.swift in Sources */,
 				55E8002F27F07FCC007181E0 /* RegistrationService.swift in Sources */,
 				55B0E6D227EBDA9B0058A5B9 /* TiszAppApp.swift in Sources */,
+				5591E7AD27FDA01000C811F8 /* ImageUploadView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
