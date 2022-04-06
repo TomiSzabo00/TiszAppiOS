@@ -226,3 +226,43 @@ struct SimpleText: View {
             .foregroundStyle(self.isGradient ? LinearGradient(Color.gradientDark, Color.gradientLight) : LinearGradient(Color.foreground, Color.foreground))
     }
 }
+
+struct SimpleRectangle: View {
+    var width: CGFloat
+    var height: CGFloat
+    
+    init(width: CGFloat, height: CGFloat) {
+        self.width = width
+        self.height = height
+    }
+    
+    var body: some View {
+        RoundedRectangle(cornerRadius: 10)
+            .fill(Color.background)
+            .frame(maxWidth: self.width, maxHeight: self.height, alignment: .center)
+            .shadow(color: Color.shadow, radius: 2, x: 3, y: 3)
+            .shadow(color: Color.highlight, radius: 2, x: -2, y: -2)
+    }
+}
+
+struct SimpleImage: View {
+    var image: UIImage
+    var width: CGFloat
+    var height: CGFloat
+    
+    init(image: UIImage, width: CGFloat, height: CGFloat) {
+        self.image = image
+        self.width = width
+        self.height = height
+    }
+    
+    var body: some View {
+        Image(uiImage: image)
+            .resizable()
+            .scaledToFit()
+            .cornerRadius(10)
+            .frame(maxWidth: self.width, maxHeight: self.height, alignment: .center)
+            .shadow(color: Color.shadow, radius: 2, x: 3, y: 3)
+            .shadow(color: Color.highlight, radius: 2, x: -2, y: -2)
+    }
+}

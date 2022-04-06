@@ -6,6 +6,9 @@
 //
 
 import SwiftUI
+import FirebaseStorage
+import FirebaseDatabase
+import FirebaseAuth
 
 struct ImageUploadView: View {
     
@@ -42,6 +45,11 @@ struct ImageUploadView: View {
                     
                     Button(action: {
                         //upload
+                        if image != nil {
+                            uploadImage(image: image!)
+//                            image = nil
+//                            imageTitle = ""
+                        }
                     }, label: {
                         Text("Feltöltés")
                     })
@@ -55,6 +63,33 @@ struct ImageUploadView: View {
             })
         }
     }
+    
+    func uploadImage(image: UIImage) {
+        if let imageData = image.jpegData(compressionQuality: 1) {
+            
+            let date = Date()
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "YYYYMMddHHmmssSSS"
+            let fileName = dateFormatter.string(from: date)
+            
+            let imageRef = Storage.storage().reference().child("images/\(fileName)")
+            
+            imageRef.putData(imageData, metadata: nil) { (_, err) in
+                if let err = err {
+                    print("error: \(err.localizedDescription)")
+                } else {
+                    print("image uploaded")
+                    //upload to realtime db
+                    let imageInfo = ["author" : Auth.auth().currentUser?.uid ?? "unknown",
+                                 "fileName" : fileName,
+                                 "title" : imageTitle.isEmpty ? fileName : imageTitle] as [String: Any]
+                    
+                    Database.database().reference().child("picsToDecide").child(fileName).setValue(imageInfo)
+                }
+            }
+        }
+    }
+    
 }
 
 struct ImageUploadView_Previews: PreviewProvider {

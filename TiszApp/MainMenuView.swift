@@ -65,7 +65,7 @@ struct MainMenuView: View {
                     .padding([.leading, .trailing], 20)
                 } //ScrollView end
                 
-                NavigationLink(destination: Text("Feltöltés"), tag: 0, selection: $ID) {EmptyView()}
+                NavigationLink(destination: ImageUploadView(), tag: 0, selection: $ID) {EmptyView()}
                 
                 NavigationLink(destination: ScoresView().environmentObject(sessionService), tag: 1, selection: $ID) {EmptyView()}
                 
