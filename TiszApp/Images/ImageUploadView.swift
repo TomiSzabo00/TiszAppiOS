@@ -16,6 +16,8 @@ struct ImageUploadView: View {
     @State var image: UIImage?
     
     @State var imageTitle: String = ""
+    @State var succesfulUpload: Bool? = nil
+    @State var uploaded: Bool = false
     
     var body: some View {
         ZStack {
@@ -47,8 +49,7 @@ struct ImageUploadView: View {
                         //upload
                         if image != nil {
                             uploadImage(image: image!)
-//                            image = nil
-//                            imageTitle = ""
+                            uploaded = true
                         }
                     }, label: {
                         Text("Feltöltés")
@@ -61,7 +62,25 @@ struct ImageUploadView: View {
             .sheet(isPresented: $showImagePicker, content: {
                 imagePicker(image: $image, showPicker: $showImagePicker)
             })
+            .alert(isPresented: $uploaded, content: {
+                if succesfulUpload != nil {
+                if succesfulUpload == false {
+                    return Alert(title: Text("Hiba"),
+                                 message: Text("A kép feltöltése sikertelen. Próbáld meg később."))
+                } else {
+                    return Alert(title: Text("Siker"),
+                                 message: Text("A kép feltöltve jóváhagyásra. Amint egy szervező ellenőrizte, megtekintheted a Képek menüpont alatt"), dismissButton: .default(Text("Ok"), action: {
+                        image = nil
+                        imageTitle = ""
+                    }))
+                }
+                } else {
+                    return Alert(title: Text(""), message: Text("Feltöltés folyamatban..."))
+                }
+            })
         }
+        .navigationTitle("Kép feltöltése")
+        .navigationBarTitleDisplayMode(.inline)
     }
     
     func uploadImage(image: UIImage) {
@@ -73,11 +92,15 @@ struct ImageUploadView: View {
             let fileName = dateFormatter.string(from: date)
             
             let imageRef = Storage.storage().reference().child("images/\(fileName)")
+            let metadata = StorageMetadata()
+            metadata.contentType = "image/jpeg"
             
-            imageRef.putData(imageData, metadata: nil) { (_, err) in
+            imageRef.putData(imageData, metadata: metadata) { (_, err) in
                 if let err = err {
                     print("error: \(err.localizedDescription)")
+                    succesfulUpload = false
                 } else {
+                    succesfulUpload = true
                     print("image uploaded")
                     //upload to realtime db
                     let imageInfo = ["author" : Auth.auth().currentUser?.uid ?? "unknown",

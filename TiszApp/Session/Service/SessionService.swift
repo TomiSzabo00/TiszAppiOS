@@ -32,8 +32,8 @@ final class SessionServiceImpl: ObservableObject, SessionService {
     @Published var buttonTitles: [String] = []
     @Published var buttonIcons: [String] = []
     
-    private var userButtonTitles: [String] = ["Feltöltés", "Pontállás", "Sportok", "AV Kvíz", "Képek megtekintése", "Szövegek megtekintése"]
-    private var userButtonIcons: [String] = ["square.and.arrow.up.fill", "chart.bar.xaxis", "flowchart", "play.rectangle.fill", "eye.fill", "eye.fill"]
+    private var userButtonTitles: [String] = ["Feltöltés", "Pontállás", "Sportok", "AV Kvíz", "Képek", "Szövegek"]
+    private var userButtonIcons: [String] = ["square.and.arrow.up.fill", "chart.bar.xaxis", "flowchart", "play.rectangle.fill", "photo.on.rectangle.angled", "doc.text"]
    
     private var adminButtonTitles: [String] = ["Képek ellenőrzése", "Pontok feltöltése"]
     private var adminButtonIcons: [String] = ["eye.fill", "plus.square.fill"]

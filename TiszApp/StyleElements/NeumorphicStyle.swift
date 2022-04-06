@@ -95,9 +95,9 @@ struct SimpleTextFieldWithIcon: View {
         )
         .overlay(
             RoundedRectangle(cornerRadius: 10)
-                .stroke(Color.highlight, lineWidth: 4)
-                .blur(radius: 4)
-                .offset(x: -1, y: -1)
+                .stroke(Color.highlight, lineWidth: 2)
+                .blur(radius: 3)
+                .offset(x: -3, y: -3)
                 .mask(RoundedRectangle(cornerRadius: 10).fill(LinearGradient(Color.clear, Color.black)))
         )
     }
@@ -127,9 +127,9 @@ struct SimpleSecureTextField: View {
         )
         .overlay(
             RoundedRectangle(cornerRadius: 10)
-                .stroke(Color.highlight, lineWidth: 4)
-                .blur(radius: 4)
-                .offset(x: -1, y: -1)
+                .stroke(Color.highlight, lineWidth: 2)
+                .blur(radius: 3)
+                .offset(x: -3, y: -3)
                 .mask(RoundedRectangle(cornerRadius: 10).fill(LinearGradient(Color.clear, Color.black)))
         )
     }
@@ -155,9 +155,9 @@ struct SimpleTextField: View {
             )
             .overlay(
                 RoundedRectangle(cornerRadius: 10)
-                    .stroke(Color.highlight, lineWidth: 4)
-                    .blur(radius: 4)
-                    .offset(x: -1, y: -1)
+                    .stroke(Color.highlight, lineWidth: 2)
+                    .blur(radius: 3)
+                    .offset(x: -3, y: -3)
                     .mask(RoundedRectangle(cornerRadius: 10).fill(LinearGradient(Color.clear, Color.black)))
             )
     }
@@ -186,9 +186,9 @@ struct SimpleNumberTextField: View {
             )
             .overlay(
                 RoundedRectangle(cornerRadius: 10)
-                    .stroke(Color.highlight, lineWidth: 4)
-                    .blur(radius: 4)
-                    .offset(x: -1, y: -1)
+                    .stroke(Color.highlight, lineWidth: 2)
+                    .blur(radius: 3)
+                    .offset(x: -3, y: -3)
                     .mask(RoundedRectangle(cornerRadius: 10).fill(LinearGradient(Color.clear, Color.black)))
             )
     }
