@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ImagesView: View {
     
-    @ObservedObject var handler: ImagesHandlerImpl = ImagesHandlerImpl()
+    @ObservedObject var handler: ImagesHandlerImpl = ImagesHandlerImpl(mode: .loadImages)
     @EnvironmentObject var sessionService: SessionServiceImpl
     
     private var gridItemLayout = [GridItem(.flexible(minimum: 10, maximum: 200), spacing: 20), GridItem(.flexible(minimum: 10, maximum: 200), spacing: 20)]

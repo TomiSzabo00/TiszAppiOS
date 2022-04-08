@@ -18,13 +18,11 @@ struct ImageItem: Identifiable, Equatable {
     var title: String
     var fileName: String
     var author: String
-    var image: UIImage?
     
-    init(title: String, fileName: String, author: String, image: UIImage? = nil) {
+    init(title: String, fileName: String, author: String) {
         self.title = title
         self.fileName = fileName
         self.author = author
-        self.image = image
     }
     
     init?(snapshot: DataSnapshot) {
@@ -40,7 +38,6 @@ struct ImageItem: Identifiable, Equatable {
         self.title = title
         self.fileName = fileName
         self.author = author
-        self.image = nil
     }
 }
 

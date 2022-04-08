@@ -196,19 +196,23 @@ struct SimpleNumberTextField: View {
 
 struct SimpleText: View {
     var text: String
+    var padding: CGFloat
     var trailingPadding: CGFloat
     var maxLines: Int
     var maxWidth: CGFloat
     var isBold: Bool
     var isGradient: Bool
+    var alignment: Alignment
     
-    init(text: String, trailingPadding: CGFloat = 20, maxLines: Int = 1, maxWidth:CGFloat = 50, isBold: Bool = false, isGradient: Bool = false) {
+    init(text: String, padding: CGFloat = 5, trailingPadding: CGFloat = 20, maxLines: Int = 1, maxWidth:CGFloat = 50, isBold: Bool = false, isGradient: Bool = false, alignment: Alignment = .center) {
         self.text = text
+        self.padding = padding
         self.trailingPadding = trailingPadding
         self.maxLines = maxLines
         self.maxWidth = maxWidth
         self.isBold = isBold
         self.isGradient = isGradient
+        self.alignment = alignment
     }
     
     var body: some View {
@@ -217,8 +221,8 @@ struct SimpleText: View {
             .font(.system(size: 16))
             .minimumScaleFactor(0.01)
             .lineLimit(self.maxLines)
-            .frame(maxWidth: self.maxWidth, alignment: .center)
-            .padding(5)
+            .frame(maxWidth: self.maxWidth, alignment: alignment)
+            .padding(self.padding)
             .background(Color.background)
             .cornerRadius(10)
             .shadow(color: Color.shadow, radius: 2, x: 3, y: 3)

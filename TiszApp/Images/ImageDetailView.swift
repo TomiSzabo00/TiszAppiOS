@@ -13,15 +13,17 @@ struct ImageDetailView: View {
     
     var imageInfo: ImageItem
     @ObservedObject private var imageLoader : Loader
+    @ObservedObject var handler: ImagesHandlerImpl = ImagesHandlerImpl(mode: .getDetails)
     
     @EnvironmentObject var sessionService: SessionServiceImpl
     @State private var confirmationShown = false
     
-    @State private var user: User = User.new
+    @Environment(\.dismiss) var dismiss
     
     init(imageInfo: ImageItem) {
         self.imageInfo = imageInfo
         self.imageLoader = Loader(self.imageInfo.fileName)
+        handler.getImageAuthorDetails(imageInfo: self.imageInfo)
     }
     
     var image: UIImage? {
@@ -34,11 +36,14 @@ struct ImageDetailView: View {
             
             ScrollView{
                 VStack(spacing: 20) {
-                    SimpleText(text: "Feltöltötte:\n\(user.userName) (\(user.groupNumber). csapat)", maxLines: 2, maxWidth: .infinity)
+                    SimpleText(text: "Feltöltötte:\n\(handler.user?.userName ?? "Unknown") (\(handler.user?.groupNumber ?? -1). csapat)", padding: 10, maxLines: 2, maxWidth: .infinity, alignment: .leading)
                     
                     Image(uiImage: image ?? placeholder)
                         .resizable()
                         .scaledToFit()
+                        .cornerRadius(10)
+                        .shadow(color: Color.shadow, radius: 2, x: 3, y: 3)
+                        .shadow(color: Color.highlight, radius: 2, x: -2, y: -2)
                 }
                 .padding()
             }
@@ -59,6 +64,15 @@ struct ImageDetailView: View {
         ) {
             Button("Igen") {
                 //delete pic
+                Database.database().reference().child("pics").child(self.imageInfo.fileName).removeValue()
+                Storage.storage().reference().child("images/\(self.imageInfo.fileName)").delete { error in
+                    if let error = error {
+                        print(error.localizedDescription)
+                    } else {
+                        dismiss()
+                        //handler.getImageInfos()
+                    }
+                }
             }
         }
     }

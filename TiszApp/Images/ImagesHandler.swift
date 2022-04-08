@@ -10,37 +10,50 @@ import FirebaseDatabase
 import FirebaseStorage
 import SwiftUI
 
+enum ImageHandlerMode {
+    case na
+    case loadImages
+    case getDetails
+}
+
 protocol ImagesHandler {
     var imageInfos: [ImageItem] { get }
-    func getImages()
+    var user: User? { get }
+    func getImageInfos()
+    func getImageAuthorDetails(imageInfo: ImageItem)
 }
 
 final class ImagesHandlerImpl: ImagesHandler, ObservableObject {
     
     @Published var imageInfos: [ImageItem] = []
+    var mode: ImageHandlerMode = .na
+    @Published var user: User? = nil
     
-    init(){
-        self.getImages()
+    init(mode: ImageHandlerMode){
+        self.mode = mode
+        
+        if self.mode == .loadImages {
+            self.getImageInfos()
+        }
+       
     }
     
-    func getImages() {
+    func getImageInfos() {
         Database.database().reference().child("pics").observe(.childAdded, with: { (snapshot) -> Void in
-            var imageInfo = ImageItem(snapshot: snapshot)
-            let imageRef = Storage.storage().reference(withPath: "images/\(imageInfo!.fileName)")
-            imageRef.getData(maxSize: 5 * 1024 * 1024) { data, error in
-                if let error = error {
-                    print("downloading image error! \(error.localizedDescription)")
-                }
-//                DispatchQueue.main.async {
-//                    
-//                    let image = UIImage(data: data!)
-//                    
-//                                        imageInfo!.image = image
-//                    self.imageInfos[self.imageInfos.firstIndex(where: {$0.fileName == imageInfo!.fileName})!] = imageInfo!
-//                }
-                    
-            }
-            self.imageInfos.append(imageInfo!)
+            let imageInfo = ImageItem(snapshot: snapshot)
+            self.imageInfos.insert(imageInfo!, at: 0)
         })
+        
+        Database.database().reference().child("pics").observe(.childRemoved, with: { (snapshot) -> Void in
+            let imageInfo = ImageItem(snapshot: snapshot)
+            self.imageInfos.remove(at: self.imageInfos.firstIndex(where: { $0.fileName == imageInfo!.fileName })!)
+        })
+    }
+    
+    func getImageAuthorDetails(imageInfo: ImageItem) {
+        Database.database().reference().child("users").child(imageInfo.author).observe(DataEventType.value, with: { snapshot in
+            let author = User(snapshot: snapshot)
+            self.user = author
+          })
     }
 }
