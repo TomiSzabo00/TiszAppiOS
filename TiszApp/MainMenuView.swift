@@ -75,7 +75,7 @@ struct MainMenuView: View {
                 
                 NavigationLink(destination: ImagesView().environmentObject(sessionService), tag: 4, selection: $ID) {EmptyView()}
                 
-                NavigationLink(destination: Text("Szövegek megtekintése"), tag: 5, selection: $ID) {EmptyView()}
+                NavigationLink(destination: TextsView().environmentObject(sessionService), tag: 5, selection: $ID) {EmptyView()}
                 
                 NavigationLink(destination: Text("Képek ellenőrzése"), tag: 6, selection: $ID) {EmptyView()}
                 
