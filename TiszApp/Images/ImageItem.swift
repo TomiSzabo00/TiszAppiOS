@@ -5,10 +5,14 @@
 //  Created by Szabó Tamás on 2022. 04. 06..
 //
 
+import Foundation
 import SwiftUI
 import FirebaseDatabase
+import FirebaseStorage
 
-struct ImageItem: Identifiable {
+let placeholder = UIImage(systemName: "clock.arrow.circlepath")!
+
+struct ImageItem: Identifiable, Equatable {
     var id: UUID = UUID()
     
     var title: String
@@ -40,28 +44,52 @@ struct ImageItem: Identifiable {
     }
 }
 
+///source:  https://benmcmahen.com/firebase-image-in-swiftui/
+
+final class Loader : ObservableObject {
+
+    @Published var data: Data? = nil
+
+    init(_ id: String){
+        // the path to the image
+        let url = "images/\(id)"
+        let storage = Storage.storage()
+        let ref = storage.reference().child(url)
+        ref.getData(maxSize: 10 * 1024 * 1024) { data, error in
+            if let error = error {
+                print("\(error.localizedDescription)")
+            }
+
+            DispatchQueue.main.async {
+                self.data = data
+            }
+        }
+    }
+}
+
 struct ImageItemView: View {
     
-    @State var image: UIImage?
-    @State var fileName: String
+    var text: String
+    @ObservedObject private var imageLoader : Loader
+    
+    init(imageName: String, text: String) {
+        self.imageLoader = Loader(imageName)
+        self.text = text
+    }
+    
+    var image: UIImage? {
+        imageLoader.data.flatMap(UIImage.init)
+    }
     
     var body: some View {
         VStack {
-            if image == nil {
-                Image(systemName: "clock.arrow.circlepath")
-                    .resizable()
-                    .scaledToFit()
-                    .padding(60)
-                    .foregroundColor(Color.foreground)
-            } else {
-            Image(uiImage: image!)
+            Image(uiImage: image ?? placeholder)
                 .resizable()
                 .scaledToFill()
                 .frame(maxHeight: 100)
                 .mask(Rectangle()
                     .frame(maxHeight: 190, alignment: .top))
-            }
-            Text(fileName)
+            Text(text)
                 .foregroundColor(Color.foreground)
                 .scaledToFit()
                 .padding([.leading, .trailing, .bottom], 5)
@@ -72,4 +100,5 @@ struct ImageItemView: View {
         .shadow(color: Color.shadow, radius: 3, x: 3, y: 3)
         .shadow(color: Color.highlight, radius: 3, x: -2, y: -2)
     }
+    
 }

@@ -11,6 +11,7 @@ import SwiftUI
 struct ImagesView: View {
     
     @ObservedObject var handler: ImagesHandlerImpl = ImagesHandlerImpl()
+    @EnvironmentObject var sessionService: SessionServiceImpl
     
     private var gridItemLayout = [GridItem(.flexible(minimum: 10, maximum: 200), spacing: 20), GridItem(.flexible(minimum: 10, maximum: 200), spacing: 20)]
     
@@ -21,7 +22,10 @@ struct ImagesView: View {
             ScrollView {
                 LazyVGrid(columns: gridItemLayout, spacing: 20) {
                     ForEach(handler.imageInfos) { imageInfo in
-                        ImageItemView(image: imageInfo.image, fileName: imageInfo.title)
+                        NavigationLink(destination: ImageDetailView(imageInfo: imageInfo).environmentObject(sessionService), label: {
+                            ImageItemView(imageName: imageInfo.fileName, text: imageInfo.title)
+                        })
+                        
                     }
                 } //LazyVGrid end
                 .padding(10)
@@ -35,6 +39,6 @@ struct ImagesView: View {
 
 struct ImagesView_Previews: PreviewProvider {
     static var previews: some View {
-        ImagesView()
+        ImagesView().environmentObject(SessionServiceImpl())
     }
 }
