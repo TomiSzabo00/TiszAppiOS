@@ -26,6 +26,8 @@
 		5591E7BE2800F12C00C811F8 /* TextDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5591E7BD2800F12C00C811F8 /* TextDetailView.swift */; };
 		5591E7C028017BCE00C811F8 /* TextUploadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5591E7BF28017BCD00C811F8 /* TextUploadView.swift */; };
 		5591E7C22801C00900C811F8 /* UploadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5591E7C12801C00900C811F8 /* UploadView.swift */; };
+		5591E7C52802223B00C811F8 /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5591E7C42802223A00C811F8 /* QuizView.swift */; };
+		5591E7C72802229C00C811F8 /* QuizAdminView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5591E7C62802229C00C811F8 /* QuizAdminView.swift */; };
 		5595DBD627F4AFC40063A424 /* NeumorphicStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5595DBD527F4AFC40063A424 /* NeumorphicStyle.swift */; };
 		55AD115A27F3077000BBD350 /* PredictedTextTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AD115927F3077000BBD350 /* PredictedTextTest.swift */; };
 		55B0E6D227EBDA9B0058A5B9 /* TiszAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B0E6D127EBDA9B0058A5B9 /* TiszAppApp.swift */; };
@@ -76,6 +78,8 @@
 		5591E7BD2800F12C00C811F8 /* TextDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextDetailView.swift; sourceTree = "<group>"; };
 		5591E7BF28017BCD00C811F8 /* TextUploadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextUploadView.swift; sourceTree = "<group>"; };
 		5591E7C12801C00900C811F8 /* UploadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadView.swift; sourceTree = "<group>"; };
+		5591E7C42802223A00C811F8 /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
+		5591E7C62802229C00C811F8 /* QuizAdminView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizAdminView.swift; sourceTree = "<group>"; };
 		5595DBD527F4AFC40063A424 /* NeumorphicStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeumorphicStyle.swift; sourceTree = "<group>"; };
 		55AD115927F3077000BBD350 /* PredictedTextTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictedTextTest.swift; sourceTree = "<group>"; };
 		55B0E6CE27EBDA9B0058A5B9 /* TiszApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TiszApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -151,6 +155,15 @@
 			path = Texts;
 			sourceTree = "<group>";
 		};
+		5591E7C3280221E900C811F8 /* Quiz */ = {
+			isa = PBXGroup;
+			children = (
+				5591E7C42802223A00C811F8 /* QuizView.swift */,
+				5591E7C62802229C00C811F8 /* QuizAdminView.swift */,
+			);
+			path = Quiz;
+			sourceTree = "<group>";
+		};
 		5595DBD427F4AF8D0063A424 /* StyleElements */ = {
 			isa = PBXGroup;
 			children = (
@@ -178,6 +191,7 @@
 		55B0E6D027EBDA9B0058A5B9 /* TiszApp */ = {
 			isa = PBXGroup;
 			children = (
+				5591E7C3280221E900C811F8 /* Quiz */,
 				5591E7B62800EAEC00C811F8 /* Texts */,
 				5591E7A927FD99FF00C811F8 /* Images */,
 				55E37E2627F79460002ED658 /* Score */,
@@ -362,6 +376,7 @@
 				5591E7BE2800F12C00C811F8 /* TextDetailView.swift in Sources */,
 				55E8003D27F0B571007181E0 /* LoginViewModel.swift in Sources */,
 				55B40DCB27F3125B00B5B065 /* TextFieldInputPrediction.swift in Sources */,
+				5591E7C52802223B00C811F8 /* QuizView.swift in Sources */,
 				5591E7B127FE193900C811F8 /* ImageItem.swift in Sources */,
 				5591E7A427F877E200C811F8 /* ScoresView.swift in Sources */,
 				5591E7AB27FD9AA400C811F8 /* ImagePicker.swift in Sources */,
@@ -378,6 +393,7 @@
 				5591E7B528005E7C00C811F8 /* ImageDetailView.swift in Sources */,
 				55E8003B27F0B416007181E0 /* LoginService.swift in Sources */,
 				5595DBD627F4AFC40063A424 /* NeumorphicStyle.swift in Sources */,
+				5591E7C72802229C00C811F8 /* QuizAdminView.swift in Sources */,
 				5591E7AF27FE13D200C811F8 /* ImagesView.swift in Sources */,
 				55E8002F27F07FCC007181E0 /* RegistrationService.swift in Sources */,
 				55B0E6D227EBDA9B0058A5B9 /* TiszAppApp.swift in Sources */,
