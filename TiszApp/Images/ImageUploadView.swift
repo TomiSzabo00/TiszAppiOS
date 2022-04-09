@@ -79,7 +79,6 @@ struct ImageUploadView: View {
                 }
             })
         }
-        .navigationTitle("Kép feltöltése")
         .navigationBarTitleDisplayMode(.inline)
     }
     

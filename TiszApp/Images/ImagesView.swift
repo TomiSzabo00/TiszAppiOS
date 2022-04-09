@@ -10,10 +10,17 @@ import SwiftUI
 
 struct ImagesView: View {
     
-    @ObservedObject var handler: ImagesHandlerImpl = ImagesHandlerImpl(mode: .loadImages)
+    @State var checkImages: Bool
+    
+    @ObservedObject var handler: ImagesHandlerImpl
     @EnvironmentObject var sessionService: SessionServiceImpl
     
     private var gridItemLayout = [GridItem(.flexible(minimum: 10, maximum: 200), spacing: 20), GridItem(.flexible(minimum: 10, maximum: 200), spacing: 20)]
+    
+    init(checkImages: Bool) {
+        self.checkImages = checkImages
+        self.handler = ImagesHandlerImpl(mode: .loadImages, checkImages: checkImages)
+    }
     
     var body: some View {
         ZStack {
@@ -22,7 +29,7 @@ struct ImagesView: View {
             ScrollView {
                 LazyVGrid(columns: gridItemLayout, spacing: 20) {
                     ForEach(handler.imageInfos) { imageInfo in
-                        NavigationLink(destination: ImageDetailView(imageInfo: imageInfo).environmentObject(sessionService), label: {
+                        NavigationLink(destination: ImageDetailView(imageInfo: imageInfo, checkImages: self.checkImages).environmentObject(sessionService), label: {
                             ImageItemView(imageName: imageInfo.fileName, text: imageInfo.title)
                         })
                         
@@ -31,7 +38,7 @@ struct ImagesView: View {
                 .padding(10)
             } //ScrollView end
         }
-        .navigationTitle("Képek megtekintése")
+        .navigationTitle(checkImages ? "Képek ellenőrzése" : "Képek megtekintése")
         .navigationBarTitleDisplayMode(.inline)
     }
     
@@ -39,6 +46,6 @@ struct ImagesView: View {
 
 struct ImagesView_Previews: PreviewProvider {
     static var previews: some View {
-        ImagesView().environmentObject(SessionServiceImpl())
+        ImagesView(checkImages: false).environmentObject(SessionServiceImpl())
     }
 }

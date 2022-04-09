@@ -65,7 +65,7 @@ struct MainMenuView: View {
                     .padding([.leading, .trailing], 20)
                 } //ScrollView end
                 
-                NavigationLink(destination: /*ImageUploadView()*/ TextUploadView(), tag: 0, selection: $ID) {EmptyView()}
+                NavigationLink(destination: UploadView(), tag: 0, selection: $ID) {EmptyView()}
                 
                 NavigationLink(destination: ScoresView().environmentObject(sessionService), tag: 1, selection: $ID) {EmptyView()}
                 
@@ -73,11 +73,11 @@ struct MainMenuView: View {
                 
                 NavigationLink(destination: Text("AV Kvíz"), tag: 3, selection: $ID) {EmptyView()}
                 
-                NavigationLink(destination: ImagesView().environmentObject(sessionService), tag: 4, selection: $ID) {EmptyView()}
+                NavigationLink(destination: ImagesView(checkImages: false).environmentObject(sessionService), tag: 4, selection: $ID) {EmptyView()}
                 
                 NavigationLink(destination: TextsView().environmentObject(sessionService), tag: 5, selection: $ID) {EmptyView()}
                 
-                NavigationLink(destination: Text("Képek ellenőrzése"), tag: 6, selection: $ID) {EmptyView()}
+                NavigationLink(destination: ImagesView(checkImages: true).environmentObject(sessionService), tag: 6, selection: $ID) {EmptyView()}
                 
                 NavigationLink(destination: AddScoreView(), tag: 7, selection: $ID) {EmptyView()}
                 

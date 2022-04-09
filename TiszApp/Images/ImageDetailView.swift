@@ -12,17 +12,21 @@ import FirebaseStorage
 struct ImageDetailView: View {
     
     var imageInfo: ImageItem
+    @State var checkImages: Bool
+    
     @ObservedObject private var imageLoader : Loader
-    @ObservedObject var handler: ImagesHandlerImpl = ImagesHandlerImpl(mode: .getDetails)
+    @ObservedObject var handler: ImagesHandlerImpl
     
     @EnvironmentObject var sessionService: SessionServiceImpl
     @State private var confirmationShown = false
     
     @Environment(\.dismiss) var dismiss
     
-    init(imageInfo: ImageItem) {
+    init(imageInfo: ImageItem, checkImages: Bool) {
         self.imageInfo = imageInfo
+        self._checkImages = State(initialValue: checkImages)
         self.imageLoader = Loader(self.imageInfo.fileName)
+        self.handler = ImagesHandlerImpl(mode: .getDetails, checkImages: checkImages)
         handler.getImageAuthorDetails(imageInfo: self.imageInfo)
     }
     
@@ -50,13 +54,30 @@ struct ImageDetailView: View {
         }
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle(imageInfo.title)
-        .navigationBarItems(trailing: sessionService.userDetails!.admin ? Button(
+        .navigationBarItems(leading: checkImages ?
+                            HStack {
+            Spacer()
+            Button(action: {
+            handler.acceptImage(imageInfo: imageInfo)
+            dismiss()
+        }) {
+            Image(systemName: "checkmark.circle")
+            .foregroundStyle(LinearGradient(Color.gradientDark, Color.gradientLight))
+            
+        }} : nil, trailing: sessionService.userDetails!.admin ? (checkImages ? Button(
             role: .destructive,
             action: { confirmationShown = true }
         ) {
             Image(systemName: "trash")
                 .foregroundStyle(LinearGradient(Color.gradientDark, Color.gradientLight))
-        } : nil )
+        } :
+            Button(
+            role: .destructive,
+            action: { confirmationShown = true }
+        ) {
+            Image(systemName: "trash")
+                .foregroundStyle(LinearGradient(Color.gradientDark, Color.gradientLight))
+        }) : nil )
         .confirmationDialog(
             "Biztos ki akarod törölni a képet?",
             isPresented: $confirmationShown,
@@ -64,7 +85,7 @@ struct ImageDetailView: View {
         ) {
             Button("Igen") {
                 //delete pic
-                Database.database().reference().child("pics").child(self.imageInfo.fileName).removeValue()
+                Database.database().reference().child(checkImages ? "picsToDecide" : "pics").child(self.imageInfo.fileName).removeValue()
                 Storage.storage().reference().child("images/\(self.imageInfo.fileName)").delete { error in
                     if let error = error {
                         print(error.localizedDescription)
