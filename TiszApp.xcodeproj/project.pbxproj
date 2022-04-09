@@ -24,6 +24,7 @@
 		5591E7BA2800ED5700C811F8 /* TextsHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5591E7B92800ED5700C811F8 /* TextsHandler.swift */; };
 		5591E7BC2800EE1300C811F8 /* TextsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5591E7BB2800EE1300C811F8 /* TextsView.swift */; };
 		5591E7BE2800F12C00C811F8 /* TextDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5591E7BD2800F12C00C811F8 /* TextDetailView.swift */; };
+		5591E7C028017BCE00C811F8 /* TextUploadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5591E7BF28017BCD00C811F8 /* TextUploadView.swift */; };
 		5595DBD627F4AFC40063A424 /* NeumorphicStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5595DBD527F4AFC40063A424 /* NeumorphicStyle.swift */; };
 		55AD115A27F3077000BBD350 /* PredictedTextTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AD115927F3077000BBD350 /* PredictedTextTest.swift */; };
 		55B0E6D227EBDA9B0058A5B9 /* TiszAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B0E6D127EBDA9B0058A5B9 /* TiszAppApp.swift */; };
@@ -72,6 +73,7 @@
 		5591E7B92800ED5700C811F8 /* TextsHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextsHandler.swift; sourceTree = "<group>"; };
 		5591E7BB2800EE1300C811F8 /* TextsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextsView.swift; sourceTree = "<group>"; };
 		5591E7BD2800F12C00C811F8 /* TextDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextDetailView.swift; sourceTree = "<group>"; };
+		5591E7BF28017BCD00C811F8 /* TextUploadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextUploadView.swift; sourceTree = "<group>"; };
 		5595DBD527F4AFC40063A424 /* NeumorphicStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeumorphicStyle.swift; sourceTree = "<group>"; };
 		55AD115927F3077000BBD350 /* PredictedTextTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PredictedTextTest.swift; sourceTree = "<group>"; };
 		55B0E6CE27EBDA9B0058A5B9 /* TiszApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TiszApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -142,6 +144,7 @@
 				5591E7B92800ED5700C811F8 /* TextsHandler.swift */,
 				5591E7BB2800EE1300C811F8 /* TextsView.swift */,
 				5591E7BD2800F12C00C811F8 /* TextDetailView.swift */,
+				5591E7BF28017BCD00C811F8 /* TextUploadView.swift */,
 			);
 			path = Texts;
 			sourceTree = "<group>";
@@ -348,6 +351,7 @@
 			files = (
 				5591E7A627F88D2100C811F8 /* ScoreItem.swift in Sources */,
 				5591E7BA2800ED5700C811F8 /* TextsHandler.swift in Sources */,
+				5591E7C028017BCE00C811F8 /* TextUploadView.swift in Sources */,
 				55E37E2827F79480002ED658 /* AddScoreView.swift in Sources */,
 				5591E7B82800EB2700C811F8 /* TextItem.swift in Sources */,
 				557B8F9C27EDF6A200312433 /* RegisterView.swift in Sources */,
