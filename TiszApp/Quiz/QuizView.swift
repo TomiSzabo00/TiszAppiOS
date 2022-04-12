@@ -9,31 +9,48 @@ import SwiftUI
 
 struct QuizView: View {
     
-    init() {
-        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor:UIColor(Color("quizBarText"))]
-        UINavigationBar.appearance().backgroundColor = UIColor(Color("quizBarBackground"))
-    }
+    @EnvironmentObject var sessionService: SessionServiceImpl
     
+    @ObservedObject var handler: QuizHandlerImpl = QuizHandlerImpl()
+    
+    @State var isInfo: Bool = false
     
     var body: some View {
+        ZStack {
         VStack {
             Spacer()
             Button(action: {
-                print("pressed")
+                handler.singnal()
             }, label: {
                 Text("")
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
             })
-            .background(Color.blue)
+            .background(handler.bgColor)
+            .disabled(!handler.isEnabled)
         }
-        
+        .blur(radius: isInfo ? 30 : 0)
+            
+            if isInfo {
+                QuizInfoAlert(shown: $isInfo)
+            }
+        }
+        .onAppear {
+            handler.userDetails = sessionService.userDetails!
+            handler.initListeners()
+        }
         .navigationTitle("AV Kvíz")
         .navigationBarTitleDisplayMode(.inline)
+        .navigationBarItems(trailing: Button(action: {
+            isInfo = true
+        }, label: {
+            Image(systemName: "info.circle")
+                .foregroundStyle(LinearGradient(Color.gradientDark, Color.gradientLight))
+        }))
     }
 }
 
 struct QuizView_Previews: PreviewProvider {
     static var previews: some View {
-        QuizView()
+        QuizView().environmentObject(SessionServiceImpl())
     }
 }
