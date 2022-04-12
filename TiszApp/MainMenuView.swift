@@ -71,8 +71,12 @@ struct MainMenuView: View {
                 
                 NavigationLink(destination: Text("Sportok"), tag: 2, selection: $ID) {EmptyView()}
                 
-                NavigationLink(destination: QuizView().environmentObject(sessionService), tag: 3, selection: $ID) {EmptyView()}
-                
+                if (sessionService.userDetails?.admin != nil) == true {
+                    NavigationLink(destination: QuizAdminView(), tag: 3, selection: $ID) {EmptyView()}
+                } else {
+                    NavigationLink(destination: QuizView().environmentObject(sessionService), tag: 3, selection: $ID) {EmptyView()}
+                }
+                    
                 NavigationLink(destination: ImagesView(checkImages: false).environmentObject(sessionService), tag: 4, selection: $ID) {EmptyView()}
                 
                 NavigationLink(destination: TextsView().environmentObject(sessionService), tag: 5, selection: $ID) {EmptyView()}

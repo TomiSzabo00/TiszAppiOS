@@ -20,6 +20,8 @@ protocol QuizHandler {
     func disabledButton()
     func enabledButton()
     func initListeners()
+    func reset()
+    func disable()
 }
 
 final class QuizHandlerImpl : QuizHandler, ObservableObject {
@@ -87,6 +89,15 @@ final class QuizHandlerImpl : QuizHandler, ObservableObject {
     func enabledButton() {
         self.isEnabled = true
         self.bgColor = .green
+    }
+    
+    func reset() {
+        Database.database().reference().child("signals").removeValue()
+    }
+    
+    func disable() {
+        let disableSignal = ["admin" : "disabled"]
+        Database.database().reference().child("signals").setValue(disableSignal)
     }
     
 }
