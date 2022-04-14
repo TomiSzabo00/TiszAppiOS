@@ -17,28 +17,34 @@ struct QuizAdminView: View {
             VStack {
                 VStack(spacing: 20) {
                     ZStack {
-                        SimpleRectangle(width: UIScreen.main.bounds.width-100, height: 80)
-                        Text("Nincs első jelentkező.")
+                        
+                        SimpleRectangle(width: UIScreen.main.bounds.width-100, height: 80, bg: handler.rt0BG)
+                        
+                        Text(handler.texts[0])
+                            .bold()
+                            .foregroundColor(handler.text0Color)
                             .frame(maxWidth: UIScreen.main.bounds.width-100, maxHeight: 80)
-                            .foregroundColor(.foreground)
                     }
                     ZStack {
-                        SimpleRectangle(width: UIScreen.main.bounds.width-100, height: 80)
-                        Text("Nincs második jelentkező.")
+                        SimpleRectangle(width: UIScreen.main.bounds.width-100, height: 80, bg: handler.rt1BG)
+                        Text(handler.texts[1])
+                            .bold()
                             .frame(maxWidth: UIScreen.main.bounds.width-100, maxHeight: 80)
-                            .foregroundColor(.foreground)
+                            .foregroundColor(handler.text1Color)
                     }
                     ZStack {
-                        SimpleRectangle(width: UIScreen.main.bounds.width-100, height: 80)
-                        Text("Nincs harmadik jelentkező.")
+                        SimpleRectangle(width: UIScreen.main.bounds.width-100, height: 80, bg: handler.rt2BG)
+                        Text(handler.texts[2])
+                            .bold()
                             .frame(maxWidth: UIScreen.main.bounds.width-100, maxHeight: 80)
-                            .foregroundColor(.foreground)
+                            .foregroundColor(handler.text2Color)
                     }
                     ZStack {
-                        SimpleRectangle(width: UIScreen.main.bounds.width-100, height: 80)
-                        Text("Nincs negyedik jelentkező.")
+                        SimpleRectangle(width: UIScreen.main.bounds.width-100, height: 80, bg: handler.rt3BG)
+                        Text(handler.texts[3])
+                            .bold()
                             .frame(maxWidth: UIScreen.main.bounds.width-100, maxHeight: 80)
-                            .foregroundColor(.foreground)
+                            .foregroundColor(handler.text3Color)
                     }
                 }
                 .padding()
@@ -60,8 +66,12 @@ struct QuizAdminView: View {
                     .buttonStyle(SimpleButtonStyle())
                 }
             }
+            .onAppear {
+                handler.userDetails = SessionUserDetails(fullName: "", groupNumber: -1, admin: false, uid: "")
+                handler.initListeners()
+            }
         }
-    }
+    } // body end
 }
 
 struct QuizAdminView_Previews: PreviewProvider {

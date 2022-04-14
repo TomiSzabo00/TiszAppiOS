@@ -24,6 +24,12 @@ extension LinearGradient {
     }
 }
 
+enum BackroundStyle {
+    case normal
+    case gray
+    case color
+}
+
 struct SimpleButton<S: Shape>: View {
     var isHighlighted: Bool
     var shape: S
@@ -234,18 +240,35 @@ struct SimpleText: View {
 struct SimpleRectangle: View {
     var width: CGFloat
     var height: CGFloat
+    var bg: BackroundStyle
     
-    init(width: CGFloat, height: CGFloat) {
+    init(width: CGFloat, height: CGFloat, bg: BackroundStyle = .normal) {
         self.width = width
         self.height = height
+        self.bg = bg
     }
     
     var body: some View {
-        RoundedRectangle(cornerRadius: 10)
-            .fill(Color.background)
-            .frame(maxWidth: self.width, maxHeight: self.height, alignment: .center)
-            .shadow(color: Color.shadow, radius: 2, x: 3, y: 3)
-            .shadow(color: Color.highlight, radius: 2, x: -2, y: -2)
+        switch self.bg {
+        case .normal:
+            RoundedRectangle(cornerRadius: 10)
+                .fill(Color.background)
+                .frame(maxWidth: self.width, maxHeight: self.height, alignment: .center)
+                .shadow(color: Color.shadow, radius: 2, x: 3, y: 3)
+                .shadow(color: Color.highlight, radius: 2, x: -2, y: -2)
+        case .gray:
+            RoundedRectangle(cornerRadius: 10)
+                .fill(.gray)
+                .frame(maxWidth: self.width, maxHeight: self.height, alignment: .center)
+                .shadow(color: Color.shadow, radius: 2, x: 3, y: 3)
+                .shadow(color: Color.highlight, radius: 2, x: -2, y: -2)
+        case .color:
+            RoundedRectangle(cornerRadius: 10)
+                .fill(LinearGradient(.gradientDark, .gradientLight))
+                .frame(maxWidth: self.width, maxHeight: self.height, alignment: .center)
+                .shadow(color: Color.shadow, radius: 2, x: 3, y: 3)
+                .shadow(color: Color.highlight, radius: 2, x: -2, y: -2)
+        }
     }
 }
 
