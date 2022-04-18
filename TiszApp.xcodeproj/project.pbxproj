@@ -60,6 +60,7 @@
 		55E8003D27F0B571007181E0 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E8003C27F0B571007181E0 /* LoginViewModel.swift */; };
 		55F09592280C645000A56548 /* RingChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F09591280C645000A56548 /* RingChartView.swift */; };
 		55F09594280CB3D200A56548 /* RingChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F09593280CB3D100A56548 /* RingChart.swift */; };
+		55F09596280DBB8900A56548 /* ScoresTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F09595280DBB8800A56548 /* ScoresTableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -103,6 +104,7 @@
 		55E8003C27F0B571007181E0 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		55F09591280C645000A56548 /* RingChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingChartView.swift; sourceTree = "<group>"; };
 		55F09593280CB3D100A56548 /* RingChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingChart.swift; sourceTree = "<group>"; };
+		55F09595280DBB8800A56548 /* ScoresTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoresTableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -238,6 +240,7 @@
 				5591E7A727F8985700C811F8 /* ScoresHandler.swift */,
 				55F09591280C645000A56548 /* RingChartView.swift */,
 				55F09593280CB3D100A56548 /* RingChart.swift */,
+				55F09595280DBB8800A56548 /* ScoresTableView.swift */,
 			);
 			path = Score;
 			sourceTree = "<group>";
@@ -395,6 +398,7 @@
 				5591E7A427F877E200C811F8 /* ScoresView.swift in Sources */,
 				553F69A62805DAF600511E1E /* QuizInfoAlert.swift in Sources */,
 				5591E7AB27FD9AA400C811F8 /* ImagePicker.swift in Sources */,
+				55F09596280DBB8900A56548 /* ScoresTableView.swift in Sources */,
 				557B8F9E27EE1CEF00312433 /* LoginView.swift in Sources */,
 				55E8003127F09CBC007181E0 /* RegistrationViewModel.swift in Sources */,
 				5591E7A827F8985700C811F8 /* ScoresHandler.swift in Sources */,

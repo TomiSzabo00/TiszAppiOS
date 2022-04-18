@@ -69,9 +69,9 @@ struct MainMenuView: View {
                 
                 NavigationLink(destination: ScoresView().environmentObject(sessionService), tag: 1, selection: $ID) {EmptyView()}
                 
-                NavigationLink(destination: RingChartView(), tag: 2, selection: $ID) {EmptyView()}
+                NavigationLink(destination: Text("Sportok"), tag: 2, selection: $ID) {EmptyView()}
                 
-                if (sessionService.userDetails?.admin != nil) == true {
+                if (sessionService.userDetails?.admin != nil) && sessionService.userDetails?.admin == true {
                     NavigationLink(destination: QuizAdminView(), tag: 3, selection: $ID) {EmptyView()}
                 } else {
                     NavigationLink(destination: QuizView().environmentObject(sessionService), tag: 3, selection: $ID) {EmptyView()}

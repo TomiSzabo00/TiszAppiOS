@@ -15,81 +15,57 @@ struct ScoresView: View {
     
     @State private var confirmationShown = false
     
+    @State private var selectedTab = 0
+        
+    let numTabs = 2
+    let minDragTranslationForSwipe: CGFloat = 50
+    
     var body: some View {
-        ZStack{
-            Color.background.ignoresSafeArea()
-            VStack{
-                HStack {
-                    Spacer()
-                        .frame(minWidth: 100, maxWidth: 140)
-                    SimpleText(text: "Csapatok pontjai", maxWidth: 200)
-                        .frame(minWidth: 100)
-                        .padding(.trailing)
-                }
-                .padding(.trailing)
-                .padding(.bottom, 10)
-                
-                HStack{
-                    SimpleText(text: "Program neve", trailingPadding: 5, maxWidth: 140)
-                        .frame(minWidth: 100)
-                    SimpleText(text: "1.", maxWidth: 50, isBold: true)
-                    SimpleText(text: "2.", maxWidth: 50, isBold: true)
-                    SimpleText(text: "3.", maxWidth: 50, isBold: true)
-                    SimpleText(text: "4.", maxWidth: 50, isBold: true)
-                }
-                .padding(.trailing)
-                .padding(.leading, 5)
-                
-                //List
-                ScrollView{
-                    ForEach(handler.scoresList) {score in
-                        HStack{
-                            SimpleText(text: score.name, trailingPadding: 5, maxLines: 3, maxWidth: 140)
-                                .frame(minWidth: 100)
-                            SimpleText(text: String(score.score1), maxWidth: 50)
-                            SimpleText(text: String(score.score2), maxWidth: 50)
-                            SimpleText(text: String(score.score3), maxWidth: 50)
-                            SimpleText(text: String(score.score4), maxWidth: 50)
-                        }
-                        .padding(.trailing)
-                        .padding(.leading, 5)
-                        .padding(.top, 10)
-                        
-                    }
-                }
-                //Spacer()
-                //end List
-                
-                HStack{
-                    SimpleText(text: "Összesen:", trailingPadding: 5, maxWidth: 140, isBold: true, isGradient: true)
-                        .frame(minWidth: 100)
-                    SimpleText(text: String(handler.sum1), maxWidth: 50)
-                    SimpleText(text: String(handler.sum2), maxWidth: 50)
-                    SimpleText(text: String(handler.sum3), maxWidth: 50)
-                    SimpleText(text: String(handler.sum4), maxWidth: 50)
-                }
-                .padding([.top, .trailing], 10)
-            }
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationTitle("Pontok megtekintése")
-            .navigationBarItems(trailing: sessionService.userDetails!.admin ? Button(
-                role: .destructive,
-                action: { confirmationShown = true }
-            ) {
-                Image(systemName: "trash")
-                    .foregroundStyle(LinearGradient(Color.gradientDark, Color.gradientLight))
-            } : nil )
-            .confirmationDialog(
-                "Biztos ki akarod törölni az összes pontot?",
-                isPresented: $confirmationShown,
-                titleVisibility: .visible
-            ) {
-                Button("Igen") {
-                    handler.deleteScores()
-                }
+        TabView(selection: $selectedTab) {
+            ScoresTableView(handler: handler).environmentObject(sessionService)
+                .tabItem {
+                    Label("Táblázat", systemImage: "tablecells")
+                }.tag(0)
+                .highPriorityGesture(DragGesture().onEnded({
+                                 self.handleSwipe(translation: $0.translation.width)
+                             }))
+            
+            RingChartView(handler: handler)
+                .tabItem {
+                    Label("Grafikon", systemImage: "chart.pie")
+                }.tag(1)
+                .highPriorityGesture(DragGesture().onEnded({
+                                 self.handleSwipe(translation: $0.translation.width)
+                             }))
+        }
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationTitle("Pontok megtekintése")
+        .navigationBarItems(trailing: sessionService.userDetails!.admin ? Button(
+            role: .destructive,
+            action: { confirmationShown = true }
+        ) {
+            Image(systemName: "trash")
+                .foregroundStyle(LinearGradient(Color.gradientDark, Color.gradientLight))
+        } : nil )
+        .confirmationDialog(
+            "Biztos ki akarod törölni az összes pontot?",
+            isPresented: $confirmationShown,
+            titleVisibility: .visible
+        ) {
+            Button("Igen") {
+                handler.deleteScores()
             }
         }
     }
+    
+    private func handleSwipe(translation: CGFloat) {
+            if translation > minDragTranslationForSwipe && selectedTab > 0 {
+                selectedTab -= 1
+            } else  if translation < -minDragTranslationForSwipe && selectedTab < numTabs-1 {
+                selectedTab += 1
+            }
+        }
+    
 }
 
 struct ScoresView_Previews: PreviewProvider {

@@ -10,7 +10,7 @@ import SwiftUI
 struct RingChart: View {
     
     var name: String
-    @State var progress: CGFloat
+    @Binding var progress: Int
     @State var dimension: CGFloat
     
     //let trimPercentage: CGFloat = 0.94/290
@@ -44,7 +44,8 @@ struct RingChart: View {
                         .mask(Circle().stroke(RadialGradient(gradient: Gradient(colors: [Color.black, Color.clear]), center: .center, startRadius: dimension * innerShadowStart, endRadius: dimension * innerShadowEnd), lineWidth: 20))
                 )
             Circle()
-                .trim(from: 0, to: progress)
+                .trim(from: 0, to: CGFloat(progress)/1500)
+                .trim(from: 0, to: trim)
                 .stroke(
                     AngularGradient(
                         gradient: Gradient(colors: [Color.gradientDark, Color.gradientLight, Color.gradientDark]),
