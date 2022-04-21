@@ -46,7 +46,7 @@ struct MainMenuView: View {
     
     @State var ID: Int? = nil
     
-    private var gridItemLayout = [GridItem(.fixed(150), spacing: 20), GridItem(.fixed(150), spacing: 20)]
+    private var gridItemLayout = [GridItem(.fixed(UIScreen.main.bounds.width/2-40), spacing: 20), GridItem(.fixed(UIScreen.main.bounds.width/2-40), spacing: 20)]
     
     var body: some View {
         ZStack {
@@ -62,7 +62,7 @@ struct MainMenuView: View {
                             
                         }
                     } //LazyVGrid end
-                    .padding([.leading, .trailing], 20)
+                    //.padding([.leading, .trailing], 20)
                 } //ScrollView end
                 
                 NavigationLink(destination: UploadView(), tag: 0, selection: $ID) {EmptyView()}

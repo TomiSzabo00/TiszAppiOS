@@ -80,12 +80,23 @@ struct ImageItemView: View {
     
     var body: some View {
         VStack {
-            Image(uiImage: image ?? placeholder)
-                .resizable()
-                .scaledToFill()
-                .frame(maxHeight: 100)
-                .mask(Rectangle()
-                    .frame(maxHeight: 190, alignment: .top))
+            if image == nil {
+                Image(uiImage: placeholder)
+                    .resizable()
+                    .padding(70)
+                    .scaledToFill()
+                    .frame(maxHeight: 100)
+                    .mask(Rectangle()
+                        .frame(maxHeight: 190, alignment: .top))
+            } else {
+                Image(uiImage: image!)
+                                .resizable()
+                                .scaledToFill()
+                                .frame(maxHeight: 100)
+                                .mask(Rectangle()
+                                    .frame(maxHeight: 190, alignment: .top))
+            }
+            
             Text(text)
                 .foregroundColor(Color.foreground)
                 .scaledToFit()
