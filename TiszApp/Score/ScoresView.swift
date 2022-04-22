@@ -30,13 +30,13 @@ struct ScoresView: View {
                                  self.handleSwipe(translation: $0.translation.width)
                              }))
             
-            RingChartView(handler: handler)
-                .tabItem {
-                    Label("Grafikon", systemImage: "chart.pie")
-                }.tag(1)
-                .highPriorityGesture(DragGesture().onEnded({
-                                 self.handleSwipe(translation: $0.translation.width)
-                             }))
+//            RingChartView(handler: handler)
+//                .tabItem {
+//                    Label("Grafikon", systemImage: "chart.pie")
+//                }.tag(1)
+//                .highPriorityGesture(DragGesture().onEnded({
+//                                 self.handleSwipe(translation: $0.translation.width)
+//                             }))
         }
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle("Pontok megtekintése")

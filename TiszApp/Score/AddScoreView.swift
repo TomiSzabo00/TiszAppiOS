@@ -34,13 +34,13 @@ struct AddScoreView: View {
     @State var fourthScore: String = ""
     
     var body: some View {
-        ZStack {
-            Color.background.ignoresSafeArea()
+        ScrollView {
+            //Color.background.ignoresSafeArea()
             VStack {
                 HStack {
                     Text("Mire adod a pontot?")
                         .padding(.leading)
-                        .foregroundColor(.foreground)
+                        //.foregroundColor(.foreground)
                     Spacer()
                 }
                 SimpleTextFieldWithIcon(textField: TextField("Program neve", text: $program), imageName: "puzzlepiece.fill")
@@ -48,10 +48,10 @@ struct AddScoreView: View {
                 HStack{
                 Text("Hány pontot adsz a csapatoknak?")
                         .padding([.top, .leading])
-                    .foregroundColor(.foreground)
+                    //.foregroundColor(.foreground)
                     Spacer()
                 }
-                HStack(spacing: 30){
+                HStack(spacing: 28){
                     Spacer()
                     Text("1.")
                         .lineLimit(1)
@@ -67,7 +67,7 @@ struct AddScoreView: View {
                     Spacer()
                 }
                 .padding(.top, 10)
-                .foregroundColor(.foreground)
+                //.foregroundColor(.foreground)
                 
                 HStack(spacing: 5){
                     Spacer()
@@ -118,9 +118,14 @@ struct AddScoreView: View {
                     .padding()
                 }
             }
+            .padding(.top, 50)
+            .onTapGesture {
+                endTextEditing()
+            }
         }
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.large)
         .navigationTitle("Pontok feltöltése")
+
     }
 }
 

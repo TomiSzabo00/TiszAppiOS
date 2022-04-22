@@ -20,18 +20,16 @@ struct ImageUploadView: View {
     @State var uploaded: Bool = false
     
     var body: some View {
-        ZStack {
-            Color.background.ignoresSafeArea()
+        ScrollView {
+            //Color.background.ignoresSafeArea()
             VStack {
                 
                 if image != nil {
                     SimpleImage(image: image!, width: 350, height: 500)
+                        .padding()
                 } else {
-                    ZStack {
-                        SimpleRectangle(width: 350, height: 500)
                         Text("Kérlek válassz egy képet.")
-                            .foregroundColor(Color.foreground)
-                    }
+                        .frame(height: 250)
                 }
                 
                 SimpleTextFieldWithIcon(textField: TextField("Cím (ha van)", text: $imageTitle), imageName: "pencil")
@@ -83,7 +81,7 @@ struct ImageUploadView: View {
     }
     
     func uploadImage(image: UIImage) {
-        if let imageData = image.jpegData(compressionQuality: 1) {
+        if let imageData = image.jpegData(compressionQuality: 0.2) {
             
             let date = Date()
             let dateFormatter = DateFormatter()

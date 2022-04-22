@@ -16,7 +16,7 @@ struct LoginView: View {
     
     var body: some View {
         ZStack {
-            Color.background.ignoresSafeArea()
+            //Color.background.ignoresSafeArea()
             //ScrollView{
                 VStack{
                     Spacer()
@@ -36,12 +36,19 @@ struct LoginView: View {
                         }
                         .padding()
                         
-                        Button(action: {
-                            //login
-                            vm.login()
-                        }, label: { Text("Bejelentkezés").bold()})
-                        .buttonStyle(SimpleButtonStyle())
-                        .padding(.bottom, 30)
+                        HStack {
+                            Spacer()
+                            Button(action: {
+                                //login
+                                vm.login()
+                            }, label: { Text("Bejelentkezés")})
+                            .buttonStyle(SimpleButtonStyle())
+                            .padding(.bottom, 30)
+                        }
+                        .padding(.trailing)
+                        
+                        
+                        
                         
                         HStack{
                             Text("Nincs még fiókod?")
@@ -54,6 +61,7 @@ struct LoginView: View {
                             .sheet(isPresented: $showRegistration, content: { RegisterView()})
                             Spacer()
                         }
+                        .padding(.leading)
                     }
                     Spacer()
                 }

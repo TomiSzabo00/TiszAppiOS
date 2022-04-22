@@ -24,22 +24,28 @@ struct ImagesView: View {
     
     var body: some View {
         ZStack {
-            Color.background.ignoresSafeArea()
+            //Color.background.ignoresSafeArea()
             
-            ScrollView {
-                LazyVGrid(columns: gridItemLayout, spacing: 20) {
-                    ForEach(handler.imageInfos) { imageInfo in
-                        NavigationLink(destination: ImageDetailView(imageInfo: imageInfo, checkImages: self.checkImages).environmentObject(sessionService), label: {
-                            ImageItemView(imageName: imageInfo.fileName, text: imageInfo.title)
-                        })
-                        
-                    }
-                } //LazyVGrid end
-                .padding(10)
-            } //ScrollView end
+            if handler.imageInfos.count > 0 {
+                ScrollView {
+                    
+                    LazyVGrid(columns: gridItemLayout, spacing: 20) {
+                        ForEach(handler.imageInfos) { imageInfo in
+                            NavigationLink(destination: ImageDetailView(imageInfo: imageInfo, checkImages: self.checkImages).environmentObject(sessionService), label: {
+                                ImageItemView(imageName: imageInfo.fileName, text: imageInfo.title)
+                            })
+                            
+                        }
+                    } //LazyVGrid end
+                    .padding(10)
+                } //ScrollView end
+            } else {
+                Text("Nincs megjeleníthető kép.")
+            }
+            
         }
-        .navigationTitle(checkImages ? "Képek ellenőrzése" : "Képek megtekintése")
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationTitle(checkImages ? "Képek ellenőrzése" : "Képek")
+        .navigationBarTitleDisplayMode(.large)
     }
     
 }

@@ -67,12 +67,15 @@ struct SimpleButton<S: Shape>: View {
 struct SimpleButtonStyle: ButtonStyle {
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
-            .padding(20)
-            .foregroundStyle(LinearGradient(Color.gradientDark, Color.gradientLight))
-            .contentShape(RoundedRectangle(cornerRadius: 20))
+            .padding(15)
+            .foregroundColor(Color.white)
+            //.foregroundStyle(LinearGradient(Color.gradientDark, Color.gradientLight))
+            .contentShape(RoundedRectangle(cornerRadius: 10))
             .background(
-                SimpleButton(isHighlighted: configuration.isPressed, shape: RoundedRectangle(cornerRadius: 20))
+                //SimpleButton(isHighlighted: configuration.isPressed, shape: RoundedRectangle(cornerRadius: 20))
+                LinearGradient(Color.gradientDark, Color.gradientLight)
             )
+            .cornerRadius(10)
     }
 }
 
@@ -87,25 +90,25 @@ struct SimpleTextFieldWithIcon: View {
             textField
                 .disableAutocorrection(true)
                 .autocapitalization(.none)
-                .foregroundColor(.foreground)
+                //.foregroundColor(.foreground)
         }
         .padding()
-        .background(Color.background)
+        .background(Color(.secondarySystemBackground))
         .cornerRadius(10)
-        .overlay(
-            RoundedRectangle(cornerRadius: 10)
-                .stroke(Color.shadow, lineWidth: 6)
-                .blur(radius: 4)
-                .offset(x: 3, y: 3)
-                .mask(RoundedRectangle(cornerRadius: 10).fill(LinearGradient(Color.black, Color.clear)))
-        )
-        .overlay(
-            RoundedRectangle(cornerRadius: 10)
-                .stroke(Color.shadow, lineWidth: 6)
-                .blur(radius: 4)
-                .offset(x: 2, y: 2)
-                .mask(RoundedRectangle(cornerRadius: 10).fill(LinearGradient(Color.clear, Color.black)))
-        )
+//        .overlay(
+//            RoundedRectangle(cornerRadius: 10)
+//                .stroke(Color.shadow, lineWidth: 6)
+//                .blur(radius: 4)
+//                .offset(x: 3, y: 3)
+//                .mask(RoundedRectangle(cornerRadius: 10).fill(LinearGradient(Color.black, Color.clear)))
+//        )
+//        .overlay(
+//            RoundedRectangle(cornerRadius: 10)
+//                .stroke(Color.shadow, lineWidth: 6)
+//                .blur(radius: 4)
+//                .offset(x: 2, y: 2)
+//                .mask(RoundedRectangle(cornerRadius: 10).fill(LinearGradient(Color.clear, Color.black)))
+//        )
     }
 }
 
@@ -122,22 +125,22 @@ struct SimpleSecureTextField: View {
                 .autocapitalization(.none)
         }
         .padding()
-        .background(Color.background)
+        .background(Color(.secondarySystemBackground))
         .cornerRadius(10)
-        .overlay(
-            RoundedRectangle(cornerRadius: 10)
-                .stroke(Color.shadow, lineWidth: 6)
-                .blur(radius: 4)
-                .offset(x: 3, y: 3)
-                .mask(RoundedRectangle(cornerRadius: 10).fill(LinearGradient(Color.black, Color.clear)))
-        )
-        .overlay(
-            RoundedRectangle(cornerRadius: 10)
-                .stroke(Color.shadow, lineWidth: 6)
-                .blur(radius: 4)
-                .offset(x: 2, y: 2)
-                .mask(RoundedRectangle(cornerRadius: 10).fill(LinearGradient(Color.clear, Color.black)))
-        )
+//        .overlay(
+//            RoundedRectangle(cornerRadius: 10)
+//                .stroke(Color.shadow, lineWidth: 6)
+//                .blur(radius: 4)
+//                .offset(x: 3, y: 3)
+//                .mask(RoundedRectangle(cornerRadius: 10).fill(LinearGradient(Color.black, Color.clear)))
+//        )
+//        .overlay(
+//            RoundedRectangle(cornerRadius: 10)
+//                .stroke(Color.shadow, lineWidth: 6)
+//                .blur(radius: 4)
+//                .offset(x: 2, y: 2)
+//                .mask(RoundedRectangle(cornerRadius: 10).fill(LinearGradient(Color.clear, Color.black)))
+//        )
     }
 }
 
@@ -148,24 +151,24 @@ struct SimpleTextField: View {
         textField
             .disableAutocorrection(true)
             .autocapitalization(.none)
-            .foregroundColor(.foreground)
+            //.foregroundColor(.foreground)
             .padding()
-            .background(Color.background)
+            .background(Color(.secondarySystemBackground))
             .cornerRadius(10)
-            .overlay(
-                RoundedRectangle(cornerRadius: 10)
-                    .stroke(Color.shadow, lineWidth: 6)
-                    .blur(radius: 4)
-                    .offset(x: 3, y: 3)
-                    .mask(RoundedRectangle(cornerRadius: 10).fill(LinearGradient(Color.black, Color.clear)))
-            )
-            .overlay(
-                RoundedRectangle(cornerRadius: 10)
-                    .stroke(Color.shadow, lineWidth: 6)
-                    .blur(radius: 4)
-                    .offset(x: 2, y: 2)
-                    .mask(RoundedRectangle(cornerRadius: 10).fill(LinearGradient(Color.clear, Color.black)))
-            )
+//            .overlay(
+//                RoundedRectangle(cornerRadius: 10)
+//                    .stroke(Color.shadow, lineWidth: 6)
+//                    .blur(radius: 4)
+//                    .offset(x: 3, y: 3)
+//                    .mask(RoundedRectangle(cornerRadius: 10).fill(LinearGradient(Color.black, Color.clear)))
+//            )
+//            .overlay(
+//                RoundedRectangle(cornerRadius: 10)
+//                    .stroke(Color.shadow, lineWidth: 6)
+//                    .blur(radius: 4)
+//                    .offset(x: 2, y: 2)
+//                    .mask(RoundedRectangle(cornerRadius: 10).fill(LinearGradient(Color.clear, Color.black)))
+//            )
     }
 }
 
@@ -179,24 +182,24 @@ struct SimpleNumberTextField: View {
             .keyboardType(.numberPad)
             .multilineTextAlignment(.center)
             .font(Font.body.bold())
-            .foregroundColor(.foreground)
+            //.foregroundColor(.foreground)
             .padding()
-            .background(Color.background)
+            .background(Color(.secondarySystemBackground))
             .cornerRadius(10)
-            .overlay(
-                RoundedRectangle(cornerRadius: 10)
-                    .stroke(Color.shadow, lineWidth: 6)
-                    .blur(radius: 4)
-                    .offset(x: 3, y: 3)
-                    .mask(RoundedRectangle(cornerRadius: 10).fill(LinearGradient(Color.black, Color.clear)))
-            )
-            .overlay(
-                RoundedRectangle(cornerRadius: 10)
-                    .stroke(Color.shadow, lineWidth: 6)
-                    .blur(radius: 4)
-                    .offset(x: 2, y: 2)
-                    .mask(RoundedRectangle(cornerRadius: 10).fill(LinearGradient(Color.clear, Color.black)))
-            )
+//            .overlay(
+//                RoundedRectangle(cornerRadius: 10)
+//                    .stroke(Color.shadow, lineWidth: 6)
+//                    .blur(radius: 4)
+//                    .offset(x: 3, y: 3)
+//                    .mask(RoundedRectangle(cornerRadius: 10).fill(LinearGradient(Color.black, Color.clear)))
+//            )
+//            .overlay(
+//                RoundedRectangle(cornerRadius: 10)
+//                    .stroke(Color.shadow, lineWidth: 6)
+//                    .blur(radius: 4)
+//                    .offset(x: 2, y: 2)
+//                    .mask(RoundedRectangle(cornerRadius: 10).fill(LinearGradient(Color.clear, Color.black)))
+//            )
     }
 }
 
@@ -252,22 +255,19 @@ struct SimpleRectangle: View {
         switch self.bg {
         case .normal:
             RoundedRectangle(cornerRadius: 10)
-                .fill(Color.background)
-                .frame(maxWidth: self.width, maxHeight: self.height, alignment: .center)
-                .shadow(color: Color.shadow, radius: 2, x: 3, y: 3)
-                .shadow(color: Color.highlight, radius: 2, x: -2, y: -2)
+                .fill(Color(.systemBackground))
+                .frame(width: self.width, height: self.height, alignment: .center)
+                .shadow(color: Color(.label).opacity(0.2), radius: 4, x: 0, y: 3)
         case .gray:
             RoundedRectangle(cornerRadius: 10)
                 .fill(.gray)
-                .frame(maxWidth: self.width, maxHeight: self.height, alignment: .center)
-                .shadow(color: Color.shadow, radius: 2, x: 3, y: 3)
-                .shadow(color: Color.highlight, radius: 2, x: -2, y: -2)
+                .frame(width: self.width, height: self.height, alignment: .center)
+                .shadow(color: Color(.label).opacity(0.2), radius: 4, x: 0, y: 3)
         case .color:
             RoundedRectangle(cornerRadius: 10)
                 .fill(LinearGradient(.gradientDark, .gradientLight))
-                .frame(maxWidth: self.width, maxHeight: self.height, alignment: .center)
-                .shadow(color: Color.shadow, radius: 2, x: 3, y: 3)
-                .shadow(color: Color.highlight, radius: 2, x: -2, y: -2)
+                .frame(width: self.width, height: self.height, alignment: .center)
+                .shadow(color: Color(.label).opacity(0.2), radius: 4, x: 0, y: 3)
         }
     }
 }

@@ -36,18 +36,29 @@ struct ImageDetailView: View {
     
     var body: some View {
         ZStack{
-            Color.background.ignoresSafeArea()
+            //Color.background.ignoresSafeArea()
             
             ScrollView{
                 VStack(spacing: 20) {
-                    SimpleText(text: "Feltöltötte:\n\(handler.user?.userName ?? "Unknown") (\(handler.user?.groupNumber ?? -1). csapat)", padding: 10, maxLines: 2, maxWidth: .infinity, alignment: .leading)
+                    HStack {
+                        Text("Feltöltötte:\n\(handler.user?.userName ?? "Unknown") (\(handler.user?.groupNumber ?? -1). csapat)")
+                            .padding(10)
+                            .lineLimit(3)
+                            .multilineTextAlignment(.leading)
+                        Spacer()
+                    }
+                    .frame(maxWidth: UIScreen.main.bounds.width)
+                    .background(RoundedRectangle(cornerRadius: 10)
+                        .fill(Color(.systemBackground))
+                        .shadow(color: Color(.label).opacity(0.2), radius: 4, x: 0, y: 3))
                     
                     Image(uiImage: image ?? placeholder)
                         .resizable()
                         .scaledToFit()
                         .cornerRadius(10)
-                        .shadow(color: Color.shadow, radius: 2, x: 3, y: 3)
-                        .shadow(color: Color.highlight, radius: 2, x: -2, y: -2)
+                        .shadow(color: Color(.label).opacity(0.2), radius: 4, x: 0, y: 3)
+//                        .shadow(color: Color.shadow, radius: 2, x: 3, y: 3)
+//                        .shadow(color: Color.highlight, radius: 2, x: -2, y: -2)
                 }
                 .padding()
             }
@@ -74,7 +85,7 @@ struct ImageDetailView: View {
                                                                             HStack {
             Button(action: {}) {
                 Image(systemName: "checkmark.circle")
-                    .foregroundStyle(LinearGradient(Color.background, Color.background))
+                    .foregroundStyle(LinearGradient(Color(.systemBackground), Color(.systemBackground)))
                 
             }
             Button(

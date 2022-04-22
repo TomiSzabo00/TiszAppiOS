@@ -22,21 +22,29 @@ struct IconButton: View {
     var body: some View {
         Button(action: self.action, label: {
             VStack{
-                LinearGradient(Color.gradientDark, Color.gradientLight)
+                LinearGradient(Color.gradientLight, Color.gradientDark)
                     .mask(
                 Image(systemName: self.icon)
                     .resizable()
                     .scaledToFit()
-                    .padding())
+                    .padding([.leading, .trailing, .top])
+                    .padding(.bottom, 10))
+                    //.shadow(color: Color.black.opacity(0.3), radius: 2, x: 0, y: 5)
                 Text(self.text)
                     .bold()
                     .multilineTextAlignment(.center)
-                    .foregroundStyle(LinearGradient(Color.gradientDark, Color.gradientLight))
+                    .minimumScaleFactor(0.1)
+                    //.foregroundStyle(LinearGradient(Color.gradientDark, Color.gradientLight))
             }
-            .frame(maxWidth: 110, minHeight: 110, maxHeight: 110, alignment: .center)
+            .padding()
+            .frame(width: UIScreen.main.bounds.width/2-40, height: UIScreen.main.bounds.width/2-40, alignment: .center)
             
         })
-        .buttonStyle(SimpleButtonStyle())
+        //.padding()
+        .background(RoundedRectangle(cornerRadius: 10)
+            .fill(Color(.systemBackground))
+            .shadow(color: Color(.label).opacity(0.2), radius: 4, x: 0, y: 3))
+        //.buttonStyle(SimpleButtonStyle())
     }
 }
 
@@ -50,8 +58,9 @@ struct MainMenuView: View {
     
     var body: some View {
         ZStack {
-            Color.background.ignoresSafeArea()
+            //Color.background.ignoresSafeArea()
             VStack{
+                
                 ScrollView {
                     LazyVGrid(columns: gridItemLayout, spacing: 20) {
                         ForEach($sessionService.buttonTitles, id: \.self) { $e in
@@ -63,6 +72,7 @@ struct MainMenuView: View {
                         }
                     } //LazyVGrid end
                     //.padding([.leading, .trailing], 20)
+                    .padding([.top, .bottom])
                 } //ScrollView end
                 
                 NavigationLink(destination: UploadView(), tag: 0, selection: $ID) {EmptyView()}
@@ -96,7 +106,7 @@ struct MainMenuView: View {
                     }
                 })
                 .padding()
-                .buttonStyle(SimpleButtonStyle())
+                //.buttonStyle(SimpleButtonStyle())
                 
             }
         }

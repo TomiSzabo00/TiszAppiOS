@@ -23,44 +23,22 @@ struct TextUploadView: View {
     }
     
     var body: some View {
-        ZStack {
-            Color.background.ignoresSafeArea()
+        ScrollView {
+            //Color.background.ignoresSafeArea()
             VStack {
                 
                 SimpleTextFieldWithIcon(textField: TextField("Cím", text: $textTitle), imageName: "pencil")
                     .padding()
-                
-                ZStack {
-                TextEditor(text: $text)
-                    .foregroundColor(Color.foreground)
-                    .background(Color.background)
-                    .cornerRadius(10)
-                    .padding()
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color.shadow, lineWidth: 6)
-                            .blur(radius: 4)
-                            .offset(x: 3, y: 3)
-                            .mask(RoundedRectangle(cornerRadius: 10).fill(LinearGradient(Color.black, Color.clear)))
-                    )
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 10)
-                            .stroke(Color.highlight, lineWidth: 2)
-                            .blur(radius: 3)
-                            .offset(x: -3, y: -3)
-                            .mask(RoundedRectangle(cornerRadius: 10).fill(LinearGradient(Color.clear, Color.black)))
-                    )
-                    .padding()
+                VStack {
+                    Text("Tartalom:")
+                        .padding(.leading)
+                        .frame(width: UIScreen.main.bounds.width, alignment: .leading)
+                    TextEditor(text: $text)
+                        .background(Color(.secondarySystemBackground))
+                        .cornerRadius(10)
+                        .frame(minHeight: 300)
+                        .padding([.leading, .trailing])
                     
-                    VStack {
-                    if text == "" {
-                        Text("Tartalom...")
-                            .foregroundColor(Color.foreground.opacity(0.5))
-                            .frame(maxWidth: .infinity, alignment: .topLeading)
-                            .padding(40)
-                    }
-                        Spacer()
-                    }
                 }
                 
                 HStack(){
@@ -97,7 +75,10 @@ struct TextUploadView: View {
                 }
             })
         }
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.large)
+        .onTapGesture {
+            endTextEditing()
+        }
     }
     
     func uploadText(title: String, text: String) {

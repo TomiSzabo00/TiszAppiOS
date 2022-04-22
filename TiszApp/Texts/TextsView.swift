@@ -15,7 +15,7 @@ struct TextsView: View {
     
     var body: some View {
         ZStack {
-            Color.background.ignoresSafeArea()
+            //Color.background.ignoresSafeArea()
             
             ScrollView {
                     ForEach(handler.textInfos) { textInfo in
@@ -28,8 +28,8 @@ struct TextsView: View {
                     .padding(10)
             } //ScrollView end
         }
-        .navigationTitle("Szövegek megtekintése")
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationTitle("Szövegek")
+        .navigationBarTitleDisplayMode(.large)
     }
     
 }

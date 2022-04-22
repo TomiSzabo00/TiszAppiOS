@@ -138,11 +138,12 @@ struct RegisterView: View {
                                     //register
                                     vm.register()
                                     
-                                }, label: { Text("Regisztrálok").padding()})
-                                .frame(width: 200, height: 50)
-                                .background(Color.blue)
-                                .foregroundColor(Color.white)
-                                .cornerRadius(10)
+                                }, label: { Text("Regisztrálok")})
+                                .buttonStyle(SimpleButtonStyle())
+//                                .frame(width: 200, height: 50)
+//                                .background(Color.blue)
+//                                .foregroundColor(Color.white)
+//                                .cornerRadius(10)
                                 .padding(.top)
                             }
                         }

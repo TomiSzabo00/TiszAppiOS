@@ -58,20 +58,18 @@ struct TextItemView: View {
             Text(text)
                 .frame(maxWidth: .infinity, minHeight: 80, maxHeight: 80, alignment: .topLeading)
                 //.lineLimit(4)
-                .foregroundColor(Color.foreground)
+                .foregroundColor(Color(.label))
                 .padding(20)
             Divider()
-                .background(Color.foreground)
+                .background(Color(.systemBackground))
             Text(title)
-                .foregroundColor(Color.foreground)
+                .foregroundColor(Color(.label))
                 .scaledToFit()
                 .padding([.leading, .trailing, .bottom], 5)
         }
-        .background(Color.background)
-        .cornerRadius(20)
-        //.frame(alignment: .center)
-        .shadow(color: Color.shadow, radius: 3, x: 3, y: 3)
-        .shadow(color: Color.highlight, radius: 3, x: -2, y: -2)
+        .background(RoundedRectangle(cornerRadius: 10)
+            .fill(Color(.systemBackground))
+            .shadow(color: Color(.label).opacity(0.2), radius: 4, x: 0, y: 3))
     }
     
 }
