@@ -125,6 +125,7 @@ final class QuizHandlerImpl : QuizHandler, ObservableObject {
         
         Database.database().reference().child("signals").observe(.childRemoved) { (_) -> Void in
             self.enabledButton()
+            self.reset()
         }
     }
     

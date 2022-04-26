@@ -31,24 +31,32 @@ final class ScoresHandlerImpl: ScoresHandler, ObservableObject {
     }
     
     func getScores(){
-        Database.database().reference().child("scores").observe(DataEventType.value) { snapshot in
-            self.scoresList.removeAll()
-            self.sum1 = 0
-            self.sum2 = 0
-            self.sum3 = 0
-            self.sum4 = 0
-            for child in snapshot.children {
-                if let currSnapshot = child as? DataSnapshot,
-                   let score = ScoreItem(snapshot: currSnapshot) {
-                    self.scoresList.append(score)
-                    self.sum1 += score.score1
-                    self.sum2 += score.score2
-                    self.sum3 += score.score3
-                    self.sum4 += score.score4
-                }
+        Database.database().reference().child("scores").observe(.childAdded, with: { (snapshot) -> Void in
+               if let score = ScoreItem(snapshot: snapshot) {
+                self.scoresList.append(score)
+                self.sum1 += score.score1
+                self.sum2 += score.score2
+                self.sum3 += score.score3
+                self.sum4 += score.score4
+            }
+        })
+        
+        Database.database().reference().child("scores").observe(.childRemoved, with: { (snapshot) -> Void in
+               if let score = ScoreItem(snapshot: snapshot) {
+                self.scoresList.remove(at: self.scoresList.firstIndex(where: {
+                    $0.name == score.name &&
+                    $0.score1 == score.score1 &&
+                    $0.score2 == score.score2 &&
+                    $0.score3 == score.score3 &&
+                    $0.score4 == score.score4 &&
+                    $0.author == score.author })!)
+                self.sum1 -= score.score1
+                self.sum2 -= score.score2
+                self.sum3 -= score.score3
+                self.sum4 -= score.score4
             }
             
-        }
+        })
     }
     
     func deleteScores() {

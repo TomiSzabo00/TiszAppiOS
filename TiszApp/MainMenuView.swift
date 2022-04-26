@@ -77,7 +77,7 @@ struct MainMenuView: View {
                 
                 NavigationLink(destination: UploadView(), tag: 0, selection: $ID) {EmptyView()}
                 
-                NavigationLink(destination: ScoresView().environmentObject(sessionService), tag: 1, selection: $ID) {EmptyView()}
+                NavigationLink(destination: ScoresTableView(handler: ScoresHandlerImpl()).environmentObject(sessionService), tag: 1, selection: $ID) {EmptyView()}
                 
                 NavigationLink(destination: Text("Sportok"), tag: 2, selection: $ID) {EmptyView()}
                 
