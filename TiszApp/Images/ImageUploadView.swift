@@ -102,7 +102,9 @@ struct ImageUploadView: View {
                     //upload to realtime db
                     let imageInfo = ["author" : Auth.auth().currentUser?.uid ?? "unknown",
                                  "fileName" : fileName,
-                                 "title" : imageTitle.isEmpty ? fileName : imageTitle] as [String: Any]
+                                 "title" : imageTitle.isEmpty ? fileName : imageTitle,
+                                     "score" : -1,
+                                     "scorerUID" : "none"] as [String: Any]
                     
                     Database.database().reference().child("picsToDecide").child(fileName).setValue(imageInfo)
                 }

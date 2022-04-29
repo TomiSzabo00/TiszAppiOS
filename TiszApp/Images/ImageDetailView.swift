@@ -11,8 +11,8 @@ import FirebaseStorage
 
 struct ImageDetailView: View {
     
-    var imageInfo: ImageItem
     @State var checkImages: Bool
+    //@State var imageInfo: ImageItem? = nil
     
     @ObservedObject private var imageLoader : Loader
     @ObservedObject var handler: ImagesHandlerImpl
@@ -20,14 +20,17 @@ struct ImageDetailView: View {
     @EnvironmentObject var sessionService: SessionServiceImpl
     @State private var confirmationShown = false
     
+    @State private var picScore: Double = 0
+    
     @Environment(\.dismiss) var dismiss
     
     init(imageInfo: ImageItem, checkImages: Bool) {
-        self.imageInfo = imageInfo
         self._checkImages = State(initialValue: checkImages)
-        self.imageLoader = Loader(self.imageInfo.fileName)
         self.handler = ImagesHandlerImpl(mode: .getDetails, checkImages: checkImages)
-        handler.getImageAuthorDetails(imageInfo: self.imageInfo)
+        self.imageLoader = Loader(imageInfo.fileName)
+        handler.setChangeListener(for: imageInfo)
+        handler.getImageAuthorDetails(imageInfo: handler.detail!)
+        handler.getScorer(imageInfo: handler.detail!)
     }
     
     var image: UIImage? {
@@ -35,7 +38,7 @@ struct ImageDetailView: View {
     }
     
     var body: some View {
-        ZStack{
+        VStack{
             //Color.background.ignoresSafeArea()
             
             ScrollView{
@@ -61,13 +64,46 @@ struct ImageDetailView: View {
 //                        .shadow(color: Color.highlight, radius: 2, x: -2, y: -2)
                 }
                 .padding()
+                
+                
+                if handler.detail!.score == -1 {
+                    //add score to picture
+                    if sessionService.userDetails!.admin && !checkImages && !handler.user!.admin {
+                        //display element to add score
+                        Text("Hány pontot adsz erre a képre?").padding(.top)
+                        HStack {
+                            Slider(value: $picScore, in: 0...10, step: 1)
+                                .padding([.leading, .trailing])
+                            Text(String(Int(picScore)))
+                                .frame(width: 30)
+                                .padding(.trailing)
+                        }
+                        .padding()
+                        
+                        Button("Pont feltöltése") {
+                            handler.giveScoreForPic(imageInfo: handler.detail!, score: Int(picScore))
+                        }
+                        .padding()
+                        
+                    } else if !sessionService.userDetails!.admin {
+                        Text("Ezt a képet még nem pontozta egyik szervező sem.")
+                            .padding(.bottom)
+                    }
+                    
+                } else {
+                    Text("Erre a képre már adott \(handler.detail!.score) pontot \(handler.scorer?.userName ?? "...").")
+                        .padding(.bottom)
+                        .lineLimit(5)
+                }
             }
+            
+            
         }
         .navigationBarTitleDisplayMode(.inline)
-        .navigationTitle(imageInfo.title)
+        .navigationTitle(handler.detail!.title)
         .navigationBarItems(trailing: sessionService.userDetails!.admin ? (checkImages ? HStack {
             Button(action: {
-                handler.acceptImage(imageInfo: imageInfo)
+                handler.acceptImage(imageInfo: handler.detail!)
                 dismiss()
             }) {
                 Image(systemName: "checkmark.circle")
@@ -103,8 +139,8 @@ struct ImageDetailView: View {
         ) {
             Button("Igen") {
                 //delete pic
-                Database.database().reference().child(checkImages ? "picsToDecide" : "pics").child(self.imageInfo.fileName).removeValue()
-                Storage.storage().reference().child("images/\(self.imageInfo.fileName)").delete { error in
+                Database.database().reference().child(checkImages ? "picsToDecide" : "pics").child(handler.detail!.fileName).removeValue()
+                Storage.storage().reference().child("images/\(handler.detail!.fileName)").delete { error in
                     if let error = error {
                         print(error.localizedDescription)
                     } else {

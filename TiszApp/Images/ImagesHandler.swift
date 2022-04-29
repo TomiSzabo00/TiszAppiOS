@@ -8,6 +8,7 @@
 import Foundation
 import FirebaseDatabase
 import FirebaseStorage
+import FirebaseAuth
 import SwiftUI
 
 enum ImageHandlerMode {
@@ -19,9 +20,12 @@ enum ImageHandlerMode {
 protocol ImagesHandler {
     var imageInfos: [ImageItem] { get }
     var user: User? { get }
+    var detail: ImageItem? { get set }
     func getImageInfos()
     func getImageAuthorDetails(imageInfo: ImageItem)
     func acceptImage(imageInfo: ImageItem)
+    func giveScoreForPic(imageInfo: ImageItem, score: Int)
+    func getScorer(imageInfo: ImageItem)
 }
 
 final class ImagesHandlerImpl: ImagesHandler, ObservableObject {
@@ -30,6 +34,8 @@ final class ImagesHandlerImpl: ImagesHandler, ObservableObject {
     var mode: ImageHandlerMode = .na
     var checkImages: Bool
     @Published var user: User? = nil
+    @Published var scorer: User? = nil
+    @Published var detail: ImageItem? = nil
     
     init(mode: ImageHandlerMode, checkImages: Bool){
         self.mode = mode
@@ -51,6 +57,17 @@ final class ImagesHandlerImpl: ImagesHandler, ObservableObject {
             let imageInfo = ImageItem(snapshot: snapshot)
             self.imageInfos.remove(at: self.imageInfos.firstIndex(where: { $0.fileName == imageInfo!.fileName })!)
         })
+        
+    }
+    
+    func setChangeListener(for: ImageItem) {
+        self.detail = `for`
+        Database.database().reference().child("pics").observe(.childChanged, with: { (snapshot) -> Void in
+            let imageInfo = ImageItem(snapshot: snapshot)
+            self.detail!.score = imageInfo!.score
+            self.detail!.scorerUID = imageInfo!.scorerUID
+            self.getScorer(imageInfo: imageInfo!)
+        })
     }
     
     func getImageAuthorDetails(imageInfo: ImageItem) {
@@ -65,8 +82,82 @@ final class ImagesHandlerImpl: ImagesHandler, ObservableObject {
         
         let imageDetails = ["author" : imageInfo.author,
                          "fileName" : imageInfo.fileName,
-                         "title" : imageInfo.title] as [String: Any]
+                         "title" : imageInfo.title,
+                            "score" : -1,
+                            "scorerUID" : "none"] as [String: Any]
         
         Database.database().reference().child("pics").child(imageInfo.fileName).setValue(imageDetails)
+    }
+    
+    func giveScoreForPic(imageInfo: ImageItem, score: Int) {
+        getImageAuthorDetails(imageInfo: imageInfo)
+        
+        let imageDetails = ["author" : imageInfo.author,
+                         "fileName" : imageInfo.fileName,
+                         "title" : imageInfo.title,
+                         "score" : score,
+                            "scorerUID" : Auth.auth().currentUser?.uid ?? "unknown"] as [String: Any]
+        
+        Database.database().reference().child("pics").child(imageInfo.fileName).setValue(imageDetails)
+        
+        
+        if score != 0 {
+            var scoreData = ["score1" : 0,
+                         "score2" : 0,
+                         "score3" : 0,
+                         "score4" : 0,
+                         "name" : "kép",
+                         "author" : Auth.auth().currentUser?.uid ?? "unknown"] as [String: Any]
+            
+            switch user?.groupNumber {
+            case 1:
+                scoreData = ["score1" : score,
+                             "score2" : 0,
+                             "score3" : 0,
+                             "score4" : 0,
+                         "name" : "kép: \(imageInfo.title)",
+                             "author" : Auth.auth().currentUser?.uid ?? "unknown"] as [String: Any]
+                break
+            case 2:
+                scoreData = ["score1" : 0,
+                             "score2" : score,
+                             "score3" : 0,
+                             "score4" : 0,
+                         "name" : "kép: \(imageInfo.title)",
+                             "author" : Auth.auth().currentUser?.uid ?? "unknown"] as [String: Any]
+                break
+            case 3:
+                scoreData = ["score1" : 0,
+                             "score2" : 0,
+                             "score3" : score,
+                             "score4" : 0,
+                         "name" : "kép: \(imageInfo.title)",
+                             "author" : Auth.auth().currentUser?.uid ?? "unknown"] as [String: Any]
+                break
+            case 4:
+                scoreData = ["score1" : 0,
+                             "score2" : 0,
+                             "score3" : 0,
+                             "score4" : score,
+                         "name" : "kép: \(imageInfo.title)",
+                             "author" : Auth.auth().currentUser?.uid ?? "unknown"] as [String: Any]
+                break
+            default:
+                break
+            }
+            
+            let date = Date()
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "YYYYMMddHHmmssSSS"
+            Database.database().reference().child("scores").child(dateFormatter.string(from: date)).setValue(scoreData)
+        }
+        
+    }
+    
+    func getScorer(imageInfo: ImageItem) {
+        Database.database().reference().child("users").child(imageInfo.scorerUID).observe(DataEventType.value, with: { snapshot in
+            let author = User(snapshot: snapshot)
+            self.scorer = author
+          })
     }
 }

@@ -18,11 +18,15 @@ struct ImageItem: Identifiable, Equatable {
     var title: String
     var fileName: String
     var author: String
+    var score: Int
+    var scorerUID: String
     
-    init(title: String, fileName: String, author: String) {
+    init(title: String, fileName: String, author: String, score: Int, scorerUID: String) {
         self.title = title
         self.fileName = fileName
         self.author = author
+        self.score = score
+        self.scorerUID = scorerUID
     }
     
     init?(snapshot: DataSnapshot) {
@@ -30,7 +34,9 @@ struct ImageItem: Identifiable, Equatable {
             let value = snapshot.value as? [String: AnyObject],
             let title = value["title"] as? String,
             let author = value["author"] as? String,
-            let fileName = value["fileName"] as? String
+            let fileName = value["fileName"] as? String,
+            let score = value["score"] as? Int,
+            let scorerUID = value["scorerUID"] as? String
         else {
             return nil
         }
@@ -38,6 +44,8 @@ struct ImageItem: Identifiable, Equatable {
         self.title = title
         self.fileName = fileName
         self.author = author
+        self.score = score
+        self.scorerUID = scorerUID
     }
 }
 
