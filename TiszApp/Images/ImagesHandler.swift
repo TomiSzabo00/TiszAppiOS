@@ -21,11 +21,13 @@ protocol ImagesHandler {
     var imageInfos: [ImageItem] { get }
     var user: User? { get }
     var detail: ImageItem? { get set }
+    var imageNames: [String] { get }
     func getImageInfos()
     func getImageAuthorDetails(imageInfo: ImageItem)
     func acceptImage(imageInfo: ImageItem)
     func giveScoreForPic(imageInfo: ImageItem, score: Int)
     func getScorer(imageInfo: ImageItem)
+    func loadNextPage(from: String, to: String)
 }
 
 final class ImagesHandlerImpl: ImagesHandler, ObservableObject {
@@ -36,6 +38,8 @@ final class ImagesHandlerImpl: ImagesHandler, ObservableObject {
     @Published var user: User? = nil
     @Published var scorer: User? = nil
     @Published var detail: ImageItem? = nil
+    @Published var imageNames: [String] = []
+    
     
     init(mode: ImageHandlerMode, checkImages: Bool){
         self.mode = mode
@@ -50,14 +54,24 @@ final class ImagesHandlerImpl: ImagesHandler, ObservableObject {
     func getImageInfos() {
         Database.database().reference().child(checkImages ? "picsToDecide" : "pics").observe(.childAdded, with: { (snapshot) -> Void in
             let imageInfo = ImageItem(snapshot: snapshot)
-            self.imageInfos.insert(imageInfo!, at: 0)
+            self.imageNames.insert(imageInfo!.fileName, at: 0)
         })
         
         Database.database().reference().child(checkImages ? "picsToDecide" : "pics").observe(.childRemoved, with: { (snapshot) -> Void in
             let imageInfo = ImageItem(snapshot: snapshot)
-            self.imageInfos.remove(at: self.imageInfos.firstIndex(where: { $0.fileName == imageInfo!.fileName })!)
+            self.imageNames.remove(at: self.imageNames.firstIndex(where: { $0 == imageInfo!.fileName })!)
         })
         
+    }
+    
+    func loadNextPage(from: String, to: String) {
+        self.imageInfos.removeAll()
+        let recentPics = (Database.database().reference().child(checkImages ? "picsToDecide" : "pics"))
+        
+        recentPics.queryOrdered(byChild: "fileName").queryStarting(atValue: from).queryEnding(atValue: to).observe(.childAdded, with: { snapshot in
+            let imageInfo = ImageItem(snapshot: snapshot)
+            self.imageInfos.insert(imageInfo!, at: 0)
+        })
     }
     
     func setChangeListener(for: ImageItem) {
