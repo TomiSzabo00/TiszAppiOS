@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5510518B281D5F5900F31076 /* EditScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5510518A281D5F5900F31076 /* EditScoreView.swift */; };
 		553F69A62805DAF600511E1E /* QuizInfoAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553F69A52805DAF500511E1E /* QuizInfoAlert.swift */; };
 		557B8F9C27EDF6A200312433 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557B8F9B27EDF6A200312433 /* RegisterView.swift */; };
 		557B8F9E27EE1CEF00312433 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557B8F9D27EE1CEF00312433 /* LoginView.swift */; };
@@ -58,12 +59,11 @@
 		55E8003827F0A27E007181E0 /* SessionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E8003727F0A27E007181E0 /* SessionService.swift */; };
 		55E8003B27F0B416007181E0 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E8003A27F0B416007181E0 /* LoginService.swift */; };
 		55E8003D27F0B571007181E0 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E8003C27F0B571007181E0 /* LoginViewModel.swift */; };
-		55F09592280C645000A56548 /* RingChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F09591280C645000A56548 /* RingChartView.swift */; };
-		55F09594280CB3D200A56548 /* RingChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F09593280CB3D100A56548 /* RingChart.swift */; };
 		55F09596280DBB8900A56548 /* ScoresTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F09595280DBB8800A56548 /* ScoresTableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5510518A281D5F5900F31076 /* EditScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditScoreView.swift; sourceTree = "<group>"; };
 		553F69A52805DAF500511E1E /* QuizInfoAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizInfoAlert.swift; sourceTree = "<group>"; };
 		557B8F9B27EDF6A200312433 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		557B8F9D27EE1CEF00312433 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -102,8 +102,6 @@
 		55E8003727F0A27E007181E0 /* SessionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionService.swift; sourceTree = "<group>"; };
 		55E8003A27F0B416007181E0 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		55E8003C27F0B571007181E0 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
-		55F09591280C645000A56548 /* RingChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingChartView.swift; sourceTree = "<group>"; };
-		55F09593280CB3D100A56548 /* RingChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingChart.swift; sourceTree = "<group>"; };
 		55F09595280DBB8800A56548 /* ScoresTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoresTableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -238,9 +236,8 @@
 				5591E7A327F877E200C811F8 /* ScoresView.swift */,
 				5591E7A527F88D2100C811F8 /* ScoreItem.swift */,
 				5591E7A727F8985700C811F8 /* ScoresHandler.swift */,
-				55F09591280C645000A56548 /* RingChartView.swift */,
-				55F09593280CB3D100A56548 /* RingChart.swift */,
 				55F09595280DBB8800A56548 /* ScoresTableView.swift */,
+				5510518A281D5F5900F31076 /* EditScoreView.swift */,
 			);
 			path = Score;
 			sourceTree = "<group>";
@@ -382,7 +379,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				5591E7A627F88D2100C811F8 /* ScoreItem.swift in Sources */,
-				55F09592280C645000A56548 /* RingChartView.swift in Sources */,
 				5591E7BA2800ED5700C811F8 /* TextsHandler.swift in Sources */,
 				5591E7C028017BCE00C811F8 /* TextUploadView.swift in Sources */,
 				55E37E2827F79480002ED658 /* AddScoreView.swift in Sources */,
@@ -393,7 +389,6 @@
 				55E8003D27F0B571007181E0 /* LoginViewModel.swift in Sources */,
 				55B40DCB27F3125B00B5B065 /* TextFieldInputPrediction.swift in Sources */,
 				5591E7C52802223B00C811F8 /* QuizView.swift in Sources */,
-				55F09594280CB3D200A56548 /* RingChart.swift in Sources */,
 				5591E7B127FE193900C811F8 /* ImageItem.swift in Sources */,
 				5591E7A427F877E200C811F8 /* ScoresView.swift in Sources */,
 				553F69A62805DAF600511E1E /* QuizInfoAlert.swift in Sources */,
@@ -410,6 +405,7 @@
 				5591E7C92805B20700C811F8 /* QuizHandler.swift in Sources */,
 				5591E7C22801C00900C811F8 /* UploadView.swift in Sources */,
 				5591E7BC2800EE1300C811F8 /* TextsView.swift in Sources */,
+				5510518B281D5F5900F31076 /* EditScoreView.swift in Sources */,
 				5591E7B528005E7C00C811F8 /* ImageDetailView.swift in Sources */,
 				55E8003B27F0B416007181E0 /* LoginService.swift in Sources */,
 				5595DBD627F4AFC40063A424 /* NeumorphicStyle.swift in Sources */,

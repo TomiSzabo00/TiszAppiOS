@@ -21,23 +21,8 @@ struct ScoresView: View {
     let minDragTranslationForSwipe: CGFloat = 50
     
     var body: some View {
-        TabView(selection: $selectedTab) {
-            ScoresTableView(handler: handler).environmentObject(sessionService)
-                .tabItem {
-                    Label("Táblázat", systemImage: "tablecells")
-                }.tag(0)
-                .highPriorityGesture(DragGesture().onEnded({
-                                 self.handleSwipe(translation: $0.translation.width)
-                             }))
-            
-//            RingChartView(handler: handler)
-//                .tabItem {
-//                    Label("Grafikon", systemImage: "chart.pie")
-//                }.tag(1)
-//                .highPriorityGesture(DragGesture().onEnded({
-//                                 self.handleSwipe(translation: $0.translation.width)
-//                             }))
-        }
+        ScoresTableView(handler: handler).environmentObject(sessionService)
+        
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle("Pontok megtekintése")
         .navigationBarItems(trailing: sessionService.userDetails!.admin ? Button(

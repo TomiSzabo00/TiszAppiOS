@@ -85,21 +85,23 @@ struct AddScoreView: View {
                 HStack{
                     Spacer()
                     Button(action: {
-                        
-                        //upload sanitised inputs to fb
-                        let score = ["score1" : SanitiseInput(input: firstScore),
-                                     "score2" : SanitiseInput(input: secondScore),
-                                     "score3" : SanitiseInput(input: thirdScore),
-                                     "score4" : SanitiseInput(input: fourthScore),
-                                     "name" : program,
-                                     "author" : Auth.auth().currentUser?.uid ?? "unknown"] as [String: Any]
-                        
                         // Create Date
                         let date = Date()
                         // Create Date Formatter
                         let dateFormatter = DateFormatter()
                         // Set Date Format
                         dateFormatter.dateFormat = "YYYYMMddHHmmssSSS"
+                        
+                        //upload sanitised inputs to fb
+                        let score = ["id" : dateFormatter.string(from: date),
+                                     "score1" : SanitiseInput(input: firstScore),
+                                     "score2" : SanitiseInput(input: secondScore),
+                                     "score3" : SanitiseInput(input: thirdScore),
+                                     "score4" : SanitiseInput(input: fourthScore),
+                                     "name" : program,
+                                     "author" : Auth.auth().currentUser?.uid ?? "unknown"] as [String: Any]
+                        
+                        
                         
                         Database.database().reference().child("scores").child(dateFormatter.string(from: date)).setValue(score)
                         
