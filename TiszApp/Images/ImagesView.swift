@@ -27,7 +27,7 @@ struct Page: View {
     }
     
     var body: some View {
-        ScrollView {
+        //ScrollView {
             
             LazyVGrid(columns: gridItemLayout, spacing: 20) {
                 ForEach(handler.imageInfos) { imageInfo in
@@ -38,7 +38,7 @@ struct Page: View {
                 }
             } //LazyVGrid end
             .padding(10)
-        } //ScrollView end
+        //} //ScrollView end
         .onAppear {
             self.handler.loadNextPage(from: firstItemName, to: lastItemName)
         }

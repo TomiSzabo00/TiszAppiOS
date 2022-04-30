@@ -29,6 +29,7 @@ struct IconButton: View {
                     .scaledToFit()
                     .padding([.leading, .trailing, .top])
                     .padding(.bottom, 10))
+                    .frame(maxWidth: 80, maxHeight: 80)
                     //.shadow(color: Color.black.opacity(0.3), radius: 2, x: 0, y: 5)
                 Text(self.text)
                     .bold()
@@ -37,7 +38,7 @@ struct IconButton: View {
                     //.foregroundStyle(LinearGradient(Color.gradientDark, Color.gradientLight))
             }
             .padding()
-            .frame(width: UIScreen.main.bounds.width/2-40, height: UIScreen.main.bounds.width/2-40, alignment: .center)
+            .frame(width: min(UIScreen.main.bounds.width/2-40,UIScreen.main.bounds.height/2-40), height: min(UIScreen.main.bounds.width/2-40,UIScreen.main.bounds.height/2-40), alignment: .center)
             
         })
         //.padding()
