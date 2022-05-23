@@ -80,21 +80,21 @@ struct MainMenuView: View {
                 
                 NavigationLink(destination: ScoresTableView(handler: ScoresHandlerImpl()).environmentObject(sessionService), tag: 1, selection: $ID) {EmptyView()}
                 
-                NavigationLink(destination: Text("Sportok"), tag: 2, selection: $ID) {EmptyView()}
+                
                 
                 if (sessionService.userDetails?.admin != nil) && sessionService.userDetails?.admin == true {
-                    NavigationLink(destination: QuizAdminView(), tag: 3, selection: $ID) {EmptyView()}
+                    NavigationLink(destination: QuizAdminView(), tag: 2, selection: $ID) {EmptyView()}
                 } else {
-                    NavigationLink(destination: QuizView().environmentObject(sessionService), tag: 3, selection: $ID) {EmptyView()}
+                    NavigationLink(destination: QuizView().environmentObject(sessionService), tag: 2, selection: $ID) {EmptyView()}
                 }
                     
-                NavigationLink(destination: ImagesView(checkImages: false).environmentObject(sessionService), tag: 4, selection: $ID) {EmptyView()}
+                NavigationLink(destination: ImagesView(checkImages: false).environmentObject(sessionService), tag: 3, selection: $ID) {EmptyView()}
                 
-                NavigationLink(destination: TextsView().environmentObject(sessionService), tag: 5, selection: $ID) {EmptyView()}
+                NavigationLink(destination: TextsView().environmentObject(sessionService), tag: 4, selection: $ID) {EmptyView()}
                 
-                NavigationLink(destination: ImagesView(checkImages: true).environmentObject(sessionService), tag: 6, selection: $ID) {EmptyView()}
+                NavigationLink(destination: ImagesView(checkImages: true).environmentObject(sessionService), tag: 5, selection: $ID) {EmptyView()}
                 
-                NavigationLink(destination: AddScoreView(), tag: 7, selection: $ID) {EmptyView()}
+                NavigationLink(destination: AddScoreView(), tag: 6, selection: $ID) {EmptyView()}
                 
                 Button(action: {
                     

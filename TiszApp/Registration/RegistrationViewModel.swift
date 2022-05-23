@@ -52,6 +52,20 @@ final class RegistrationViewModelImpl: ObservableObject, RegistrationViewModel {
     
     func register() {
         
+        //persons full name must be in database
+                guard service.allUserNames.contains(userDetails.fullName) else {
+                    hasError = true
+                    errorType = .noFullNameInDatabase
+                    return
+                }
+        
+        //persons full name and id must match
+                guard fullNameHasMatchingID(name: userDetails.fullName, id: userDetails.id) else {
+                    hasError = true
+                    errorType = .noMatchingNameAndID
+                    return
+                }
+        
         //passwords must match
         guard userDetails.password == userDetails.password2 else {
             hasError = true
@@ -59,20 +73,7 @@ final class RegistrationViewModelImpl: ObservableObject, RegistrationViewModel {
             return
         }
         
-        //persons full name must be in database
-        guard service.allUserNames.contains(userDetails.fullName) else {
-            hasError = true
-            errorType = .noFullNameInDatabase
-            return
-        }
-        
-        //persons full name and id must match
-        guard fullNameHasMatchingID(name: userDetails.fullName, id: userDetails.id) else {
-            hasError = true
-            errorType = .noMatchingNameAndID
-            return
-        }
-        
+        //all conditions have been met
         errorType = .na
         service.register(with: userDetails)
             .sink { [weak self] result in
