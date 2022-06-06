@@ -9,8 +9,8 @@ import Foundation
 import FirebaseDatabase
 
 struct ScoreItem: Decodable, Identifiable, Hashable {
-    var id: String
     
+    var id: String
     var score1: Int
     var score2: Int
     var score3: Int

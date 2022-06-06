@@ -14,16 +14,16 @@ struct Page: View {
     
     @State var checkImages: Bool
     
-    var firstItemName: String
-    var lastItemName: String
+    var firstItemIndex: Int
+    var lastItemIndex: Int
     
     private var gridItemLayout = [GridItem(.flexible(minimum: 10, maximum: 200), spacing: 20), GridItem(.flexible(minimum: 10, maximum: 200), spacing: 20)]
     
-    init(handler: ImagesHandlerImpl, checkImages: Bool, firstItemName: String, lastItemName: String) {
+    init(handler: ImagesHandlerImpl, checkImages: Bool, firstItemName: Int, lastItemName: Int) {
         self.handler = handler
         self.checkImages = checkImages
-        self.firstItemName = firstItemName
-        self.lastItemName = lastItemName
+        self.firstItemIndex = firstItemName
+        self.lastItemIndex = lastItemName
     }
     
     var body: some View {
@@ -40,7 +40,7 @@ struct Page: View {
             .padding(10)
         //} //ScrollView end
         .onAppear {
-            self.handler.loadNextPage(from: firstItemName, to: lastItemName)
+            self.handler.loadNextPage(from: firstItemIndex, to: lastItemIndex)
         }
     }
 }
@@ -68,7 +68,7 @@ struct ImagesView: View {
             if handler.imageNames.count > 0 {
                 TabView {
                     ForEach(1...(handler.imageNames.count-1)/6+1, id: \.self) {i in
-                        Page(handler: self.handler, checkImages: self.checkImages, firstItemName: handler.imageNames[min(i*6-1, handler.imageNames.count-1)], lastItemName: handler.imageNames[(i-1)*6]).environmentObject(sessionService)
+                        Page(handler: self.handler, checkImages: self.checkImages, firstItemName: (i-1)*6, lastItemName: min(i*6, handler.imageNames.count)).environmentObject(sessionService)
                     }
                 }
                 .tabViewStyle(.page)

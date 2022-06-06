@@ -22,6 +22,9 @@ struct TiszAppApp: App {
                 switch sessionService.state {
                 case .loggedIn:
                     MainMenuView().environmentObject(sessionService)
+                        .onAppear {
+                            sessionService.getButtonStates()
+                        }
                 case .loggedOut:
                     LoginView()
                     //PredictedTextTest()

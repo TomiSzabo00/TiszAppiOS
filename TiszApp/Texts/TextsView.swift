@@ -14,24 +14,20 @@ struct TextsView: View {
     @EnvironmentObject var sessionService: SessionServiceImpl
     
     var body: some View {
-        ZStack {
-            //Color.background.ignoresSafeArea()
-            
-            ScrollView {
-                    ForEach(handler.textInfos) { textInfo in
-                        NavigationLink(destination: TextDetailView(textInfo: textInfo).environmentObject(sessionService), label: {
-                            TextItemView(title: textInfo.title, text: textInfo.text)
-                            .padding(.bottom, 10)
-                        })
-                        
-                    }
-                    .padding(10)
-            } //ScrollView end
-        }
+        ScrollView {
+            ForEach(handler.textInfos) { textInfo in
+                NavigationLink(destination: TextDetailView(textInfo: textInfo).environmentObject(sessionService),
+                               label: {
+                    TextItemView(title: textInfo.title, text: textInfo.text)
+                        .padding(.bottom, 10)
+                })
+                
+            }
+            .padding(10)
+        } //ScrollView end
         .navigationTitle("Szövegek")
         .navigationBarTitleDisplayMode(.large)
     }
-    
 }
 
 struct TextsView_Previews: PreviewProvider {

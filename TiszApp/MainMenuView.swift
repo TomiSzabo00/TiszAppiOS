@@ -65,11 +65,12 @@ struct MainMenuView: View {
                 ScrollView {
                     LazyVGrid(columns: gridItemLayout, spacing: 20) {
                         ForEach($sessionService.buttonTitles, id: \.self) { $e in
-                            
+                            if(sessionService.btnStates[sessionService.buttonTitles.firstIndex(of: e)!] || sessionService.userDetails?.admin ?? false) {
                                 IconButton(text: e,
                                            icon: sessionService.buttonIcons[sessionService.buttonTitles.firstIndex(of: e)!],
                                            action: { ID = sessionService.buttonTitles.firstIndex(of: e)! })
-                            
+                            }
+
                         }
                     } //LazyVGrid end
                     //.padding([.leading, .trailing], 20)

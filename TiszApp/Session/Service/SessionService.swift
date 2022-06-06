@@ -16,11 +16,16 @@ enum SessionState {
     case loggedOut
 }
 
+struct MenuInfo: Decodable {
+    var Visible: String
+}
+
 protocol SessionService {
     var state: SessionState { get }
     var userDetails: SessionUserDetails? { get }
     var buttonTitles: [String] { get }
     var buttonIcons: [String] { get }
+    var btnStates: [Bool] { get }
     func logout()
 }
 
@@ -29,28 +34,48 @@ final class SessionServiceImpl: ObservableObject, SessionService {
     @Published var state: SessionState = .loggedOut
     @Published var userDetails: SessionUserDetails?
     
-    @Published var buttonTitles: [String] = []
-    @Published var buttonIcons: [String] = []
+    @Published var buttonTitles: [String] = ["Feltöltés",
+                                             "Pontállás",
+                                             "AV Kvíz",
+                                             "Képek",
+                                             "Szövegek",
+                                             "Képek ellenőrzése",
+                                             "Pontok feltöltése"]
     
-    private var userButtonTitles: [String] = ["Feltöltés", "Pontállás", "AV Kvíz", "Képek", "Szövegek"]
-    private var userButtonIcons: [String] = ["square.and.arrow.up.fill", "chart.bar.xaxis", "play.rectangle.fill", "photo.on.rectangle.angled", "doc.text"]
-   
-    private var adminButtonTitles: [String] = ["Képek ellenőrzése", "Pontok feltöltése"]
-    private var adminButtonIcons: [String] = ["eye.fill", "plus.square.fill"]
+    @Published var buttonIcons: [String] = ["square.and.arrow.up.fill", "chart.bar.xaxis", "play.rectangle.fill", "photo.on.rectangle.angled", "doc.text", "eye.fill", "plus.square.fill"]
 
+    @Published var btnStates: [Bool] = [false, false, false, false, false, false, false]
     
     private var handler: AuthStateDidChangeListenerHandle?
     
     init() {
+        self.getButtonStates()
+        print("a")
         setupFirebaseAuthHandler()
+    }
+    
+    func getButtonStates() {
+        var tmp: [Bool] = []
+        self.getUserButtons { [weak self] result in
+            switch result {
+            case .failure(let error):
+                print(error)
+            case .success(let buttons):
+                    for btn in buttons {
+                        tmp.append(btn.Visible == "1")
+                        
+                    }
+                DispatchQueue.main.async {
+                    self?.btnStates = tmp
+                }
+            }
+        }
     }
     
     func logout() {
         try? Auth.auth().signOut()
     }
-}
-
-private extension SessionServiceImpl {
+    
     func setupFirebaseAuthHandler() {
         handler = Auth.auth().addStateDidChangeListener {
             [weak self] res, user in
@@ -77,14 +102,36 @@ private extension SessionServiceImpl {
             
             DispatchQueue.main.async {
                 self.userDetails = SessionUserDetails(fullName: fullName, groupNumber: groupNumber, admin: admin, uid: uuid)
-                self.buttonTitles = self.userButtonTitles
-                self.buttonIcons = self.userButtonIcons
-                if self.userDetails?.admin == true {
-                    self.buttonTitles += self.adminButtonTitles
-                    self.buttonIcons += self.adminButtonIcons
-                }
             }
             
         }
+    }
+    
+    func getUserButtons(completion: @escaping(Result<[MenuInfo], Error>) -> Void) {
+        //use API to get arrays
+        let adminURLstring = "https://opensheet.elk.sh/10JPtOuuQAMpGmorEHFW_yU-M2M99AAhpZn09CRcGPK4/user_menu"
+        
+        guard let urlAdmin = URL(string: adminURLstring) else {
+            print("userBtn url not working")
+            fatalError()
+        }
+        
+        let adminJSONtask = URLSession.shared.dataTask(with: urlAdmin){
+            data, response, error in
+            
+            guard let data = data else {
+                completion(.failure(NSError()))
+                return
+            }
+            do {
+                let decoder = JSONDecoder()
+                let buttons = try decoder.decode([MenuInfo].self, from: data)
+                completion(.success(buttons))
+            } catch {
+                print(error)
+                completion(.failure(error))
+            }
+        }
+        adminJSONtask.resume()
     }
 }

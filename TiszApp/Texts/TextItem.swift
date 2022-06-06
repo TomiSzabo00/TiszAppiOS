@@ -44,7 +44,6 @@ struct TextItem: Identifiable, Equatable {
 
 
 struct TextItemView: View {
-    
     var text: String
     var title: String
     
@@ -57,7 +56,6 @@ struct TextItemView: View {
         VStack {
             Text(text)
                 .frame(maxWidth: .infinity, minHeight: 80, maxHeight: 80, alignment: .topLeading)
-                //.lineLimit(4)
                 .foregroundColor(Color(.label))
                 .padding(20)
             Divider()
@@ -71,6 +69,5 @@ struct TextItemView: View {
             .fill(Color(.systemBackground))
             .shadow(color: Color(.label).opacity(0.2), radius: 4, x: 0, y: 3))
     }
-    
 }
 
