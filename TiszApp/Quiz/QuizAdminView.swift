@@ -11,52 +11,29 @@ struct QuizAdminView: View {
     
     @ObservedObject var handler: QuizHandlerImpl = QuizHandlerImpl()
     
+    @State var teamNum: Int
+    
+    init(teamNum: Int) {
+        self.teamNum = teamNum
+        handler.teamNum = self.teamNum
+    }
+    
     var body: some View {
         ScrollView {
             //Color.background.ignoresSafeArea()
             VStack {
                 VStack(spacing: 20) {
-                    ZStack {
-                        
-                        SimpleRectangle(width: UIScreen.main.bounds.width-100, height: 80, bg: handler.rt0BG)
-                        
-                        Text(handler.texts[0])
-                            .bold()
-                            .foregroundColor(handler.text0Color)
-                            .frame(maxWidth: UIScreen.main.bounds.width-100, maxHeight: 80)
-                            .padding()
-                            .multilineTextAlignment(.center)
-                            .frame(width: UIScreen.main.bounds.width-100, height: 80)
-                    }
-                    ZStack {
-                        SimpleRectangle(width: UIScreen.main.bounds.width-100, height: 80, bg: handler.rt1BG)
-                        Text(handler.texts[1])
-                            .bold()
-                            .frame(maxWidth: UIScreen.main.bounds.width-100, maxHeight: 80)
-                            .foregroundColor(handler.text1Color)
-                            .padding()
-                            .multilineTextAlignment(.center)
-                            .frame(width: UIScreen.main.bounds.width-100, height: 80)
-                    }
-                    ZStack {
-                        SimpleRectangle(width: UIScreen.main.bounds.width-100, height: 80, bg: handler.rt2BG)
-                        Text(handler.texts[2])
-                            .bold()
-                            .frame(maxWidth: UIScreen.main.bounds.width-100, maxHeight: 80)
-                            .foregroundColor(handler.text2Color)
-                            .padding()
-                            .multilineTextAlignment(.center)
-                            .frame(width: UIScreen.main.bounds.width-100, height: 80)
-                    }
-                    ZStack {
-                        SimpleRectangle(width: UIScreen.main.bounds.width-100, height: 80, bg: handler.rt3BG)
-                        Text(handler.texts[3])
-                            .bold()
-                            .frame(maxWidth: UIScreen.main.bounds.width-100, maxHeight: 80)
-                            .foregroundColor(handler.text3Color)
-                            .padding()
-                            .multilineTextAlignment(.center)
-                            .frame(width: UIScreen.main.bounds.width-100, height: 80)
+                    ForEach((0...teamNum-1), id: \.self) { i in
+                        ZStack {
+                            SimpleRectangle(width: UIScreen.main.bounds.width-100, height: 80, bg: handler.rtBGs[i])
+                            Text(handler.texts[i])
+                                .bold()
+                                .foregroundColor(handler.textColors[i])
+                                .frame(maxWidth: UIScreen.main.bounds.width-100, maxHeight: 80)
+                                .padding()
+                                .multilineTextAlignment(.center)
+                                .frame(width: UIScreen.main.bounds.width-100, height: 80)
+                        }
                     }
                 }
                 .padding()
@@ -90,6 +67,6 @@ struct QuizAdminView: View {
 
 struct QuizAdminView_Previews: PreviewProvider {
     static var previews: some View {
-        QuizAdminView()
+        QuizAdminView(teamNum: 4)
     }
 }

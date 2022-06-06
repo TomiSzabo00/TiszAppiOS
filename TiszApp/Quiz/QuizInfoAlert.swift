@@ -20,13 +20,8 @@ struct QuizInfoAlert: View {
             }
             .padding(10)
             HStack {
-                Text("Narancssárga gomb").foregroundColor(.orange).bold().shadow(color: .black, radius: 3)
-                Text(": már jeleztél, várj").lineLimit(2)
-            }
-            .padding(10)
-            HStack {
                 Text("Sárga gomb").foregroundColor(.yellow).bold().shadow(color: .black, radius: 3)
-                Text(": a csapatodból valaki már jelzett, várj").lineLimit(2)
+                Text(": te, vagy a csapatodból valaki már jelzett, várj").lineLimit(10)
             }
             .padding(10)
             HStack {

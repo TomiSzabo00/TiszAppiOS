@@ -84,7 +84,7 @@ struct MainMenuView: View {
                 
                 
                 if (sessionService.userDetails?.admin != nil) && sessionService.userDetails?.admin == true {
-                    NavigationLink(destination: QuizAdminView(), tag: 2, selection: $ID) {EmptyView()}
+                    NavigationLink(destination: QuizAdminView(teamNum: sessionService.teamNum), tag: 2, selection: $ID) {EmptyView()}
                 } else {
                     NavigationLink(destination: QuizView().environmentObject(sessionService), tag: 2, selection: $ID) {EmptyView()}
                 }
@@ -96,6 +96,9 @@ struct MainMenuView: View {
                 NavigationLink(destination: ImagesView(checkImages: true).environmentObject(sessionService), tag: 5, selection: $ID) {EmptyView()}
                 
                 NavigationLink(destination: AddScoreView(), tag: 6, selection: $ID) {EmptyView()}
+                
+                //TODO: remove this ¬
+                Text(String(sessionService.teamNum))
                 
                 Button(action: {
                     

@@ -20,12 +20,17 @@ struct MenuInfo: Decodable {
     var Visible: String
 }
 
+struct TeamNumInfo: Decodable {
+    var Num: String
+}
+
 protocol SessionService {
     var state: SessionState { get }
     var userDetails: SessionUserDetails? { get }
     var buttonTitles: [String] { get }
     var buttonIcons: [String] { get }
     var btnStates: [Bool] { get }
+    var teamNum: Int { get }
     func logout()
 }
 
@@ -46,12 +51,28 @@ final class SessionServiceImpl: ObservableObject, SessionService {
 
     @Published var btnStates: [Bool] = [false, false, false, false, false, false, false]
     
+    @Published var teamNum: Int = 4
+    
     private var handler: AuthStateDidChangeListenerHandle?
     
     init() {
         self.getButtonStates()
         print("a")
         setupFirebaseAuthHandler()
+        self.getTeamNum()
+    }
+    
+    func getTeamNum() {
+        self.getTeamNumFromApi { [weak self] result in
+            switch result {
+            case .failure(let error):
+                print(error)
+            case .success(let num):
+                DispatchQueue.main.async {
+                    self?.teamNum = num
+                }
+            }
+        }
     }
     
     func getButtonStates() {
@@ -127,6 +148,34 @@ final class SessionServiceImpl: ObservableObject, SessionService {
                 let decoder = JSONDecoder()
                 let buttons = try decoder.decode([MenuInfo].self, from: data)
                 completion(.success(buttons))
+            } catch {
+                print(error)
+                completion(.failure(error))
+            }
+        }
+        adminJSONtask.resume()
+    }
+    
+    func getTeamNumFromApi(completion: @escaping(Result<Int, Error>) -> Void) {
+        //use API to get arrays
+        let adminURLstring = "https://opensheet.elk.sh/10JPtOuuQAMpGmorEHFW_yU-M2M99AAhpZn09CRcGPK4/team_num"
+        
+        guard let urlAdmin = URL(string: adminURLstring) else {
+            print("teamNum url not working")
+            fatalError()
+        }
+        
+        let adminJSONtask = URLSession.shared.dataTask(with: urlAdmin){
+            data, response, error in
+            
+            guard let data = data else {
+                completion(.failure(NSError()))
+                return
+            }
+            do {
+                let decoder = JSONDecoder()
+                let num = try decoder.decode([TeamNumInfo].self, from: data)
+                completion(.success(Int(num[0].Num) ?? 4))
             } catch {
                 print(error)
                 completion(.failure(error))
