@@ -10,10 +10,7 @@ import FirebaseDatabase
 
 protocol ScoresHandler {
     var scoresList: [ScoreItem] { get }
-    var sum1: Int { get }
-    var sum2: Int { get }
-    var sum3: Int { get }
-    var sum4: Int { get }
+    var sums: [Int] { get }
     func getScores()
     func deleteScores()
     func deleteScore(score: ScoreItem)
@@ -22,33 +19,36 @@ protocol ScoresHandler {
 final class ScoresHandlerImpl: ScoresHandler, ObservableObject {
     @Published var scoresList: [ScoreItem] = []
     
-    @Published var sum1: Int = 0
-    @Published var sum2: Int = 0
-    @Published var sum3: Int = 0
-    @Published var sum4: Int = 0
+    @Published var sums: [Int] = []
     
-    init(){
+    private var teamNum: Int
+    
+    init(teamNum: Int){
+        self.teamNum = teamNum
+        for _ in 0...self.teamNum-1 {
+            sums.append(0)
+        }
         getScores()
     }
     
     func getScores(){
         Database.database().reference().child("scores").observe(.childAdded, with: { (snapshot) -> Void in
                if let score = ScoreItem(snapshot: snapshot) {
-                self.scoresList.append(score)
-                self.sum1 += score.score1
-                self.sum2 += score.score2
-                self.sum3 += score.score3
-                self.sum4 += score.score4
-            }
+                   self.scoresList.append(score)
+                   for i in 0...self.teamNum-1 {
+                       guard score.scores.indices.contains(i) else { return }
+                       self.sums[i] += score.scores[i]
+                   }
+               }
         })
         
         Database.database().reference().child("scores").observe(.childRemoved, with: { (snapshot) -> Void in
                if let score = ScoreItem(snapshot: snapshot) {
                 self.scoresList.remove(at: self.scoresList.firstIndex(where: {$0.id == score.id})!)
-                self.sum1 -= score.score1
-                self.sum2 -= score.score2
-                self.sum3 -= score.score3
-                self.sum4 -= score.score4
+                   for i in 0...self.teamNum-1 {
+                       guard score.scores.indices.contains(i) else { return }
+                       self.sums[i] -= score.scores[i]
+                   }
             }
             
         })
@@ -57,17 +57,17 @@ final class ScoresHandlerImpl: ScoresHandler, ObservableObject {
                if let score = ScoreItem(snapshot: snapshot) {
                 //find old one
                 let oldScore = self.scoresList[self.scoresList.firstIndex(where: {$0.id == score.id})!]
-                self.sum1 -= oldScore.score1
-                self.sum2 -= oldScore.score2
-                self.sum3 -= oldScore.score3
-                self.sum4 -= oldScore.score4
+                   for i in 0...self.teamNum-1 {
+                       guard oldScore.scores.indices.contains(i) else { return }
+                       self.sums[i] -= oldScore.scores[i]
+                   }
                    
                 //change to new
                self.scoresList[self.scoresList.firstIndex(where: {$0.id == score.id})!] = score
-               self.sum1 += score.score1
-               self.sum2 += score.score2
-               self.sum3 += score.score3
-               self.sum4 += score.score4
+                   for i in 0...self.teamNum-1 {
+                       guard score.scores.indices.contains(i) else { return }
+                       self.sums[i] += score.scores[i]
+                   }
             }
             
         })

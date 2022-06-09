@@ -17,6 +17,8 @@ struct ScoresTableView: View {
     
     @State var scoreToEdit: ScoreItem? = nil
     
+    @State var teamNum: Int
+    
     var body: some View {
         VStack{
             HStack {
@@ -35,102 +37,55 @@ struct ScoresTableView: View {
             
             HStack{
                 Text("Program neve")
-                    .frame(minWidth: 100, maxWidth:140)
-                //.padding(.trailing, 5)
+                    .frame(width:120)
                     .minimumScaleFactor(0.1)
                     .lineLimit(1)
                     .padding(5)
                     .background(RoundedRectangle(cornerRadius: 10)
                         .fill(Color(.systemBackground))
                         .shadow(color: Color(.label).opacity(0.2), radius: 4, x: 0, y: 3))
-                Text("1.")
-                    .bold()
-                    .frame(maxWidth:50)
-                //.padding(.trailing, 5)
-                    .minimumScaleFactor(0.1)
-                    .lineLimit(1)
-                    .padding(5)
-                    .background(RoundedRectangle(cornerRadius: 10)
-                        .fill(Color(.systemBackground))
-                        .shadow(color: Color(.label).opacity(0.2), radius: 4, x: 0, y: 3))
-                Text("2.")
-                    .bold()
-                    .frame(maxWidth:50)
-                //.padding(.trailing, 5)
-                    .minimumScaleFactor(0.1)
-                    .lineLimit(1)
-                    .padding(5)
-                    .background(RoundedRectangle(cornerRadius: 10)
-                        .fill(Color(.systemBackground))
-                        .shadow(color: Color(.label).opacity(0.2), radius: 4, x: 0, y: 3))
-                Text("3.")
-                    .bold()
-                    .frame(maxWidth:50)
-                //.padding(.trailing, 5)
-                    .minimumScaleFactor(0.1)
-                    .lineLimit(1)
-                    .padding(5)
-                    .background(RoundedRectangle(cornerRadius: 10)
-                        .fill(Color(.systemBackground))
-                        .shadow(color: Color(.label).opacity(0.2), radius: 4, x: 0, y: 3))
-                Text("4.")
-                    .bold()
-                    .frame(maxWidth:50)
-                //.padding(.trailing, 5)
-                    .minimumScaleFactor(0.1)
-                    .lineLimit(1)
-                    .padding(5)
-                    .background(RoundedRectangle(cornerRadius: 10)
-                        .fill(Color(.systemBackground))
-                        .shadow(color: Color(.label).opacity(0.2), radius: 4, x: 0, y: 3))
+                ForEach (1...teamNum, id: \.self) { i in
+                    Text("\(i).")
+                        .bold()
+                        .frame(maxWidth:70)
+                        .minimumScaleFactor(0.1)
+                        .lineLimit(1)
+                        .padding(5)
+                        .background(RoundedRectangle(cornerRadius: 10)
+                            .fill(Color(.systemBackground))
+                            .shadow(color: Color(.label).opacity(0.2), radius: 4, x: 0, y: 3))
+                }
+                
             }
             .padding(.trailing)
             .padding(.leading, 10)
             
             //List
-            List(handler.scoresList, id: \.self) {score in
+            List(handler.scoresList, id: \.self) { score in
                     HStack {
+                        Spacer()
                         Text(score.name)
-                            .frame(minWidth: 100, maxWidth:140)
+                            .frame(width:120)
                             .minimumScaleFactor(0.1)
                             .lineLimit(3)
                             .padding(5)
                             .background(RoundedRectangle(cornerRadius: 10)
                                 .fill(Color(.systemBackground))
                                 .shadow(color: Color(.label).opacity(0.2), radius: 3, x: 0, y: 3))
-                        Text(String(score.score1))
-                            .frame(maxWidth:50)
-                            .minimumScaleFactor(0.1)
-                            .lineLimit(1)
-                            .padding(5)
-                            .background(RoundedRectangle(cornerRadius: 10)
-                                .fill(Color(.systemBackground))
-                                .shadow(color: Color(.label).opacity(0.2), radius: 3, x: 0, y: 3))
-                        Text(String(score.score2))
-                            .frame(maxWidth:50)
-                            .minimumScaleFactor(0.1)
-                            .lineLimit(1)
-                            .padding(5)
-                            .background(RoundedRectangle(cornerRadius: 10)
-                                .fill(Color(.systemBackground))
-                                .shadow(color: Color(.label).opacity(0.2), radius: 3, x: 0, y: 3))
-                        Text(String(score.score3))
-                            .frame(maxWidth:50)
-                            .minimumScaleFactor(0.1)
-                            .lineLimit(1)
-                            .padding(5)
-                            .background(RoundedRectangle(cornerRadius: 10)
-                                .fill(Color(.systemBackground))
-                                .shadow(color: Color(.label).opacity(0.2), radius: 3, x: 0, y: 3))
-                        Text(String(score.score4))
-                            .frame(maxWidth:50)
-                            .minimumScaleFactor(0.1)
-                            .lineLimit(1)
-                            .padding(5)
-                            .background(RoundedRectangle(cornerRadius: 10)
-                                .fill(Color(.systemBackground))
-                                .shadow(color: Color(.label).opacity(0.2), radius: 3, x: 0, y: 3))
+                            
+                        ForEach (0...teamNum-1, id: \.self) { i in
+                            Text(score.scores.indices.contains(i) ? String(score.scores[i]) : "0")
+                                    .frame(maxWidth:70)
+                                    .minimumScaleFactor(0.1)
+                                    .lineLimit(1)
+                                    .padding(5)
+                                    .background(RoundedRectangle(cornerRadius: 10)
+                                        .fill(Color(.systemBackground))
+                                        .shadow(color: Color(.label).opacity(0.2), radius: 3, x: 0, y: 3))
+                            }
+                        Spacer()
                     }
+                    .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
                     .listRowSeparator(.hidden)
                     .swipeActions {
                         if sessionService.userDetails!.admin {
@@ -155,51 +110,30 @@ struct ScoresTableView: View {
             .listStyle(PlainListStyle())
             //end List
             
-            NavigationLink(destination: EditScoreView(what: scoreToEdit), tag: 0, selection: $ID) {EmptyView()}
+            NavigationLink(destination: EditScoreView(what: scoreToEdit, teamNum: teamNum), tag: 0, selection: $ID) {EmptyView()}
             
             HStack{
                 Text("Összesen:")
                     .bold()
                     .foregroundStyle(LinearGradient(Color.gradientDark, Color.gradientLight))
-                    .frame(minWidth: 100, maxWidth: 130)
+                    .frame(width: 120)
                     .minimumScaleFactor(0.1)
                     .lineLimit(1)
                     .padding(5)
                     .background(RoundedRectangle(cornerRadius: 10)
                         .fill(Color(.systemBackground))
                         .shadow(color: Color(.label).opacity(0.2), radius: 4, x: 0, y: 3))
-                Text(String(handler.sum1))
-                    .frame(maxWidth:50)
-                    .minimumScaleFactor(0.1)
-                    .lineLimit(1)
-                    .padding(5)
-                    .background(RoundedRectangle(cornerRadius: 10)
-                        .fill(Color(.systemBackground))
-                        .shadow(color: Color(.label).opacity(0.2), radius: 4, x: 0, y: 3))
-                Text(String(handler.sum2))
-                    .frame(maxWidth:50)
-                    .minimumScaleFactor(0.1)
-                    .lineLimit(1)
-                    .padding(5)
-                    .background(RoundedRectangle(cornerRadius: 10)
-                        .fill(Color(.systemBackground))
-                        .shadow(color: Color(.label).opacity(0.2), radius: 4, x: 0, y: 3))
-                Text(String(handler.sum3))
-                    .frame(maxWidth:50)
-                    .minimumScaleFactor(0.1)
-                    .lineLimit(1)
-                    .padding(5)
-                    .background(RoundedRectangle(cornerRadius: 10)
-                        .fill(Color(.systemBackground))
-                        .shadow(color: Color(.label).opacity(0.2), radius: 4, x: 0, y: 3))
-                Text(String(handler.sum4))
-                    .frame(maxWidth:50)
-                    .minimumScaleFactor(0.1)
-                    .lineLimit(1)
-                    .padding(5)
-                    .background(RoundedRectangle(cornerRadius: 10)
-                        .fill(Color(.systemBackground))
-                        .shadow(color: Color(.label).opacity(0.2), radius: 4, x: 0, y: 3))
+                ForEach (0...teamNum-1, id: \.self) { i in
+                    Text(String(handler.sums[i]))
+                        .frame(maxWidth:70)
+                        .minimumScaleFactor(0.1)
+                        .lineLimit(1)
+                        .padding(5)
+                        .background(RoundedRectangle(cornerRadius: 10)
+                            .fill(Color(.systemBackground))
+                            .shadow(color: Color(.label).opacity(0.2), radius: 4, x: 0, y: 3))
+                }
+                
             }
             .padding(10)
         }
@@ -210,6 +144,6 @@ struct ScoresTableView: View {
 
 struct ScoresTableView_Previews: PreviewProvider {
     static var previews: some View {
-        ScoresTableView(handler: ScoresHandlerImpl()).environmentObject(SessionServiceImpl())
+        ScoresTableView(handler: ScoresHandlerImpl(teamNum: 4), teamNum: 4).environmentObject(SessionServiceImpl())
     }
 }

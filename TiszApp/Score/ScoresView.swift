@@ -11,7 +11,7 @@ struct ScoresView: View {
     
     @EnvironmentObject var sessionService: SessionServiceImpl
     
-    @ObservedObject private var handler = ScoresHandlerImpl()
+    @ObservedObject private var handler = ScoresHandlerImpl(teamNum: 4)
     
     @State private var confirmationShown = false
     
@@ -21,7 +21,7 @@ struct ScoresView: View {
     let minDragTranslationForSwipe: CGFloat = 50
     
     var body: some View {
-        ScoresTableView(handler: handler).environmentObject(sessionService)
+        ScoresTableView(handler: handler, teamNum: 4).environmentObject(sessionService)
         
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle("Pontok megtekintése")

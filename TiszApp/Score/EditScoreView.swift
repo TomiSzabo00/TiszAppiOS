@@ -9,14 +9,18 @@ import SwiftUI
 import FirebaseDatabase
 
 struct EditScoreView: View {
-    
     @State var what: ScoreItem?
     
-    @State var firstScore: String = ""
-    @State var secondScore: String = ""
-    @State var thirdScore: String = ""
-    @State var fourthScore: String = ""
     @State var program: String = ""
+    
+    @State var scoreTFs: [String] = ["","","","","",""]
+    
+    @State var teamNum: Int
+    
+    init(what: ScoreItem?, teamNum: Int) {
+        self.what = what
+        self.teamNum = teamNum
+    }
     
     var body: some View {
         if what != nil {
@@ -34,37 +38,22 @@ struct EditScoreView: View {
                         //.foregroundColor(.foreground)
                         Spacer()
                     }
-                    HStack(spacing: 28){
+                    HStack(spacing: 5){
                         Spacer()
-                        Text("1.")
-                            .lineLimit(1)
-                        Spacer()
-                        Text("2.")
-                            .lineLimit(1)
-                        Spacer()
-                        Text("3.")
-                            .lineLimit(1)
-                        Spacer()
-                        Text("4.")
-                            .lineLimit(1)
-                        Spacer()
+                        ForEach(1...teamNum, id:\.self) { i in
+                            Text("\(i).")
+                                .lineLimit(1)
+                            Spacer()
+                        }
+                        //Spacer()
                     }
                     .padding(.top, 10)
-                    //.foregroundColor(.foreground)
                     
-                    HStack{
+                    HStack(spacing: 5){
                         Spacer()
-                        SimpleNumberTextField(text: $firstScore)
-                            .frame(width: UIScreen.main.bounds.width/4-15)
-                        Spacer()
-                        SimpleNumberTextField(text: $secondScore)
-                            .frame(width: UIScreen.main.bounds.width/4-15)
-                        Spacer()
-                        SimpleNumberTextField(text: $thirdScore)
-                            .frame(width: UIScreen.main.bounds.width/4-15)
-                        Spacer()
-                        SimpleNumberTextField(text: $fourthScore)
-                            .frame(width: UIScreen.main.bounds.width/4-15)
+                        ForEach(0...teamNum-1, id:\.self) { i in
+                            SimpleNumberTextField(text: $scoreTFs[i])
+                        }
                         Spacer()
                     }
                     .padding(.top, 10)
@@ -73,12 +62,14 @@ struct EditScoreView: View {
                         Spacer()
                         Button(action: {
                             
+                            var sanitisedScores: [Int] = []
+                            for score in scoreTFs {
+                                sanitisedScores.append(SanitiseInput(input: score))
+                            }
+                            
                             //upload sanitised inputs to db
                             let score = ["id" : what!.id,
-                                         "score1" : SanitiseInput(input: firstScore),
-                                         "score2" : SanitiseInput(input: secondScore),
-                                         "score3" : SanitiseInput(input: thirdScore),
-                                         "score4" : SanitiseInput(input: fourthScore),
+                                         "scores" : sanitisedScores,
                                          "name" : program,
                                          "author" : what!.author] as [String: Any]
                             
@@ -86,6 +77,7 @@ struct EditScoreView: View {
                             
                             Database.database().reference().child("scores").child(what!.id).setValue(score)
                             
+                            //self.presentationMode.wrappedValue.dismiss()
                             
                         }, label: {
                             Text("Szerkesztés")
@@ -95,11 +87,15 @@ struct EditScoreView: View {
                     }
                 }
                 .onAppear {
-                    firstScore = String(what!.score1)
-                    secondScore = String(what!.score2)
-                    thirdScore = String(what!.score3)
-                    fourthScore = String(what!.score4)
                     program = what!.name
+                    self.scoreTFs.removeAll()
+                    for _ in 1...self.teamNum {
+                        self.scoreTFs.append("")
+                    }
+                    for i in 0...teamNum-1 {
+                        guard what!.scores.indices.contains(i) else { return }
+                        scoreTFs[i] = String(what!.scores[i])
+                    }
                 }
                 .navigationTitle("Szerkesztés")
                 .navigationBarTitleDisplayMode(.inline)
@@ -110,6 +106,6 @@ struct EditScoreView: View {
 
 struct EditScoreView_Previews: PreviewProvider {
     static var previews: some View {
-        EditScoreView()
+        EditScoreView(what: nil, teamNum: 4)
     }
 }

@@ -79,7 +79,7 @@ struct MainMenuView: View {
                 
                 NavigationLink(destination: UploadView(), tag: 0, selection: $ID) {EmptyView()}
                 
-                NavigationLink(destination: ScoresTableView(handler: ScoresHandlerImpl()).environmentObject(sessionService), tag: 1, selection: $ID) {EmptyView()}
+                NavigationLink(destination: ScoresTableView(handler: ScoresHandlerImpl(teamNum: sessionService.teamNum), teamNum: sessionService.teamNum).environmentObject(sessionService), tag: 1, selection: $ID) {EmptyView()}
                 
                 
                 
@@ -93,12 +93,15 @@ struct MainMenuView: View {
                 
                 NavigationLink(destination: TextsView().environmentObject(sessionService), tag: 4, selection: $ID) {EmptyView()}
                 
-                NavigationLink(destination: ImagesView(checkImages: true).environmentObject(sessionService), tag: 5, selection: $ID) {EmptyView()}
+                if (sessionService.userDetails?.admin != nil) && sessionService.userDetails?.admin == true {
+                    NavigationLink(destination: EjjeliPortyaAdminView().environmentObject(sessionService), tag: 5, selection: $ID) {EmptyView()}
+                } else {
+                    NavigationLink(destination: EjjeliPortyaView(), tag: 5, selection: $ID) {EmptyView()}
+                }
                 
-                NavigationLink(destination: AddScoreView(), tag: 6, selection: $ID) {EmptyView()}
+                NavigationLink(destination: ImagesView(checkImages: true).environmentObject(sessionService), tag: 6, selection: $ID) {EmptyView()}
                 
-                //TODO: remove this ¬
-                Text(String(sessionService.teamNum))
+                NavigationLink(destination: AddScoreView(teamNum: sessionService.teamNum), tag: 7, selection: $ID) {EmptyView()}
                 
                 Button(action: {
                     

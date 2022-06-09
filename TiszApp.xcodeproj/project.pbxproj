@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		5510518B281D5F5900F31076 /* EditScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5510518A281D5F5900F31076 /* EditScoreView.swift */; };
+		55149F522850C361007BECEF /* EjjeliPortyaAdminView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55149F512850C361007BECEF /* EjjeliPortyaAdminView.swift */; };
+		55149F542850C380007BECEF /* EjjeliPortyaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55149F532850C380007BECEF /* EjjeliPortyaView.swift */; };
+		55149F562850CC7D007BECEF /* EjjeliPortyaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55149F552850CC7D007BECEF /* EjjeliPortyaViewModel.swift */; };
 		553F69A62805DAF600511E1E /* QuizInfoAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553F69A52805DAF500511E1E /* QuizInfoAlert.swift */; };
 		557B8F9C27EDF6A200312433 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557B8F9B27EDF6A200312433 /* RegisterView.swift */; };
 		557B8F9E27EE1CEF00312433 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557B8F9D27EE1CEF00312433 /* LoginView.swift */; };
@@ -63,6 +66,10 @@
 
 /* Begin PBXFileReference section */
 		5510518A281D5F5900F31076 /* EditScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditScoreView.swift; sourceTree = "<group>"; };
+		55149F512850C361007BECEF /* EjjeliPortyaAdminView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EjjeliPortyaAdminView.swift; sourceTree = "<group>"; };
+		55149F532850C380007BECEF /* EjjeliPortyaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EjjeliPortyaView.swift; sourceTree = "<group>"; };
+		55149F552850CC7D007BECEF /* EjjeliPortyaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EjjeliPortyaViewModel.swift; sourceTree = "<group>"; };
+		55149F572850E8B7007BECEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		553F69A52805DAF500511E1E /* QuizInfoAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizInfoAlert.swift; sourceTree = "<group>"; };
 		557B8F9B27EDF6A200312433 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		557B8F9D27EE1CEF00312433 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -199,6 +206,8 @@
 		55B0E6D027EBDA9B0058A5B9 /* TiszApp */ = {
 			isa = PBXGroup;
 			children = (
+				55149F572850E8B7007BECEF /* Info.plist */,
+				55CBA8A32850C1AF004A5750 /* EjjeliPortya */,
 				5591E7C3280221E900C811F8 /* Quiz */,
 				5591E7B62800EAEC00C811F8 /* Texts */,
 				5591E7A927FD99FF00C811F8 /* Images */,
@@ -224,6 +233,16 @@
 				55B0E6D827EBDAA00058A5B9 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		55CBA8A32850C1AF004A5750 /* EjjeliPortya */ = {
+			isa = PBXGroup;
+			children = (
+				55149F512850C361007BECEF /* EjjeliPortyaAdminView.swift */,
+				55149F532850C380007BECEF /* EjjeliPortyaView.swift */,
+				55149F552850CC7D007BECEF /* EjjeliPortyaViewModel.swift */,
+			);
+			path = EjjeliPortya;
 			sourceTree = "<group>";
 		};
 		55E37E2627F79460002ED658 /* Score */ = {
@@ -377,6 +396,7 @@
 			files = (
 				5591E7A627F88D2100C811F8 /* ScoreItem.swift in Sources */,
 				5591E7BA2800ED5700C811F8 /* TextsHandler.swift in Sources */,
+				55149F542850C380007BECEF /* EjjeliPortyaView.swift in Sources */,
 				5591E7C028017BCE00C811F8 /* TextUploadView.swift in Sources */,
 				55E37E2827F79480002ED658 /* AddScoreView.swift in Sources */,
 				5591E7B82800EB2700C811F8 /* TextItem.swift in Sources */,
@@ -398,6 +418,7 @@
 				557B8FA027EE334F00312433 /* MainMenuView.swift in Sources */,
 				5591E7B327FE310900C811F8 /* ImagesHandler.swift in Sources */,
 				55E8003827F0A27E007181E0 /* SessionService.swift in Sources */,
+				55149F562850CC7D007BECEF /* EjjeliPortyaViewModel.swift in Sources */,
 				5591E7C92805B20700C811F8 /* QuizHandler.swift in Sources */,
 				5591E7C22801C00900C811F8 /* UploadView.swift in Sources */,
 				5591E7BC2800EE1300C811F8 /* TextsView.swift in Sources */,
@@ -407,6 +428,7 @@
 				5595DBD627F4AFC40063A424 /* NeumorphicStyle.swift in Sources */,
 				5591E7C72802229C00C811F8 /* QuizAdminView.swift in Sources */,
 				5591E7AF27FE13D200C811F8 /* ImagesView.swift in Sources */,
+				55149F522850C361007BECEF /* EjjeliPortyaAdminView.swift in Sources */,
 				55E8002F27F07FCC007181E0 /* RegistrationService.swift in Sources */,
 				55B0E6D227EBDA9B0058A5B9 /* TiszAppApp.swift in Sources */,
 				5591E7AD27FDA01000C811F8 /* ImageUploadView.swift in Sources */,
@@ -541,6 +563,8 @@
 				DEVELOPMENT_TEAM = 85XVJT6RC3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TiszApp/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Kérlek engedélyezd a helymeghatározást, hogy a szervezők láthassák, merre jár a csapatod.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -556,7 +580,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -571,6 +595,8 @@
 				DEVELOPMENT_TEAM = 85XVJT6RC3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TiszApp/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Kérlek engedélyezd a helymeghatározást, hogy a szervezők láthassák, merre jár a csapatod.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -586,7 +612,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

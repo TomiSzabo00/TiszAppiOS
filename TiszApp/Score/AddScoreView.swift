@@ -28,10 +28,13 @@ struct AddScoreView: View {
     
     @State var program: String = ""
     
-    @State var firstScore: String = ""
-    @State var secondScore: String = ""
-    @State var thirdScore: String = ""
-    @State var fourthScore: String = ""
+    @State var scoreTFs: [String] = ["","","","","",""]
+    
+    @State var teamNum: Int
+    
+    init(teamNum: Int) {
+        self.teamNum = teamNum
+    }
     
     var body: some View {
         ScrollView {
@@ -51,33 +54,23 @@ struct AddScoreView: View {
                     //.foregroundColor(.foreground)
                     Spacer()
                 }
-                HStack(spacing: 28){
+                HStack(spacing: 5){
                     Spacer()
-                    Text("1.")
-                        .lineLimit(1)
-                    Spacer()
-                    Text("2.")
-                        .lineLimit(1)
-                    Spacer()
-                    Text("3.")
-                        .lineLimit(1)
-                    Spacer()
-                    Text("4.")
-                        .lineLimit(1)
-                    Spacer()
+                    ForEach(1...teamNum, id:\.self) { i in
+                        Text("\(i).")
+                            .lineLimit(1)
+                        Spacer()
+                    }
+                    //Spacer()
                 }
                 .padding(.top, 10)
                 //.foregroundColor(.foreground)
                 
                 HStack(spacing: 5){
                     Spacer()
-                    SimpleNumberTextField(text: $firstScore)
-                    Spacer()
-                    SimpleNumberTextField(text: $secondScore)
-                    Spacer()
-                    SimpleNumberTextField(text: $thirdScore)
-                    Spacer()
-                    SimpleNumberTextField(text: $fourthScore)
+                    ForEach(0...teamNum-1, id:\.self) { i in
+                        SimpleNumberTextField(text: $scoreTFs[i])
+                    }
                     Spacer()
                 }
                 .padding(.top, 10)
@@ -92,12 +85,14 @@ struct AddScoreView: View {
                         // Set Date Format
                         dateFormatter.dateFormat = "YYYYMMddHHmmssSSS"
                         
+                        var sanitisedScores: [Int] = []
+                        for score in scoreTFs {
+                            sanitisedScores.append(SanitiseInput(input: score))
+                        }
+                        
                         //upload sanitised inputs to fb
                         let score = ["id" : dateFormatter.string(from: date),
-                                     "score1" : SanitiseInput(input: firstScore),
-                                     "score2" : SanitiseInput(input: secondScore),
-                                     "score3" : SanitiseInput(input: thirdScore),
-                                     "score4" : SanitiseInput(input: fourthScore),
+                                     "scores" : sanitisedScores,
                                      "name" : program,
                                      "author" : Auth.auth().currentUser?.uid ?? "unknown"] as [String: Any]
                         
@@ -107,10 +102,9 @@ struct AddScoreView: View {
                         
                         //reset textfields
                         program = ""
-                        firstScore = ""
-                        secondScore = ""
-                        thirdScore = ""
-                        fourthScore = ""
+                        for i in 0...teamNum-1 {
+                            scoreTFs[i] = ""
+                        }
                         
                         
                     }, label: {
@@ -124,6 +118,14 @@ struct AddScoreView: View {
             .onTapGesture {
                 endTextEditing()
             }
+            .onAppear {
+                self.scoreTFs.removeAll()
+                print(scoreTFs)
+                for _ in 1...self.teamNum {
+                    self.scoreTFs.append("")
+                }
+                print(scoreTFs)
+            }
         }
         .navigationBarTitleDisplayMode(.large)
         .navigationTitle("Pontok feltöltése")
@@ -134,7 +136,7 @@ struct AddScoreView: View {
 struct AddScoreView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView{
-            AddScoreView()
+            AddScoreView(teamNum: 4)
         }
     }
 }
