@@ -96,7 +96,7 @@ struct MainMenuView: View {
                 if (sessionService.userDetails?.admin != nil) && sessionService.userDetails?.admin == true {
                     NavigationLink(destination: EjjeliPortyaAdminView().environmentObject(sessionService), tag: 5, selection: $ID) {EmptyView()}
                 } else {
-                    NavigationLink(destination: EjjeliPortyaView(), tag: 5, selection: $ID) {EmptyView()}
+                    NavigationLink(destination: EjjeliPortyaView().environmentObject(sessionService), tag: 5, selection: $ID) {EmptyView()}
                 }
                 
                 NavigationLink(destination: ImagesView(checkImages: true).environmentObject(sessionService), tag: 6, selection: $ID) {EmptyView()}

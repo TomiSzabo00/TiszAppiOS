@@ -85,6 +85,8 @@ final class EjjeliPortyaViewModel: NSObject, ObservableObject, CLLocationManager
     
     @Published var markers: [Marker] = []
     
+    @Published var isSharing: Bool = false
+    
     private var colors: [Color] = []
     
     func checkIfLocationServicesIsEnabled() {
@@ -134,10 +136,12 @@ final class EjjeliPortyaViewModel: NSObject, ObservableObject, CLLocationManager
     
     func startLocationSharing() {
         locationManager?.startUpdatingLocation()
+        locationManager?.allowsBackgroundLocationUpdates = true
     }
     
     func stopLocationSharing() {
         locationManager?.stopUpdatingLocation()
+        self.isSharing = false
     }
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
@@ -145,6 +149,7 @@ final class EjjeliPortyaViewModel: NSObject, ObservableObject, CLLocationManager
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        self.isSharing = true
         let last = locations.last
         //print("l: \(last?.coordinate.latitude) lo:\(last?.coordinate.longitude)")
         let locationData = ["lat" : last!.coordinate.latitude,
@@ -183,23 +188,23 @@ final class EjjeliPortyaViewModel: NSObject, ObservableObject, CLLocationManager
     }
     
     func uploadColorsToDB() {
+        let orange = "#FF9200"
         let blue = "#0000FF"
         let green = "#00FF00"
         let yellow = "#FFFF00"
         let red = "#FF0000"
         let purple = "#960096"
         let cyan = "#00FFFF"
-        let orange = "#FF9200"
         let magenta = "#FF00FF"
         
         var colors : [String] = []
+        colors.append(orange)
         colors.append(blue)
         colors.append(green)
         colors.append(yellow)
         colors.append(red)
         colors.append(purple)
         colors.append(cyan)
-        colors.append(orange)
         colors.append(magenta)
         
         Database.database().reference().child("colors").child("colors").setValue(colors)
