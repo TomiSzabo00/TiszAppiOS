@@ -221,34 +221,24 @@ final class EjjeliPortyaViewModel: NSObject, ObservableObject, CLLocationManager
                 
                 let marker = Marker(id: child.key, coordinate: coords, tint: self.colors[groupNum!])
                 
-                //markerList.append(marker)
                 self.markers.append(marker)
-                print(marker.coordinate)
-                //print("marker placed")
             }
         })
         
-        //self.markers = markerList
-        
-        
-//        Database.database().reference().child("scores").observe(.childChanged, with: { (snapshot) -> Void in
-//               if let score = ScoreItem(snapshot: snapshot) {
-//                //find old one
-//                let oldScore = self.scoresList[self.scoresList.firstIndex(where: {$0.id == score.id})!]
-//                   for i in 0...self.teamNum-1 {
-//                       guard oldScore.scores.indices.contains(i) else { return }
-//                       self.sums[i] -= oldScore.scores[i]
-//                   }
-//
-//                //change to new
-//               self.scoresList[self.scoresList.firstIndex(where: {$0.id == score.id})!] = score
-//                   for i in 0...self.teamNum-1 {
-//                       guard score.scores.indices.contains(i) else { return }
-//                       self.sums[i] += score.scores[i]
-//                   }
-//            }
-//
-//        })
+        Database.database().reference().child("portya_locs").observe(.childChanged, with: { (snapshot) -> Void in
+            for children in snapshot.children {
+                let child = (children as! DataSnapshot)
+                
+                let locData = LocationData(snapshot: child)
+                let coords = CLLocationCoordinate2D(latitude: locData?.lat ?? 0.00, longitude: locData?.long ?? 0.00)
+                //find old one
+                let marker_index = self.markers.firstIndex(where: {$0.id == child.key})!
+
+                //change to new
+                self.markers[marker_index].coordinate = coords
+            }
+
+        })
     }
     
 }

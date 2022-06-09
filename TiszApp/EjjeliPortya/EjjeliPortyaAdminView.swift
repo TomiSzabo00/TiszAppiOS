@@ -41,7 +41,6 @@ struct EjjeliPortyaAdminView: View {
                 Spacer()
                 Button(action: {
                     vm.uploadLocationOnce()
-                    print("asd")
                 }, label: {
                     HStack {
                         Image(systemName: "mappin.and.ellipse")
