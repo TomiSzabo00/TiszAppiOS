@@ -77,7 +77,7 @@ final class EjjeliPortyaViewModel: NSObject, ObservableObject, CLLocationManager
     
     var locationManager: CLLocationManager?
     
-    @Published var tiszapuspoki_coords = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 47.222073, longitude: 20.296315), span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
+    @Published var tiszapuspoki_coords = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 47.221822, longitude: 20.307533), span: MKCoordinateSpan(latitudeDelta: 0.025, longitudeDelta: 0.025))
     
     @Published var showAlert: Bool = false
     
