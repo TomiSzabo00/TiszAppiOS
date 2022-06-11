@@ -11,7 +11,7 @@ import FirebaseStorage
 
 struct ImageDetailView: View {
     
-    @State var checkImages: Bool
+    @State var checkImages: Bool = false
     //@State var imageInfo: ImageItem? = nil
     
     @ObservedObject private var imageLoader : Loader
@@ -25,6 +25,7 @@ struct ImageDetailView: View {
     @Environment(\.dismiss) var dismiss
     
     init(imageInfo: ImageItem, checkImages: Bool) {
+        //self.imageInfo = imageInfo
         self._checkImages = State(initialValue: checkImages)
         self.handler = ImagesHandlerImpl(mode: .getDetails, checkImages: checkImages)
         self.imageLoader = Loader(imageInfo.fileName)
@@ -68,7 +69,7 @@ struct ImageDetailView: View {
                 
                 if handler.detail!.score == -1 {
                     //add score to picture
-                    if sessionService.userDetails!.admin && !checkImages && !handler.user!.admin {
+                    if sessionService.userDetails!.admin && !checkImages && (!(handler.user?.admin ?? false)) {
                         //display element to add score
                         Text("Hány pontot adsz erre a képre?").padding(.top)
                         HStack {
