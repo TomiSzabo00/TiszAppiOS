@@ -8,6 +8,136 @@
 
 /* Begin PBXBuildFile section */
 		5510518B281D5F5900F31076 /* EditScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5510518A281D5F5900F31076 /* EditScoreView.swift */; };
+		5512548F285661B4006A14CB /* SongsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5512548E285661B4006A14CB /* SongsView.swift */; };
+		55125491285681E1006A14CB /* SongsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55125490285681E1006A14CB /* SongsViewModel.swift */; };
+		5512562F28568804006A14CB /* 8 ÓRA MUNKA (BEATRICE).txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255B5285687BD006A14CB /* 8 ÓRA MUNKA (BEATRICE).txt */; };
+		551256302856881A006A14CB /* HELLÓ-BELLÓ (PILLANATMŰVEK).txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255DD285687D2006A14CB /* HELLÓ-BELLÓ (PILLANATMŰVEK).txt */; };
+		551256312856881A006A14CB /* PETRÓLEUM LÁMPA (OMEGA).txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255DC285687D2006A14CB /* PETRÓLEUM LÁMPA (OMEGA).txt */; };
+		551256322856881A006A14CB /* AJJAJJAJ (QUIMBY).txt in Resources */ = {isa = PBXBuildFile; fileRef = 5512562E285687E4006A14CB /* AJJAJJAJ (QUIMBY).txt */; };
+		551256332856881A006A14CB /* ELINDULTAM SZÉP HAZÁMBUL….txt in Resources */ = {isa = PBXBuildFile; fileRef = 55125608285687DB006A14CB /* ELINDULTAM SZÉP HAZÁMBUL….txt */; };
+		551256342856881A006A14CB /* RÁNK SÜT A NAP.txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255FD285687D9006A14CB /* RÁNK SÜT A NAP.txt */; };
+		551256352856881A006A14CB /* SZÁLLJ EL KISMADÁR (REPUBLIC).txt in Resources */ = {isa = PBXBuildFile; fileRef = 5512562C285687E3006A14CB /* SZÁLLJ EL KISMADÁR (REPUBLIC).txt */; };
+		551256362856881A006A14CB /* VALAMI VÉGET ÉRT (ÁKOS).txt in Resources */ = {isa = PBXBuildFile; fileRef = 55125610285687DC006A14CB /* VALAMI VÉGET ÉRT (ÁKOS).txt */; };
+		551256372856881A006A14CB /* FALU VÉGÉN KURTA KOCSMA (PETŐFI SÁNDOR, KISS BARNA).txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255EC285687D6006A14CB /* FALU VÉGÉN KURTA KOCSMA (PETŐFI SÁNDOR, KISS BARNA).txt */; };
+		551256382856881A006A14CB /* WONDERWALL (OASIS).txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255D3285687D0006A14CB /* WONDERWALL (OASIS).txt */; };
+		551256392856881A006A14CB /* MENNYORSZÁG TOURIST (TANKCSAPDA).txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255C4285687C0006A14CB /* MENNYORSZÁG TOURIST (TANKCSAPDA).txt */; };
+		5512563A2856881A006A14CB /* FÖLDVÁR FELÉ, FÉLÚTON (BRÓDY JÁNOS).txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255F8285687D8006A14CB /* FÖLDVÁR FELÉ, FÉLÚTON (BRÓDY JÁNOS).txt */; };
+		5512563B2856881A006A14CB /* A PÁPA ÚRI MÓDON ÉL.txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255EF285687D6006A14CB /* A PÁPA ÚRI MÓDON ÉL.txt */; };
+		5512563C2856881A006A14CB /* AZ ELSŐ VILLAMOS (FONOGRÁF).txt in Resources */ = {isa = PBXBuildFile; fileRef = 5512561D285687DF006A14CB /* AZ ELSŐ VILLAMOS (FONOGRÁF).txt */; };
+		5512563D2856881A006A14CB /* HA ÉN SZÉL LEHETNÉK (OMEGA).txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255F4285687D7006A14CB /* HA ÉN SZÉL LEHETNÉK (OMEGA).txt */; };
+		5512563E2856881A006A14CB /* HEY JUDE (BEATLES).txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255CB285687C3006A14CB /* HEY JUDE (BEATLES).txt */; };
+		5512563F2856881A006A14CB /* NEM VAGYOK ÉN....txt in Resources */ = {isa = PBXBuildFile; fileRef = 55125601285687D9006A14CB /* NEM VAGYOK ÉN....txt */; };
+		551256402856881A006A14CB /* ERDŐ, ERDŐ, ERDŐ.txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255BF285687BF006A14CB /* ERDŐ, ERDŐ, ERDŐ.txt */; };
+		551256412856881A006A14CB /* CUP SONG.txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255B6285687BD006A14CB /* CUP SONG.txt */; };
+		551256422856881A006A14CB /* CSAVARD FEL A SZŐNYEGET (HUNGÁRIA).txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255BB285687BE006A14CB /* CSAVARD FEL A SZŐNYEGET (HUNGÁRIA).txt */; };
+		551256432856881A006A14CB /* ELIZABETH (KFT).txt in Resources */ = {isa = PBXBuildFile; fileRef = 55125609285687DB006A14CB /* ELIZABETH (KFT).txt */; };
+		551256442856881A006A14CB /* VALAMI AMERIKA (BONBON).txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255CC285687C3006A14CB /* VALAMI AMERIKA (BONBON).txt */; };
+		551256452856881A006A14CB /* SZEGÉNY LEGÉNY VAGYOK ÉN.txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255ED285687D6006A14CB /* SZEGÉNY LEGÉNY VAGYOK ÉN.txt */; };
+		551256462856881A006A14CB /* CSÖNDED VAGYOK (CSEH TAMÁS).txt in Resources */ = {isa = PBXBuildFile; fileRef = 5512560A285687DB006A14CB /* CSÖNDED VAGYOK (CSEH TAMÁS).txt */; };
+		551256472856881A006A14CB /* HEJ, VARGÁNÉ KÁPOSZTÁT FŐZ.txt in Resources */ = {isa = PBXBuildFile; fileRef = 55125614285687DD006A14CB /* HEJ, VARGÁNÉ KÁPOSZTÁT FŐZ.txt */; };
+		551256482856881A006A14CB /* PANCSOLÓ KISLEÁNY (BEATRICE).txt in Resources */ = {isa = PBXBuildFile; fileRef = 55125623285687E1006A14CB /* PANCSOLÓ KISLEÁNY (BEATRICE).txt */; };
+		551256492856881A006A14CB /* YESTERDAY (BEATLES).txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255FE285687D9006A14CB /* YESTERDAY (BEATLES).txt */; };
+		5512564A2856881A006A14CB /* KÖZELI HELYEKEN (BIKINI).txt in Resources */ = {isa = PBXBuildFile; fileRef = 55125607285687DA006A14CB /* KÖZELI HELYEKEN (BIKINI).txt */; };
+		5512564B2856881A006A14CB /* SZÁZ FORINTNAK ÖTVEN A FELE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255EB285687D5006A14CB /* SZÁZ FORINTNAK ÖTVEN A FELE.txt */; };
+		5512564C2856881A006A14CB /* HEJ DUNÁRÓL FÚJ A SZÉL.txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255D7285687D1006A14CB /* HEJ DUNÁRÓL FÚJ A SZÉL.txt */; };
+		5512564D2856881A006A14CB /* MINDEN EMBER EMBER.txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255F6285687D7006A14CB /* MINDEN EMBER EMBER.txt */; };
+		5512564E2856881A006A14CB /* 2016B GÓLYAHIMNUSZ.txt in Resources */ = {isa = PBXBuildFile; fileRef = 55125622285687E1006A14CB /* 2016B GÓLYAHIMNUSZ.txt */; };
+		5512564F2856881A006A14CB /* FEKETE TENGEREN.txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255C6285687C0006A14CB /* FEKETE TENGEREN.txt */; };
+		551256502856881A006A14CB /* ISTENNEK MINDENRŐL (FAZ).txt in Resources */ = {isa = PBXBuildFile; fileRef = 55125626285687E2006A14CB /* ISTENNEK MINDENRŐL (FAZ).txt */; };
+		551256512856881A006A14CB /* PRÓBÁLJ MEG LAZÍTANI! (HOFI GÉZA).txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255B2285687BC006A14CB /* PRÓBÁLJ MEG LAZÍTANI! (HOFI GÉZA).txt */; };
+		551256522856881A006A14CB /* ILYENEK VOLTUNK (ÁKOS).txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255D2285687D0006A14CB /* ILYENEK VOLTUNK (ÁKOS).txt */; };
+		551256532856881A006A14CB /* SCARBORUGH FAIR (SIMON & GARFUNKEL).txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255C9285687C2006A14CB /* SCARBORUGH FAIR (SIMON & GARFUNKEL).txt */; };
+		551256542856881A006A14CB /* KICSIT SZOMORKÁS (KISPÁL ÉS A BORZ).txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255B1285687BC006A14CB /* KICSIT SZOMORKÁS (KISPÁL ÉS A BORZ).txt */; };
+		551256552856881A006A14CB /* LEHETEK ÉN IS… (VAD FRUTTIK).txt in Resources */ = {isa = PBXBuildFile; fileRef = 5512561E285687E0006A14CB /* LEHETEK ÉN IS… (VAD FRUTTIK).txt */; };
+		551256562856881A006A14CB /* WAKA WAKA.txt in Resources */ = {isa = PBXBuildFile; fileRef = 55125602285687DA006A14CB /* WAKA WAKA.txt */; };
+		551256572856881A006A14CB /* R1..txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255C8285687C2006A14CB /* R1..txt */; };
+		551256582856881A006A14CB /* 16 TONNA (REPUBLIC).txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255F5285687D7006A14CB /* 16 TONNA (REPUBLIC).txt */; };
+		551256592856881A006A14CB /* BARBIE-DAL (MÉHEK).txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255D5285687D1006A14CB /* BARBIE-DAL (MÉHEK).txt */; };
+		5512565A2856881A006A14CB /* KIS KECE LÁNYOM.txt in Resources */ = {isa = PBXBuildFile; fileRef = 55125627285687E2006A14CB /* KIS KECE LÁNYOM.txt */; };
+		5512565B2856881A006A14CB /* HEJ, HALÁSZOK, HALÁSZOK.txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255FF285687D9006A14CB /* HEJ, HALÁSZOK, HALÁSZOK.txt */; };
+		5512565C2856881A006A14CB /* JÓL VAN DOLGA....txt in Resources */ = {isa = PBXBuildFile; fileRef = 55125628285687E2006A14CB /* JÓL VAN DOLGA....txt */; };
+		5512565D2856881A006A14CB /* A CSITÁRI HEGYEK ALATT.txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255C0285687BF006A14CB /* A CSITÁRI HEGYEK ALATT.txt */; };
+		5512565E2856881A006A14CB /* HIPERKARMA (HIPERKARMA).txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255F2285687D7006A14CB /* HIPERKARMA (HIPERKARMA).txt */; };
+		5512565F2856881A006A14CB /* KERTÉSZ LESZEK (KONCZ ZSUZSA).txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255F0285687D6006A14CB /* KERTÉSZ LESZEK (KONCZ ZSUZSA).txt */; };
+		551256602856881A006A14CB /* NEKED ÍROM A DALT (LGT).txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255F7285687D8006A14CB /* NEKED ÍROM A DALT (LGT).txt */; };
+		551256612856881A006A14CB /* MOST MÚLIK PONTOSAN (QUIMBY).txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255F3285687D7006A14CB /* MOST MÚLIK PONTOSAN (QUIMBY).txt */; };
+		551256622856881A006A14CB /* GÁBOR ÁRON RÉZÁGYÚJA.txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255E1285687D3006A14CB /* GÁBOR ÁRON RÉZÁGYÚJA.txt */; };
+		551256632856881A006A14CB /* CSILLAG VAGY FECSKE (KISPÁL ÉS A BORZ).txt in Resources */ = {isa = PBXBuildFile; fileRef = 5512560D285687DB006A14CB /* CSILLAG VAGY FECSKE (KISPÁL ÉS A BORZ).txt */; };
+		551256642856881A006A14CB /* FELMÁSZOTT A NYÚL A FÁRA.txt in Resources */ = {isa = PBXBuildFile; fileRef = 55125606285687DA006A14CB /* FELMÁSZOTT A NYÚL A FÁRA.txt */; };
+		551256652856881A006A14CB /* AUTÓ EGY SZERPENTINEN (QUIMBY).txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255DA285687D2006A14CB /* AUTÓ EGY SZERPENTINEN (QUIMBY).txt */; };
+		551256662856881A006A14CB /* MIÉRT HAGYTUK, HOGY ÍGY LEGYEN (ILLÉS).txt in Resources */ = {isa = PBXBuildFile; fileRef = 55125616285687DD006A14CB /* MIÉRT HAGYTUK, HOGY ÍGY LEGYEN (ILLÉS).txt */; };
+		551256672856881A006A14CB /* ÚGY CSINÁL MINTHA NEM TUDNÁ.txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255E7285687D4006A14CB /* ÚGY CSINÁL MINTHA NEM TUDNÁ.txt */; };
+		551256682856881A006A14CB /* KI VISZ MAJD HAZA (BIKINI).txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255D0285687D0006A14CB /* KI VISZ MAJD HAZA (BIKINI).txt */; };
+		551256692856881A006A14CB /* FANTASZTIKUS LÁNY (KFT).txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255F1285687D6006A14CB /* FANTASZTIKUS LÁNY (KFT).txt */; };
+		5512566A2856881A006A14CB /* AZ ÉJSZAKA (KALÁKA).txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255D6285687D1006A14CB /* AZ ÉJSZAKA (KALÁKA).txt */; };
+		5512566B2856881A006A14CB /* VÁGJÁL LYUKAT A KÁDBA (INTIM TORNA ILLEGÁL).txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255C1285687BF006A14CB /* VÁGJÁL LYUKAT A KÁDBA (INTIM TORNA ILLEGÁL).txt */; };
+		5512566C2856881A006A14CB /* A BÖRTÖN ABLAKÁBAN.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5512560E285687DC006A14CB /* A BÖRTÖN ABLAKÁBAN.txt */; };
+		5512566D2856881A006A14CB /* HOLLÁRI-LÁRI-LÁRI.txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255D8285687D1006A14CB /* HOLLÁRI-LÁRI-LÁRI.txt */; };
+		5512566E2856881A006A14CB /* MÁR MINÁLUNK, BABÁM.txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255E4285687D3006A14CB /* MÁR MINÁLUNK, BABÁM.txt */; };
+		5512566F2856881A006A14CB /* KOSSUTH LAJOS AZT ÜZENTE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5512560B285687DB006A14CB /* KOSSUTH LAJOS AZT ÜZENTE.txt */; };
+		551256702856881A006A14CB /* VÁRJ, MÍG FELKEL MAJD A NAP (V’MOTO-ROCK).txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255E3285687D3006A14CB /* VÁRJ, MÍG FELKEL MAJD A NAP (V’MOTO-ROCK).txt */; };
+		551256712856881A006A14CB /* ELMEGYEK, ELMEGYEK….txt in Resources */ = {isa = PBXBuildFile; fileRef = 5512560F285687DC006A14CB /* ELMEGYEK, ELMEGYEK….txt */; };
+		551256722856881A006A14CB /* FELLEGAJTÓ NYITOGATÓ.txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255FA285687D8006A14CB /* FELLEGAJTÓ NYITOGATÓ.txt */; };
+		551256732856881A006A14CB /* HONFOGLALÁS (DEMJÉN FERENC).txt in Resources */ = {isa = PBXBuildFile; fileRef = 5512560C285687DB006A14CB /* HONFOGLALÁS (DEMJÉN FERENC).txt */; };
+		551256742856881A006A14CB /* TE MAJD KÉZENFOGSZ ÉS HAZAVEZETSZ (PRESSER GÁBOR).txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255AF285687BC006A14CB /* TE MAJD KÉZENFOGSZ ÉS HAZAVEZETSZ (PRESSER GÁBOR).txt */; };
+		551256752856881A006A14CB /* LEGYETEK JÓK, HA TUDTOK (NAPOLEON BOULEVARD).txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255CD285687C3006A14CB /* LEGYETEK JÓK, HA TUDTOK (NAPOLEON BOULEVARD).txt */; };
+		551256762856881A006A14CB /* BAZSA MÁRI.txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255D4285687D1006A14CB /* BAZSA MÁRI.txt */; };
+		551256772856881A006A14CB /* ÉNEKELSZ EGY RÉGI NÓTÁT (BOJTORJÁN).txt in Resources */ = {isa = PBXBuildFile; fileRef = 55125600285687D9006A14CB /* ÉNEKELSZ EGY RÉGI NÓTÁT (BOJTORJÁN).txt */; };
+		551256782856881A006A14CB /* MÁTÉSZALKA GYÁSZBA’ VAN.txt in Resources */ = {isa = PBXBuildFile; fileRef = 55125617285687DD006A14CB /* MÁTÉSZALKA GYÁSZBA’ VAN.txt */; };
+		551256792856881A006A14CB /* TÁBORTŰZ (EMBEREK).txt in Resources */ = {isa = PBXBuildFile; fileRef = 55125619285687DE006A14CB /* TÁBORTŰZ (EMBEREK).txt */; };
+		5512567A2856881A006A14CB /* A SZÖKEVÉNY (TTB).txt in Resources */ = {isa = PBXBuildFile; fileRef = 5512562A285687E3006A14CB /* A SZÖKEVÉNY (TTB).txt */; };
+		5512567B2856881A006A14CB /* TINGLI-TANGLI (KISPÁL ÉS A BORZ).txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255DE285687D2006A14CB /* TINGLI-TANGLI (KISPÁL ÉS A BORZ).txt */; };
+		5512567C2856881A006A14CB /* TUDOD, HOGY NINCS BOCSÁNAT (KALÁKA).txt in Resources */ = {isa = PBXBuildFile; fileRef = 5512562B285687E3006A14CB /* TUDOD, HOGY NINCS BOCSÁNAT (KALÁKA).txt */; };
+		5512567D2856881A006A14CB /* AZ ÉSZ A FONTOS (ILLÉS).txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255B0285687BC006A14CB /* AZ ÉSZ A FONTOS (ILLÉS).txt */; };
+		5512567E2856881A006A14CB /* JÓ NEKEM (OCHO MACHO).txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255FC285687D9006A14CB /* JÓ NEKEM (OCHO MACHO).txt */; };
+		5512567F2856881A006A14CB /* AZ UTCÁN (ILLÉS).txt in Resources */ = {isa = PBXBuildFile; fileRef = 55125620285687E0006A14CB /* AZ UTCÁN (ILLÉS).txt */; };
+		551256802856881A006A14CB /* 67-ES ÚT (REPUBLIC).txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255D1285687D0006A14CB /* 67-ES ÚT (REPUBLIC).txt */; };
+		551256812856881A006A14CB /* MEGRAKJÁK A TÜZET.txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255B8285687BD006A14CB /* MEGRAKJÁK A TÜZET.txt */; };
+		551256822856881A006A14CB /* A JÓ LOVAS KATONÁNAK.txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255C3285687C0006A14CB /* A JÓ LOVAS KATONÁNAK.txt */; };
+		551256832856881A006A14CB /* HEY BROTHER (AVICII).txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255BA285687BE006A14CB /* HEY BROTHER (AVICII).txt */; };
+		551256842856881A006A14CB /* SZÁRAZ TÓNAK NEDVES PARTJÁN.txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255BD285687BF006A14CB /* SZÁRAZ TÓNAK NEDVES PARTJÁN.txt */; };
+		551256852856881A006A14CB /* SZELLŐ ZÚG TÁVOL.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5512561B285687DF006A14CB /* SZELLŐ ZÚG TÁVOL.txt */; };
+		551256862856881A006A14CB /* VALAHOL EGY LÁNY (KONCZ ZSUZSA).txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255BC285687BE006A14CB /* VALAHOL EGY LÁNY (KONCZ ZSUZSA).txt */; };
+		551256872856881A006A14CB /* AFRIKA (KFT).txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255EE285687D6006A14CB /* AFRIKA (KFT).txt */; };
+		551256882856881A006A14CB /* AZOK A BOLDOG SZÉP NAPOK (BEATRICE).txt in Resources */ = {isa = PBXBuildFile; fileRef = 55125621285687E1006A14CB /* AZOK A BOLDOG SZÉP NAPOK (BEATRICE).txt */; };
+		551256892856881A006A14CB /* DEBRECENBE KÉNE MENNI.txt in Resources */ = {isa = PBXBuildFile; fileRef = 55125613285687DD006A14CB /* DEBRECENBE KÉNE MENNI.txt */; };
+		5512568A2856881A006A14CB /* ÉRIK A SZŐLŐ.txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255E9285687D5006A14CB /* ÉRIK A SZŐLŐ.txt */; };
+		5512568B2856881A006A14CB /* ÉLVEZD (PUNNANY MASSIF).txt in Resources */ = {isa = PBXBuildFile; fileRef = 5512562D285687E3006A14CB /* ÉLVEZD (PUNNANY MASSIF).txt */; };
+		5512568C2856881A006A14CB /* HA ÉN RÓZSA VOLNÉK (BRÓDY JÁNOS).txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255DB285687D2006A14CB /* HA ÉN RÓZSA VOLNÉK (BRÓDY JÁNOS).txt */; };
+		5512568D2856881A006A14CB /* SOMEONE LIKE YOU (ADELE).txt in Resources */ = {isa = PBXBuildFile; fileRef = 55125624285687E2006A14CB /* SOMEONE LIKE YOU (ADELE).txt */; };
+		5512568E2856881A006A14CB /* TAVASZI SZÉL.txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255C2285687C0006A14CB /* TAVASZI SZÉL.txt */; };
+		5512568F2856881A006A14CB /* MEGKÖTÖM LOVAMAT PIROS ALMAFÁHOZ.txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255E6285687D4006A14CB /* MEGKÖTÖM LOVAMAT PIROS ALMAFÁHOZ.txt */; };
+		551256902856881A006A14CB /* EZT IS ELVISZEM MAGAMMAL… (KISTEHÉN).txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255C7285687C2006A14CB /* EZT IS ELVISZEM MAGAMMAL… (KISTEHÉN).txt */; };
+		551256912856881A006A14CB /* A KÖVETKEZŐ BUSZON (KISPÁL ÉS A BORZ).txt in Resources */ = {isa = PBXBuildFile; fileRef = 5512561A285687DE006A14CB /* A KÖVETKEZŐ BUSZON (KISPÁL ÉS A BORZ).txt */; };
+		551256922856881A006A14CB /* VIRÁGÉKNÁL ÉG A VILÁG.txt in Resources */ = {isa = PBXBuildFile; fileRef = 55125604285687DA006A14CB /* VIRÁGÉKNÁL ÉG A VILÁG.txt */; };
+		551256932856881A006A14CB /* SZERETNI VALAKIT VALAMIÉRT (REPUBLIC).txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255CE285687C4006A14CB /* SZERETNI VALAKIT VALAMIÉRT (REPUBLIC).txt */; };
+		551256942856881A006A14CB /* SOUND OF SILENCE (SIMON AND GARLFUNKEL).txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255EA285687D5006A14CB /* SOUND OF SILENCE (SIMON AND GARLFUNKEL).txt */; };
+		551256952856881A006A14CB /* MICIMACKÓ (KONCZ ZSUZSA).txt in Resources */ = {isa = PBXBuildFile; fileRef = 55125611285687DC006A14CB /* MICIMACKÓ (KONCZ ZSUZSA).txt */; };
+		551256962856881A006A14CB /* MESE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255BE285687BF006A14CB /* MESE.txt */; };
+		551256972856881A006A14CB /* KEDVESEM (BYEALEX).txt in Resources */ = {isa = PBXBuildFile; fileRef = 55125625285687E2006A14CB /* KEDVESEM (BYEALEX).txt */; };
+		551256982856881A006A14CB /* ALAIN DELON SZERETNÉK LENNI.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5512561C285687DF006A14CB /* ALAIN DELON SZERETNÉK LENNI.txt */; };
+		551256992856881A006A14CB /* ÖRÖKKÉ TART (TANKCSAPDA).txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255FB285687D8006A14CB /* ÖRÖKKÉ TART (TANKCSAPDA).txt */; };
+		5512569A2856881A006A14CB /* EURÓPA (VARGA MIKLÓS).txt in Resources */ = {isa = PBXBuildFile; fileRef = 55125605285687DA006A14CB /* EURÓPA (VARGA MIKLÓS).txt */; };
+		5512569B2856881A006A14CB /* TIZENHÁROM EZÜSTPITYKE.txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255B4285687BD006A14CB /* TIZENHÁROM EZÜSTPITYKE.txt */; };
+		5512569C2856881A006A14CB /* HULL A SZILVA A FÁRÓL.txt in Resources */ = {isa = PBXBuildFile; fileRef = 55125618285687DD006A14CB /* HULL A SZILVA A FÁRÓL.txt */; };
+		5512569D2856881A006A14CB /* HOSSZÚ, VÉKONY A PIPASZÁR.txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255B9285687BE006A14CB /* HOSSZÚ, VÉKONY A PIPASZÁR.txt */; };
+		5512569E2856881A006A14CB /* ÁLTAL MENNÉK A TISZÁN.txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255CA285687C3006A14CB /* ÁLTAL MENNÉK A TISZÁN.txt */; };
+		5512569F2856881A006A14CB /* KAKTUSZ PEDRÓ.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5512561F285687E0006A14CB /* KAKTUSZ PEDRÓ.txt */; };
+		551256A02856881A006A14CB /* MIELŐTT ELMEGYEK (BIKINI).txt in Resources */ = {isa = PBXBuildFile; fileRef = 55125603285687DA006A14CB /* MIELŐTT ELMEGYEK (BIKINI).txt */; };
+		551256A12856881A006A14CB /* ÚJRA ITT VAN (ILLÉS).txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255CF285687C4006A14CB /* ÚJRA ITT VAN (ILLÉS).txt */; };
+		551256A22856881A006A14CB /* I'M YOURS (JASON MRAZ).txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255DF285687D3006A14CB /* I'M YOURS (JASON MRAZ).txt */; };
+		551256A32856881A006A14CB /* MÁRTI DALA (ANNA AND THE BARBIES).txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255B7285687BD006A14CB /* MÁRTI DALA (ANNA AND THE BARBIES).txt */; };
+		551256A42856881A006A14CB /* KÉGLIDAL (ILLÉS).txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255E2285687D3006A14CB /* KÉGLIDAL (ILLÉS).txt */; };
+		551256A52856881A006A14CB /* SÁRIKA (ILLÉS).txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255C5285687C0006A14CB /* SÁRIKA (ILLÉS).txt */; };
+		551256A62856881A006A14CB /* POGÁCSA BLUES.txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255F9285687D8006A14CB /* POGÁCSA BLUES.txt */; };
+		551256A72856881A006A14CB /* BIKA.txt in Resources */ = {isa = PBXBuildFile; fileRef = 55125629285687E2006A14CB /* BIKA.txt */; };
+		551256A82856881A006A14CB /* KACSINTS RÁM! (SZEKÉR BAND &TTB).txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255E5285687D4006A14CB /* KACSINTS RÁM! (SZEKÉR BAND &TTB).txt */; };
+		551256A92856881A006A14CB /* MÉG AZT MONDJÁK.txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255E8285687D5006A14CB /* MÉG AZT MONDJÁK.txt */; };
+		551256AA2856881A006A14CB /* VOLT NEKEM EGY KECSKÉM.txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255E0285687D3006A14CB /* VOLT NEKEM EGY KECSKÉM.txt */; };
+		551256AB2856881A006A14CB /* REZERVÁTUM (TTB).txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255B3285687BD006A14CB /* REZERVÁTUM (TTB).txt */; };
+		551256AC2856881A006A14CB /* OOO.txt in Resources */ = {isa = PBXBuildFile; fileRef = 551255D9285687D1006A14CB /* OOO.txt */; };
+		551256AD2856881A006A14CB /* ÉLJ VELE BOLDOGAN (ZÁVODI GÁBOR).txt in Resources */ = {isa = PBXBuildFile; fileRef = 55125615285687DD006A14CB /* ÉLJ VELE BOLDOGAN (ZÁVODI GÁBOR).txt */; };
+		551256AE2856881A006A14CB /* SÜT A NAP (EMBEREK).txt in Resources */ = {isa = PBXBuildFile; fileRef = 55125612285687DC006A14CB /* SÜT A NAP (EMBEREK).txt */; };
 		55149F522850C361007BECEF /* EjjeliPortyaAdminView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55149F512850C361007BECEF /* EjjeliPortyaAdminView.swift */; };
 		55149F542850C380007BECEF /* EjjeliPortyaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55149F532850C380007BECEF /* EjjeliPortyaView.swift */; };
 		55149F562850CC7D007BECEF /* EjjeliPortyaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55149F552850CC7D007BECEF /* EjjeliPortyaViewModel.swift */; };
@@ -53,6 +183,7 @@
 		55B0E6F927EC54C40058A5B9 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 55B0E6F827EC54C40058A5B9 /* FirebaseStorage */; };
 		55B0E6FB27EC54C50058A5B9 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 55B0E6FA27EC54C50058A5B9 /* FirebaseStorageCombine-Community */; };
 		55B0E6FD27EC54C50058A5B9 /* FirebaseStorageSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 55B0E6FC27EC54C50058A5B9 /* FirebaseStorageSwift-Beta */; };
+		55B3954D2856B2630044389E /* SpecificSongView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B3954C2856B2630044389E /* SpecificSongView.swift */; };
 		55B40DCB27F3125B00B5B065 /* TextFieldInputPrediction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B40DCA27F3125B00B5B065 /* TextFieldInputPrediction.swift */; };
 		55E37E2827F79480002ED658 /* AddScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E37E2727F79480002ED658 /* AddScoreView.swift */; };
 		55E8002F27F07FCC007181E0 /* RegistrationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E8002E27F07FCC007181E0 /* RegistrationService.swift */; };
@@ -66,6 +197,136 @@
 
 /* Begin PBXFileReference section */
 		5510518A281D5F5900F31076 /* EditScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditScoreView.swift; sourceTree = "<group>"; };
+		5512548E285661B4006A14CB /* SongsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongsView.swift; sourceTree = "<group>"; };
+		55125490285681E1006A14CB /* SongsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongsViewModel.swift; sourceTree = "<group>"; };
+		551255AF285687BC006A14CB /* TE MAJD KÉZENFOGSZ ÉS HAZAVEZETSZ (PRESSER GÁBOR).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "TE MAJD KÉZENFOGSZ ÉS HAZAVEZETSZ (PRESSER GÁBOR).txt"; sourceTree = "<group>"; };
+		551255B0285687BC006A14CB /* AZ ÉSZ A FONTOS (ILLÉS).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "AZ ÉSZ A FONTOS (ILLÉS).txt"; sourceTree = "<group>"; };
+		551255B1285687BC006A14CB /* KICSIT SZOMORKÁS (KISPÁL ÉS A BORZ).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "KICSIT SZOMORKÁS (KISPÁL ÉS A BORZ).txt"; sourceTree = "<group>"; };
+		551255B2285687BC006A14CB /* PRÓBÁLJ MEG LAZÍTANI! (HOFI GÉZA).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "PRÓBÁLJ MEG LAZÍTANI! (HOFI GÉZA).txt"; sourceTree = "<group>"; };
+		551255B3285687BD006A14CB /* REZERVÁTUM (TTB).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "REZERVÁTUM (TTB).txt"; sourceTree = "<group>"; };
+		551255B4285687BD006A14CB /* TIZENHÁROM EZÜSTPITYKE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "TIZENHÁROM EZÜSTPITYKE.txt"; sourceTree = "<group>"; };
+		551255B5285687BD006A14CB /* 8 ÓRA MUNKA (BEATRICE).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "8 ÓRA MUNKA (BEATRICE).txt"; sourceTree = "<group>"; };
+		551255B6285687BD006A14CB /* CUP SONG.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "CUP SONG.txt"; sourceTree = "<group>"; };
+		551255B7285687BD006A14CB /* MÁRTI DALA (ANNA AND THE BARBIES).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "MÁRTI DALA (ANNA AND THE BARBIES).txt"; sourceTree = "<group>"; };
+		551255B8285687BD006A14CB /* MEGRAKJÁK A TÜZET.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "MEGRAKJÁK A TÜZET.txt"; sourceTree = "<group>"; };
+		551255B9285687BE006A14CB /* HOSSZÚ, VÉKONY A PIPASZÁR.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "HOSSZÚ, VÉKONY A PIPASZÁR.txt"; sourceTree = "<group>"; };
+		551255BA285687BE006A14CB /* HEY BROTHER (AVICII).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "HEY BROTHER (AVICII).txt"; sourceTree = "<group>"; };
+		551255BB285687BE006A14CB /* CSAVARD FEL A SZŐNYEGET (HUNGÁRIA).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "CSAVARD FEL A SZŐNYEGET (HUNGÁRIA).txt"; sourceTree = "<group>"; };
+		551255BC285687BE006A14CB /* VALAHOL EGY LÁNY (KONCZ ZSUZSA).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "VALAHOL EGY LÁNY (KONCZ ZSUZSA).txt"; sourceTree = "<group>"; };
+		551255BD285687BF006A14CB /* SZÁRAZ TÓNAK NEDVES PARTJÁN.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "SZÁRAZ TÓNAK NEDVES PARTJÁN.txt"; sourceTree = "<group>"; };
+		551255BE285687BF006A14CB /* MESE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = MESE.txt; sourceTree = "<group>"; };
+		551255BF285687BF006A14CB /* ERDŐ, ERDŐ, ERDŐ.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "ERDŐ, ERDŐ, ERDŐ.txt"; sourceTree = "<group>"; };
+		551255C0285687BF006A14CB /* A CSITÁRI HEGYEK ALATT.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "A CSITÁRI HEGYEK ALATT.txt"; sourceTree = "<group>"; };
+		551255C1285687BF006A14CB /* VÁGJÁL LYUKAT A KÁDBA (INTIM TORNA ILLEGÁL).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "VÁGJÁL LYUKAT A KÁDBA (INTIM TORNA ILLEGÁL).txt"; sourceTree = "<group>"; };
+		551255C2285687C0006A14CB /* TAVASZI SZÉL.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "TAVASZI SZÉL.txt"; sourceTree = "<group>"; };
+		551255C3285687C0006A14CB /* A JÓ LOVAS KATONÁNAK.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "A JÓ LOVAS KATONÁNAK.txt"; sourceTree = "<group>"; };
+		551255C4285687C0006A14CB /* MENNYORSZÁG TOURIST (TANKCSAPDA).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "MENNYORSZÁG TOURIST (TANKCSAPDA).txt"; sourceTree = "<group>"; };
+		551255C5285687C0006A14CB /* SÁRIKA (ILLÉS).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "SÁRIKA (ILLÉS).txt"; sourceTree = "<group>"; };
+		551255C6285687C0006A14CB /* FEKETE TENGEREN.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "FEKETE TENGEREN.txt"; sourceTree = "<group>"; };
+		551255C7285687C2006A14CB /* EZT IS ELVISZEM MAGAMMAL… (KISTEHÉN).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "EZT IS ELVISZEM MAGAMMAL… (KISTEHÉN).txt"; sourceTree = "<group>"; };
+		551255C8285687C2006A14CB /* R1..txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = R1..txt; sourceTree = "<group>"; };
+		551255C9285687C2006A14CB /* SCARBORUGH FAIR (SIMON & GARFUNKEL).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "SCARBORUGH FAIR (SIMON & GARFUNKEL).txt"; sourceTree = "<group>"; };
+		551255CA285687C3006A14CB /* ÁLTAL MENNÉK A TISZÁN.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "ÁLTAL MENNÉK A TISZÁN.txt"; sourceTree = "<group>"; };
+		551255CB285687C3006A14CB /* HEY JUDE (BEATLES).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "HEY JUDE (BEATLES).txt"; sourceTree = "<group>"; };
+		551255CC285687C3006A14CB /* VALAMI AMERIKA (BONBON).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "VALAMI AMERIKA (BONBON).txt"; sourceTree = "<group>"; };
+		551255CD285687C3006A14CB /* LEGYETEK JÓK, HA TUDTOK (NAPOLEON BOULEVARD).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "LEGYETEK JÓK, HA TUDTOK (NAPOLEON BOULEVARD).txt"; sourceTree = "<group>"; };
+		551255CE285687C4006A14CB /* SZERETNI VALAKIT VALAMIÉRT (REPUBLIC).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "SZERETNI VALAKIT VALAMIÉRT (REPUBLIC).txt"; sourceTree = "<group>"; };
+		551255CF285687C4006A14CB /* ÚJRA ITT VAN (ILLÉS).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "ÚJRA ITT VAN (ILLÉS).txt"; sourceTree = "<group>"; };
+		551255D0285687D0006A14CB /* KI VISZ MAJD HAZA (BIKINI).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "KI VISZ MAJD HAZA (BIKINI).txt"; sourceTree = "<group>"; };
+		551255D1285687D0006A14CB /* 67-ES ÚT (REPUBLIC).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "67-ES ÚT (REPUBLIC).txt"; sourceTree = "<group>"; };
+		551255D2285687D0006A14CB /* ILYENEK VOLTUNK (ÁKOS).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "ILYENEK VOLTUNK (ÁKOS).txt"; sourceTree = "<group>"; };
+		551255D3285687D0006A14CB /* WONDERWALL (OASIS).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "WONDERWALL (OASIS).txt"; sourceTree = "<group>"; };
+		551255D4285687D1006A14CB /* BAZSA MÁRI.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "BAZSA MÁRI.txt"; sourceTree = "<group>"; };
+		551255D5285687D1006A14CB /* BARBIE-DAL (MÉHEK).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "BARBIE-DAL (MÉHEK).txt"; sourceTree = "<group>"; };
+		551255D6285687D1006A14CB /* AZ ÉJSZAKA (KALÁKA).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "AZ ÉJSZAKA (KALÁKA).txt"; sourceTree = "<group>"; };
+		551255D7285687D1006A14CB /* HEJ DUNÁRÓL FÚJ A SZÉL.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "HEJ DUNÁRÓL FÚJ A SZÉL.txt"; sourceTree = "<group>"; };
+		551255D8285687D1006A14CB /* HOLLÁRI-LÁRI-LÁRI.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "HOLLÁRI-LÁRI-LÁRI.txt"; sourceTree = "<group>"; };
+		551255D9285687D1006A14CB /* OOO.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = OOO.txt; sourceTree = "<group>"; };
+		551255DA285687D2006A14CB /* AUTÓ EGY SZERPENTINEN (QUIMBY).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "AUTÓ EGY SZERPENTINEN (QUIMBY).txt"; sourceTree = "<group>"; };
+		551255DB285687D2006A14CB /* HA ÉN RÓZSA VOLNÉK (BRÓDY JÁNOS).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "HA ÉN RÓZSA VOLNÉK (BRÓDY JÁNOS).txt"; sourceTree = "<group>"; };
+		551255DC285687D2006A14CB /* PETRÓLEUM LÁMPA (OMEGA).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "PETRÓLEUM LÁMPA (OMEGA).txt"; sourceTree = "<group>"; };
+		551255DD285687D2006A14CB /* HELLÓ-BELLÓ (PILLANATMŰVEK).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "HELLÓ-BELLÓ (PILLANATMŰVEK).txt"; sourceTree = "<group>"; };
+		551255DE285687D2006A14CB /* TINGLI-TANGLI (KISPÁL ÉS A BORZ).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "TINGLI-TANGLI (KISPÁL ÉS A BORZ).txt"; sourceTree = "<group>"; };
+		551255DF285687D3006A14CB /* I'M YOURS (JASON MRAZ).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "I'M YOURS (JASON MRAZ).txt"; sourceTree = "<group>"; };
+		551255E0285687D3006A14CB /* VOLT NEKEM EGY KECSKÉM.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "VOLT NEKEM EGY KECSKÉM.txt"; sourceTree = "<group>"; };
+		551255E1285687D3006A14CB /* GÁBOR ÁRON RÉZÁGYÚJA.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "GÁBOR ÁRON RÉZÁGYÚJA.txt"; sourceTree = "<group>"; };
+		551255E2285687D3006A14CB /* KÉGLIDAL (ILLÉS).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "KÉGLIDAL (ILLÉS).txt"; sourceTree = "<group>"; };
+		551255E3285687D3006A14CB /* VÁRJ, MÍG FELKEL MAJD A NAP (V’MOTO-ROCK).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "VÁRJ, MÍG FELKEL MAJD A NAP (V’MOTO-ROCK).txt"; sourceTree = "<group>"; };
+		551255E4285687D3006A14CB /* MÁR MINÁLUNK, BABÁM.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "MÁR MINÁLUNK, BABÁM.txt"; sourceTree = "<group>"; };
+		551255E5285687D4006A14CB /* KACSINTS RÁM! (SZEKÉR BAND &TTB).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "KACSINTS RÁM! (SZEKÉR BAND &TTB).txt"; sourceTree = "<group>"; };
+		551255E6285687D4006A14CB /* MEGKÖTÖM LOVAMAT PIROS ALMAFÁHOZ.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "MEGKÖTÖM LOVAMAT PIROS ALMAFÁHOZ.txt"; sourceTree = "<group>"; };
+		551255E7285687D4006A14CB /* ÚGY CSINÁL MINTHA NEM TUDNÁ.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "ÚGY CSINÁL MINTHA NEM TUDNÁ.txt"; sourceTree = "<group>"; };
+		551255E8285687D5006A14CB /* MÉG AZT MONDJÁK.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "MÉG AZT MONDJÁK.txt"; sourceTree = "<group>"; };
+		551255E9285687D5006A14CB /* ÉRIK A SZŐLŐ.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "ÉRIK A SZŐLŐ.txt"; sourceTree = "<group>"; };
+		551255EA285687D5006A14CB /* SOUND OF SILENCE (SIMON AND GARLFUNKEL).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "SOUND OF SILENCE (SIMON AND GARLFUNKEL).txt"; sourceTree = "<group>"; };
+		551255EB285687D5006A14CB /* SZÁZ FORINTNAK ÖTVEN A FELE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "SZÁZ FORINTNAK ÖTVEN A FELE.txt"; sourceTree = "<group>"; };
+		551255EC285687D6006A14CB /* FALU VÉGÉN KURTA KOCSMA (PETŐFI SÁNDOR, KISS BARNA).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "FALU VÉGÉN KURTA KOCSMA (PETŐFI SÁNDOR, KISS BARNA).txt"; sourceTree = "<group>"; };
+		551255ED285687D6006A14CB /* SZEGÉNY LEGÉNY VAGYOK ÉN.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "SZEGÉNY LEGÉNY VAGYOK ÉN.txt"; sourceTree = "<group>"; };
+		551255EE285687D6006A14CB /* AFRIKA (KFT).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "AFRIKA (KFT).txt"; sourceTree = "<group>"; };
+		551255EF285687D6006A14CB /* A PÁPA ÚRI MÓDON ÉL.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "A PÁPA ÚRI MÓDON ÉL.txt"; sourceTree = "<group>"; };
+		551255F0285687D6006A14CB /* KERTÉSZ LESZEK (KONCZ ZSUZSA).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "KERTÉSZ LESZEK (KONCZ ZSUZSA).txt"; sourceTree = "<group>"; };
+		551255F1285687D6006A14CB /* FANTASZTIKUS LÁNY (KFT).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "FANTASZTIKUS LÁNY (KFT).txt"; sourceTree = "<group>"; };
+		551255F2285687D7006A14CB /* HIPERKARMA (HIPERKARMA).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "HIPERKARMA (HIPERKARMA).txt"; sourceTree = "<group>"; };
+		551255F3285687D7006A14CB /* MOST MÚLIK PONTOSAN (QUIMBY).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "MOST MÚLIK PONTOSAN (QUIMBY).txt"; sourceTree = "<group>"; };
+		551255F4285687D7006A14CB /* HA ÉN SZÉL LEHETNÉK (OMEGA).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "HA ÉN SZÉL LEHETNÉK (OMEGA).txt"; sourceTree = "<group>"; };
+		551255F5285687D7006A14CB /* 16 TONNA (REPUBLIC).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "16 TONNA (REPUBLIC).txt"; sourceTree = "<group>"; };
+		551255F6285687D7006A14CB /* MINDEN EMBER EMBER.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "MINDEN EMBER EMBER.txt"; sourceTree = "<group>"; };
+		551255F7285687D8006A14CB /* NEKED ÍROM A DALT (LGT).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "NEKED ÍROM A DALT (LGT).txt"; sourceTree = "<group>"; };
+		551255F8285687D8006A14CB /* FÖLDVÁR FELÉ, FÉLÚTON (BRÓDY JÁNOS).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "FÖLDVÁR FELÉ, FÉLÚTON (BRÓDY JÁNOS).txt"; sourceTree = "<group>"; };
+		551255F9285687D8006A14CB /* POGÁCSA BLUES.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "POGÁCSA BLUES.txt"; sourceTree = "<group>"; };
+		551255FA285687D8006A14CB /* FELLEGAJTÓ NYITOGATÓ.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "FELLEGAJTÓ NYITOGATÓ.txt"; sourceTree = "<group>"; };
+		551255FB285687D8006A14CB /* ÖRÖKKÉ TART (TANKCSAPDA).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "ÖRÖKKÉ TART (TANKCSAPDA).txt"; sourceTree = "<group>"; };
+		551255FC285687D9006A14CB /* JÓ NEKEM (OCHO MACHO).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "JÓ NEKEM (OCHO MACHO).txt"; sourceTree = "<group>"; };
+		551255FD285687D9006A14CB /* RÁNK SÜT A NAP.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "RÁNK SÜT A NAP.txt"; sourceTree = "<group>"; };
+		551255FE285687D9006A14CB /* YESTERDAY (BEATLES).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "YESTERDAY (BEATLES).txt"; sourceTree = "<group>"; };
+		551255FF285687D9006A14CB /* HEJ, HALÁSZOK, HALÁSZOK.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "HEJ, HALÁSZOK, HALÁSZOK.txt"; sourceTree = "<group>"; };
+		55125600285687D9006A14CB /* ÉNEKELSZ EGY RÉGI NÓTÁT (BOJTORJÁN).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "ÉNEKELSZ EGY RÉGI NÓTÁT (BOJTORJÁN).txt"; sourceTree = "<group>"; };
+		55125601285687D9006A14CB /* NEM VAGYOK ÉN....txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "NEM VAGYOK ÉN....txt"; sourceTree = "<group>"; };
+		55125602285687DA006A14CB /* WAKA WAKA.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "WAKA WAKA.txt"; sourceTree = "<group>"; };
+		55125603285687DA006A14CB /* MIELŐTT ELMEGYEK (BIKINI).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "MIELŐTT ELMEGYEK (BIKINI).txt"; sourceTree = "<group>"; };
+		55125604285687DA006A14CB /* VIRÁGÉKNÁL ÉG A VILÁG.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "VIRÁGÉKNÁL ÉG A VILÁG.txt"; sourceTree = "<group>"; };
+		55125605285687DA006A14CB /* EURÓPA (VARGA MIKLÓS).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "EURÓPA (VARGA MIKLÓS).txt"; sourceTree = "<group>"; };
+		55125606285687DA006A14CB /* FELMÁSZOTT A NYÚL A FÁRA.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "FELMÁSZOTT A NYÚL A FÁRA.txt"; sourceTree = "<group>"; };
+		55125607285687DA006A14CB /* KÖZELI HELYEKEN (BIKINI).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "KÖZELI HELYEKEN (BIKINI).txt"; sourceTree = "<group>"; };
+		55125608285687DB006A14CB /* ELINDULTAM SZÉP HAZÁMBUL….txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "ELINDULTAM SZÉP HAZÁMBUL….txt"; sourceTree = "<group>"; };
+		55125609285687DB006A14CB /* ELIZABETH (KFT).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "ELIZABETH (KFT).txt"; sourceTree = "<group>"; };
+		5512560A285687DB006A14CB /* CSÖNDED VAGYOK (CSEH TAMÁS).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "CSÖNDED VAGYOK (CSEH TAMÁS).txt"; sourceTree = "<group>"; };
+		5512560B285687DB006A14CB /* KOSSUTH LAJOS AZT ÜZENTE.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "KOSSUTH LAJOS AZT ÜZENTE.txt"; sourceTree = "<group>"; };
+		5512560C285687DB006A14CB /* HONFOGLALÁS (DEMJÉN FERENC).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "HONFOGLALÁS (DEMJÉN FERENC).txt"; sourceTree = "<group>"; };
+		5512560D285687DB006A14CB /* CSILLAG VAGY FECSKE (KISPÁL ÉS A BORZ).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "CSILLAG VAGY FECSKE (KISPÁL ÉS A BORZ).txt"; sourceTree = "<group>"; };
+		5512560E285687DC006A14CB /* A BÖRTÖN ABLAKÁBAN.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "A BÖRTÖN ABLAKÁBAN.txt"; sourceTree = "<group>"; };
+		5512560F285687DC006A14CB /* ELMEGYEK, ELMEGYEK….txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "ELMEGYEK, ELMEGYEK….txt"; sourceTree = "<group>"; };
+		55125610285687DC006A14CB /* VALAMI VÉGET ÉRT (ÁKOS).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "VALAMI VÉGET ÉRT (ÁKOS).txt"; sourceTree = "<group>"; };
+		55125611285687DC006A14CB /* MICIMACKÓ (KONCZ ZSUZSA).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "MICIMACKÓ (KONCZ ZSUZSA).txt"; sourceTree = "<group>"; };
+		55125612285687DC006A14CB /* SÜT A NAP (EMBEREK).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "SÜT A NAP (EMBEREK).txt"; sourceTree = "<group>"; };
+		55125613285687DD006A14CB /* DEBRECENBE KÉNE MENNI.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "DEBRECENBE KÉNE MENNI.txt"; sourceTree = "<group>"; };
+		55125614285687DD006A14CB /* HEJ, VARGÁNÉ KÁPOSZTÁT FŐZ.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "HEJ, VARGÁNÉ KÁPOSZTÁT FŐZ.txt"; sourceTree = "<group>"; };
+		55125615285687DD006A14CB /* ÉLJ VELE BOLDOGAN (ZÁVODI GÁBOR).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "ÉLJ VELE BOLDOGAN (ZÁVODI GÁBOR).txt"; sourceTree = "<group>"; };
+		55125616285687DD006A14CB /* MIÉRT HAGYTUK, HOGY ÍGY LEGYEN (ILLÉS).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "MIÉRT HAGYTUK, HOGY ÍGY LEGYEN (ILLÉS).txt"; sourceTree = "<group>"; };
+		55125617285687DD006A14CB /* MÁTÉSZALKA GYÁSZBA’ VAN.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "MÁTÉSZALKA GYÁSZBA’ VAN.txt"; sourceTree = "<group>"; };
+		55125618285687DD006A14CB /* HULL A SZILVA A FÁRÓL.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "HULL A SZILVA A FÁRÓL.txt"; sourceTree = "<group>"; };
+		55125619285687DE006A14CB /* TÁBORTŰZ (EMBEREK).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "TÁBORTŰZ (EMBEREK).txt"; sourceTree = "<group>"; };
+		5512561A285687DE006A14CB /* A KÖVETKEZŐ BUSZON (KISPÁL ÉS A BORZ).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "A KÖVETKEZŐ BUSZON (KISPÁL ÉS A BORZ).txt"; sourceTree = "<group>"; };
+		5512561B285687DF006A14CB /* SZELLŐ ZÚG TÁVOL.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "SZELLŐ ZÚG TÁVOL.txt"; sourceTree = "<group>"; };
+		5512561C285687DF006A14CB /* ALAIN DELON SZERETNÉK LENNI.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "ALAIN DELON SZERETNÉK LENNI.txt"; sourceTree = "<group>"; };
+		5512561D285687DF006A14CB /* AZ ELSŐ VILLAMOS (FONOGRÁF).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "AZ ELSŐ VILLAMOS (FONOGRÁF).txt"; sourceTree = "<group>"; };
+		5512561E285687E0006A14CB /* LEHETEK ÉN IS… (VAD FRUTTIK).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "LEHETEK ÉN IS… (VAD FRUTTIK).txt"; sourceTree = "<group>"; };
+		5512561F285687E0006A14CB /* KAKTUSZ PEDRÓ.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "KAKTUSZ PEDRÓ.txt"; sourceTree = "<group>"; };
+		55125620285687E0006A14CB /* AZ UTCÁN (ILLÉS).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "AZ UTCÁN (ILLÉS).txt"; sourceTree = "<group>"; };
+		55125621285687E1006A14CB /* AZOK A BOLDOG SZÉP NAPOK (BEATRICE).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "AZOK A BOLDOG SZÉP NAPOK (BEATRICE).txt"; sourceTree = "<group>"; };
+		55125622285687E1006A14CB /* 2016B GÓLYAHIMNUSZ.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "2016B GÓLYAHIMNUSZ.txt"; sourceTree = "<group>"; };
+		55125623285687E1006A14CB /* PANCSOLÓ KISLEÁNY (BEATRICE).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "PANCSOLÓ KISLEÁNY (BEATRICE).txt"; sourceTree = "<group>"; };
+		55125624285687E2006A14CB /* SOMEONE LIKE YOU (ADELE).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "SOMEONE LIKE YOU (ADELE).txt"; sourceTree = "<group>"; };
+		55125625285687E2006A14CB /* KEDVESEM (BYEALEX).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "KEDVESEM (BYEALEX).txt"; sourceTree = "<group>"; };
+		55125626285687E2006A14CB /* ISTENNEK MINDENRŐL (FAZ).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "ISTENNEK MINDENRŐL (FAZ).txt"; sourceTree = "<group>"; };
+		55125627285687E2006A14CB /* KIS KECE LÁNYOM.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "KIS KECE LÁNYOM.txt"; sourceTree = "<group>"; };
+		55125628285687E2006A14CB /* JÓL VAN DOLGA....txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "JÓL VAN DOLGA....txt"; sourceTree = "<group>"; };
+		55125629285687E2006A14CB /* BIKA.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = BIKA.txt; sourceTree = "<group>"; };
+		5512562A285687E3006A14CB /* A SZÖKEVÉNY (TTB).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "A SZÖKEVÉNY (TTB).txt"; sourceTree = "<group>"; };
+		5512562B285687E3006A14CB /* TUDOD, HOGY NINCS BOCSÁNAT (KALÁKA).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "TUDOD, HOGY NINCS BOCSÁNAT (KALÁKA).txt"; sourceTree = "<group>"; };
+		5512562C285687E3006A14CB /* SZÁLLJ EL KISMADÁR (REPUBLIC).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "SZÁLLJ EL KISMADÁR (REPUBLIC).txt"; sourceTree = "<group>"; };
+		5512562D285687E3006A14CB /* ÉLVEZD (PUNNANY MASSIF).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "ÉLVEZD (PUNNANY MASSIF).txt"; sourceTree = "<group>"; };
+		5512562E285687E4006A14CB /* AJJAJJAJ (QUIMBY).txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "AJJAJJAJ (QUIMBY).txt"; sourceTree = "<group>"; };
 		55149F512850C361007BECEF /* EjjeliPortyaAdminView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EjjeliPortyaAdminView.swift; sourceTree = "<group>"; };
 		55149F532850C380007BECEF /* EjjeliPortyaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EjjeliPortyaView.swift; sourceTree = "<group>"; };
 		55149F552850CC7D007BECEF /* EjjeliPortyaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EjjeliPortyaViewModel.swift; sourceTree = "<group>"; };
@@ -99,6 +360,7 @@
 		55B0E6D527EBDAA00058A5B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		55B0E6D827EBDAA00058A5B9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		55B0E6DF27EC53F30058A5B9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		55B3954C2856B2630044389E /* SpecificSongView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecificSongView.swift; sourceTree = "<group>"; };
 		55B40DCA27F3125B00B5B065 /* TextFieldInputPrediction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldInputPrediction.swift; sourceTree = "<group>"; };
 		55E37E2727F79480002ED658 /* AddScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddScoreView.swift; sourceTree = "<group>"; };
 		55E8002E27F07FCC007181E0 /* RegistrationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationService.swift; sourceTree = "<group>"; };
@@ -135,6 +397,152 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5512548928565AB1006A14CB /* Songs */ = {
+			isa = PBXGroup;
+			children = (
+				551255AE285687BC006A14CB /* files */,
+				5512548E285661B4006A14CB /* SongsView.swift */,
+				55125490285681E1006A14CB /* SongsViewModel.swift */,
+				55B3954C2856B2630044389E /* SpecificSongView.swift */,
+			);
+			path = Songs;
+			sourceTree = "<group>";
+		};
+		551255AE285687BC006A14CB /* files */ = {
+			isa = PBXGroup;
+			children = (
+				551255B5285687BD006A14CB /* 8 ÓRA MUNKA (BEATRICE).txt */,
+				551255F5285687D7006A14CB /* 16 TONNA (REPUBLIC).txt */,
+				551255D1285687D0006A14CB /* 67-ES ÚT (REPUBLIC).txt */,
+				55125622285687E1006A14CB /* 2016B GÓLYAHIMNUSZ.txt */,
+				5512560E285687DC006A14CB /* A BÖRTÖN ABLAKÁBAN.txt */,
+				551255C0285687BF006A14CB /* A CSITÁRI HEGYEK ALATT.txt */,
+				551255C3285687C0006A14CB /* A JÓ LOVAS KATONÁNAK.txt */,
+				5512561A285687DE006A14CB /* A KÖVETKEZŐ BUSZON (KISPÁL ÉS A BORZ).txt */,
+				551255EF285687D6006A14CB /* A PÁPA ÚRI MÓDON ÉL.txt */,
+				5512562A285687E3006A14CB /* A SZÖKEVÉNY (TTB).txt */,
+				551255EE285687D6006A14CB /* AFRIKA (KFT).txt */,
+				5512562E285687E4006A14CB /* AJJAJJAJ (QUIMBY).txt */,
+				5512561C285687DF006A14CB /* ALAIN DELON SZERETNÉK LENNI.txt */,
+				551255CA285687C3006A14CB /* ÁLTAL MENNÉK A TISZÁN.txt */,
+				551255DA285687D2006A14CB /* AUTÓ EGY SZERPENTINEN (QUIMBY).txt */,
+				551255D6285687D1006A14CB /* AZ ÉJSZAKA (KALÁKA).txt */,
+				5512561D285687DF006A14CB /* AZ ELSŐ VILLAMOS (FONOGRÁF).txt */,
+				551255B0285687BC006A14CB /* AZ ÉSZ A FONTOS (ILLÉS).txt */,
+				55125620285687E0006A14CB /* AZ UTCÁN (ILLÉS).txt */,
+				55125621285687E1006A14CB /* AZOK A BOLDOG SZÉP NAPOK (BEATRICE).txt */,
+				551255D5285687D1006A14CB /* BARBIE-DAL (MÉHEK).txt */,
+				551255D4285687D1006A14CB /* BAZSA MÁRI.txt */,
+				55125629285687E2006A14CB /* BIKA.txt */,
+				551255BB285687BE006A14CB /* CSAVARD FEL A SZŐNYEGET (HUNGÁRIA).txt */,
+				5512560D285687DB006A14CB /* CSILLAG VAGY FECSKE (KISPÁL ÉS A BORZ).txt */,
+				5512560A285687DB006A14CB /* CSÖNDED VAGYOK (CSEH TAMÁS).txt */,
+				551255B6285687BD006A14CB /* CUP SONG.txt */,
+				55125613285687DD006A14CB /* DEBRECENBE KÉNE MENNI.txt */,
+				55125608285687DB006A14CB /* ELINDULTAM SZÉP HAZÁMBUL….txt */,
+				55125609285687DB006A14CB /* ELIZABETH (KFT).txt */,
+				55125615285687DD006A14CB /* ÉLJ VELE BOLDOGAN (ZÁVODI GÁBOR).txt */,
+				5512560F285687DC006A14CB /* ELMEGYEK, ELMEGYEK….txt */,
+				5512562D285687E3006A14CB /* ÉLVEZD (PUNNANY MASSIF).txt */,
+				55125600285687D9006A14CB /* ÉNEKELSZ EGY RÉGI NÓTÁT (BOJTORJÁN).txt */,
+				551255BF285687BF006A14CB /* ERDŐ, ERDŐ, ERDŐ.txt */,
+				551255E9285687D5006A14CB /* ÉRIK A SZŐLŐ.txt */,
+				55125605285687DA006A14CB /* EURÓPA (VARGA MIKLÓS).txt */,
+				551255C7285687C2006A14CB /* EZT IS ELVISZEM MAGAMMAL… (KISTEHÉN).txt */,
+				551255EC285687D6006A14CB /* FALU VÉGÉN KURTA KOCSMA (PETŐFI SÁNDOR, KISS BARNA).txt */,
+				551255F1285687D6006A14CB /* FANTASZTIKUS LÁNY (KFT).txt */,
+				551255C6285687C0006A14CB /* FEKETE TENGEREN.txt */,
+				551255FA285687D8006A14CB /* FELLEGAJTÓ NYITOGATÓ.txt */,
+				55125606285687DA006A14CB /* FELMÁSZOTT A NYÚL A FÁRA.txt */,
+				551255F8285687D8006A14CB /* FÖLDVÁR FELÉ, FÉLÚTON (BRÓDY JÁNOS).txt */,
+				551255E1285687D3006A14CB /* GÁBOR ÁRON RÉZÁGYÚJA.txt */,
+				551255DB285687D2006A14CB /* HA ÉN RÓZSA VOLNÉK (BRÓDY JÁNOS).txt */,
+				551255F4285687D7006A14CB /* HA ÉN SZÉL LEHETNÉK (OMEGA).txt */,
+				551255D7285687D1006A14CB /* HEJ DUNÁRÓL FÚJ A SZÉL.txt */,
+				551255FF285687D9006A14CB /* HEJ, HALÁSZOK, HALÁSZOK.txt */,
+				55125614285687DD006A14CB /* HEJ, VARGÁNÉ KÁPOSZTÁT FŐZ.txt */,
+				551255DD285687D2006A14CB /* HELLÓ-BELLÓ (PILLANATMŰVEK).txt */,
+				551255BA285687BE006A14CB /* HEY BROTHER (AVICII).txt */,
+				551255CB285687C3006A14CB /* HEY JUDE (BEATLES).txt */,
+				551255F2285687D7006A14CB /* HIPERKARMA (HIPERKARMA).txt */,
+				551255D8285687D1006A14CB /* HOLLÁRI-LÁRI-LÁRI.txt */,
+				5512560C285687DB006A14CB /* HONFOGLALÁS (DEMJÉN FERENC).txt */,
+				551255B9285687BE006A14CB /* HOSSZÚ, VÉKONY A PIPASZÁR.txt */,
+				55125618285687DD006A14CB /* HULL A SZILVA A FÁRÓL.txt */,
+				551255DF285687D3006A14CB /* I'M YOURS (JASON MRAZ).txt */,
+				551255D2285687D0006A14CB /* ILYENEK VOLTUNK (ÁKOS).txt */,
+				55125626285687E2006A14CB /* ISTENNEK MINDENRŐL (FAZ).txt */,
+				551255FC285687D9006A14CB /* JÓ NEKEM (OCHO MACHO).txt */,
+				55125628285687E2006A14CB /* JÓL VAN DOLGA....txt */,
+				551255E5285687D4006A14CB /* KACSINTS RÁM! (SZEKÉR BAND &TTB).txt */,
+				5512561F285687E0006A14CB /* KAKTUSZ PEDRÓ.txt */,
+				55125625285687E2006A14CB /* KEDVESEM (BYEALEX).txt */,
+				551255E2285687D3006A14CB /* KÉGLIDAL (ILLÉS).txt */,
+				551255F0285687D6006A14CB /* KERTÉSZ LESZEK (KONCZ ZSUZSA).txt */,
+				551255D0285687D0006A14CB /* KI VISZ MAJD HAZA (BIKINI).txt */,
+				551255B1285687BC006A14CB /* KICSIT SZOMORKÁS (KISPÁL ÉS A BORZ).txt */,
+				55125627285687E2006A14CB /* KIS KECE LÁNYOM.txt */,
+				5512560B285687DB006A14CB /* KOSSUTH LAJOS AZT ÜZENTE.txt */,
+				55125607285687DA006A14CB /* KÖZELI HELYEKEN (BIKINI).txt */,
+				551255CD285687C3006A14CB /* LEGYETEK JÓK, HA TUDTOK (NAPOLEON BOULEVARD).txt */,
+				5512561E285687E0006A14CB /* LEHETEK ÉN IS… (VAD FRUTTIK).txt */,
+				551255E4285687D3006A14CB /* MÁR MINÁLUNK, BABÁM.txt */,
+				551255B7285687BD006A14CB /* MÁRTI DALA (ANNA AND THE BARBIES).txt */,
+				55125617285687DD006A14CB /* MÁTÉSZALKA GYÁSZBA’ VAN.txt */,
+				551255E8285687D5006A14CB /* MÉG AZT MONDJÁK.txt */,
+				551255E6285687D4006A14CB /* MEGKÖTÖM LOVAMAT PIROS ALMAFÁHOZ.txt */,
+				551255B8285687BD006A14CB /* MEGRAKJÁK A TÜZET.txt */,
+				551255C4285687C0006A14CB /* MENNYORSZÁG TOURIST (TANKCSAPDA).txt */,
+				551255BE285687BF006A14CB /* MESE.txt */,
+				55125611285687DC006A14CB /* MICIMACKÓ (KONCZ ZSUZSA).txt */,
+				55125603285687DA006A14CB /* MIELŐTT ELMEGYEK (BIKINI).txt */,
+				55125616285687DD006A14CB /* MIÉRT HAGYTUK, HOGY ÍGY LEGYEN (ILLÉS).txt */,
+				551255F6285687D7006A14CB /* MINDEN EMBER EMBER.txt */,
+				551255F3285687D7006A14CB /* MOST MÚLIK PONTOSAN (QUIMBY).txt */,
+				551255F7285687D8006A14CB /* NEKED ÍROM A DALT (LGT).txt */,
+				55125601285687D9006A14CB /* NEM VAGYOK ÉN....txt */,
+				551255D9285687D1006A14CB /* OOO.txt */,
+				551255FB285687D8006A14CB /* ÖRÖKKÉ TART (TANKCSAPDA).txt */,
+				55125623285687E1006A14CB /* PANCSOLÓ KISLEÁNY (BEATRICE).txt */,
+				551255DC285687D2006A14CB /* PETRÓLEUM LÁMPA (OMEGA).txt */,
+				551255F9285687D8006A14CB /* POGÁCSA BLUES.txt */,
+				551255B2285687BC006A14CB /* PRÓBÁLJ MEG LAZÍTANI! (HOFI GÉZA).txt */,
+				551255C8285687C2006A14CB /* R1..txt */,
+				551255FD285687D9006A14CB /* RÁNK SÜT A NAP.txt */,
+				551255B3285687BD006A14CB /* REZERVÁTUM (TTB).txt */,
+				551255C5285687C0006A14CB /* SÁRIKA (ILLÉS).txt */,
+				551255C9285687C2006A14CB /* SCARBORUGH FAIR (SIMON & GARFUNKEL).txt */,
+				55125624285687E2006A14CB /* SOMEONE LIKE YOU (ADELE).txt */,
+				551255EA285687D5006A14CB /* SOUND OF SILENCE (SIMON AND GARLFUNKEL).txt */,
+				55125612285687DC006A14CB /* SÜT A NAP (EMBEREK).txt */,
+				5512562C285687E3006A14CB /* SZÁLLJ EL KISMADÁR (REPUBLIC).txt */,
+				551255BD285687BF006A14CB /* SZÁRAZ TÓNAK NEDVES PARTJÁN.txt */,
+				551255EB285687D5006A14CB /* SZÁZ FORINTNAK ÖTVEN A FELE.txt */,
+				551255ED285687D6006A14CB /* SZEGÉNY LEGÉNY VAGYOK ÉN.txt */,
+				5512561B285687DF006A14CB /* SZELLŐ ZÚG TÁVOL.txt */,
+				551255CE285687C4006A14CB /* SZERETNI VALAKIT VALAMIÉRT (REPUBLIC).txt */,
+				55125619285687DE006A14CB /* TÁBORTŰZ (EMBEREK).txt */,
+				551255C2285687C0006A14CB /* TAVASZI SZÉL.txt */,
+				551255AF285687BC006A14CB /* TE MAJD KÉZENFOGSZ ÉS HAZAVEZETSZ (PRESSER GÁBOR).txt */,
+				551255DE285687D2006A14CB /* TINGLI-TANGLI (KISPÁL ÉS A BORZ).txt */,
+				551255B4285687BD006A14CB /* TIZENHÁROM EZÜSTPITYKE.txt */,
+				5512562B285687E3006A14CB /* TUDOD, HOGY NINCS BOCSÁNAT (KALÁKA).txt */,
+				551255E7285687D4006A14CB /* ÚGY CSINÁL MINTHA NEM TUDNÁ.txt */,
+				551255CF285687C4006A14CB /* ÚJRA ITT VAN (ILLÉS).txt */,
+				551255C1285687BF006A14CB /* VÁGJÁL LYUKAT A KÁDBA (INTIM TORNA ILLEGÁL).txt */,
+				551255BC285687BE006A14CB /* VALAHOL EGY LÁNY (KONCZ ZSUZSA).txt */,
+				551255CC285687C3006A14CB /* VALAMI AMERIKA (BONBON).txt */,
+				55125610285687DC006A14CB /* VALAMI VÉGET ÉRT (ÁKOS).txt */,
+				551255E3285687D3006A14CB /* VÁRJ, MÍG FELKEL MAJD A NAP (V’MOTO-ROCK).txt */,
+				55125604285687DA006A14CB /* VIRÁGÉKNÁL ÉG A VILÁG.txt */,
+				551255E0285687D3006A14CB /* VOLT NEKEM EGY KECSKÉM.txt */,
+				55125602285687DA006A14CB /* WAKA WAKA.txt */,
+				551255D3285687D0006A14CB /* WONDERWALL (OASIS).txt */,
+				551255FE285687D9006A14CB /* YESTERDAY (BEATLES).txt */,
+			);
+			path = files;
+			sourceTree = "<group>";
+		};
 		557B8FA427EE4D8900312433 /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -206,6 +614,7 @@
 		55B0E6D027EBDA9B0058A5B9 /* TiszApp */ = {
 			isa = PBXGroup;
 			children = (
+				5512548928565AB1006A14CB /* Songs */,
 				55149F572850E8B7007BECEF /* Info.plist */,
 				55CBA8A32850C1AF004A5750 /* EjjeliPortya */,
 				5591E7C3280221E900C811F8 /* Quiz */,
@@ -381,9 +790,137 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				551256AC2856881A006A14CB /* OOO.txt in Resources */,
+				551256322856881A006A14CB /* AJJAJJAJ (QUIMBY).txt in Resources */,
+				5512562F28568804006A14CB /* 8 ÓRA MUNKA (BEATRICE).txt in Resources */,
+				551256872856881A006A14CB /* AFRIKA (KFT).txt in Resources */,
+				551256502856881A006A14CB /* ISTENNEK MINDENRŐL (FAZ).txt in Resources */,
+				551256372856881A006A14CB /* FALU VÉGÉN KURTA KOCSMA (PETŐFI SÁNDOR, KISS BARNA).txt in Resources */,
+				551256932856881A006A14CB /* SZERETNI VALAKIT VALAMIÉRT (REPUBLIC).txt in Resources */,
+				551256782856881A006A14CB /* MÁTÉSZALKA GYÁSZBA’ VAN.txt in Resources */,
+				5512566D2856881A006A14CB /* HOLLÁRI-LÁRI-LÁRI.txt in Resources */,
+				551256332856881A006A14CB /* ELINDULTAM SZÉP HAZÁMBUL….txt in Resources */,
+				5512564C2856881A006A14CB /* HEJ DUNÁRÓL FÚJ A SZÉL.txt in Resources */,
+				551256832856881A006A14CB /* HEY BROTHER (AVICII).txt in Resources */,
+				551256992856881A006A14CB /* ÖRÖKKÉ TART (TANKCSAPDA).txt in Resources */,
+				551256A42856881A006A14CB /* KÉGLIDAL (ILLÉS).txt in Resources */,
+				551256302856881A006A14CB /* HELLÓ-BELLÓ (PILLANATMŰVEK).txt in Resources */,
+				551256A62856881A006A14CB /* POGÁCSA BLUES.txt in Resources */,
+				551256822856881A006A14CB /* A JÓ LOVAS KATONÁNAK.txt in Resources */,
+				5512566E2856881A006A14CB /* MÁR MINÁLUNK, BABÁM.txt in Resources */,
+				551256562856881A006A14CB /* WAKA WAKA.txt in Resources */,
+				551256A52856881A006A14CB /* SÁRIKA (ILLÉS).txt in Resources */,
+				551256802856881A006A14CB /* 67-ES ÚT (REPUBLIC).txt in Resources */,
+				551256AB2856881A006A14CB /* REZERVÁTUM (TTB).txt in Resources */,
+				551256912856881A006A14CB /* A KÖVETKEZŐ BUSZON (KISPÁL ÉS A BORZ).txt in Resources */,
+				551256722856881A006A14CB /* FELLEGAJTÓ NYITOGATÓ.txt in Resources */,
+				5512568D2856881A006A14CB /* SOMEONE LIKE YOU (ADELE).txt in Resources */,
+				551256962856881A006A14CB /* MESE.txt in Resources */,
+				551256892856881A006A14CB /* DEBRECENBE KÉNE MENNI.txt in Resources */,
+				551256442856881A006A14CB /* VALAMI AMERIKA (BONBON).txt in Resources */,
+				551256712856881A006A14CB /* ELMEGYEK, ELMEGYEK….txt in Resources */,
+				5512564A2856881A006A14CB /* KÖZELI HELYEKEN (BIKINI).txt in Resources */,
+				551256862856881A006A14CB /* VALAHOL EGY LÁNY (KONCZ ZSUZSA).txt in Resources */,
+				5512563D2856881A006A14CB /* HA ÉN SZÉL LEHETNÉK (OMEGA).txt in Resources */,
+				5512568C2856881A006A14CB /* HA ÉN RÓZSA VOLNÉK (BRÓDY JÁNOS).txt in Resources */,
+				5512568E2856881A006A14CB /* TAVASZI SZÉL.txt in Resources */,
+				551256AD2856881A006A14CB /* ÉLJ VELE BOLDOGAN (ZÁVODI GÁBOR).txt in Resources */,
 				55B0E6D927EBDAA00058A5B9 /* Preview Assets.xcassets in Resources */,
+				551256352856881A006A14CB /* SZÁLLJ EL KISMADÁR (REPUBLIC).txt in Resources */,
+				5512566F2856881A006A14CB /* KOSSUTH LAJOS AZT ÜZENTE.txt in Resources */,
+				551256402856881A006A14CB /* ERDŐ, ERDŐ, ERDŐ.txt in Resources */,
+				551256AE2856881A006A14CB /* SÜT A NAP (EMBEREK).txt in Resources */,
+				5512569A2856881A006A14CB /* EURÓPA (VARGA MIKLÓS).txt in Resources */,
+				5512568F2856881A006A14CB /* MEGKÖTÖM LOVAMAT PIROS ALMAFÁHOZ.txt in Resources */,
+				5512567E2856881A006A14CB /* JÓ NEKEM (OCHO MACHO).txt in Resources */,
+				5512567B2856881A006A14CB /* TINGLI-TANGLI (KISPÁL ÉS A BORZ).txt in Resources */,
+				5512565E2856881A006A14CB /* HIPERKARMA (HIPERKARMA).txt in Resources */,
+				551256902856881A006A14CB /* EZT IS ELVISZEM MAGAMMAL… (KISTEHÉN).txt in Resources */,
+				551256312856881A006A14CB /* PETRÓLEUM LÁMPA (OMEGA).txt in Resources */,
+				5512563A2856881A006A14CB /* FÖLDVÁR FELÉ, FÉLÚTON (BRÓDY JÁNOS).txt in Resources */,
+				551256642856881A006A14CB /* FELMÁSZOTT A NYÚL A FÁRA.txt in Resources */,
+				5512565F2856881A006A14CB /* KERTÉSZ LESZEK (KONCZ ZSUZSA).txt in Resources */,
+				551256542856881A006A14CB /* KICSIT SZOMORKÁS (KISPÁL ÉS A BORZ).txt in Resources */,
 				55B0E6D627EBDAA00058A5B9 /* Assets.xcassets in Resources */,
+				5512566A2856881A006A14CB /* AZ ÉJSZAKA (KALÁKA).txt in Resources */,
+				551256942856881A006A14CB /* SOUND OF SILENCE (SIMON AND GARLFUNKEL).txt in Resources */,
+				551256452856881A006A14CB /* SZEGÉNY LEGÉNY VAGYOK ÉN.txt in Resources */,
+				551256462856881A006A14CB /* CSÖNDED VAGYOK (CSEH TAMÁS).txt in Resources */,
+				551256582856881A006A14CB /* 16 TONNA (REPUBLIC).txt in Resources */,
+				551256922856881A006A14CB /* VIRÁGÉKNÁL ÉG A VILÁG.txt in Resources */,
+				551256742856881A006A14CB /* TE MAJD KÉZENFOGSZ ÉS HAZAVEZETSZ (PRESSER GÁBOR).txt in Resources */,
+				5512569F2856881A006A14CB /* KAKTUSZ PEDRÓ.txt in Resources */,
+				5512569D2856881A006A14CB /* HOSSZÚ, VÉKONY A PIPASZÁR.txt in Resources */,
+				5512569C2856881A006A14CB /* HULL A SZILVA A FÁRÓL.txt in Resources */,
+				551256A32856881A006A14CB /* MÁRTI DALA (ANNA AND THE BARBIES).txt in Resources */,
+				551256982856881A006A14CB /* ALAIN DELON SZERETNÉK LENNI.txt in Resources */,
+				551256842856881A006A14CB /* SZÁRAZ TÓNAK NEDVES PARTJÁN.txt in Resources */,
+				551256682856881A006A14CB /* KI VISZ MAJD HAZA (BIKINI).txt in Resources */,
+				551256AA2856881A006A14CB /* VOLT NEKEM EGY KECSKÉM.txt in Resources */,
+				551256612856881A006A14CB /* MOST MÚLIK PONTOSAN (QUIMBY).txt in Resources */,
+				5512566C2856881A006A14CB /* A BÖRTÖN ABLAKÁBAN.txt in Resources */,
+				551256602856881A006A14CB /* NEKED ÍROM A DALT (LGT).txt in Resources */,
+				551256752856881A006A14CB /* LEGYETEK JÓK, HA TUDTOK (NAPOLEON BOULEVARD).txt in Resources */,
+				5512565C2856881A006A14CB /* JÓL VAN DOLGA....txt in Resources */,
+				551256A02856881A006A14CB /* MIELŐTT ELMEGYEK (BIKINI).txt in Resources */,
+				551256672856881A006A14CB /* ÚGY CSINÁL MINTHA NEM TUDNÁ.txt in Resources */,
+				5512568A2856881A006A14CB /* ÉRIK A SZŐLŐ.txt in Resources */,
+				551256972856881A006A14CB /* KEDVESEM (BYEALEX).txt in Resources */,
+				551256482856881A006A14CB /* PANCSOLÓ KISLEÁNY (BEATRICE).txt in Resources */,
+				551256522856881A006A14CB /* ILYENEK VOLTUNK (ÁKOS).txt in Resources */,
+				551256342856881A006A14CB /* RÁNK SÜT A NAP.txt in Resources */,
+				551256392856881A006A14CB /* MENNYORSZÁG TOURIST (TANKCSAPDA).txt in Resources */,
+				551256362856881A006A14CB /* VALAMI VÉGET ÉRT (ÁKOS).txt in Resources */,
+				5512567F2856881A006A14CB /* AZ UTCÁN (ILLÉS).txt in Resources */,
+				5512569B2856881A006A14CB /* TIZENHÁROM EZÜSTPITYKE.txt in Resources */,
+				551256852856881A006A14CB /* SZELLŐ ZÚG TÁVOL.txt in Resources */,
+				5512564F2856881A006A14CB /* FEKETE TENGEREN.txt in Resources */,
+				5512567D2856881A006A14CB /* AZ ÉSZ A FONTOS (ILLÉS).txt in Resources */,
+				551256812856881A006A14CB /* MEGRAKJÁK A TÜZET.txt in Resources */,
+				551256662856881A006A14CB /* MIÉRT HAGYTUK, HOGY ÍGY LEGYEN (ILLÉS).txt in Resources */,
+				551256882856881A006A14CB /* AZOK A BOLDOG SZÉP NAPOK (BEATRICE).txt in Resources */,
+				551256432856881A006A14CB /* ELIZABETH (KFT).txt in Resources */,
+				551256472856881A006A14CB /* HEJ, VARGÁNÉ KÁPOSZTÁT FŐZ.txt in Resources */,
+				5512563F2856881A006A14CB /* NEM VAGYOK ÉN....txt in Resources */,
+				551256532856881A006A14CB /* SCARBORUGH FAIR (SIMON & GARFUNKEL).txt in Resources */,
+				5512567C2856881A006A14CB /* TUDOD, HOGY NINCS BOCSÁNAT (KALÁKA).txt in Resources */,
+				5512563E2856881A006A14CB /* HEY JUDE (BEATLES).txt in Resources */,
+				551256512856881A006A14CB /* PRÓBÁLJ MEG LAZÍTANI! (HOFI GÉZA).txt in Resources */,
+				5512565A2856881A006A14CB /* KIS KECE LÁNYOM.txt in Resources */,
 				55B0E6E027EC53F30058A5B9 /* GoogleService-Info.plist in Resources */,
+				551256622856881A006A14CB /* GÁBOR ÁRON RÉZÁGYÚJA.txt in Resources */,
+				5512563B2856881A006A14CB /* A PÁPA ÚRI MÓDON ÉL.txt in Resources */,
+				551256A22856881A006A14CB /* I'M YOURS (JASON MRAZ).txt in Resources */,
+				551256652856881A006A14CB /* AUTÓ EGY SZERPENTINEN (QUIMBY).txt in Resources */,
+				5512565D2856881A006A14CB /* A CSITÁRI HEGYEK ALATT.txt in Resources */,
+				5512567A2856881A006A14CB /* A SZÖKEVÉNY (TTB).txt in Resources */,
+				551256A92856881A006A14CB /* MÉG AZT MONDJÁK.txt in Resources */,
+				551256702856881A006A14CB /* VÁRJ, MÍG FELKEL MAJD A NAP (V’MOTO-ROCK).txt in Resources */,
+				551256572856881A006A14CB /* R1..txt in Resources */,
+				5512564E2856881A006A14CB /* 2016B GÓLYAHIMNUSZ.txt in Resources */,
+				551256692856881A006A14CB /* FANTASZTIKUS LÁNY (KFT).txt in Resources */,
+				5512565B2856881A006A14CB /* HEJ, HALÁSZOK, HALÁSZOK.txt in Resources */,
+				551256632856881A006A14CB /* CSILLAG VAGY FECSKE (KISPÁL ÉS A BORZ).txt in Resources */,
+				551256A72856881A006A14CB /* BIKA.txt in Resources */,
+				551256552856881A006A14CB /* LEHETEK ÉN IS… (VAD FRUTTIK).txt in Resources */,
+				5512568B2856881A006A14CB /* ÉLVEZD (PUNNANY MASSIF).txt in Resources */,
+				551256792856881A006A14CB /* TÁBORTŰZ (EMBEREK).txt in Resources */,
+				551256412856881A006A14CB /* CUP SONG.txt in Resources */,
+				551256A82856881A006A14CB /* KACSINTS RÁM! (SZEKÉR BAND &TTB).txt in Resources */,
+				551256762856881A006A14CB /* BAZSA MÁRI.txt in Resources */,
+				5512566B2856881A006A14CB /* VÁGJÁL LYUKAT A KÁDBA (INTIM TORNA ILLEGÁL).txt in Resources */,
+				551256492856881A006A14CB /* YESTERDAY (BEATLES).txt in Resources */,
+				551256772856881A006A14CB /* ÉNEKELSZ EGY RÉGI NÓTÁT (BOJTORJÁN).txt in Resources */,
+				551256592856881A006A14CB /* BARBIE-DAL (MÉHEK).txt in Resources */,
+				551256952856881A006A14CB /* MICIMACKÓ (KONCZ ZSUZSA).txt in Resources */,
+				551256732856881A006A14CB /* HONFOGLALÁS (DEMJÉN FERENC).txt in Resources */,
+				5512564D2856881A006A14CB /* MINDEN EMBER EMBER.txt in Resources */,
+				551256382856881A006A14CB /* WONDERWALL (OASIS).txt in Resources */,
+				551256422856881A006A14CB /* CSAVARD FEL A SZŐNYEGET (HUNGÁRIA).txt in Resources */,
+				551256A12856881A006A14CB /* ÚJRA ITT VAN (ILLÉS).txt in Resources */,
+				5512563C2856881A006A14CB /* AZ ELSŐ VILLAMOS (FONOGRÁF).txt in Resources */,
+				5512569E2856881A006A14CB /* ÁLTAL MENNÉK A TISZÁN.txt in Resources */,
+				5512564B2856881A006A14CB /* SZÁZ FORINTNAK ÖTVEN A FELE.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,8 +952,11 @@
 				55E8003127F09CBC007181E0 /* RegistrationViewModel.swift in Sources */,
 				5591E7A827F8985700C811F8 /* ScoresHandler.swift in Sources */,
 				55E8003527F0A217007181E0 /* SessionUserDetails.swift in Sources */,
+				55125491285681E1006A14CB /* SongsViewModel.swift in Sources */,
 				557B8FA027EE334F00312433 /* MainMenuView.swift in Sources */,
+				5512548F285661B4006A14CB /* SongsView.swift in Sources */,
 				5591E7B327FE310900C811F8 /* ImagesHandler.swift in Sources */,
+				55B3954D2856B2630044389E /* SpecificSongView.swift in Sources */,
 				55E8003827F0A27E007181E0 /* SessionService.swift in Sources */,
 				55149F562850CC7D007BECEF /* EjjeliPortyaViewModel.swift in Sources */,
 				5591E7C92805B20700C811F8 /* QuizHandler.swift in Sources */,

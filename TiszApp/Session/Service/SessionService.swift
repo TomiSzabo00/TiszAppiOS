@@ -45,18 +45,20 @@ final class SessionServiceImpl: ObservableObject, SessionService {
                                              "Képek",
                                              "Szövegek",
                                              "Éjjeli portya",
+                                             "Daloskönyv",
                                              "Képek ellenőrzése",
                                              "Pontok feltöltése"]
     
-    @Published var buttonIcons: [String] = ["square.and.arrow.up.fill", "chart.bar.xaxis", "play.rectangle.fill", "photo.on.rectangle.angled", "doc.text", "moon.zzz.fill", "eye.fill", "plus.square.fill"]
+    @Published var buttonIcons: [String] = ["square.and.arrow.up.fill", "chart.bar.xaxis", "play.rectangle.fill", "photo.on.rectangle.angled", "doc.text", "moon.zzz.fill", "music.note.list", "eye.fill", "plus.square.fill"]
 
-    @Published var btnStates: [Bool] = [false, false, false, false, false, false, false, false]
+    @Published var btnStates = [Bool]()
     
     @Published var teamNum: Int = 4
     
     private var handler: AuthStateDidChangeListenerHandle?
     
     init() {
+        self.btnStates = [Bool](repeating: false, count: self.buttonTitles.count)
         self.getButtonStates()
         print("a")
         setupFirebaseAuthHandler()

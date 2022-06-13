@@ -32,6 +32,8 @@ protocol ImagesHandler {
 
 final class ImagesHandlerImpl: ImagesHandler, ObservableObject {
     
+    var teamNum: Int = 0
+    
     @Published var imageInfos: [ImageItem] = []
     var mode: ImageHandlerMode = .na
     var checkImages: Bool
@@ -111,57 +113,27 @@ final class ImagesHandlerImpl: ImagesHandler, ObservableObject {
         
         Database.database().reference().child("pics").child(imageInfo.fileName).setValue(imageDetails)
         
-        
         if score != 0 {
-            var scoreData = ["score1" : 0,
-                         "score2" : 0,
-                         "score3" : 0,
-                         "score4" : 0,
-                         "name" : "kép",
-                         "author" : Auth.auth().currentUser?.uid ?? "unknown"] as [String: Any]
-            
-            switch user?.groupNumber {
-            case 1:
-                scoreData = ["score1" : score,
-                             "score2" : 0,
-                             "score3" : 0,
-                             "score4" : 0,
-                         "name" : "kép: \(imageInfo.title)",
-                             "author" : Auth.auth().currentUser?.uid ?? "unknown"] as [String: Any]
-                break
-            case 2:
-                scoreData = ["score1" : 0,
-                             "score2" : score,
-                             "score3" : 0,
-                             "score4" : 0,
-                         "name" : "kép: \(imageInfo.title)",
-                             "author" : Auth.auth().currentUser?.uid ?? "unknown"] as [String: Any]
-                break
-            case 3:
-                scoreData = ["score1" : 0,
-                             "score2" : 0,
-                             "score3" : score,
-                             "score4" : 0,
-                         "name" : "kép: \(imageInfo.title)",
-                             "author" : Auth.auth().currentUser?.uid ?? "unknown"] as [String: Any]
-                break
-            case 4:
-                scoreData = ["score1" : 0,
-                             "score2" : 0,
-                             "score3" : 0,
-                             "score4" : score,
-                         "name" : "kép: \(imageInfo.title)",
-                             "author" : Auth.auth().currentUser?.uid ?? "unknown"] as [String: Any]
-                break
-            default:
-                break
-            }
             
             let date = Date()
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "YYYYMMddHHmmssSSS"
+            
+            //this gives an array of zeros
+            var scoresArray = [Int](repeating: 0, count: self.teamNum)
+            
+            if user != nil {
+                scoresArray[user!.groupNumber-1] = score
+            }
+            
+            let scoreData = ["id" : dateFormatter.string(from: date),
+                         "scores" : scoresArray,
+                         "name" : "kép: \(imageInfo.title)",
+                         "author" : Auth.auth().currentUser?.uid ?? "unknown"] as [String: Any]
+            
             Database.database().reference().child("scores").child(dateFormatter.string(from: date)).setValue(scoreData)
         }
+        
         
     }
     

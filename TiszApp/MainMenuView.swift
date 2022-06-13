@@ -65,7 +65,7 @@ struct MainMenuView: View {
                 ScrollView {
                     LazyVGrid(columns: gridItemLayout, spacing: 20) {
                         ForEach($sessionService.buttonTitles, id: \.self) { $e in
-                            if(sessionService.btnStates[sessionService.buttonTitles.firstIndex(of: e)!] || sessionService.userDetails?.admin ?? false) {
+                            if(sessionService.btnStates[sessionService.buttonTitles.firstIndex(of: e) ?? 0] || sessionService.userDetails?.admin ?? false) {
                                 IconButton(text: e,
                                            icon: sessionService.buttonIcons[sessionService.buttonTitles.firstIndex(of: e)!],
                                            action: { ID = sessionService.buttonTitles.firstIndex(of: e)! })
@@ -77,32 +77,35 @@ struct MainMenuView: View {
                     .padding([.top, .bottom])
                 } //ScrollView end
                 
-                NavigationLink(destination: UploadView(), tag: 0, selection: $ID) {EmptyView()}
-                
-                NavigationLink(destination: ScoresTableView(handler: ScoresHandlerImpl(teamNum: sessionService.teamNum), teamNum: sessionService.teamNum).environmentObject(sessionService), tag: 1, selection: $ID) {EmptyView()}
-                
-                
-                
-                if (sessionService.userDetails?.admin != nil) && sessionService.userDetails?.admin == true {
-                    NavigationLink(destination: QuizAdminView(teamNum: sessionService.teamNum), tag: 2, selection: $ID) {EmptyView()}
-                } else {
-                    NavigationLink(destination: QuizView().environmentObject(sessionService), tag: 2, selection: $ID) {EmptyView()}
-                }
+                Group {
+                    NavigationLink(destination: UploadView(), tag: 0, selection: $ID) {EmptyView()}
                     
-                NavigationLink(destination: ImagesView(checkImages: false).environmentObject(sessionService), tag: 3, selection: $ID) {EmptyView()}
-                
-                NavigationLink(destination: TextsView().environmentObject(sessionService), tag: 4, selection: $ID) {EmptyView()}
-                
-                if (sessionService.userDetails?.admin != nil) && sessionService.userDetails?.admin == true {
-                    NavigationLink(destination: EjjeliPortyaAdminView().environmentObject(sessionService), tag: 5, selection: $ID) {EmptyView()}
-                } else {
-                    NavigationLink(destination: EjjeliPortyaView().environmentObject(sessionService), tag: 5, selection: $ID) {EmptyView()}
+                    NavigationLink(destination: ScoresTableView(handler: ScoresHandlerImpl(teamNum: sessionService.teamNum), teamNum: sessionService.teamNum).environmentObject(sessionService), tag: 1, selection: $ID) {EmptyView()}
+                    
+                    
+                    
+                    if (sessionService.userDetails?.admin != nil) && sessionService.userDetails?.admin == true {
+                        NavigationLink(destination: QuizAdminView(teamNum: sessionService.teamNum), tag: 2, selection: $ID) {EmptyView()}
+                    } else {
+                        NavigationLink(destination: QuizView().environmentObject(sessionService), tag: 2, selection: $ID) {EmptyView()}
+                    }
+                        
+                    NavigationLink(destination: ImagesView(checkImages: false).environmentObject(sessionService), tag: 3, selection: $ID) {EmptyView()}
+                    
+                    NavigationLink(destination: TextsView().environmentObject(sessionService), tag: 4, selection: $ID) {EmptyView()}
+                    
+                    if (sessionService.userDetails?.admin != nil) && sessionService.userDetails?.admin == true {
+                        NavigationLink(destination: EjjeliPortyaAdminView().environmentObject(sessionService), tag: 5, selection: $ID) {EmptyView()}
+                    } else {
+                        NavigationLink(destination: EjjeliPortyaView().environmentObject(sessionService), tag: 5, selection: $ID) {EmptyView()}
+                    }
+                    
+                    NavigationLink(destination: SongsView(), tag: 6, selection: $ID) {EmptyView()}
+                    
+                    NavigationLink(destination: ImagesView(checkImages: true).environmentObject(sessionService), tag: 7, selection: $ID) {EmptyView()}
+                    
+                    NavigationLink(destination: AddScoreView(teamNum: sessionService.teamNum), tag: 8, selection: $ID) {EmptyView()}
                 }
-                
-                NavigationLink(destination: ImagesView(checkImages: true).environmentObject(sessionService), tag: 6, selection: $ID) {EmptyView()}
-                
-                NavigationLink(destination: AddScoreView(teamNum: sessionService.teamNum), tag: 7, selection: $ID) {EmptyView()}
-                
                 Button(action: {
                     
                     sessionService.logout()

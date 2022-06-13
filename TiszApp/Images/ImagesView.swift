@@ -31,7 +31,7 @@ struct Page: View {
             
             LazyVGrid(columns: gridItemLayout, spacing: 20) {
                 ForEach(handler.imageInfos) { imageInfo in
-                    NavigationLink(destination: ImageDetailView(imageInfo: imageInfo, checkImages: self.checkImages).environmentObject(sessionService), label: {
+                    NavigationLink(destination: ImageDetailView(imageInfo: imageInfo, checkImages: self.checkImages, teamNum: sessionService.teamNum).environmentObject(sessionService), label: {
                         ImageItemView(imageName: imageInfo.fileName, text: imageInfo.title)
                     })
                     

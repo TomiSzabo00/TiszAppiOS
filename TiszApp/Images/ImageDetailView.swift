@@ -24,7 +24,7 @@ struct ImageDetailView: View {
     
     @Environment(\.dismiss) var dismiss
     
-    init(imageInfo: ImageItem, checkImages: Bool) {
+    init(imageInfo: ImageItem, checkImages: Bool, teamNum: Int) {
         //self.imageInfo = imageInfo
         self._checkImages = State(initialValue: checkImages)
         self.handler = ImagesHandlerImpl(mode: .getDetails, checkImages: checkImages)
@@ -86,7 +86,7 @@ struct ImageDetailView: View {
                         }
                         .padding()
                         
-                    } else if !sessionService.userDetails!.admin {
+                    } else if !sessionService.userDetails!.admin && (!(handler.user?.admin ?? false)) {
                         Text("Ezt a képet még nem pontozta egyik szervező sem.")
                             .padding(.bottom)
                     }
@@ -150,6 +150,9 @@ struct ImageDetailView: View {
                     }
                 }
             }
+        }
+        .onAppear{
+            self.handler.teamNum = sessionService.teamNum
         }
     }
 }
