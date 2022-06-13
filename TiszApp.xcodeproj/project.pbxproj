@@ -184,6 +184,7 @@
 		55B0E6FB27EC54C50058A5B9 /* FirebaseStorageCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = 55B0E6FA27EC54C50058A5B9 /* FirebaseStorageCombine-Community */; };
 		55B0E6FD27EC54C50058A5B9 /* FirebaseStorageSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 55B0E6FC27EC54C50058A5B9 /* FirebaseStorageSwift-Beta */; };
 		55B3954D2856B2630044389E /* SpecificSongView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B3954C2856B2630044389E /* SpecificSongView.swift */; };
+		55B3954F2857377B0044389E /* FilterSongsTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B3954E2857377B0044389E /* FilterSongsTextField.swift */; };
 		55B40DCB27F3125B00B5B065 /* TextFieldInputPrediction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B40DCA27F3125B00B5B065 /* TextFieldInputPrediction.swift */; };
 		55E37E2827F79480002ED658 /* AddScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E37E2727F79480002ED658 /* AddScoreView.swift */; };
 		55E8002F27F07FCC007181E0 /* RegistrationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E8002E27F07FCC007181E0 /* RegistrationService.swift */; };
@@ -361,6 +362,7 @@
 		55B0E6D827EBDAA00058A5B9 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		55B0E6DF27EC53F30058A5B9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		55B3954C2856B2630044389E /* SpecificSongView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecificSongView.swift; sourceTree = "<group>"; };
+		55B3954E2857377B0044389E /* FilterSongsTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSongsTextField.swift; sourceTree = "<group>"; };
 		55B40DCA27F3125B00B5B065 /* TextFieldInputPrediction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldInputPrediction.swift; sourceTree = "<group>"; };
 		55E37E2727F79480002ED658 /* AddScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddScoreView.swift; sourceTree = "<group>"; };
 		55E8002E27F07FCC007181E0 /* RegistrationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationService.swift; sourceTree = "<group>"; };
@@ -404,6 +406,7 @@
 				5512548E285661B4006A14CB /* SongsView.swift */,
 				55125490285681E1006A14CB /* SongsViewModel.swift */,
 				55B3954C2856B2630044389E /* SpecificSongView.swift */,
+				55B3954E2857377B0044389E /* FilterSongsTextField.swift */,
 			);
 			path = Songs;
 			sourceTree = "<group>";
@@ -971,6 +974,7 @@
 				55149F522850C361007BECEF /* EjjeliPortyaAdminView.swift in Sources */,
 				55E8002F27F07FCC007181E0 /* RegistrationService.swift in Sources */,
 				55B0E6D227EBDA9B0058A5B9 /* TiszAppApp.swift in Sources */,
+				55B3954F2857377B0044389E /* FilterSongsTextField.swift in Sources */,
 				5591E7AD27FDA01000C811F8 /* ImageUploadView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

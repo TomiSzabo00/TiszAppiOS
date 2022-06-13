@@ -13,7 +13,7 @@ struct SongsView: View {
     
     @State var predictableValues: Array<String> = []
     @State var predictedValue: Array<String> = []
-    @State var prefix: String = "Keresés a számok között"
+    @State var prefix: String = "Cím vagy dalszöveg alapján"
     
     @State var searchText: String = ""
     
@@ -22,17 +22,25 @@ struct SongsView: View {
             
                 //first page
                 VStack {
-                    PredictingTextField(predictableValues: $vm.songTitles, predictedValues: self.$predictedValue, textFieldInput: $searchText, textFieldTitle: prefix)
-                        .padding()
-                    if self.predictedValue.count > 0 {
-                        Text("Találat(ok) a keresésre:")
+                    HStack {
+                        Text("Keresés a dalok között:")
+                            .padding(.leading)
+                        Spacer()
+                    }
+                    
+                    FilterSongsTextField(titles: $vm.songTitles, lyrics: $vm.songLyrics, predictedValues: self.$predictedValue, textFieldInput: $searchText, textFieldTitle: prefix)
+                        .padding([.leading, .trailing, .bottom])
+                    
+                    HStack {
+                        Text("Dalok:")
                             .padding()
+                        Spacer()
+                    }
+                    if self.predictedValue.count > 0 {
                         List(self.predictedValue, id: \.self) {title in
                             NavigationLink(destination: SpecificSongView(title: vm.songs[vm.songTitles.firstIndex(of: title) ?? 0], lyrics: vm.songLyrics[vm.songTitles.firstIndex(of: title) ?? 0]), label: { Text(vm.songTitles[vm.songTitles.firstIndex(of: title) ?? 0]) })
                         }
                     } else {
-                        Text("Tartalomjegyzék:")
-                            .padding()
                         List(0...vm.songs.count-1, id: \.self) {i in
                             NavigationLink(destination: SpecificSongView(title: vm.songs[i], lyrics: vm.songLyrics[i]), label: { Text(vm.songTitles[i]) })
                         }
