@@ -112,9 +112,11 @@ struct MainMenuView: View {
                     
                     NavigationLink(destination: SongsView(), tag: 6, selection: $ID) {EmptyView()}
                     
-                    NavigationLink(destination: ImagesView(checkImages: true).environmentObject(sessionService), tag: 7, selection: $ID) {EmptyView()}
+                    NavigationLink(destination: MultipleTextQuizAdminView(), tag: 7, selection: $ID) {EmptyView()}
                     
-                    NavigationLink(destination: AddScoreView(teamNum: sessionService.teamNum), tag: 8, selection: $ID) {EmptyView()}
+                    NavigationLink(destination: ImagesView(checkImages: true).environmentObject(sessionService), tag: 8, selection: $ID) {EmptyView()}
+                    
+                    NavigationLink(destination: AddScoreView(teamNum: sessionService.teamNum), tag: 9, selection: $ID) {EmptyView()}
                 }
                 Button(action: {
                     

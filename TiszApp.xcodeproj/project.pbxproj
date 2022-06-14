@@ -187,6 +187,8 @@
 		55B3954F2857377B0044389E /* FilterSongsTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B3954E2857377B0044389E /* FilterSongsTextField.swift */; };
 		55B395522858E5860044389E /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 55B395512858E5860044389E /* GoogleMobileAds */; };
 		55B395552858E8F00044389E /* AdsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B395542858E8F00044389E /* AdsViewModel.swift */; };
+		55B3955A28593BBC0044389E /* MultipleTextQuizAdminView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B3955928593BBC0044389E /* MultipleTextQuizAdminView.swift */; };
+		55B3955C28593BE00044389E /* MultipleTextQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B3955B28593BE00044389E /* MultipleTextQuizViewController.swift */; };
 		55B40DCB27F3125B00B5B065 /* TextFieldInputPrediction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B40DCA27F3125B00B5B065 /* TextFieldInputPrediction.swift */; };
 		55E37E2827F79480002ED658 /* AddScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E37E2727F79480002ED658 /* AddScoreView.swift */; };
 		55E8002F27F07FCC007181E0 /* RegistrationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E8002E27F07FCC007181E0 /* RegistrationService.swift */; };
@@ -366,6 +368,8 @@
 		55B3954C2856B2630044389E /* SpecificSongView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecificSongView.swift; sourceTree = "<group>"; };
 		55B3954E2857377B0044389E /* FilterSongsTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSongsTextField.swift; sourceTree = "<group>"; };
 		55B395542858E8F00044389E /* AdsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsViewModel.swift; sourceTree = "<group>"; };
+		55B3955928593BBC0044389E /* MultipleTextQuizAdminView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleTextQuizAdminView.swift; sourceTree = "<group>"; };
+		55B3955B28593BE00044389E /* MultipleTextQuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleTextQuizViewController.swift; sourceTree = "<group>"; };
 		55B40DCA27F3125B00B5B065 /* TextFieldInputPrediction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldInputPrediction.swift; sourceTree = "<group>"; };
 		55E37E2727F79480002ED658 /* AddScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddScoreView.swift; sourceTree = "<group>"; };
 		55E8002E27F07FCC007181E0 /* RegistrationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationService.swift; sourceTree = "<group>"; };
@@ -621,6 +625,7 @@
 		55B0E6D027EBDA9B0058A5B9 /* TiszApp */ = {
 			isa = PBXGroup;
 			children = (
+				55B3955828593B9D0044389E /* MultipleTextQuiz */,
 				55B395532858E8DC0044389E /* Ads */,
 				5512548928565AB1006A14CB /* Songs */,
 				55149F572850E8B7007BECEF /* Info.plist */,
@@ -658,6 +663,15 @@
 				55B395542858E8F00044389E /* AdsViewModel.swift */,
 			);
 			path = Ads;
+			sourceTree = "<group>";
+		};
+		55B3955828593B9D0044389E /* MultipleTextQuiz */ = {
+			isa = PBXGroup;
+			children = (
+				55B3955928593BBC0044389E /* MultipleTextQuizAdminView.swift */,
+				55B3955B28593BE00044389E /* MultipleTextQuizViewController.swift */,
+			);
+			path = MultipleTextQuiz;
 			sourceTree = "<group>";
 		};
 		55CBA8A32850C1AF004A5750 /* EjjeliPortya */ = {
@@ -949,6 +963,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55B3955A28593BBC0044389E /* MultipleTextQuizAdminView.swift in Sources */,
 				5591E7A627F88D2100C811F8 /* ScoreItem.swift in Sources */,
 				5591E7BA2800ED5700C811F8 /* TextsHandler.swift in Sources */,
 				55149F542850C380007BECEF /* EjjeliPortyaView.swift in Sources */,
@@ -969,6 +984,7 @@
 				557B8F9E27EE1CEF00312433 /* LoginView.swift in Sources */,
 				55E8003127F09CBC007181E0 /* RegistrationViewModel.swift in Sources */,
 				5591E7A827F8985700C811F8 /* ScoresHandler.swift in Sources */,
+				55B3955C28593BE00044389E /* MultipleTextQuizViewController.swift in Sources */,
 				55E8003527F0A217007181E0 /* SessionUserDetails.swift in Sources */,
 				55125491285681E1006A14CB /* SongsViewModel.swift in Sources */,
 				557B8FA027EE334F00312433 /* MainMenuView.swift in Sources */,
