@@ -185,6 +185,8 @@
 		55B0E6FD27EC54C50058A5B9 /* FirebaseStorageSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 55B0E6FC27EC54C50058A5B9 /* FirebaseStorageSwift-Beta */; };
 		55B3954D2856B2630044389E /* SpecificSongView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B3954C2856B2630044389E /* SpecificSongView.swift */; };
 		55B3954F2857377B0044389E /* FilterSongsTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B3954E2857377B0044389E /* FilterSongsTextField.swift */; };
+		55B395522858E5860044389E /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 55B395512858E5860044389E /* GoogleMobileAds */; };
+		55B395552858E8F00044389E /* AdsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B395542858E8F00044389E /* AdsViewModel.swift */; };
 		55B40DCB27F3125B00B5B065 /* TextFieldInputPrediction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B40DCA27F3125B00B5B065 /* TextFieldInputPrediction.swift */; };
 		55E37E2827F79480002ED658 /* AddScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E37E2727F79480002ED658 /* AddScoreView.swift */; };
 		55E8002F27F07FCC007181E0 /* RegistrationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E8002E27F07FCC007181E0 /* RegistrationService.swift */; };
@@ -363,6 +365,7 @@
 		55B0E6DF27EC53F30058A5B9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		55B3954C2856B2630044389E /* SpecificSongView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecificSongView.swift; sourceTree = "<group>"; };
 		55B3954E2857377B0044389E /* FilterSongsTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSongsTextField.swift; sourceTree = "<group>"; };
+		55B395542858E8F00044389E /* AdsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsViewModel.swift; sourceTree = "<group>"; };
 		55B40DCA27F3125B00B5B065 /* TextFieldInputPrediction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldInputPrediction.swift; sourceTree = "<group>"; };
 		55E37E2727F79480002ED658 /* AddScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddScoreView.swift; sourceTree = "<group>"; };
 		55E8002E27F07FCC007181E0 /* RegistrationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationService.swift; sourceTree = "<group>"; };
@@ -391,6 +394,7 @@
 				55B0E6F327EC54C40058A5B9 /* FirebaseDatabaseSwift-Beta in Frameworks */,
 				55B0E6F127EC54C40058A5B9 /* FirebaseDatabase in Frameworks */,
 				55B0E6E327EC54C40058A5B9 /* FirebaseAnalytics in Frameworks */,
+				55B395522858E5860044389E /* GoogleMobileAds in Frameworks */,
 				55B0E6F727EC54C40058A5B9 /* FirebaseFirestore in Frameworks */,
 				55B0E6F527EC54C40058A5B9 /* FirebaseDynamicLinks in Frameworks */,
 			);
@@ -617,6 +621,7 @@
 		55B0E6D027EBDA9B0058A5B9 /* TiszApp */ = {
 			isa = PBXGroup;
 			children = (
+				55B395532858E8DC0044389E /* Ads */,
 				5512548928565AB1006A14CB /* Songs */,
 				55149F572850E8B7007BECEF /* Info.plist */,
 				55CBA8A32850C1AF004A5750 /* EjjeliPortya */,
@@ -645,6 +650,14 @@
 				55B0E6D827EBDAA00058A5B9 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		55B395532858E8DC0044389E /* Ads */ = {
+			isa = PBXGroup;
+			children = (
+				55B395542858E8F00044389E /* AdsViewModel.swift */,
+			);
+			path = Ads;
 			sourceTree = "<group>";
 		};
 		55CBA8A32850C1AF004A5750 /* EjjeliPortya */ = {
@@ -747,6 +760,7 @@
 				55B0E6F827EC54C40058A5B9 /* FirebaseStorage */,
 				55B0E6FA27EC54C50058A5B9 /* FirebaseStorageCombine-Community */,
 				55B0E6FC27EC54C50058A5B9 /* FirebaseStorageSwift-Beta */,
+				55B395512858E5860044389E /* GoogleMobileAds */,
 			);
 			productName = TiszApp;
 			productReference = 55B0E6CE27EBDA9B0058A5B9 /* TiszApp.app */;
@@ -778,6 +792,7 @@
 			mainGroup = 55B0E6C527EBDA9B0058A5B9;
 			packageReferences = (
 				55B0E6E127EC54C40058A5B9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				55B395502858E5850044389E /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
 			);
 			productRefGroup = 55B0E6CF27EBDA9B0058A5B9 /* Products */;
 			projectDirPath = "";
@@ -968,6 +983,7 @@
 				5510518B281D5F5900F31076 /* EditScoreView.swift in Sources */,
 				5591E7B528005E7C00C811F8 /* ImageDetailView.swift in Sources */,
 				55E8003B27F0B416007181E0 /* LoginService.swift in Sources */,
+				55B395552858E8F00044389E /* AdsViewModel.swift in Sources */,
 				5595DBD627F4AFC40063A424 /* NeumorphicStyle.swift in Sources */,
 				5591E7C72802229C00C811F8 /* QuizAdminView.swift in Sources */,
 				5591E7AF27FE13D200C811F8 /* ImagesView.swift in Sources */,
@@ -1192,6 +1208,14 @@
 				minimumVersion = 8.0.0;
 			};
 		};
+		55B395502858E5850044389E /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1264,6 +1288,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 55B0E6E127EC54C40058A5B9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = "FirebaseStorageSwift-Beta";
+		};
+		55B395512858E5860044389E /* GoogleMobileAds */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 55B395502858E5850044389E /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
+			productName = GoogleMobileAds;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

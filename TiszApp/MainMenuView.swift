@@ -55,6 +55,9 @@ struct MainMenuView: View {
     
     @State var ID: Int? = nil
     
+    @State var root : UIViewController!
+    @State var adVm = AdsViewModel()
+    
     private var gridItemLayout = [GridItem(.fixed(UIScreen.main.bounds.width/2-40), spacing: 20), GridItem(.fixed(UIScreen.main.bounds.width/2-40), spacing: 20)]
     
     var body: some View {
@@ -71,6 +74,13 @@ struct MainMenuView: View {
                                            action: { ID = sessionService.buttonTitles.firstIndex(of: e)! })
                             }
 
+                        }
+                        
+                        IconButton(text: "Támogasd a fejlesztőket", icon: "dollarsign.circle.fill", action: {
+                            adVm.loadRewardedAd(root: self.root)
+                        })
+                        .onAppear {
+                            self.root = UIApplication.shared.windows.first?.rootViewController
                         }
                     } //LazyVGrid end
                     //.padding([.leading, .trailing], 20)

@@ -73,7 +73,7 @@ struct ImageDetailView: View {
                         //display element to add score
                         Text("Hány pontot adsz erre a képre?").padding(.top)
                         HStack {
-                            Slider(value: $picScore, in: 0...10, step: 1)
+                            Slider(value: $picScore, in: 0...3, step: 1)
                                 .padding([.leading, .trailing])
                             Text(String(Int(picScore)))
                                 .frame(width: 30)
