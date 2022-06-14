@@ -80,7 +80,7 @@ struct MainMenuView: View {
                 Group {
                     NavigationLink(destination: UploadView(), tag: 0, selection: $ID) {EmptyView()}
                     
-                    NavigationLink(destination: ScoresTableView(handler: ScoresHandlerImpl(teamNum: sessionService.teamNum), teamNum: sessionService.teamNum).environmentObject(sessionService), tag: 1, selection: $ID) {EmptyView()}
+                    NavigationLink(destination: ScoresTableView(handler: ScoresHandlerImpl(teamNum: sessionService.teamNum)).environmentObject(sessionService), tag: 1, selection: $ID) {EmptyView()}
                     
                     
                     

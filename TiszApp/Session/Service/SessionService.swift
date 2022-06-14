@@ -18,6 +18,7 @@ enum SessionState {
 
 struct MenuInfo: Decodable {
     var Visible: String
+    var Name: String
 }
 
 struct TeamNumInfo: Decodable {

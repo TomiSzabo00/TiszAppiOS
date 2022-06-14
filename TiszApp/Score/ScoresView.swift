@@ -21,7 +21,7 @@ struct ScoresView: View {
     let minDragTranslationForSwipe: CGFloat = 50
     
     var body: some View {
-        ScoresTableView(handler: handler, teamNum: 4).environmentObject(sessionService)
+        ScoresTableView(handler: handler).environmentObject(sessionService)
         
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle("Pontok megtekintése")

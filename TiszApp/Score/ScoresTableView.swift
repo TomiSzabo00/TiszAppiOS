@@ -17,7 +17,7 @@ struct ScoresTableView: View {
     
     @State var scoreToEdit: ScoreItem? = nil
     
-    @State var teamNum: Int
+    @State var isPicScoresShowing: Bool = true
     
     var body: some View {
         VStack{
@@ -44,7 +44,7 @@ struct ScoresTableView: View {
                     .background(RoundedRectangle(cornerRadius: 10)
                         .fill(Color(.systemBackground))
                         .shadow(color: Color(.label).opacity(0.2), radius: 4, x: 0, y: 3))
-                ForEach (1...teamNum, id: \.self) { i in
+                ForEach (1...sessionService.teamNum, id: \.self) { i in
                     Text("\(i).")
                         .bold()
                         .frame(maxWidth:70)
@@ -62,6 +62,9 @@ struct ScoresTableView: View {
             
             //List
             List(handler.scoresList, id: \.self) { score in
+                if(score.name.starts(with: "kép: ") && !self.isPicScoresShowing) {
+                    EmptyView()
+                } else {
                     HStack {
                         Spacer()
                         Text(score.name)
@@ -73,7 +76,7 @@ struct ScoresTableView: View {
                                 .fill(Color(.systemBackground))
                                 .shadow(color: Color(.label).opacity(0.2), radius: 3, x: 0, y: 3))
                             
-                        ForEach (0...teamNum-1, id: \.self) { i in
+                        ForEach (0...sessionService.teamNum-1, id: \.self) { i in
                             Text(score.scores.indices.contains(i) ? String(score.scores[i]) : "0")
                                     .frame(maxWidth:70)
                                     .minimumScaleFactor(0.1)
@@ -104,13 +107,41 @@ struct ScoresTableView: View {
                         }
                         
                     }
+                }
                     
                     
                 }
             .listStyle(PlainListStyle())
             //end List
             
-            NavigationLink(destination: EditScoreView(what: scoreToEdit, teamNum: teamNum), tag: 0, selection: $ID) {EmptyView()}
+            NavigationLink(destination: EditScoreView(what: scoreToEdit, teamNum: sessionService.teamNum), tag: 0, selection: $ID) {EmptyView()}
+            
+            if (self.isPicScoresShowing) {
+                HStack{
+                    Text("Képek:")
+                        .bold()
+                        .foregroundStyle(LinearGradient(Color.gradientDark, Color.gradientLight))
+                        .frame(width: 120)
+                        .minimumScaleFactor(0.1)
+                        .lineLimit(1)
+                        .padding(5)
+                        .background(RoundedRectangle(cornerRadius: 10)
+                            .fill(Color(.systemBackground))
+                            .shadow(color: Color(.label).opacity(0.2), radius: 4, x: 0, y: 3))
+                    ForEach (0...sessionService.teamNum-1, id: \.self) { i in
+                        Text(String(handler.picSums[i]))
+                            .frame(maxWidth:70)
+                            .minimumScaleFactor(0.1)
+                            .lineLimit(1)
+                            .padding(5)
+                            .background(RoundedRectangle(cornerRadius: 10)
+                                .fill(Color(.systemBackground))
+                                .shadow(color: Color(.label).opacity(0.2), radius: 4, x: 0, y: 3))
+                    }
+                    
+                }
+                .padding([.leading, .top, .trailing], 10)
+            }
             
             HStack{
                 Text("Összesen:")
@@ -123,7 +154,7 @@ struct ScoresTableView: View {
                     .background(RoundedRectangle(cornerRadius: 10)
                         .fill(Color(.systemBackground))
                         .shadow(color: Color(.label).opacity(0.2), radius: 4, x: 0, y: 3))
-                ForEach (0...teamNum-1, id: \.self) { i in
+                ForEach (0...sessionService.teamNum-1, id: \.self) { i in
                     Text(String(handler.sums[i]))
                         .frame(maxWidth:70)
                         .minimumScaleFactor(0.1)
@@ -139,11 +170,15 @@ struct ScoresTableView: View {
         }
         .navigationBarTitle("Pontállás")
         .navigationBarTitleDisplayMode(.large)
+        
+        .navigationBarItems(trailing: Button(action: { self.isPicScoresShowing.toggle()}, label: {
+            self.isPicScoresShowing ? Image(systemName: "photo.on.rectangle") : Image(systemName: "rectangle.on.rectangle.slash")
+        }))
     }
 }
 
 struct ScoresTableView_Previews: PreviewProvider {
     static var previews: some View {
-        ScoresTableView(handler: ScoresHandlerImpl(teamNum: 4), teamNum: 4).environmentObject(SessionServiceImpl())
+        ScoresTableView(handler: ScoresHandlerImpl(teamNum: 4)).environmentObject(SessionServiceImpl())
     }
 }
