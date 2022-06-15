@@ -79,7 +79,7 @@ struct MultipleTextQuizAdminView: View {
                 
                 List(vm.allAnswers, id: \.self) { group in
                     if !group.isEmpty {
-                        NavigationLink("\((vm.allAnswers.firstIndex(of: group)) ?? 0). csapat válasza(i)", destination: MultipleTextQuizAnswersView(answers: group))
+                        NavigationLink("\(((vm.allAnswers.firstIndex(of: group)) ?? 0)+1). csapat válasza(i)", destination: MultipleTextQuizAnswersView(answers: group))
                     }
                 }
                 .padding([.leading, .trailing])

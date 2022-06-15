@@ -111,21 +111,26 @@ final class MultipleTextQuizViewModel: ObservableObject {
     }
     
     func getAllAnswers() {
+        self.allAnswers.removeAll()
         for _ in 1...(self.sessionService?.teamNum ?? 1) {
             self.allAnswers.append([])
         }
         Database.database().reference().child("text-quiz-answers").observe(.childAdded, with: { (snapshot) -> Void in
-            let groupNum = snapshot.key
+            let groupNum = (Int(snapshot.key) ?? 1)-1
             for child in snapshot.children {
                 let currChild = child as! DataSnapshot
                 let value = currChild.value as? [String: [String]],
                     currAnswers = value?["answers"]
                 
-                for i in 0...self.numOfQuestions-1 {
-                    self.allAnswers[Int(groupNum) ?? 0].append([])
-                    for _ in 1...snapshot.childrenCount {
-                        self.allAnswers[Int(groupNum) ?? 0][i].append(Answer(answer: currAnswers![i]))
+                if(self.allAnswers[groupNum].count != self.numOfQuestions) {
+                    self.allAnswers[groupNum].removeAll()
+                    for i in 0...self.numOfQuestions-1 {
+                        self.allAnswers[groupNum].append([])
                     }
+                }
+                
+                for i in 0...self.numOfQuestions-1 {
+                    self.allAnswers[groupNum][i].append(Answer(answer: currAnswers![i]))
                 }
             }
         })
