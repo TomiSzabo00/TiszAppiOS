@@ -7,6 +7,7 @@
 
 import Foundation
 import FirebaseDatabase
+import SwiftUI
 
 struct Answer: Identifiable, Hashable {
     var id: UUID
@@ -31,6 +32,8 @@ final class MultipleTextQuizViewModel: ObservableObject {
     
     @Published var canUpload = true
     
+    @Published var itemColors = [Color]()
+    
     init() {
         self.initNumListener()
     }
@@ -43,6 +46,8 @@ final class MultipleTextQuizViewModel: ObservableObject {
     func removeNumOfQuestions() {
         let numValue = ["num" : 0] as [String : Int]
         Database.database().reference().child("text-quiz-num").child("numberOfQuestions").setValue(numValue)
+        
+        Database.database().reference().child("text-quiz-answers").removeValue()
     }
     
     private func setUpAnswers(for: Int) {
@@ -50,9 +55,11 @@ final class MultipleTextQuizViewModel: ObservableObject {
         if(`for` > 0) {
             for _ in 1...`for` {
                 self.answers.append(Answer(answer: ""))
+                self.itemColors.append(Color("listItem"))
             }
         } else {
             self.answers.removeAll()
+            self.itemColors.removeAll()
         }
     }
     
@@ -70,6 +77,7 @@ final class MultipleTextQuizViewModel: ObservableObject {
         Database.database().reference().child("text-quiz-num").observe(.childRemoved, with: { (snapshot) -> Void in
             self.numOfQuestions = 0
             self.answers.removeAll()
+            self.itemColors.removeAll()
         })
         
         Database.database().reference().child("text-quiz-num").observe(.childChanged, with: { (snapshot) -> Void in
@@ -98,6 +106,7 @@ final class MultipleTextQuizViewModel: ObservableObject {
         Database.database().reference().child("text-quiz-answers").observe(.childAdded, with: { (snapshot) -> Void in
             if snapshot.hasChild(self.sessionService!.userDetails!.uid) {
                 self.canUpload = false
+                print("van")
             } else {
                 self.canUpload = true
             }
@@ -124,7 +133,7 @@ final class MultipleTextQuizViewModel: ObservableObject {
                 
                 if(self.allAnswers[groupNum].count != self.numOfQuestions) {
                     self.allAnswers[groupNum].removeAll()
-                    for i in 0...self.numOfQuestions-1 {
+                    for _ in 0...self.numOfQuestions-1 {
                         self.allAnswers[groupNum].append([])
                     }
                 }
