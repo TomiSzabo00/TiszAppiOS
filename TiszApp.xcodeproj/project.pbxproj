@@ -188,7 +188,9 @@
 		55B395522858E5860044389E /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 55B395512858E5860044389E /* GoogleMobileAds */; };
 		55B395552858E8F00044389E /* AdsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B395542858E8F00044389E /* AdsViewModel.swift */; };
 		55B3955A28593BBC0044389E /* MultipleTextQuizAdminView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B3955928593BBC0044389E /* MultipleTextQuizAdminView.swift */; };
-		55B3955C28593BE00044389E /* MultipleTextQuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B3955B28593BE00044389E /* MultipleTextQuizViewController.swift */; };
+		55B3955C28593BE00044389E /* MultipleTextQuizViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B3955B28593BE00044389E /* MultipleTextQuizViewModel.swift */; };
+		55B3955E2859ECCE0044389E /* MultipleTextQuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B3955D2859ECCE0044389E /* MultipleTextQuizView.swift */; };
+		55B39560285A115B0044389E /* MultipleTextQuizAnswersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B3955F285A115A0044389E /* MultipleTextQuizAnswersView.swift */; };
 		55B40DCB27F3125B00B5B065 /* TextFieldInputPrediction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B40DCA27F3125B00B5B065 /* TextFieldInputPrediction.swift */; };
 		55E37E2827F79480002ED658 /* AddScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E37E2727F79480002ED658 /* AddScoreView.swift */; };
 		55E8002F27F07FCC007181E0 /* RegistrationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E8002E27F07FCC007181E0 /* RegistrationService.swift */; };
@@ -369,7 +371,9 @@
 		55B3954E2857377B0044389E /* FilterSongsTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterSongsTextField.swift; sourceTree = "<group>"; };
 		55B395542858E8F00044389E /* AdsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsViewModel.swift; sourceTree = "<group>"; };
 		55B3955928593BBC0044389E /* MultipleTextQuizAdminView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleTextQuizAdminView.swift; sourceTree = "<group>"; };
-		55B3955B28593BE00044389E /* MultipleTextQuizViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleTextQuizViewController.swift; sourceTree = "<group>"; };
+		55B3955B28593BE00044389E /* MultipleTextQuizViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleTextQuizViewModel.swift; sourceTree = "<group>"; };
+		55B3955D2859ECCE0044389E /* MultipleTextQuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleTextQuizView.swift; sourceTree = "<group>"; };
+		55B3955F285A115A0044389E /* MultipleTextQuizAnswersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleTextQuizAnswersView.swift; sourceTree = "<group>"; };
 		55B40DCA27F3125B00B5B065 /* TextFieldInputPrediction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldInputPrediction.swift; sourceTree = "<group>"; };
 		55E37E2727F79480002ED658 /* AddScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddScoreView.swift; sourceTree = "<group>"; };
 		55E8002E27F07FCC007181E0 /* RegistrationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationService.swift; sourceTree = "<group>"; };
@@ -669,7 +673,9 @@
 			isa = PBXGroup;
 			children = (
 				55B3955928593BBC0044389E /* MultipleTextQuizAdminView.swift */,
-				55B3955B28593BE00044389E /* MultipleTextQuizViewController.swift */,
+				55B3955B28593BE00044389E /* MultipleTextQuizViewModel.swift */,
+				55B3955D2859ECCE0044389E /* MultipleTextQuizView.swift */,
+				55B3955F285A115A0044389E /* MultipleTextQuizAnswersView.swift */,
 			);
 			path = MultipleTextQuiz;
 			sourceTree = "<group>";
@@ -973,6 +979,7 @@
 				557B8F9C27EDF6A200312433 /* RegisterView.swift in Sources */,
 				557B8FA627EE4D9800312433 /* User.swift in Sources */,
 				5591E7BE2800F12C00C811F8 /* TextDetailView.swift in Sources */,
+				55B3955E2859ECCE0044389E /* MultipleTextQuizView.swift in Sources */,
 				55E8003D27F0B571007181E0 /* LoginViewModel.swift in Sources */,
 				55B40DCB27F3125B00B5B065 /* TextFieldInputPrediction.swift in Sources */,
 				5591E7C52802223B00C811F8 /* QuizView.swift in Sources */,
@@ -984,7 +991,7 @@
 				557B8F9E27EE1CEF00312433 /* LoginView.swift in Sources */,
 				55E8003127F09CBC007181E0 /* RegistrationViewModel.swift in Sources */,
 				5591E7A827F8985700C811F8 /* ScoresHandler.swift in Sources */,
-				55B3955C28593BE00044389E /* MultipleTextQuizViewController.swift in Sources */,
+				55B3955C28593BE00044389E /* MultipleTextQuizViewModel.swift in Sources */,
 				55E8003527F0A217007181E0 /* SessionUserDetails.swift in Sources */,
 				55125491285681E1006A14CB /* SongsViewModel.swift in Sources */,
 				557B8FA027EE334F00312433 /* MainMenuView.swift in Sources */,
@@ -993,6 +1000,7 @@
 				55B3954D2856B2630044389E /* SpecificSongView.swift in Sources */,
 				55E8003827F0A27E007181E0 /* SessionService.swift in Sources */,
 				55149F562850CC7D007BECEF /* EjjeliPortyaViewModel.swift in Sources */,
+				55B39560285A115B0044389E /* MultipleTextQuizAnswersView.swift in Sources */,
 				5591E7C92805B20700C811F8 /* QuizHandler.swift in Sources */,
 				5591E7C22801C00900C811F8 /* UploadView.swift in Sources */,
 				5591E7BC2800EE1300C811F8 /* TextsView.swift in Sources */,

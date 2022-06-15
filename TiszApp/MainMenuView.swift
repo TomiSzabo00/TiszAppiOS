@@ -56,7 +56,7 @@ struct MainMenuView: View {
     @State var ID: Int? = nil
     
     @State var root : UIViewController!
-    @State var adVm = AdsViewModel()
+    @StateObject var adVm = AdsViewModel()
     
     private var gridItemLayout = [GridItem(.fixed(UIScreen.main.bounds.width/2-40), spacing: 20), GridItem(.fixed(UIScreen.main.bounds.width/2-40), spacing: 20)]
     
@@ -82,6 +82,14 @@ struct MainMenuView: View {
                         .onAppear {
                             self.root = UIApplication.shared.windows.first?.rootViewController
                         }
+                        .alert(isPresented: $adVm.rewardGiven, content: {
+                            return Alert(title: Text("Reklám megnézve"),
+                                         message: Text("Köszönjük, hogy végignézted a reklámot. Überkiráy vagy!"),
+                                         dismissButton: Alert.Button.default(
+                                            Text("Szívesen :)"), action: { adVm.canGiveReward = false }
+                                         )
+                                     )
+                        })
                     } //LazyVGrid end
                     //.padding([.leading, .trailing], 20)
                     .padding([.top, .bottom])
@@ -112,7 +120,11 @@ struct MainMenuView: View {
                     
                     NavigationLink(destination: SongsView(), tag: 6, selection: $ID) {EmptyView()}
                     
-                    NavigationLink(destination: MultipleTextQuizAdminView(), tag: 7, selection: $ID) {EmptyView()}
+                    if (sessionService.userDetails?.admin != nil) && sessionService.userDetails?.admin == true {
+                        NavigationLink(destination: MultipleTextQuizAdminView().environmentObject(sessionService), tag: 7, selection: $ID) {EmptyView()}
+                    } else {
+                        NavigationLink(destination: MultipleTextQuizView().environmentObject(sessionService), tag: 7, selection: $ID) {EmptyView()}
+                    }
                     
                     NavigationLink(destination: ImagesView(checkImages: true).environmentObject(sessionService), tag: 8, selection: $ID) {EmptyView()}
                     

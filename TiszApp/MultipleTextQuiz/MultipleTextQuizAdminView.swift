@@ -9,6 +9,8 @@ import SwiftUI
 
 struct MultipleTextQuizAdminView: View {
     
+    @EnvironmentObject var sessionService : SessionServiceImpl
+    
     @StateObject var vm = MultipleTextQuizViewModel()
     
     @State var numText: String = "0"
@@ -63,7 +65,37 @@ struct MultipleTextQuizAdminView: View {
                 
             }//vstack end
         } else {
-            Text("\(vm.numOfQuestions) darab kérdés feltéve.")
+            VStack {
+                Spacer()
+                Text("\(vm.numOfQuestions) darab kérdés feltéve.")
+                    .padding()
+                    .padding(.bottom, 50)
+                
+                HStack {
+                    Text("Beérkezett válaszok listája:")
+                    Spacer()
+                }
+                .padding(.leading)
+                
+                List(vm.allAnswers, id: \.self) { group in
+                    if !group.isEmpty {
+                        NavigationLink("\((vm.allAnswers.firstIndex(of: group)) ?? 0). csapat válasza(i)", destination: MultipleTextQuizAnswersView(answers: group))
+                    }
+                }
+                .padding([.leading, .trailing])
+                
+                Spacer()
+                Button(action: {
+                    vm.removeNumOfQuestions()
+                }, label: {
+                    Text("Visszaállítás")
+                        .padding()
+                })
+            }
+            .onAppear {
+                vm.sessionService = self.sessionService
+                vm.getAllAnswers()
+            }
         }
     }
 }

@@ -8,7 +8,11 @@
 import GoogleMobileAds
 import SwiftUI
 
-final class AdsViewModel: UIViewController, GADFullScreenContentDelegate {
+final class AdsViewModel: UIViewController, GADFullScreenContentDelegate, ObservableObject {
+    
+    @Published var rewardGiven : Bool = false
+    
+    @Published var canGiveReward: Bool = false
     
     private var rewardedAd: GADRewardedAd?
     
@@ -42,17 +46,20 @@ final class AdsViewModel: UIViewController, GADFullScreenContentDelegate {
     /// Tells the delegate that the ad dismissed full screen content.
     func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
         print("Ad did dismiss full screen content.")
+        if(self.canGiveReward) {
+            self.rewardGiven = true
+        }
     }
     
     func show(root: UIViewController) {
-      if let ad = rewardedAd {
-        ad.present(fromRootViewController: root) {
-          let reward = ad.adReward
-          print("Reward received with currency \(reward.amount), amount \(reward.amount.doubleValue)")
-          // TODO: Reward the user.
+        if let ad = rewardedAd {
+            ad.present(fromRootViewController: root) {
+                let reward = ad.adReward
+                print("Reward received with currency \(reward.amount), amount \(reward.amount.doubleValue)")
+                self.canGiveReward = true
+            }
+        } else {
+            print("Ad wasn't ready")
         }
-      } else {
-        print("Ad wasn't ready")
-      }
     }
 }
