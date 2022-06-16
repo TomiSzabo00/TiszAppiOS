@@ -165,6 +165,8 @@
 		5591E7C72802229C00C811F8 /* QuizAdminView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5591E7C62802229C00C811F8 /* QuizAdminView.swift */; };
 		5591E7C92805B20700C811F8 /* QuizHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5591E7C82805B20700C811F8 /* QuizHandler.swift */; };
 		5595DBD627F4AFC40063A424 /* NeumorphicStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5595DBD527F4AFC40063A424 /* NeumorphicStyle.swift */; };
+		55962CB4285B760D00030BE7 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55962CB3285B760D00030BE7 /* ProfileView.swift */; };
+		55962CB6285B81BF00030BE7 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55962CB5285B81BF00030BE7 /* ProfileViewModel.swift */; };
 		55B0E6D227EBDA9B0058A5B9 /* TiszAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B0E6D127EBDA9B0058A5B9 /* TiszAppApp.swift */; };
 		55B0E6D627EBDAA00058A5B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55B0E6D527EBDAA00058A5B9 /* Assets.xcassets */; };
 		55B0E6D927EBDAA00058A5B9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55B0E6D827EBDAA00058A5B9 /* Preview Assets.xcassets */; };
@@ -362,6 +364,8 @@
 		5591E7C62802229C00C811F8 /* QuizAdminView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizAdminView.swift; sourceTree = "<group>"; };
 		5591E7C82805B20700C811F8 /* QuizHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizHandler.swift; sourceTree = "<group>"; };
 		5595DBD527F4AFC40063A424 /* NeumorphicStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeumorphicStyle.swift; sourceTree = "<group>"; };
+		55962CB3285B760D00030BE7 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		55962CB5285B81BF00030BE7 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		55B0E6CE27EBDA9B0058A5B9 /* TiszApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TiszApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55B0E6D127EBDA9B0058A5B9 /* TiszAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TiszAppApp.swift; sourceTree = "<group>"; };
 		55B0E6D527EBDAA00058A5B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -610,6 +614,15 @@
 			path = StyleElements;
 			sourceTree = "<group>";
 		};
+		55962CB2285B75FA00030BE7 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				55962CB3285B760D00030BE7 /* ProfileView.swift */,
+				55962CB5285B81BF00030BE7 /* ProfileViewModel.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
 		55B0E6C527EBDA9B0058A5B9 = {
 			isa = PBXGroup;
 			children = (
@@ -629,6 +642,7 @@
 		55B0E6D027EBDA9B0058A5B9 /* TiszApp */ = {
 			isa = PBXGroup;
 			children = (
+				55962CB2285B75FA00030BE7 /* Profile */,
 				55B3955828593B9D0044389E /* MultipleTextQuiz */,
 				55B395532858E8DC0044389E /* Ads */,
 				5512548928565AB1006A14CB /* Songs */,
@@ -1009,6 +1023,8 @@
 				55E8003B27F0B416007181E0 /* LoginService.swift in Sources */,
 				55B395552858E8F00044389E /* AdsViewModel.swift in Sources */,
 				5595DBD627F4AFC40063A424 /* NeumorphicStyle.swift in Sources */,
+				55962CB4285B760D00030BE7 /* ProfileView.swift in Sources */,
+				55962CB6285B81BF00030BE7 /* ProfileViewModel.swift in Sources */,
 				5591E7C72802229C00C811F8 /* QuizAdminView.swift in Sources */,
 				5591E7AF27FE13D200C811F8 /* ImagesView.swift in Sources */,
 				55149F522850C361007BECEF /* EjjeliPortyaAdminView.swift in Sources */,

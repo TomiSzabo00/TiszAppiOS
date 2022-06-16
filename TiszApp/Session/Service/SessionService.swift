@@ -62,7 +62,6 @@ final class SessionServiceImpl: ObservableObject, SessionService {
     init() {
         self.btnStates = [Bool](repeating: false, count: self.buttonTitles.count)
         self.getButtonStates()
-        print("a")
         setupFirebaseAuthHandler()
         self.getTeamNum()
     }

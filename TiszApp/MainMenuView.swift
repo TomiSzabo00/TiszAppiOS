@@ -130,17 +130,25 @@ struct MainMenuView: View {
                     
                     NavigationLink(destination: AddScoreView(teamNum: sessionService.teamNum), tag: 9, selection: $ID) {EmptyView()}
                 }
-                Button(action: {
-                    
-                    sessionService.logout()
-                    
-                }, label: {
+                
+                NavigationLink(destination: ProfileView().environmentObject(sessionService), label: {
                     HStack {
-                        Image(systemName: "rectangle.portrait.and.arrow.right.fill")
-                        Text("Kijelentkezés")
+                        Image(systemName: "person.crop.circle")
+                        Text("Bejelentkezve, mint \(sessionService.userDetails?.fullName ?? "«nincs név»")")
                     }
                 })
                 .padding()
+//                Button(action: {
+//
+//                    sessionService.logout()
+//
+//                }, label: {
+//                    HStack {
+//                        Image(systemName: "rectangle.portrait.and.arrow.right.fill")
+//                        Text("Kijelentkezés")
+//                    }
+//                })
+//                .padding()
                 //.buttonStyle(SimpleButtonStyle())
                 
             }
