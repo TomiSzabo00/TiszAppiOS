@@ -60,12 +60,17 @@ struct MultipleTextQuizView: View {
                 self.vm.sessionService = self.sessionService
                 vm.initUploadListener()
             }
+            .navigationTitle("Kvíz 2")
+            .navigationBarTitleDisplayMode(.large)
         } else {
             Text("Még nincs feltéve egy kérdés sem, vagy már adtál be választ.")
+                .padding()
                 .onAppear {
                     self.vm.sessionService = self.sessionService
                     vm.initUploadListener()
                 }
+                .navigationTitle("Kvíz 2")
+                .navigationBarTitleDisplayMode(.large)
         }
     }
 }

@@ -15,6 +15,8 @@ struct MultipleTextQuizAdminView: View {
     
     @State var numText: String = "0"
     
+    @State var areYouSure = false
+    
     var body: some View {
         if(vm.numOfQuestions == 0) {
             VStack {
@@ -86,7 +88,7 @@ struct MultipleTextQuizAdminView: View {
                 
                 Spacer()
                 Button(action: {
-                    vm.removeNumOfQuestions()
+                    self.areYouSure = true
                 }, label: {
                     Text("Visszaállítás")
                         .padding()
@@ -96,6 +98,18 @@ struct MultipleTextQuizAdminView: View {
                 vm.sessionService = self.sessionService
                 vm.getAllAnswers()
             }
+            .alert(isPresented: $areYouSure, content: {
+                return Alert(title: Text("Biztos vagy benne?"),
+                             message: Text("Biztosan vissza akarod állítani a kérdéseket és válaszokat?"),
+                             primaryButton: Alert.Button.destructive(Text("Igen"), action: {
+                                //submit
+                                self.vm.removeNumOfQuestions()
+                             }),
+                             secondaryButton: Alert.Button.cancel(Text("Nem"), action: {
+                                //do nothing
+                             })
+                )
+            })
         }
     }
 }
