@@ -142,6 +142,9 @@
 		55149F542850C380007BECEF /* EjjeliPortyaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55149F532850C380007BECEF /* EjjeliPortyaView.swift */; };
 		55149F562850CC7D007BECEF /* EjjeliPortyaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55149F552850CC7D007BECEF /* EjjeliPortyaViewModel.swift */; };
 		553F69A62805DAF600511E1E /* QuizInfoAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553F69A52805DAF500511E1E /* QuizInfoAlert.swift */; };
+		5569F4BA285CC86F00B9C794 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 5569F4B9285CC86F00B9C794 /* FirebaseMessaging */; };
+		5569F4BE285D35AE00B9C794 /* NotificationAdminView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5569F4BD285D35AE00B9C794 /* NotificationAdminView.swift */; };
+		5569F4C2285D35D800B9C794 /* NotificationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5569F4C1285D35D800B9C794 /* NotificationViewModel.swift */; };
 		557B8F9C27EDF6A200312433 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557B8F9B27EDF6A200312433 /* RegisterView.swift */; };
 		557B8F9E27EE1CEF00312433 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557B8F9D27EE1CEF00312433 /* LoginView.swift */; };
 		557B8FA027EE334F00312433 /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557B8F9F27EE334F00312433 /* MainMenuView.swift */; };
@@ -341,6 +344,9 @@
 		55149F552850CC7D007BECEF /* EjjeliPortyaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EjjeliPortyaViewModel.swift; sourceTree = "<group>"; };
 		55149F572850E8B7007BECEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		553F69A52805DAF500511E1E /* QuizInfoAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizInfoAlert.swift; sourceTree = "<group>"; };
+		5569F4BB285D0E4A00B9C794 /* TiszApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TiszApp.entitlements; sourceTree = "<group>"; };
+		5569F4BD285D35AE00B9C794 /* NotificationAdminView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationAdminView.swift; sourceTree = "<group>"; };
+		5569F4C1285D35D800B9C794 /* NotificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewModel.swift; sourceTree = "<group>"; };
 		557B8F9B27EDF6A200312433 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 		557B8F9D27EE1CEF00312433 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		557B8F9F27EE334F00312433 /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
@@ -394,6 +400,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5569F4BA285CC86F00B9C794 /* FirebaseMessaging in Frameworks */,
 				55B0E6E927EC54C40058A5B9 /* FirebaseAppCheck in Frameworks */,
 				55B0E6ED27EC54C40058A5B9 /* FirebaseAuth in Frameworks */,
 				55B0E6E527EC54C40058A5B9 /* FirebaseAnalyticsSwift-Beta in Frameworks */,
@@ -562,6 +569,22 @@
 			path = files;
 			sourceTree = "<group>";
 		};
+		5569F4B8285CC86F00B9C794 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5569F4BC285D359400B9C794 /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				5569F4BD285D35AE00B9C794 /* NotificationAdminView.swift */,
+				5569F4C1285D35D800B9C794 /* NotificationViewModel.swift */,
+			);
+			path = Notifications;
+			sourceTree = "<group>";
+		};
 		557B8FA427EE4D8900312433 /* Data */ = {
 			isa = PBXGroup;
 			children = (
@@ -628,6 +651,7 @@
 			children = (
 				55B0E6D027EBDA9B0058A5B9 /* TiszApp */,
 				55B0E6CF27EBDA9B0058A5B9 /* Products */,
+				5569F4B8285CC86F00B9C794 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -642,6 +666,8 @@
 		55B0E6D027EBDA9B0058A5B9 /* TiszApp */ = {
 			isa = PBXGroup;
 			children = (
+				5569F4BC285D359400B9C794 /* Notifications */,
+				5569F4BB285D0E4A00B9C794 /* TiszApp.entitlements */,
 				55962CB2285B75FA00030BE7 /* Profile */,
 				55B3955828593B9D0044389E /* MultipleTextQuiz */,
 				55B395532858E8DC0044389E /* Ads */,
@@ -795,6 +821,7 @@
 				55B0E6FA27EC54C50058A5B9 /* FirebaseStorageCombine-Community */,
 				55B0E6FC27EC54C50058A5B9 /* FirebaseStorageSwift-Beta */,
 				55B395512858E5860044389E /* GoogleMobileAds */,
+				5569F4B9285CC86F00B9C794 /* FirebaseMessaging */,
 			);
 			productName = TiszApp;
 			productReference = 55B0E6CE27EBDA9B0058A5B9 /* TiszApp.app */;
@@ -1002,6 +1029,7 @@
 				553F69A62805DAF600511E1E /* QuizInfoAlert.swift in Sources */,
 				5591E7AB27FD9AA400C811F8 /* ImagePicker.swift in Sources */,
 				55F09596280DBB8900A56548 /* ScoresTableView.swift in Sources */,
+				5569F4BE285D35AE00B9C794 /* NotificationAdminView.swift in Sources */,
 				557B8F9E27EE1CEF00312433 /* LoginView.swift in Sources */,
 				55E8003127F09CBC007181E0 /* RegistrationViewModel.swift in Sources */,
 				5591E7A827F8985700C811F8 /* ScoresHandler.swift in Sources */,
@@ -1022,6 +1050,7 @@
 				5591E7B528005E7C00C811F8 /* ImageDetailView.swift in Sources */,
 				55E8003B27F0B416007181E0 /* LoginService.swift in Sources */,
 				55B395552858E8F00044389E /* AdsViewModel.swift in Sources */,
+				5569F4C2285D35D800B9C794 /* NotificationViewModel.swift in Sources */,
 				5595DBD627F4AFC40063A424 /* NeumorphicStyle.swift in Sources */,
 				55962CB4285B760D00030BE7 /* ProfileView.swift in Sources */,
 				55962CB6285B81BF00030BE7 /* ProfileViewModel.swift in Sources */,
@@ -1157,6 +1186,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = TiszApp/TiszApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TiszApp/Preview Content\"";
@@ -1189,6 +1219,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = TiszApp/TiszApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"TiszApp/Preview Content\"";
@@ -1259,6 +1290,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		5569F4B9285CC86F00B9C794 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 55B0E6E127EC54C40058A5B9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
 		55B0E6E227EC54C40058A5B9 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 55B0E6E127EC54C40058A5B9 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
