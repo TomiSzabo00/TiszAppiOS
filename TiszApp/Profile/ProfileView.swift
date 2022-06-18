@@ -36,6 +36,16 @@ struct ProfileView: View {
             .listStyle(.plain)
             
             Spacer()
+            
+            Button(action: {
+                sessionService.logout()
+            }, label: {
+                HStack {
+                    Image(systemName: "rectangle.portrait.and.arrow.right")
+                    Text("Kijelentkezés")
+                }
+            })
+            .padding()
         }
         .onAppear {
             self.vm.groupNum = sessionService.userDetails?.groupNumber ?? -1

@@ -34,23 +34,73 @@ final class NotificationViewModel: ObservableObject {
     
     private var tokenList = [String]()
     
+    private var tokenListUser = [String]()
+    private var tokenListAdmin = [String]()
+    
     init() {
-        Database.database().reference().child("deviceTokens").observe(.childAdded, with: { (snapshot) in
-            let token = Token(snapshot: snapshot)
-            self.tokenList.append(token?.token ?? "")
+        self.getTokensSeparate()
+        self.getAllTokens()
+        Messaging.token(Messaging.messaging()) (completion: { t, e in
+            if let t = t {
+                self.tokenList.remove(at: self.tokenList.firstIndex(of: t) ?? 0)
+            }
+            if self.tokenListAdmin.contains(t ?? "") {
+                self.tokenListAdmin.remove(at: self.tokenListAdmin.firstIndex(of: t ?? "") ?? 0)
+            }
+            if self.tokenListUser.contains(t ?? "") {
+                self.tokenListUser.remove(at: self.tokenListUser.firstIndex(of: t ?? "") ?? 0)
+            }
         })
     }
     
-    func sendNotification() {
+    func getTokensSeparate() {
+        Database.database().reference().child("deviceTokens").observe(.childAdded, with: { (snapshot) in
+            let token = Token(snapshot: snapshot)
+            Database.database().reference().child("users").child(snapshot.key).observe(DataEventType.value, with: { snap in
+                let user = User(snapshot: snap)
+                if user?.admin ?? false {
+                    if !self.tokenListAdmin.contains(token?.token ?? "") {
+                        self.tokenListAdmin.append(token?.token ?? "")
+                    }
+                } else {
+                    if !self.tokenListUser.contains(token?.token ?? "") {
+                        self.tokenListUser.append(token?.token ?? "")
+                    }
+                }
+            })
+        })
+    }
+    
+    func getAllTokens() {
+        Database.database().reference().child("deviceTokens").observe(.childAdded, with: { (snapshot) in
+            let token = Token(snapshot: snapshot)
+            if !self.tokenList.contains(token?.token ?? "") {
+                self.tokenList.append(token?.token ?? "")
+            }
+        })
+    }
+    
+    func sendNotification(toUsers: Bool, toAdmins: Bool) {
         guard let url = URL(string: "https://fcm.googleapis.com/fcm/send") else {
             print("url hiba")
             return
         }
         
-        for i in 0...self.tokenList.count-1 {
+        var list : [String] = [""]
+        if toUsers && !toAdmins {
+            list = self.tokenListUser
+        }
+        if !toUsers && toAdmins {
+            list = self.tokenListAdmin
+        }
+        if toUsers && toAdmins {
+            list = self.tokenList
+        }
+        
+        for i in 0...list.count-1 {
         
             let json: [String: Any] = [
-                "to": tokenList[i],
+                "to": list[i],
                 "notification": [
                     "title": self.title,
                     "body": self.message
@@ -77,7 +127,7 @@ final class NotificationViewModel: ObservableObject {
                     self.title = ""
                     self.message = ""
                 }
-                print("kikuldve!")
+                //print("kikuldve!")
             })
             .resume()
         }

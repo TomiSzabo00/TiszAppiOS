@@ -18,6 +18,8 @@ struct TiszAppApp: App {
     
     @StateObject var sessionService = SessionServiceImpl()
     
+    //@EnvironmentObject var sessionService: SessionServiceImpl
+    
     var body: some Scene {
         WindowGroup {
             NavigationView{
@@ -39,9 +41,14 @@ struct TiszAppApp: App {
 
 class AppDelegate: NSObject, UIApplicationDelegate {
     let gcmMessageIDKey = "gcm.message_id"
+    
+    //var sessionService : SessionServiceImpl!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        
         FirebaseApp.configure()
+        
+        //sessionService = SessionServiceImpl()
         
         GADMobileAds.sharedInstance().start(completionHandler: nil)
 
@@ -76,9 +83,9 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any],
                      fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
 
-      if let messageID = userInfo[gcmMessageIDKey] {
-        //print("Message ID: \(messageID)")
-      }
+//      if let messageID = userInfo[gcmMessageIDKey] {
+//        //print("Message ID: \(messageID)")
+//      }
 
       //print(userInfo)
 
@@ -89,9 +96,9 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 extension AppDelegate: MessagingDelegate {
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
 
-      let deviceToken:[String: String] = ["token": fcmToken ?? ""]
-        //print("Device token: ", deviceToken) // This token can be used for testing notifications on FCM
-        Database.database().reference().child("deviceTokens").child(Auth.auth().currentUser?.uid ?? "nil").setValue(deviceToken)
+//      let deviceToken:[String: String] = ["token": fcmToken ?? ""]
+//        print("Device token: ", deviceToken) // This token can be used for testing notifications on FCM
+        
     }
 }
 
@@ -102,11 +109,11 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
   func userNotificationCenter(_ center: UNUserNotificationCenter,
                               willPresent notification: UNNotification,
     withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-    let userInfo = notification.request.content.userInfo
+    //let userInfo = notification.request.content.userInfo
 
-    if let messageID = userInfo[gcmMessageIDKey] {
-        //print("Message ID: \(messageID)")
-    }
+//    if let messageID = userInfo[gcmMessageIDKey] {
+//        //print("Message ID: \(messageID)")
+//    }
 
     //print(userInfo)
 
@@ -125,11 +132,11 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
   func userNotificationCenter(_ center: UNUserNotificationCenter,
                               didReceive response: UNNotificationResponse,
                               withCompletionHandler completionHandler: @escaping () -> Void) {
-    let userInfo = response.notification.request.content.userInfo
+    //let userInfo = response.notification.request.content.userInfo
 
-    if let messageID = userInfo[gcmMessageIDKey] {
-      //print("Message ID from userNotificationCenter didReceive: \(messageID)")
-    }
+//    if let messageID = userInfo[gcmMessageIDKey] {
+//      //print("Message ID from userNotificationCenter didReceive: \(messageID)")
+//    }
 
     //print(userInfo)
 

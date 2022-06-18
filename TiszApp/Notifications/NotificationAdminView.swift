@@ -11,13 +11,36 @@ struct NotificationAdminView: View {
     
     @StateObject var vm = NotificationViewModel()
     
+    @State var toUsers = true
+    
+    @State var toAdmins = false
+    
     var body: some View {
         VStack {
+            
+            VStack {
+                HStack {
+                    Text("Kinek szeretnéd kiküldeni?")
+                    Spacer()
+                }
+                
+                Toggle(isOn: $toUsers, label: {
+                    Text("Táborozóknak")
+                })
+                
+                Toggle(isOn: $toAdmins, label: {
+                    Text("Szervezőknek")
+                })
+            }
+            .padding()
+            
+            
             HStack {
-                Text("Értesítés címe:")
+                Text("Értesítés részletei:")
                     .padding()
                 Spacer()
             }
+            
             TextField("Cím", text: $vm.title)
                 .padding()
                 .background(Color(.secondarySystemBackground))
@@ -25,11 +48,11 @@ struct NotificationAdminView: View {
                 .autocapitalization(.sentences)
                 .padding()
             
-            HStack {
-                Text("Értesítés szövege:")
-                    .padding()
-                Spacer()
-            }
+//            HStack {
+//                Text("Értesítés szövege:")
+//                    .padding()
+//                Spacer()
+//            }
             
             TextField("Tartalom", text: $vm.message)
                 .padding()
@@ -40,7 +63,7 @@ struct NotificationAdminView: View {
             
             Button(action: {
                 //send
-                vm.sendNotification()
+                vm.sendNotification(toUsers: self.toUsers, toAdmins: self.toAdmins)
             }, label: {
                 Text("Küldés")
             })

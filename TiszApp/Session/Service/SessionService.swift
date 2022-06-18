@@ -7,8 +7,7 @@
 
 import Foundation
 import Combine
-import FirebaseAuth
-import FirebaseDatabase
+import Firebase
 import SwiftUI
 
 enum SessionState {
@@ -58,6 +57,8 @@ final class SessionServiceImpl: ObservableObject, SessionService {
     
     @Published var teamNum: Int = 4
     
+    @Published var token: String = ""
+    
     private var handler: AuthStateDidChangeListenerHandle?
     
     init() {
@@ -99,6 +100,7 @@ final class SessionServiceImpl: ObservableObject, SessionService {
     }
     
     func logout() {
+        Database.database().reference().child("deviceTokens").child(Auth.auth().currentUser?.uid ?? "nil").removeValue()
         try? Auth.auth().signOut()
     }
     
@@ -128,6 +130,13 @@ final class SessionServiceImpl: ObservableObject, SessionService {
             
             DispatchQueue.main.async {
                 self.userDetails = SessionUserDetails(fullName: fullName, groupNumber: groupNumber, admin: admin, uid: uuid)
+                
+                Messaging.token(Messaging.messaging()) (completion: { t, e in
+                    if let t = t {
+                        let deviceToken:[String: String] = ["token": t]
+                        Database.database().reference().child("deviceTokens").child(Auth.auth().currentUser?.uid ?? "nil").setValue(deviceToken)
+                    }
+                })
             }
             
         }
