@@ -16,6 +16,8 @@ extension Color {
     static let foreground = Color("foreground")
     static let gradientDark = Color("gradientDark")
     static let gradientLight = Color("gradientLight")
+    
+    static let text = Color("btn_text")
 }
 
 extension LinearGradient {
@@ -68,14 +70,19 @@ struct SimpleButtonStyle: ButtonStyle {
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
             .padding(15)
-            .foregroundColor(Color.white)
+            //.foregroundColor(Color.white)
+            .foregroundColor(Color("btn_text"))
             //.foregroundStyle(LinearGradient(Color.gradientDark, Color.gradientLight))
             .contentShape(RoundedRectangle(cornerRadius: 10))
             .background(
                 //SimpleButton(isHighlighted: configuration.isPressed, shape: RoundedRectangle(cornerRadius: 20))
-                LinearGradient(Color.gradientDark, Color.gradientLight)
+                //LinearGradient(Color.gradientDark, Color.gradientLight)
+                //Color.gradientLight
+                Color("btn_day")
             )
             .cornerRadius(10)
+            .offset(y: configuration.isPressed ? 6 : 0)
+            .shadow(color: Color("btn_s_day"), radius: 0, x: 0, y: configuration.isPressed ? 0 : 6)
     }
 }
 

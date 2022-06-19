@@ -34,7 +34,7 @@ struct TiszAppApp: App {
                     //PredictedTextTest()
                 }
             }
-            .accentColor(Color.gradientDark)
+            .accentColor(Color.text)
         }
     }
 }

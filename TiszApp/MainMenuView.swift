@@ -22,13 +22,13 @@ struct IconButton: View {
     var body: some View {
         Button(action: self.action, label: {
             VStack{
-                LinearGradient(Color.gradientLight, Color.gradientDark)
-                    .mask(
+                //LinearGradient(Color.gradientLight, Color.gradientDark)
+                    //.mask(
                 Image(systemName: self.icon)
                     .resizable()
                     .scaledToFit()
                     .padding([.leading, .trailing, .top])
-                    .padding(.bottom, 10))
+                    .padding(.bottom, 10)//)
                     .frame(maxWidth: 80, maxHeight: 80)
                     //.shadow(color: Color.black.opacity(0.3), radius: 2, x: 0, y: 5)
                 Text(self.text)
@@ -37,15 +37,15 @@ struct IconButton: View {
                     .minimumScaleFactor(0.1)
                     //.foregroundStyle(LinearGradient(Color.gradientDark, Color.gradientLight))
             }
-            .padding()
-            .frame(width: min(UIScreen.main.bounds.width/2-40,UIScreen.main.bounds.height/2-40), height: min(UIScreen.main.bounds.width/2-40,UIScreen.main.bounds.height/2-40), alignment: .center)
+            //.padding()
+            .frame(width: min(UIScreen.main.bounds.width/2-70,UIScreen.main.bounds.height/2-70), height: min(UIScreen.main.bounds.width/2-70,UIScreen.main.bounds.height/2-70), alignment: .center)
             
         })
         //.padding()
-        .background(RoundedRectangle(cornerRadius: 10)
-            .fill(Color(.systemBackground))
-            .shadow(color: Color(.label).opacity(0.2), radius: 4, x: 0, y: 3))
-        //.buttonStyle(SimpleButtonStyle())
+//        .background(RoundedRectangle(cornerRadius: 10)
+//            .fill(Color(.systemBackground))
+//            .shadow(color: Color(.label).opacity(0.2), radius: 4, x: 0, y: 3))
+        .buttonStyle(SimpleButtonStyle())
     }
 }
 
@@ -58,15 +58,23 @@ struct MainMenuView: View {
     @State var root : UIViewController!
     @StateObject var adVm = AdsViewModel()
     
-    private var gridItemLayout = [GridItem(.fixed(UIScreen.main.bounds.width/2-40), spacing: 20), GridItem(.fixed(UIScreen.main.bounds.width/2-40), spacing: 20)]
+    private var gridItemLayout = [GridItem(.fixed(UIScreen.main.bounds.width/2-20)), GridItem(.fixed(UIScreen.main.bounds.width/2-20))]
+    
+    init() {
+        //Use this if NavigationBarTitle is with Large Font
+        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor(Color.gradientLight)]
+
+        //Use this if NavigationBarTitle is with displayMode = .inline
+        //UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.red]
+    }
     
     var body: some View {
         ZStack {
-            //Color.background.ignoresSafeArea()
+            //Image("bg2_day").scaledToFit()
             VStack{
                 
                 ScrollView {
-                    LazyVGrid(columns: gridItemLayout, spacing: 20) {
+                    LazyVGrid(columns: gridItemLayout, spacing: 40) {
                         ForEach($sessionService.buttonTitles, id: \.self) { $e in
                             if(sessionService.btnStates[sessionService.buttonTitles.firstIndex(of: e) ?? 0] || sessionService.userDetails?.admin ?? false) {
                                 IconButton(text: e,
@@ -143,6 +151,7 @@ struct MainMenuView: View {
                     }
                 })
                 .padding()
+                .buttonStyle(SimpleButtonStyle())
 //                Button(action: {
 //
 //                    sessionService.logout()
@@ -157,7 +166,10 @@ struct MainMenuView: View {
                 //.buttonStyle(SimpleButtonStyle())
                 
             }
+            .background(Image("bg2_day").resizable().scaledToFill())
         }
+        .navigationBarTitle("TiszApp")
+        .navigationBarTitleDisplayMode(.inline)
         .navigationBarHidden(true)
     }
 }
