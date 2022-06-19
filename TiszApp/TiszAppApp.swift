@@ -26,6 +26,7 @@ struct TiszAppApp: App {
                 switch sessionService.state {
                 case .loggedIn:
                     MainMenuView().environmentObject(sessionService)
+                        .fullBackground()
                         .onAppear {
                             sessionService.getButtonStates()
                         }
@@ -34,7 +35,7 @@ struct TiszAppApp: App {
                     //PredictedTextTest()
                 }
             }
-            .accentColor(Color.text)
+            //.accentColor(Color.main)
         }
     }
 }
@@ -149,4 +150,15 @@ extension View {
     UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder),
                                     to: nil, from: nil, for: nil)
   }
+}
+
+public extension View {
+    func fullBackground() -> some View {
+       return background(
+                Image("bg2_day")
+                    .resizable()
+                    .scaledToFill()
+                    .edgesIgnoringSafeArea(.all)
+       )
+    }
 }

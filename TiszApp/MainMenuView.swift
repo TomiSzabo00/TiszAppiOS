@@ -62,7 +62,7 @@ struct MainMenuView: View {
     
     init() {
         //Use this if NavigationBarTitle is with Large Font
-        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor(Color.gradientLight)]
+        //UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor(Color.main)]
 
         //Use this if NavigationBarTitle is with displayMode = .inline
         //UINavigationBar.appearance().titleTextAttributes = [.foregroundColor: UIColor.red]
@@ -106,24 +106,24 @@ struct MainMenuView: View {
                 Group {
                     NavigationLink(destination: UploadView(), tag: 0, selection: $ID) {EmptyView()}
                     
-                    NavigationLink(destination: ScoresTableView(handler: ScoresHandlerImpl(teamNum: sessionService.teamNum)).environmentObject(sessionService), tag: 1, selection: $ID) {EmptyView()}
+                    NavigationLink(destination: ScoresTableView(handler: ScoresHandlerImpl(teamNum: sessionService.teamNum)).environmentObject(sessionService).fullBackground(), tag: 1, selection: $ID) {EmptyView()}
                     
                     
                     
                     if (sessionService.userDetails?.admin != nil) && sessionService.userDetails?.admin == true {
                         NavigationLink(destination: QuizAdminView(teamNum: sessionService.teamNum), tag: 2, selection: $ID) {EmptyView()}
                     } else {
-                        NavigationLink(destination: QuizView().environmentObject(sessionService), tag: 2, selection: $ID) {EmptyView()}
+                        NavigationLink(destination: QuizView().environmentObject(sessionService).fullBackground(), tag: 2, selection: $ID) {EmptyView()}
                     }
                         
-                    NavigationLink(destination: ImagesView(checkImages: false).environmentObject(sessionService), tag: 3, selection: $ID) {EmptyView()}
+                    NavigationLink(destination: ImagesView(checkImages: false).environmentObject(sessionService).fullBackground(), tag: 3, selection: $ID) {EmptyView()}
                     
-                    NavigationLink(destination: TextsView().environmentObject(sessionService), tag: 4, selection: $ID) {EmptyView()}
+                    NavigationLink(destination: TextsView().environmentObject(sessionService).fullBackground(), tag: 4, selection: $ID) {EmptyView()}
                     
                     if (sessionService.userDetails?.admin != nil) && sessionService.userDetails?.admin == true {
                         NavigationLink(destination: EjjeliPortyaAdminView().environmentObject(sessionService), tag: 5, selection: $ID) {EmptyView()}
                     } else {
-                        NavigationLink(destination: EjjeliPortyaView().environmentObject(sessionService), tag: 5, selection: $ID) {EmptyView()}
+                        NavigationLink(destination: EjjeliPortyaView().environmentObject(sessionService).fullBackground(), tag: 5, selection: $ID) {EmptyView()}
                     }
                     
                     NavigationLink(destination: SongsView(), tag: 6, selection: $ID) {EmptyView()}
@@ -131,7 +131,7 @@ struct MainMenuView: View {
                     if (sessionService.userDetails?.admin != nil) && sessionService.userDetails?.admin == true {
                         NavigationLink(destination: MultipleTextQuizAdminView().environmentObject(sessionService), tag: 7, selection: $ID) {EmptyView()}
                     } else {
-                        NavigationLink(destination: MultipleTextQuizView().environmentObject(sessionService), tag: 7, selection: $ID) {EmptyView()}
+                        NavigationLink(destination: MultipleTextQuizView().environmentObject(sessionService).fullBackground(), tag: 7, selection: $ID) {EmptyView()}
                     }
                     
                     //only admin buttons
@@ -144,7 +144,7 @@ struct MainMenuView: View {
                     }
                 }
                 
-                NavigationLink(destination: ProfileView().environmentObject(sessionService), label: {
+                NavigationLink(destination: ProfileView().environmentObject(sessionService).fullBackground(), label: {
                     HStack {
                         Image(systemName: "person.crop.circle")
                         Text("Bejelentkezve, mint \(sessionService.userDetails?.fullName ?? "«nincs név»")")
@@ -166,7 +166,7 @@ struct MainMenuView: View {
                 //.buttonStyle(SimpleButtonStyle())
                 
             }
-            .background(Image("bg2_day").resizable().scaledToFill())
+            //.background(Image("bg2_day").resizable().ignoresSafeArea())
         }
         .navigationBarTitle("TiszApp")
         .navigationBarTitleDisplayMode(.inline)

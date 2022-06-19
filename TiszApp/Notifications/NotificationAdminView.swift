@@ -16,6 +16,7 @@ struct NotificationAdminView: View {
     @State var toAdmins = false
     
     var body: some View {
+        ScrollView {
         VStack {
             
             VStack {
@@ -70,6 +71,7 @@ struct NotificationAdminView: View {
             .padding()
             .buttonStyle(SimpleButtonStyle())
         }
+    }
         .navigationBarTitle("Értesítés")
         .navigationBarTitleDisplayMode(.large)
     }

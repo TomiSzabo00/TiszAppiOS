@@ -32,6 +32,7 @@ struct ProfileView: View {
             
             List(vm.user, children: \.teammates) { mate in
                 Text(mate.name)
+                    .listRowBackground(Color.main)
             }
             .listStyle(.plain)
             
@@ -41,10 +42,11 @@ struct ProfileView: View {
                 sessionService.logout()
             }, label: {
                 HStack {
-                    Image(systemName: "rectangle.portrait.and.arrow.right")
+                    Image(systemName: "rectangle.portrait.and.arrow.right.fill")
                     Text("Kijelentkezés")
                 }
             })
+            .buttonStyle(SimpleButtonStyle())
             .padding()
         }
         .onAppear {

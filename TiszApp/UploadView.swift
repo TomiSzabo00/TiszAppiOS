@@ -12,12 +12,12 @@ struct UploadView: View {
     
     var body: some View {
         TabView {
-            ImageUploadView()
+            ImageUploadView().fullBackground()
                 .tabItem {
                     Label("Kép", systemImage: "photo")
                 }
             
-            TextUploadView()
+            TextUploadView().fullBackground()
                 .tabItem {
                     Label("Szöveg", systemImage: "doc.text")
                 }

@@ -38,19 +38,8 @@ final class NotificationViewModel: ObservableObject {
     private var tokenListAdmin = [String]()
     
     init() {
-        self.getTokensSeparate()
         self.getAllTokens()
-        Messaging.token(Messaging.messaging()) (completion: { t, e in
-            if let t = t {
-                self.tokenList.remove(at: self.tokenList.firstIndex(of: t) ?? 0)
-            }
-            if self.tokenListAdmin.contains(t ?? "") {
-                self.tokenListAdmin.remove(at: self.tokenListAdmin.firstIndex(of: t ?? "") ?? 0)
-            }
-            if self.tokenListUser.contains(t ?? "") {
-                self.tokenListUser.remove(at: self.tokenListUser.firstIndex(of: t ?? "") ?? 0)
-            }
-        })
+        self.getTokensSeparate()
     }
     
     func getTokensSeparate() {
@@ -58,15 +47,21 @@ final class NotificationViewModel: ObservableObject {
             let token = Token(snapshot: snapshot)
             Database.database().reference().child("users").child(snapshot.key).observe(DataEventType.value, with: { snap in
                 let user = User(snapshot: snap)
-                if user?.admin ?? false {
-                    if !self.tokenListAdmin.contains(token?.token ?? "") {
-                        self.tokenListAdmin.append(token?.token ?? "")
+                Messaging.token(Messaging.messaging()) (completion: { t, e in
+                    if let t = t {
+                        if user?.admin ?? false {
+                            if !self.tokenListAdmin.contains(token?.token ?? "") && t != token?.token ?? "" {
+                                self.tokenListAdmin.append(token?.token ?? "")
+                            }
+                        } else {
+                            if !self.tokenListUser.contains(token?.token ?? "") && t != token?.token ?? "" {
+                                self.tokenListUser.append(token?.token ?? "")
+                            }
+                        }
                     }
-                } else {
-                    if !self.tokenListUser.contains(token?.token ?? "") {
-                        self.tokenListUser.append(token?.token ?? "")
-                    }
-                }
+                    
+                })
+                
             })
         })
     }
@@ -74,9 +69,14 @@ final class NotificationViewModel: ObservableObject {
     func getAllTokens() {
         Database.database().reference().child("deviceTokens").observe(.childAdded, with: { (snapshot) in
             let token = Token(snapshot: snapshot)
-            if !self.tokenList.contains(token?.token ?? "") {
-                self.tokenList.append(token?.token ?? "")
-            }
+            Messaging.token(Messaging.messaging()) (completion: { t, e in
+                if let t = t {
+                    if !self.tokenList.contains(token?.token ?? "") && t != token?.token ?? "" {
+                        self.tokenList.append(token?.token ?? "")
+                    }
+                }
+            })
+            
         })
     }
     

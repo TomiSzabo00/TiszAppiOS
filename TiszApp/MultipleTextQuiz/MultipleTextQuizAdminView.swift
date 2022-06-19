@@ -64,6 +64,7 @@ struct MultipleTextQuizAdminView: View {
                 })
                 .disabled((Int(self.numText) ?? 0 <= 0) || (Int(self.numText) ?? 50 >= 50))
                 .padding()
+                .buttonStyle(SimpleButtonStyle())
                 
             }//vstack end
         } else {
