@@ -60,9 +60,6 @@ struct ImageDetailView: View {
                         .resizable()
                         .scaledToFit()
                         .cornerRadius(10)
-                        .shadow(color: Color(.label).opacity(0.2), radius: 4, x: 0, y: 3)
-//                        .shadow(color: Color.shadow, radius: 2, x: 3, y: 3)
-//                        .shadow(color: Color.highlight, radius: 2, x: -2, y: -2)
                 }
                 .padding()
                 
@@ -102,37 +99,7 @@ struct ImageDetailView: View {
         }
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle(handler.detail!.title)
-        .navigationBarItems(trailing: sessionService.userDetails!.admin ? (checkImages ? HStack {
-            Button(action: {
-                handler.acceptImage(imageInfo: handler.detail!)
-                dismiss()
-            }) {
-                Image(systemName: "checkmark.circle")
-                    .foregroundStyle(LinearGradient(Color.gradientDark, Color.gradientLight))
-                
-            }
-            Button(
-                role: .destructive,
-                action: { confirmationShown = true }
-            ) {
-                Image(systemName: "trash")
-                    .foregroundStyle(LinearGradient(Color.gradientDark, Color.gradientLight))
-            }
-        } :
-                                                                            HStack {
-            Button(action: {}) {
-                Image(systemName: "checkmark.circle")
-                    .foregroundStyle(LinearGradient(Color(.systemBackground), Color(.systemBackground)))
-                
-            }
-            Button(
-                role: .destructive,
-                action: { confirmationShown = true }
-            ) {
-                Image(systemName: "trash")
-                    .foregroundStyle(LinearGradient(Color.gradientDark, Color.gradientLight))
-            }
-        }) : nil )
+        .navigationBarItems(trailing: getButtons())
         .confirmationDialog(
             "Biztos ki akarod törölni a képet?",
             isPresented: $confirmationShown,
@@ -154,5 +121,43 @@ struct ImageDetailView: View {
         .onAppear{
             self.handler.teamNum = sessionService.teamNum
         }
+    }
+    
+    func getButtons() -> some View {
+        var view : AnyView?
+        if sessionService.userDetails?.admin ?? false {
+            
+            if self.checkImages {
+                view = AnyView(HStack {
+                    Button(action: {
+                        handler.acceptImage(imageInfo: handler.detail!)
+                        dismiss()
+                    }) {
+                        Image(systemName: "checkmark.circle")
+                            .foregroundStyle(LinearGradient(Color.gradientDark, Color.gradientLight))
+                        
+                    }
+                    Button(
+                        role: .destructive,
+                        action: { confirmationShown = true }
+                    ) {
+                        Image(systemName: "trash")
+                            .foregroundStyle(LinearGradient(Color.gradientDark, Color.gradientLight))
+                    }
+                })
+            } else {
+                view = AnyView(Button(
+                    role: .destructive,
+                    action: { confirmationShown = true }
+                ) {
+                    Image(systemName: "trash")
+                        .foregroundStyle(LinearGradient(Color.gradientDark, Color.gradientLight))
+                })
+            }
+            
+        } else {
+            view = nil
+        }
+        return AnyView(view)
     }
 }

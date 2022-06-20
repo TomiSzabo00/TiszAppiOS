@@ -215,17 +215,17 @@ final class EjjeliPortyaViewModel: NSObject, ObservableObject, CLLocationManager
         self.getColors()
         
         Database.database().reference().child("portya_locs").observe(.childAdded, with: { (snapshot) -> Void in
-            
+
             let groupNum = Int(snapshot.key)
-            
+
             for children in snapshot.children {
                 let child = (children as! DataSnapshot)
-                
+
                 let locData = LocationData(snapshot: child)
                 let coords = CLLocationCoordinate2D(latitude: locData?.lat ?? 0.00, longitude: locData?.long ?? 0.00)
-                
+
                 let marker = Marker(id: child.key, coordinate: coords, tint: self.colors[groupNum!])
-                
+
                 self.markers.append(marker)
             }
         })
@@ -236,11 +236,17 @@ final class EjjeliPortyaViewModel: NSObject, ObservableObject, CLLocationManager
                 
                 let locData = LocationData(snapshot: child)
                 let coords = CLLocationCoordinate2D(latitude: locData?.lat ?? 0.00, longitude: locData?.long ?? 0.00)
+                
                 //find old one
-                let marker_index = self.markers.firstIndex(where: {$0.id == child.key})!
-
-                //change to new
-                self.markers[marker_index].coordinate = coords
+                if let marker_index = self.markers.firstIndex(where: {$0.id == child.key}) {
+                    //change to new
+                    self.markers[marker_index].coordinate = coords
+                } else {
+                    let groupNum = Int(snapshot.key)
+                    let marker = Marker(id: child.key, coordinate: coords, tint: self.colors[groupNum!])
+                    self.markers.append(marker)
+                }
+                
             }
 
         })

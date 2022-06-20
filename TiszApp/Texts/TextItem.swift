@@ -56,18 +56,18 @@ struct TextItemView: View {
         VStack {
             Text(text)
                 .frame(maxWidth: .infinity, minHeight: 80, maxHeight: 80, alignment: .topLeading)
-                .foregroundColor(Color(.label))
+                .foregroundColor(Color.text)
                 .padding(20)
             Divider()
-                .background(Color(.systemBackground))
+                .background(Color.text)
             Text(title)
-                .foregroundColor(Color(.label))
+                .foregroundColor(Color.text)
                 .scaledToFit()
                 .padding([.leading, .trailing, .bottom], 5)
         }
         .background(RoundedRectangle(cornerRadius: 10)
-            .fill(Color(.systemBackground))
-            .shadow(color: Color(.label).opacity(0.2), radius: 4, x: 0, y: 3))
+            .fill(Color.btn)
+            .shadow(color: Color.main, radius: 0, x: 0, y: 3))
     }
 }
 

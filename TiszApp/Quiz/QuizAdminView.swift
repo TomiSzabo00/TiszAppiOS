@@ -54,6 +54,7 @@ struct QuizAdminView: View {
                     })
                     .buttonStyle(SimpleButtonStyle())
                 }
+                .padding(.bottom)
             }
             .navigationTitle("AV Quiz")
             .navigationBarTitleDisplayMode(.large)

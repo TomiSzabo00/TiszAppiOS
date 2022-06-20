@@ -34,7 +34,7 @@ struct TextUploadView: View {
                         .padding(.leading)
                         .frame(width: UIScreen.main.bounds.width, alignment: .leading)
                     TextEditor(text: $text)
-                        .background(Color(.secondarySystemBackground))
+                        .background(Color.secondary)
                         .cornerRadius(10)
                         .frame(minHeight: 300)
                         .padding([.leading, .trailing])

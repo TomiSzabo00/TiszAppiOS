@@ -18,7 +18,6 @@ enum ImageHandlerMode {
 }
 
 protocol ImagesHandler {
-    var imageInfos: [ImageItem] { get }
     var user: User? { get }
     var detail: ImageItem? { get set }
     var imageNames: [ImageItem] { get }
@@ -27,14 +26,12 @@ protocol ImagesHandler {
     func acceptImage(imageInfo: ImageItem)
     func giveScoreForPic(imageInfo: ImageItem, score: Int)
     func getScorer(imageInfo: ImageItem)
-    func loadNextPage(from: Int, to: Int)
 }
 
 final class ImagesHandlerImpl: ImagesHandler, ObservableObject {
     
     var teamNum: Int = 0
     
-    @Published var imageInfos: [ImageItem] = []
     var mode: ImageHandlerMode = .na
     var checkImages: Bool
     @Published var user: User? = nil
@@ -64,13 +61,6 @@ final class ImagesHandlerImpl: ImagesHandler, ObservableObject {
             self.imageNames.remove(at: self.imageNames.firstIndex(where: { $0.fileName == imageInfo!.fileName })!)
         })
         
-    }
-    
-    func loadNextPage(from: Int, to: Int) {
-        self.imageInfos.removeAll()
-        for i in from..<to {
-            self.imageInfos.append(self.imageNames[i])
-        }
     }
     
     func setChangeListener(for: ImageItem) {

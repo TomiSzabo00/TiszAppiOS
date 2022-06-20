@@ -18,8 +18,9 @@ extension Color {
     static let gradientLight = Color("gradientLight")
     
     static let text = Color("btn_text")
-    
-    static let main = Color("main")
+    static let btn = Color("btn_day")
+    static let main = Color("btn_s_day")
+    static let secondary = Color("secondary")
 }
 
 extension LinearGradient {
@@ -34,39 +35,6 @@ enum BackroundStyle {
     case color
 }
 
-struct SimpleButton<S: Shape>: View {
-    var isHighlighted: Bool
-    var shape: S
-    
-    var body: some View {
-        ZStack {
-            if isHighlighted {
-                shape
-                    .fill(Color.background)
-                    .overlay(
-                        shape
-                            .stroke(Color.shadow, lineWidth: 6)
-                            .blur(radius: 4)
-                            .offset(x: 3, y: 3)
-                            .mask(shape.fill(LinearGradient(Color.black, Color.clear)))
-                    )
-                    .overlay(
-                        shape
-                            .stroke(Color.highlight, lineWidth: 4)
-                            .blur(radius: 4)
-                            .offset(x: -1, y: -1)
-                            .mask(shape.fill(LinearGradient(Color.clear, Color.black)))
-                    )
-                
-            } else {
-                shape
-                    .fill(Color.background)
-                    .shadow(color: Color.shadow, radius: 3, x: 3, y: 3)
-                    .shadow(color: Color.highlight, radius: 3, x: -2, y: -2)
-            }
-        }
-    }
-}
 
 struct SimpleButtonStyle: ButtonStyle {
     @Environment(\.isEnabled) private var isEnabled: Bool
@@ -74,19 +42,14 @@ struct SimpleButtonStyle: ButtonStyle {
     func makeBody(configuration: Self.Configuration) -> some View {
         configuration.label
             .padding(15)
-            //.foregroundColor(Color.white)
-            .foregroundColor(isEnabled ? Color("btn_text") : Color.white)
-            //.foregroundStyle(LinearGradient(Color.gradientDark, Color.gradientLight))
+            .foregroundColor(
+                isEnabled ? Color.text : Color.white)
             .contentShape(RoundedRectangle(cornerRadius: 10))
             .background(
-                //SimpleButton(isHighlighted: configuration.isPressed, shape: RoundedRectangle(cornerRadius: 20))
-                //LinearGradient(Color.gradientDark, Color.gradientLight)
-                //Color.gradientLight
-                isEnabled ? Color("btn_day") : .gray
-            )
+                isEnabled ? Color.btn : .gray)
             .cornerRadius(10)
             .offset(y: configuration.isPressed ? 6 : 0)
-            .shadow(color: isEnabled ? Color("btn_s_day") : .shadow, radius: 0, x: 0, y: configuration.isPressed ? 0 : 6)
+            .shadow(color: isEnabled ? Color.main : .shadow, radius: 0, x: 0, y: configuration.isPressed ? 0 : 6)
     }
 }
 
@@ -97,29 +60,14 @@ struct SimpleTextFieldWithIcon: View {
     var body: some View {
         HStack{
             Image(systemName: imageName)
-                .foregroundStyle(LinearGradient(Color.gradientDark, Color.gradientLight))
+                .foregroundStyle(Color.text)
             textField
-                .disableAutocorrection(true)
-                .autocapitalization(.none)
-                //.foregroundColor(.foreground)
+                .disableAutocorrection(false)
+                .autocapitalization(.sentences)
         }
         .padding()
-        .background(Color(.secondarySystemBackground))
+        .background(Color.secondary)
         .cornerRadius(10)
-//        .overlay(
-//            RoundedRectangle(cornerRadius: 10)
-//                .stroke(Color.shadow, lineWidth: 6)
-//                .blur(radius: 4)
-//                .offset(x: 3, y: 3)
-//                .mask(RoundedRectangle(cornerRadius: 10).fill(LinearGradient(Color.black, Color.clear)))
-//        )
-//        .overlay(
-//            RoundedRectangle(cornerRadius: 10)
-//                .stroke(Color.shadow, lineWidth: 6)
-//                .blur(radius: 4)
-//                .offset(x: 2, y: 2)
-//                .mask(RoundedRectangle(cornerRadius: 10).fill(LinearGradient(Color.clear, Color.black)))
-//        )
     }
 }
 
@@ -130,28 +78,14 @@ struct SimpleSecureTextField: View {
     var body: some View {
         HStack {
             Image(systemName: imageName)
-                .foregroundStyle(LinearGradient(Color.gradientDark, Color.gradientLight))
+                .foregroundStyle(Color.text)
             secureFied
                 .disableAutocorrection(true)
                 .autocapitalization(.none)
         }
         .padding()
-        .background(Color(.secondarySystemBackground))
+        .background(Color.secondary)
         .cornerRadius(10)
-//        .overlay(
-//            RoundedRectangle(cornerRadius: 10)
-//                .stroke(Color.shadow, lineWidth: 6)
-//                .blur(radius: 4)
-//                .offset(x: 3, y: 3)
-//                .mask(RoundedRectangle(cornerRadius: 10).fill(LinearGradient(Color.black, Color.clear)))
-//        )
-//        .overlay(
-//            RoundedRectangle(cornerRadius: 10)
-//                .stroke(Color.shadow, lineWidth: 6)
-//                .blur(radius: 4)
-//                .offset(x: 2, y: 2)
-//                .mask(RoundedRectangle(cornerRadius: 10).fill(LinearGradient(Color.clear, Color.black)))
-//        )
     }
 }
 
@@ -162,24 +96,9 @@ struct SimpleTextField: View {
         textField
             .disableAutocorrection(true)
             .autocapitalization(.none)
-            //.foregroundColor(.foreground)
             .padding()
-            .background(Color(.secondarySystemBackground))
+            .background(Color.secondary)
             .cornerRadius(10)
-//            .overlay(
-//                RoundedRectangle(cornerRadius: 10)
-//                    .stroke(Color.shadow, lineWidth: 6)
-//                    .blur(radius: 4)
-//                    .offset(x: 3, y: 3)
-//                    .mask(RoundedRectangle(cornerRadius: 10).fill(LinearGradient(Color.black, Color.clear)))
-//            )
-//            .overlay(
-//                RoundedRectangle(cornerRadius: 10)
-//                    .stroke(Color.shadow, lineWidth: 6)
-//                    .blur(radius: 4)
-//                    .offset(x: 2, y: 2)
-//                    .mask(RoundedRectangle(cornerRadius: 10).fill(LinearGradient(Color.clear, Color.black)))
-//            )
     }
 }
 
@@ -193,61 +112,30 @@ struct SimpleNumberTextField: View {
             .keyboardType(.numberPad)
             .multilineTextAlignment(.center)
             .font(Font.body.bold())
-            //.foregroundColor(.foreground)
             .padding()
-            .background(Color(.secondarySystemBackground))
+            .background(Color.secondary)
             .cornerRadius(10)
-//            .overlay(
-//                RoundedRectangle(cornerRadius: 10)
-//                    .stroke(Color.shadow, lineWidth: 6)
-//                    .blur(radius: 4)
-//                    .offset(x: 3, y: 3)
-//                    .mask(RoundedRectangle(cornerRadius: 10).fill(LinearGradient(Color.black, Color.clear)))
-//            )
-//            .overlay(
-//                RoundedRectangle(cornerRadius: 10)
-//                    .stroke(Color.shadow, lineWidth: 6)
-//                    .blur(radius: 4)
-//                    .offset(x: 2, y: 2)
-//                    .mask(RoundedRectangle(cornerRadius: 10).fill(LinearGradient(Color.clear, Color.black)))
-//            )
     }
 }
 
 struct SimpleText: View {
-    var text: String
-    var padding: CGFloat
-    var trailingPadding: CGFloat
-    var maxLines: Int
-    var maxWidth: CGFloat
-    var isBold: Bool
-    var isGradient: Bool
-    var alignment: Alignment
+    var text: Text
     
-    init(text: String, padding: CGFloat = 5, trailingPadding: CGFloat = 20, maxLines: Int = 1, maxWidth:CGFloat = 50, isBold: Bool = false, isGradient: Bool = false, alignment: Alignment = .center) {
+    init(text: Text) {
         self.text = text
-        self.padding = padding
-        self.trailingPadding = trailingPadding
-        self.maxLines = maxLines
-        self.maxWidth = maxWidth
-        self.isBold = isBold
-        self.isGradient = isGradient
-        self.alignment = alignment
     }
     
     var body: some View {
-        Text(self.text)
-            .fontWeight(isBold ? .bold : .regular)
-            .font(.system(size: 16))
-            .minimumScaleFactor(0.01)
-            .lineLimit(self.maxLines)
-            .frame(maxWidth: self.maxWidth, alignment: alignment)
-            .padding(self.padding)
-            .background(Color.background)
-            .cornerRadius(10)
-            .shadow(color: Color.shadow, radius: 2, x: 3, y: 3)
-            .shadow(color: Color.highlight, radius: 2, x: -2, y: -2)
-            .foregroundStyle(self.isGradient ? LinearGradient(Color.gradientDark, Color.gradientLight) : LinearGradient(Color.foreground, Color.foreground))
+        self.text
+            .bold()
+            .foregroundStyle(Color.text)
+            .frame(width: 120)
+            .minimumScaleFactor(0.1)
+            .lineLimit(1)
+            .padding(5)
+            .background(RoundedRectangle(cornerRadius: 10)
+                .fill(Color.btn)
+                .shadow(color: Color.main, radius: 0, x: 0, y: 3))
     }
 }
 
@@ -266,19 +154,18 @@ struct SimpleRectangle: View {
         switch self.bg {
         case .normal:
             RoundedRectangle(cornerRadius: 10)
-                .fill(Color(.systemBackground))
+                .fill(Color.secondary)
                 .frame(width: self.width, height: self.height, alignment: .center)
-                .shadow(color: Color(.label).opacity(0.2), radius: 4, x: 0, y: 3)
+                .shadow(color: Color.shadow.opacity(0.2), radius: 4, x: 1, y: 3)
         case .gray:
             RoundedRectangle(cornerRadius: 10)
                 .fill(.gray)
                 .frame(width: self.width, height: self.height, alignment: .center)
-                .shadow(color: Color(.label).opacity(0.2), radius: 4, x: 0, y: 3)
         case .color:
             RoundedRectangle(cornerRadius: 10)
-                .fill(LinearGradient(.gradientDark, .gradientLight))
+                .fill(Color.btn)
                 .frame(width: self.width, height: self.height, alignment: .center)
-                .shadow(color: Color(.label).opacity(0.2), radius: 4, x: 0, y: 3)
+                .shadow(color: Color.main, radius: 0, x: 0, y: 6)
         }
     }
 }
@@ -300,7 +187,5 @@ struct SimpleImage: View {
             .scaledToFit()
             .cornerRadius(10)
             .frame(maxWidth: self.width, maxHeight: self.height, alignment: .center)
-            .shadow(color: Color.shadow, radius: 2, x: 3, y: 3)
-            .shadow(color: Color.highlight, radius: 2, x: -2, y: -2)
     }
 }

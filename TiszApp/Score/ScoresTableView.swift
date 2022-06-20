@@ -90,6 +90,7 @@ struct ScoresTableView: View {
                     }
                     .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
                     .listRowSeparator(.hidden)
+                    .listRowBackground(Color.clear)
                     .swipeActions {
                         if sessionService.userDetails!.admin {
                             Button(role: .destructive) {
@@ -118,25 +119,19 @@ struct ScoresTableView: View {
             
             if (self.isPicScoresShowing) {
                 HStack{
-                    Text("Képek:")
-                        .bold()
-                        .foregroundStyle(LinearGradient(Color.gradientDark, Color.gradientLight))
-                        .frame(width: 120)
-                        .minimumScaleFactor(0.1)
-                        .lineLimit(1)
-                        .padding(5)
-                        .background(RoundedRectangle(cornerRadius: 10)
-                            .fill(Color(.systemBackground))
-                            .shadow(color: Color(.label).opacity(0.2), radius: 4, x: 0, y: 3))
+                    SimpleText(text: Text("Képek:"))
+                    
                     ForEach (0...sessionService.teamNum-1, id: \.self) { i in
                         Text(String(handler.picSums[i]))
                             .frame(maxWidth:70)
+                            .foregroundStyle(Color.text)
                             .minimumScaleFactor(0.1)
                             .lineLimit(1)
                             .padding(5)
-                            .background(RoundedRectangle(cornerRadius: 10)
-                                .fill(Color(.systemBackground))
-                                .shadow(color: Color(.label).opacity(0.2), radius: 4, x: 0, y: 3))
+                            .background(
+                                RoundedRectangle(cornerRadius: 10)
+                                    .fill(Color.btn)
+                                    .shadow(color: Color.main, radius: 0, x: 0, y: 3))
                     }
                     
                 }
@@ -144,25 +139,19 @@ struct ScoresTableView: View {
             }
             
             HStack{
-                Text("Összesen:")
-                    .bold()
-                    .foregroundStyle(LinearGradient(Color.gradientDark, Color.gradientLight))
-                    .frame(width: 120)
-                    .minimumScaleFactor(0.1)
-                    .lineLimit(1)
-                    .padding(5)
-                    .background(RoundedRectangle(cornerRadius: 10)
-                        .fill(Color(.systemBackground))
-                        .shadow(color: Color(.label).opacity(0.2), radius: 4, x: 0, y: 3))
+                SimpleText(text: Text("Összesen:"))
+                    
                 ForEach (0...sessionService.teamNum-1, id: \.self) { i in
                     Text(String(handler.sums[i]))
                         .frame(maxWidth:70)
+                        .foregroundStyle(Color.text)
                         .minimumScaleFactor(0.1)
                         .lineLimit(1)
                         .padding(5)
-                        .background(RoundedRectangle(cornerRadius: 10)
-                            .fill(Color(.systemBackground))
-                            .shadow(color: Color(.label).opacity(0.2), radius: 4, x: 0, y: 3))
+                        .background(
+                            RoundedRectangle(cornerRadius: 10)
+                                .fill(Color.btn)
+                                .shadow(color: Color.main, radius: 0, x: 0, y: 3))
                 }
                 
             }

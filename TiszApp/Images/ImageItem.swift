@@ -55,18 +55,19 @@ final class Loader : ObservableObject {
 
     @Published var data: Data? = nil
 
-    init(_ id: String){
-        // the path to the image
-        let url = "images/\(id)"
-        let storage = Storage.storage()
-        let ref = storage.reference().child(url)
-        ref.getData(maxSize: 2 * 1024 * 1024) { data, error in
-            if let error = error {
-                print("\(error.localizedDescription)")
-            }
+    init(_ id: String?){
+        if let id = id {
+            let url = "images/\(id)"
+            let storage = Storage.storage()
+            let ref = storage.reference().child(url)
+            ref.getData(maxSize: 2 * 1024 * 1024) { data, error in
+                if let error = error {
+                    print("\(error.localizedDescription)")
+                }
 
-            DispatchQueue.main.async {
-                self.data = data
+                DispatchQueue.main.async {
+                    self.data = data
+                }
             }
         }
     }
@@ -77,8 +78,12 @@ struct ImageItemView: View {
     var text: String
     @ObservedObject private var imageLoader : Loader
     
-    init(imageName: String, text: String) {
-        self.imageLoader = Loader(imageName)
+    init(imageName: String, text: String, load: Bool = false) {
+        if(load) {
+            self.imageLoader = Loader(imageName)
+        } else {
+            self.imageLoader = Loader(nil)
+        }
         self.text = text
     }
     
@@ -98,6 +103,7 @@ struct ImageItemView: View {
             if image == nil {
                 Image(systemName: "arrow.2.circlepath")
                     .symbolVariant(.circle.fill)
+                    .foregroundColor(Color.text)
                     .font(.largeTitle)
                     .rotationEffect(.init(degrees: isSyncing ? 360 : 0))
                     .animation(isSyncing ? rotationAnimation : .default, value: isSyncing)
@@ -115,15 +121,15 @@ struct ImageItemView: View {
             }
             
             Text(text)
-                .foregroundColor(Color(.label))
+                .foregroundColor(Color.text)
                 .scaledToFit()
                 .padding([.leading, .trailing, .bottom], 5)
         }
         //.background(Color(.secondarySystemBackground))
         .cornerRadius(10)
         .background(RoundedRectangle(cornerRadius: 10)
-            .fill(Color(.systemBackground))
-            .shadow(color: Color(.label).opacity(0.2), radius: 4, x: 0, y: 3))
+            .fill(Color.btn)
+            .shadow(color: Color.main, radius: 0, x: 0, y: 3))
         //.frame(alignment: .center)
 //        .shadow(color: Color.shadow, radius: 3, x: 3, y: 3)
 //        .shadow(color: Color.highlight, radius: 3, x: -2, y: -2)

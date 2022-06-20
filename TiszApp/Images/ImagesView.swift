@@ -14,25 +14,25 @@ struct Page: View {
     
     @State var checkImages: Bool
     
-    var firstItemIndex: Int
-    var lastItemIndex: Int
+    var images: [ImageItem]
+    
+    @State var load: Bool = false
     
     private var gridItemLayout = [GridItem(.flexible(minimum: 10, maximum: 200), spacing: 20), GridItem(.flexible(minimum: 10, maximum: 200), spacing: 20)]
     
-    init(handler: ImagesHandlerImpl, checkImages: Bool, firstItemName: Int, lastItemName: Int) {
+    init(handler: ImagesHandlerImpl, checkImages: Bool, images: [ImageItem]) {
         self.handler = handler
         self.checkImages = checkImages
-        self.firstItemIndex = firstItemName
-        self.lastItemIndex = lastItemName
+        self.images = images
     }
     
     var body: some View {
         //ScrollView {
             
             LazyVGrid(columns: gridItemLayout, spacing: 20) {
-                ForEach(handler.imageInfos) { imageInfo in
-                    NavigationLink(destination: ImageDetailView(imageInfo: imageInfo, checkImages: self.checkImages, teamNum: sessionService.teamNum).environmentObject(sessionService), label: {
-                        ImageItemView(imageName: imageInfo.fileName, text: imageInfo.title)
+                ForEach(self.images) { imageInfo in
+                    NavigationLink(destination: ImageDetailView(imageInfo: imageInfo, checkImages: self.checkImages, teamNum: sessionService.teamNum).environmentObject(sessionService).fullBackground(), label: {
+                        ImageItemView(imageName: imageInfo.fileName, text: imageInfo.title, load: self.load)
                     })
                     
                 }
@@ -40,7 +40,7 @@ struct Page: View {
             .padding(10)
         //} //ScrollView end
         .onAppear {
-            self.handler.loadNextPage(from: firstItemIndex, to: lastItemIndex)
+            self.load = true
         }
     }
 }
@@ -68,7 +68,7 @@ struct ImagesView: View {
             if handler.imageNames.count > 0 {
                 TabView {
                     ForEach(1...(handler.imageNames.count-1)/6+1, id: \.self) {i in
-                        Page(handler: self.handler, checkImages: self.checkImages, firstItemName: (i-1)*6, lastItemName: min(i*6, handler.imageNames.count)).environmentObject(sessionService)
+                        Page(handler: self.handler, checkImages: self.checkImages, images: Array(handler.imageNames[(i-1)*6..<min(i*6, handler.imageNames.count)])).environmentObject(sessionService)
                     }
                 }
                 .tabViewStyle(.page)

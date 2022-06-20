@@ -16,7 +16,7 @@ struct TextsView: View {
     var body: some View {
         ScrollView {
             ForEach(handler.textInfos) { textInfo in
-                NavigationLink(destination: TextDetailView(textInfo: textInfo).environmentObject(sessionService),
+                NavigationLink(destination: TextDetailView(textInfo: textInfo).environmentObject(sessionService).fullBackground(),
                                label: {
                     TextItemView(title: textInfo.title, text: textInfo.text)
                         .padding(.bottom, 10)

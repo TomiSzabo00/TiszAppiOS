@@ -48,7 +48,7 @@ final class QuizHandlerImpl : QuizHandler, ObservableObject {
     init() {
         for i in 0...teamNum {
             self.texts.append("Nincs \(i+1). jelentkező")
-            self.textColors.append(Color.foreground)
+            self.textColors.append(Color.accentColor)
             self.rtBGs.append(.normal)
         }
     }
@@ -64,7 +64,7 @@ final class QuizHandlerImpl : QuizHandler, ObservableObject {
                 
                 for i in 0...self.teamNum-1 {
                     self.texts[i] = "Letiltva"
-                    self.textColors[i] = .white
+                    self.textColors[i] = Color.accentColor
                     self.rtBGs[i] = .gray
                 }
                 
@@ -79,7 +79,7 @@ final class QuizHandlerImpl : QuizHandler, ObservableObject {
                             self.teamSignals.append(author!.groupNumber)
                             self.texts[self.nextTextNum] = "\(author!.groupNumber). csapat (\(author!.userName))"
                             self.rtBGs[self.nextTextNum] = .color
-                            self.textColors[self.nextTextNum] = .white
+                            self.textColors[self.nextTextNum] = .text
                             self.nextTextNum += 1
                         }
                       })
@@ -129,7 +129,7 @@ final class QuizHandlerImpl : QuizHandler, ObservableObject {
         
         for i in 0...teamNum-1 {
             self.texts[i] = "Nincs \(i+1). jelentkező"
-            self.textColors[i] = Color.foreground
+            self.textColors[i] = Color.accentColor
             self.rtBGs[i] = .normal
         }
         self.teamSignals.removeAll()
