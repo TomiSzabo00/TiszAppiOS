@@ -21,10 +21,10 @@ struct LoginView: View {
                 VStack{
                     Spacer()
                     
-                    RoundedRectangle(cornerRadius: 20)
+                    Image("logo")
+                        .resizable()
                         .frame(width: 180, height: 180)
                         .padding()
-                        .foregroundStyle(LinearGradient(Color.gradientDark, Color.gradientLight))
                     
                     
                     VStack{
@@ -56,7 +56,7 @@ struct LoginView: View {
                                 showRegistration.toggle()
                             }, label: {Text("Regisztrálj!")
                                 .bold()
-                                .foregroundStyle(LinearGradient(Color.gradientDark, Color.gradientLight))
+                                .foregroundStyle(Color.secondary)
                             })
                             .sheet(isPresented: $showRegistration, content: { RegisterView()})
                             Spacer()

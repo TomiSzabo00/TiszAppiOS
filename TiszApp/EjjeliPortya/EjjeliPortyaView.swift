@@ -14,25 +14,28 @@ struct EjjeliPortyaView: View {
     @StateObject var vm = EjjeliPortyaViewModel()
     
     var body: some View {
-        VStack(spacing: 20) {
-            Spacer()
+        VStack {
             Text("A helymeghatározás állapota: " + (vm.isSharing ? "Aktív" : "Szünetel"))
-            Spacer()
+                .padding()
+
             Button(action: {
                 vm.startLocationSharing()
             }, label: {
                 Text("Helymeghatározás indítása")
             })
             .buttonStyle(SimpleButtonStyle())
+            .padding()
             
             Button(action: {
                 vm.stopLocationSharing()
             }, label: {
-                Text("Helymeghatározás vége")
+                Text("Helymeghatározás leállítása")
             })
-            //.buttonStyle(SimpleButtonStyle)
-            Spacer()
+            .buttonStyle(SimpleButtonStyle())
+            .padding()
+            
         }
+        .frame(maxWidth: .infinity)
         .onAppear {
             vm.sessionService = self.sessionService
             vm.checkIfLocationServicesIsEnabled()

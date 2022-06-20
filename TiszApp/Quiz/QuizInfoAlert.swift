@@ -39,7 +39,7 @@ struct QuizInfoAlert: View {
             })
         }
         .frame(width: UIScreen.main.bounds.width-50)
-        .background(Color.background.opacity(0.5))
+        .background(Color.white.opacity(0.5))
         .cornerRadius(12)
         .clipped()
     }

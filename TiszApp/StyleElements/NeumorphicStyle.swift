@@ -16,6 +16,7 @@ extension Color {
     static let foreground = Color("foreground")
     static let gradientDark = Color("gradientDark")
     static let gradientLight = Color("gradientLight")
+    static let gradientEnd = Color("gradientEnd")
     
     static let text = Color("btn_text")
     static let btn = Color("btn_day")

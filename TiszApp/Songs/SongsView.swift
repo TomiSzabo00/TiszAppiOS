@@ -38,12 +38,18 @@ struct SongsView: View {
                     }
                     if self.predictedValue.count > 0 {
                         List(self.predictedValue, id: \.self) {title in
-                            NavigationLink(destination: SpecificSongView(title: vm.songs[vm.songTitles.firstIndex(of: title) ?? 0], lyrics: vm.songLyrics[vm.songTitles.firstIndex(of: title) ?? 0]), label: { Text(vm.songTitles[vm.songTitles.firstIndex(of: title) ?? 0]) })
+                            NavigationLink(destination: SpecificSongView(title: vm.songs[vm.songTitles.firstIndex(of: title) ?? 0], lyrics: vm.songLyrics[vm.songTitles.firstIndex(of: title) ?? 0]).fullBackground(), label: { Text(vm.songTitles[vm.songTitles.firstIndex(of: title) ?? 0]) })
+                                .listRowBackground(Color.clear)
                         }
+                        .listStyle(.plain)
+                        
                     } else {
                         List(0...vm.songs.count-1, id: \.self) {i in
-                            NavigationLink(destination: SpecificSongView(title: vm.songs[i], lyrics: vm.songLyrics[i]), label: { Text(vm.songTitles[i]) })
+                            NavigationLink(destination: SpecificSongView(title: vm.songs[i], lyrics: vm.songLyrics[i]).fullBackground(), label: { Text(vm.songTitles[i]) })
+                                .listRowBackground(Color.clear)
+                                
                         }
+                        .listStyle(.plain)
                     }
                 } //end of first page
             
@@ -53,6 +59,7 @@ struct SongsView: View {
             }
         }
         .tabViewStyle(.page)
+        //.background(LinearGradient(gradient: Gradient(colors: [.gradientDark, .gradientLight, .gradientEnd]), startPoint: .top, endPoint: .bottom))
         
         .navigationTitle("Daloskönyv")
         .navigationBarTitleDisplayMode(.inline)

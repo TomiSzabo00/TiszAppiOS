@@ -21,13 +21,7 @@ struct MultipleTextQuizView: View {
                 Text("Az alábbi mezőkbe írhatod a válaszokat, sorrendben.")
                     .padding()
                 ForEach(0...vm.numOfQuestions-1, id: \.self) { i in
-                    //Text("\(i+1). válasz")
-                    //.padding()
-                    TextField("\(i+1). válasz", text: $vm.answers[i].answer)
-                        .padding()
-                        .background(Color(.secondarySystemBackground))
-                        .cornerRadius(10)
-                        .autocapitalization(.sentences)
+                    SimpleTextField(textField: TextField("\(i+1). válasz", text: $vm.answers[i].answer))
                         .padding()
                 }
                 

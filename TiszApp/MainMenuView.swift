@@ -126,7 +126,7 @@ struct MainMenuView: View {
                         NavigationLink(destination: EjjeliPortyaView().environmentObject(sessionService).fullBackground(), tag: 5, selection: $ID) {EmptyView()}
                     }
                     
-                    NavigationLink(destination: SongsView(), tag: 6, selection: $ID) {EmptyView()}
+                    NavigationLink(destination: SongsView().fullBackground(), tag: 6, selection: $ID) {EmptyView()}
                     
                     if (sessionService.userDetails?.admin != nil) && sessionService.userDetails?.admin == true {
                         NavigationLink(destination: MultipleTextQuizAdminView().environmentObject(sessionService), tag: 7, selection: $ID) {EmptyView()}

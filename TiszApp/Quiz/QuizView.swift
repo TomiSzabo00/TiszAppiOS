@@ -28,7 +28,7 @@ struct QuizView: View {
             .background(handler.bgColor)
             .disabled(!handler.isEnabled)
         }
-        .blur(radius: isInfo ? 30 : 0)
+        //.blur(radius: isInfo ? 30 : 0)
             
             if isInfo {
                 QuizInfoAlert(shown: $isInfo)
@@ -44,7 +44,7 @@ struct QuizView: View {
             isInfo = true
         }, label: {
             Image(systemName: "info.circle")
-                .foregroundStyle(LinearGradient(Color.gradientDark, Color.gradientLight))
+                //.foregroundStyle(LinearGradient(Color.gradientDark, Color.gradientLight))
         }))
     }
 }

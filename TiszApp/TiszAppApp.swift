@@ -31,7 +31,7 @@ struct TiszAppApp: App {
                             sessionService.getButtonStates()
                         }
                 case .loggedOut:
-                    LoginView()
+                    LoginView().fullBackground()
                     //PredictedTextTest()
                 }
             }

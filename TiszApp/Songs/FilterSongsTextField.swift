@@ -42,15 +42,9 @@ struct FilterSongsTextField: View {
     
     var body: some View {
         
-        HStack {
-            TextField(self.textFieldTitle ?? "", text: self.$textFieldInput, onEditingChanged: { editing in self.realTimePrediction(status: editing)}, onCommit: { self.makePrediction()})
-                .disableAutocorrection(true)
-                .autocapitalization(.words)
-        }
-        .padding()
-        .background(Color(.secondarySystemBackground))
-        .cornerRadius(10)
-        
+        SimpleTextField(textField: TextField(self.textFieldTitle ?? "", text: self.$textFieldInput, onEditingChanged: { editing in self.realTimePrediction(status: editing)}, onCommit: { self.makePrediction()}))
+            .disableAutocorrection(true)
+            .autocapitalization(.words)
     }
     
     /// Schedules prediction based on interval and only a if input is being made
