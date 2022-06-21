@@ -134,13 +134,15 @@ struct MainMenuView: View {
                         NavigationLink(destination: MultipleTextQuizView().environmentObject(sessionService).fullBackground(), tag: 7, selection: $ID) {EmptyView()}
                     }
                     
+                    NavigationLink(destination: WordleView(), tag: 8, selection: $ID) {EmptyView()}
+                    
                     //only admin buttons
                     Group {
-                        NavigationLink(destination: ImagesView(checkImages: true).environmentObject(sessionService), tag: 8, selection: $ID) {EmptyView()}
+                        NavigationLink(destination: ImagesView(checkImages: true).environmentObject(sessionService), tag: 9, selection: $ID) {EmptyView()}
                     
-                        NavigationLink(destination: AddScoreView(teamNum: sessionService.teamNum), tag: 9, selection: $ID) {EmptyView()}
+                        NavigationLink(destination: AddScoreView(teamNum: sessionService.teamNum), tag: 10, selection: $ID) {EmptyView()}
                     
-                        NavigationLink(destination: NotificationAdminView(), tag: 10, selection: $ID) {EmptyView()}
+                        NavigationLink(destination: NotificationAdminView(), tag: 11, selection: $ID) {EmptyView()}
                     }
                 }
                 

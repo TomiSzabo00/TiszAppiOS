@@ -190,3 +190,17 @@ struct SimpleImage: View {
             .frame(maxWidth: self.width, maxHeight: self.height, alignment: .center)
     }
 }
+
+struct WordleButtonStyle: ButtonStyle {
+
+    func makeBody(configuration: Self.Configuration) -> some View {
+        configuration.label
+            //.padding(10)
+            .foregroundColor(Color.white)
+            .lineLimit(1)
+            .minimumScaleFactor(0.1)
+            .cornerRadius(3)
+            .offset(y: configuration.isPressed ? 2 : 0)
+            .shadow(color: Color.black.opacity(0.3), radius: 0, x: 0, y: configuration.isPressed ? 0 : 2)
+    }
+}

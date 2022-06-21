@@ -47,11 +47,12 @@ final class SessionServiceImpl: ObservableObject, SessionService {
                                              "Éjjeli portya",
                                              "Daloskönyv",
                                              "Kvíz 2",
+                                             "Wordle",
                                              "Képek ellenőrzése",
                                              "Pontok feltöltése",
                                              "Értesítés"]
     
-    @Published var buttonIcons: [String] = ["square.and.arrow.up.fill", "chart.bar.xaxis", "play.rectangle.fill", "photo.on.rectangle.angled", "doc.text", "moon.zzz.fill", "music.note.list", "rectangle.and.pencil.and.ellipsis", "eye.fill", "plus.square.fill", "exclamationmark.bubble.fill"]
+    @Published var buttonIcons: [String] = ["square.and.arrow.up.fill", "chart.bar.xaxis", "play.rectangle.fill", "photo.on.rectangle.angled", "doc.text", "moon.zzz.fill", "music.note.list", "rectangle.and.pencil.and.ellipsis", "w.square.fill", "eye.fill", "plus.square.fill", "exclamationmark.bubble.fill"]
 
     @Published var btnStates = [Bool]()
     
