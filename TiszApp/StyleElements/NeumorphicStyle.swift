@@ -200,7 +200,7 @@ struct WordleButtonStyle: ButtonStyle {
             .lineLimit(1)
             .minimumScaleFactor(0.1)
             .cornerRadius(3)
-            .offset(y: configuration.isPressed ? 2 : 0)
-            .shadow(color: Color.black.opacity(0.3), radius: 0, x: 0, y: configuration.isPressed ? 0 : 2)
+            .offset(y: configuration.isPressed ? 1 : 0)
+            .shadow(color: Color.black.opacity(0.3), radius: 1, x: 0, y: configuration.isPressed ? 0 : 1)
     }
 }

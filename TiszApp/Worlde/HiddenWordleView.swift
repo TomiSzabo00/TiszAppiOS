@@ -1,37 +1,16 @@
 //
-//  WordleView.swift
+//  HiddenWorldeView.swift
 //  TiszApp
 //
-//  Created by Szabó Tamás on 2022. 06. 21..
+//  Created by Szabó Tamás on 2022. 06. 26..
 //
 
 import SwiftUI
 import AlertToast
 
-struct LetterView: View {
+struct HiddenWordleView: View {
     
-    @State var l : Letter
-    @State var bg: Color
-    
-    var body: some View {
-        
-        Text(l.letter.uppercased())
-            .foregroundColor(.accentColor)
-            .frame(width: 50, height: 50)
-            .border(Color.accentColor)
-            .background(bg)
-        
-    }
-    
-}
-
-struct WordleView: View {
-    
-    @EnvironmentObject var sessionService: SessionServiceImpl
-    
-    @StateObject var vm = WordleViewModel()
-    
-    @State var ID: Int? = nil
+    @StateObject var vm = HiddenWordleViewModel(stage: 1)
     
     var body: some View {
         VStack {
@@ -74,29 +53,22 @@ struct WordleView: View {
             .alert(isPresented: $vm.gameEnd) {
                 switch vm.gameState {
                 case .lose:
-                    return Alert(title: Text("A játéknak vége"), message: Text("Nem sikerült kitalálni a megfejtést:\n\(vm.solution.uppercased())"), dismissButton: .default(Text("OK")))
+                    return Alert(title: Text("A játéknak vége"), message: Text("Nem sikerült kitalálni a rejtett megfejtést. Próbáld újra holnap!"), dismissButton: .default(Text("OK")))
                 case .win:
-                    return Alert(title: Text("A játéknak vége"), message: Text("Gratulálok, kitaláltad a megfejtést!"), dismissButton: Alert.Button.default(Text("OK"), action: {
-                        //check if player can see the hidden screen
-                        if (vm.canSeeHidden) {
-                            ID = 1
-                        }
+                    if vm.stage < vm.solutions.count {
+                    return Alert(title: Text("Szép munka"), message: Text("Én a helyedben felírnám a megfejtést ;)"), dismissButton: Alert.Button.default(Text("Tovább"), action: {
+                        vm.nextStage()
                      }))
+                    } else {
+                        return Alert(title: Text("A játéknak vége"), message: Text("Gratulálok, kitaláltad az összes rejtett megfejtést!"), dismissButton: .default(Text("OK")))
+                    }
                 default:
                     return Alert(title: Text("WTF"), message: Text("Még folyamatban a játék..."), dismissButton: .default(Text("OK")))
                 }
             }
-            
-            NavigationLink(destination: HiddenWordleView(), tag: 1, selection: $ID) {EmptyView()}
         }
-        .navigationBarItems(trailing: (sessionService.userDetails?.admin ?? false) ? Button(action: {
-            ID = 1
-        }, label: {
-            Image(systemName: "map")
-        }) : nil)
-        .onAppear {
-            self.vm.sessionService = sessionService
-        }
+        .navigationBarTitle("\(self.vm.stage)/\(self.vm.solutions.count)")
+        
         //this is an external package
         /// https://github.com/elai950/AlertToast
         .toast(isPresenting: $vm.noWord){
@@ -105,8 +77,8 @@ struct WordleView: View {
     }
 }
 
-struct WordleView_Previews: PreviewProvider {
+struct HiddenWorldeView_Previews: PreviewProvider {
     static var previews: some View {
-        WordleView()
+        HiddenWordleView()
     }
 }

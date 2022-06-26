@@ -141,10 +141,10 @@
 		55149F522850C361007BECEF /* EjjeliPortyaAdminView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55149F512850C361007BECEF /* EjjeliPortyaAdminView.swift */; };
 		55149F542850C380007BECEF /* EjjeliPortyaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55149F532850C380007BECEF /* EjjeliPortyaView.swift */; };
 		55149F562850CC7D007BECEF /* EjjeliPortyaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55149F552850CC7D007BECEF /* EjjeliPortyaViewModel.swift */; };
+		55261651286310E50055D7D6 /* magyar_szavak.txt in Resources */ = {isa = PBXBuildFile; fileRef = 55261650286310E50055D7D6 /* magyar_szavak.txt */; };
 		553F69A62805DAF600511E1E /* QuizInfoAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 553F69A52805DAF500511E1E /* QuizInfoAlert.swift */; };
 		55622E592861DA47003A46DA /* WordleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55622E582861DA47003A46DA /* WordleView.swift */; };
 		55622E5B2861DA9A003A46DA /* WordleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55622E5A2861DA9A003A46DA /* WordleViewModel.swift */; };
-		55622E5D28627883003A46DA /* magyar-szavak.txt in Resources */ = {isa = PBXBuildFile; fileRef = 55622E5C28627882003A46DA /* magyar-szavak.txt */; };
 		55622E6028627F95003A46DA /* AlertToast in Frameworks */ = {isa = PBXBuildFile; productRef = 55622E5F28627F95003A46DA /* AlertToast */; };
 		5569F4BA285CC86F00B9C794 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 5569F4B9285CC86F00B9C794 /* FirebaseMessaging */; };
 		5569F4BE285D35AE00B9C794 /* NotificationAdminView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5569F4BD285D35AE00B9C794 /* NotificationAdminView.swift */; };
@@ -174,6 +174,10 @@
 		5595DBD627F4AFC40063A424 /* NeumorphicStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5595DBD527F4AFC40063A424 /* NeumorphicStyle.swift */; };
 		55962CB4285B760D00030BE7 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55962CB3285B760D00030BE7 /* ProfileView.swift */; };
 		55962CB6285B81BF00030BE7 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55962CB5285B81BF00030BE7 /* ProfileViewModel.swift */; };
+		55AF151C2868B91200D29584 /* HiddenWordleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AF151B2868B91200D29584 /* HiddenWordleView.swift */; };
+		55AF151E2868B94700D29584 /* HiddenWordleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AF151D2868B94700D29584 /* HiddenWordleViewModel.swift */; };
+		55AF15212868E11C00D29584 /* TreasureHuntAdminView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AF15202868E11C00D29584 /* TreasureHuntAdminView.swift */; };
+		55AF15232868E1ED00D29584 /* TreasureHuntViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AF15222868E1ED00D29584 /* TreasureHuntViewModel.swift */; };
 		55B0E6D227EBDA9B0058A5B9 /* TiszAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B0E6D127EBDA9B0058A5B9 /* TiszAppApp.swift */; };
 		55B0E6D627EBDAA00058A5B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55B0E6D527EBDAA00058A5B9 /* Assets.xcassets */; };
 		55B0E6D927EBDAA00058A5B9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55B0E6D827EBDAA00058A5B9 /* Preview Assets.xcassets */; };
@@ -347,10 +351,10 @@
 		55149F532850C380007BECEF /* EjjeliPortyaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EjjeliPortyaView.swift; sourceTree = "<group>"; };
 		55149F552850CC7D007BECEF /* EjjeliPortyaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EjjeliPortyaViewModel.swift; sourceTree = "<group>"; };
 		55149F572850E8B7007BECEF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		55261650286310E50055D7D6 /* magyar_szavak.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = magyar_szavak.txt; sourceTree = "<group>"; };
 		553F69A52805DAF500511E1E /* QuizInfoAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizInfoAlert.swift; sourceTree = "<group>"; };
 		55622E582861DA47003A46DA /* WordleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordleView.swift; sourceTree = "<group>"; };
 		55622E5A2861DA9A003A46DA /* WordleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordleViewModel.swift; sourceTree = "<group>"; };
-		55622E5C28627882003A46DA /* magyar-szavak.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "magyar-szavak.txt"; sourceTree = "<group>"; };
 		5569F4BB285D0E4A00B9C794 /* TiszApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TiszApp.entitlements; sourceTree = "<group>"; };
 		5569F4BD285D35AE00B9C794 /* NotificationAdminView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationAdminView.swift; sourceTree = "<group>"; };
 		5569F4C1285D35D800B9C794 /* NotificationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewModel.swift; sourceTree = "<group>"; };
@@ -379,6 +383,10 @@
 		5595DBD527F4AFC40063A424 /* NeumorphicStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeumorphicStyle.swift; sourceTree = "<group>"; };
 		55962CB3285B760D00030BE7 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		55962CB5285B81BF00030BE7 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		55AF151B2868B91200D29584 /* HiddenWordleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiddenWordleView.swift; sourceTree = "<group>"; };
+		55AF151D2868B94700D29584 /* HiddenWordleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiddenWordleViewModel.swift; sourceTree = "<group>"; };
+		55AF15202868E11C00D29584 /* TreasureHuntAdminView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreasureHuntAdminView.swift; sourceTree = "<group>"; };
+		55AF15222868E1ED00D29584 /* TreasureHuntViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreasureHuntViewModel.swift; sourceTree = "<group>"; };
 		55B0E6CE27EBDA9B0058A5B9 /* TiszApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TiszApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55B0E6D127EBDA9B0058A5B9 /* TiszAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TiszAppApp.swift; sourceTree = "<group>"; };
 		55B0E6D527EBDAA00058A5B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -580,9 +588,11 @@
 		55622E572861DA23003A46DA /* Worlde */ = {
 			isa = PBXGroup;
 			children = (
-				55622E5C28627882003A46DA /* magyar-szavak.txt */,
+				55261650286310E50055D7D6 /* magyar_szavak.txt */,
 				55622E582861DA47003A46DA /* WordleView.swift */,
 				55622E5A2861DA9A003A46DA /* WordleViewModel.swift */,
+				55AF151B2868B91200D29584 /* HiddenWordleView.swift */,
+				55AF151D2868B94700D29584 /* HiddenWordleViewModel.swift */,
 			);
 			path = Worlde;
 			sourceTree = "<group>";
@@ -664,6 +674,15 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
+		55AF151F2868E10400D29584 /* TreasureHunt */ = {
+			isa = PBXGroup;
+			children = (
+				55AF15202868E11C00D29584 /* TreasureHuntAdminView.swift */,
+				55AF15222868E1ED00D29584 /* TreasureHuntViewModel.swift */,
+			);
+			path = TreasureHunt;
+			sourceTree = "<group>";
+		};
 		55B0E6C527EBDA9B0058A5B9 = {
 			isa = PBXGroup;
 			children = (
@@ -684,6 +703,7 @@
 		55B0E6D027EBDA9B0058A5B9 /* TiszApp */ = {
 			isa = PBXGroup;
 			children = (
+				55AF151F2868E10400D29584 /* TreasureHunt */,
 				55622E572861DA23003A46DA /* Worlde */,
 				5569F4BC285D359400B9C794 /* Notifications */,
 				5569F4BB285D0E4A00B9C794 /* TiszApp.entitlements */,
@@ -911,7 +931,6 @@
 				551256562856881A006A14CB /* WAKA WAKA.txt in Resources */,
 				551256A52856881A006A14CB /* SÁRIKA (ILLÉS).txt in Resources */,
 				551256802856881A006A14CB /* 67-ES ÚT (REPUBLIC).txt in Resources */,
-				55622E5D28627883003A46DA /* magyar-szavak.txt in Resources */,
 				551256AB2856881A006A14CB /* REZERVÁTUM (TTB).txt in Resources */,
 				551256912856881A006A14CB /* A KÖVETKEZŐ BUSZON (KISPÁL ÉS A BORZ).txt in Resources */,
 				551256722856881A006A14CB /* FELLEGAJTÓ NYITOGATÓ.txt in Resources */,
@@ -998,6 +1017,7 @@
 				551256A92856881A006A14CB /* MÉG AZT MONDJÁK.txt in Resources */,
 				551256702856881A006A14CB /* VÁRJ, MÍG FELKEL MAJD A NAP (V’MOTO-ROCK).txt in Resources */,
 				551256572856881A006A14CB /* R1..txt in Resources */,
+				55261651286310E50055D7D6 /* magyar_szavak.txt in Resources */,
 				5512564E2856881A006A14CB /* 2016B GÓLYAHIMNUSZ.txt in Resources */,
 				551256692856881A006A14CB /* FANTASZTIKUS LÁNY (KFT).txt in Resources */,
 				5512565B2856881A006A14CB /* HEJ, HALÁSZOK, HALÁSZOK.txt in Resources */,
@@ -1044,6 +1064,7 @@
 				5591E7BE2800F12C00C811F8 /* TextDetailView.swift in Sources */,
 				55B3955E2859ECCE0044389E /* MultipleTextQuizView.swift in Sources */,
 				55E8003D27F0B571007181E0 /* LoginViewModel.swift in Sources */,
+				55AF15212868E11C00D29584 /* TreasureHuntAdminView.swift in Sources */,
 				55B40DCB27F3125B00B5B065 /* TextFieldInputPrediction.swift in Sources */,
 				5591E7C52802223B00C811F8 /* QuizView.swift in Sources */,
 				5591E7B127FE193900C811F8 /* ImageItem.swift in Sources */,
@@ -1060,7 +1081,9 @@
 				55E8003527F0A217007181E0 /* SessionUserDetails.swift in Sources */,
 				55125491285681E1006A14CB /* SongsViewModel.swift in Sources */,
 				557B8FA027EE334F00312433 /* MainMenuView.swift in Sources */,
+				55AF151E2868B94700D29584 /* HiddenWordleViewModel.swift in Sources */,
 				5512548F285661B4006A14CB /* SongsView.swift in Sources */,
+				55AF151C2868B91200D29584 /* HiddenWordleView.swift in Sources */,
 				5591E7B327FE310900C811F8 /* ImagesHandler.swift in Sources */,
 				55B3954D2856B2630044389E /* SpecificSongView.swift in Sources */,
 				55622E5B2861DA9A003A46DA /* WordleViewModel.swift in Sources */,
@@ -1085,6 +1108,7 @@
 				55B0E6D227EBDA9B0058A5B9 /* TiszAppApp.swift in Sources */,
 				55B3954F2857377B0044389E /* FilterSongsTextField.swift in Sources */,
 				5591E7AD27FDA01000C811F8 /* ImageUploadView.swift in Sources */,
+				55AF15232868E1ED00D29584 /* TreasureHuntViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

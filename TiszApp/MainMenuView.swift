@@ -134,7 +134,7 @@ struct MainMenuView: View {
                         NavigationLink(destination: MultipleTextQuizView().environmentObject(sessionService).fullBackground(), tag: 7, selection: $ID) {EmptyView()}
                     }
                     
-                    NavigationLink(destination: WordleView(), tag: 8, selection: $ID) {EmptyView()}
+                    NavigationLink(destination: WordleView().environmentObject(sessionService).fullBackground(), tag: 8, selection: $ID) {EmptyView()}
                     
                     //only admin buttons
                     Group {
@@ -143,6 +143,8 @@ struct MainMenuView: View {
                         NavigationLink(destination: AddScoreView(teamNum: sessionService.teamNum), tag: 10, selection: $ID) {EmptyView()}
                     
                         NavigationLink(destination: NotificationAdminView(), tag: 11, selection: $ID) {EmptyView()}
+                        
+                        NavigationLink(destination: TreasureHuntAdminView().environmentObject(sessionService), tag: 12, selection: $ID) {EmptyView()}
                     }
                 }
                 
