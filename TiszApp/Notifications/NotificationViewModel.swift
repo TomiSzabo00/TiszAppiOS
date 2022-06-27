@@ -97,39 +97,43 @@ final class NotificationViewModel: ObservableObject {
             list = self.tokenList
         }
         
-        for i in 0...list.count-1 {
+        print(list)
         
-            let json: [String: Any] = [
-                "to": list[i],
-                "notification": [
-                    "title": self.title,
-                    "body": self.message
+        if list.count > 0 {
+            for i in 0...list.count-1 {
+                print("heo")
+                let json: [String: Any] = [
+                    "to": list[i],
+                    "notification": [
+                        "title": self.title,
+                        "body": self.message
+                    ]
                 ]
-            ]
-            
-            let notServerKey = "AAAAo-Pv9cM:APA91bGn3FwMHepePdM7GGNcAL1VJbvaev_yHPGZY-FjLsASeukqwk9dbD6U-3rM29w_9CfOjfT9xRxjFrGtEQA4TwyX4GxxBmJsC8kQNz7ISDxxVUAmJJewtUAEB0UJvfzJJNnczSOg"
-            
-            var request = URLRequest(url: url)
-            request.httpMethod = "POST"
-            request.httpBody = try? JSONSerialization.data(withJSONObject: json, options: [.prettyPrinted])
-            
-            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-            request.setValue("key=\(notServerKey)", forHTTPHeaderField: "Authorization")
-            
-            let session = URLSession(configuration: .default)
-            
-            session.dataTask(with: request, completionHandler: { _, _, err in
-                if let err = err {
-                    print("ertesites kuldes (legacy) hiba: \(err.localizedDescription)")
-                    return
-                }
-                DispatchQueue.main.async {
-                    self.title = ""
-                    self.message = ""
-                }
-                //print("kikuldve!")
-            })
-            .resume()
+                
+                let notServerKey = "AAAAo-Pv9cM:APA91bGn3FwMHepePdM7GGNcAL1VJbvaev_yHPGZY-FjLsASeukqwk9dbD6U-3rM29w_9CfOjfT9xRxjFrGtEQA4TwyX4GxxBmJsC8kQNz7ISDxxVUAmJJewtUAEB0UJvfzJJNnczSOg"
+                
+                var request = URLRequest(url: url)
+                request.httpMethod = "POST"
+                request.httpBody = try? JSONSerialization.data(withJSONObject: json, options: [.prettyPrinted])
+                
+                request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+                request.setValue("key=\(notServerKey)", forHTTPHeaderField: "Authorization")
+                
+                let session = URLSession(configuration: .default)
+                
+                session.dataTask(with: request, completionHandler: { _, _, err in
+                    if let err = err {
+                        print("ertesites kuldes (legacy) hiba: \(err.localizedDescription)")
+                        return
+                    }
+                    DispatchQueue.main.async {
+                        self.title = ""
+                        self.message = ""
+                    }
+                    //print("kikuldve!")
+                })
+                .resume()
+            }
         }
     }
 }

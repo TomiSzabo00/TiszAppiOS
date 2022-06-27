@@ -104,47 +104,55 @@ struct MainMenuView: View {
                 } //ScrollView end
                 
                 Group {
-                    NavigationLink(destination: UploadView(), tag: 0, selection: $ID) {EmptyView()}
-                    
-                    NavigationLink(destination: ScoresTableView(handler: ScoresHandlerImpl(teamNum: sessionService.teamNum)).environmentObject(sessionService).fullBackground(), tag: 1, selection: $ID) {EmptyView()}
-                    
-                    
-                    
-                    if (sessionService.userDetails?.admin != nil) && sessionService.userDetails?.admin == true {
-                        NavigationLink(destination: QuizAdminView(teamNum: sessionService.teamNum), tag: 2, selection: $ID) {EmptyView()}
-                    } else {
-                        NavigationLink(destination: QuizView().environmentObject(sessionService).fullBackground(), tag: 2, selection: $ID) {EmptyView()}
-                    }
+                    Group {
+                        NavigationLink(destination: UploadView(), tag: 0, selection: $ID) {EmptyView()}
                         
-                    NavigationLink(destination: ImagesView(checkImages: false).environmentObject(sessionService).fullBackground(), tag: 3, selection: $ID) {EmptyView()}
-                    
-                    NavigationLink(destination: TextsView().environmentObject(sessionService).fullBackground(), tag: 4, selection: $ID) {EmptyView()}
-                    
-                    if (sessionService.userDetails?.admin != nil) && sessionService.userDetails?.admin == true {
-                        NavigationLink(destination: EjjeliPortyaAdminView().environmentObject(sessionService), tag: 5, selection: $ID) {EmptyView()}
-                    } else {
-                        NavigationLink(destination: EjjeliPortyaView().environmentObject(sessionService).fullBackground(), tag: 5, selection: $ID) {EmptyView()}
+                        NavigationLink(destination: ScoresTableView(handler: ScoresHandlerImpl(teamNum: sessionService.teamNum)).environmentObject(sessionService).fullBackground(), tag: 1, selection: $ID) {EmptyView()}
+                        
+                        
+                        
+                        if (sessionService.userDetails?.admin != nil) && sessionService.userDetails?.admin == true {
+                            NavigationLink(destination: QuizAdminView(teamNum: sessionService.teamNum), tag: 2, selection: $ID) {EmptyView()}
+                        } else {
+                            NavigationLink(destination: QuizView().environmentObject(sessionService).fullBackground(), tag: 2, selection: $ID) {EmptyView()}
+                        }
+                        
+                        Group {
+                            NavigationLink(destination: ImagesView(checkImages: false).environmentObject(sessionService).fullBackground(), tag: 3, selection: $ID) {EmptyView()}
+                            
+                            NavigationLink(destination: TextsView().environmentObject(sessionService).fullBackground(), tag: 4, selection: $ID) {EmptyView()}
+                        }
+                        
+                        NavigationLink(destination: NappaliPortyaView(), tag: 5, selection: $ID) {EmptyView()}
+                        
+                        if (sessionService.userDetails?.admin != nil) && sessionService.userDetails?.admin == true {
+                            NavigationLink(destination: EjjeliPortyaAdminView().environmentObject(sessionService), tag: 6, selection: $ID) {EmptyView()}
+                        } else {
+                            NavigationLink(destination: EjjeliPortyaView().environmentObject(sessionService).fullBackground(), tag: 6, selection: $ID) {EmptyView()}
+                        }
+                        
+                        NavigationLink(destination: SongsView().fullBackground(), tag: 7, selection: $ID) {EmptyView()}
+                        
+                        if (sessionService.userDetails?.admin != nil) && sessionService.userDetails?.admin == true {
+                            NavigationLink(destination: MultipleTextQuizAdminView().environmentObject(sessionService), tag: 8, selection: $ID) {EmptyView()}
+                        } else {
+                            NavigationLink(destination: MultipleTextQuizView().environmentObject(sessionService).fullBackground(), tag: 8, selection: $ID) {EmptyView()}
+                        }
+                        
+                        NavigationLink(destination: WordleView().environmentObject(sessionService).fullBackground(), tag: 9, selection: $ID) {EmptyView()}
+                        
+                        NavigationLink(destination: ScheduleView(), tag: 10, selection: $ID) {EmptyView()}
                     }
-                    
-                    NavigationLink(destination: SongsView().fullBackground(), tag: 6, selection: $ID) {EmptyView()}
-                    
-                    if (sessionService.userDetails?.admin != nil) && sessionService.userDetails?.admin == true {
-                        NavigationLink(destination: MultipleTextQuizAdminView().environmentObject(sessionService), tag: 7, selection: $ID) {EmptyView()}
-                    } else {
-                        NavigationLink(destination: MultipleTextQuizView().environmentObject(sessionService).fullBackground(), tag: 7, selection: $ID) {EmptyView()}
-                    }
-                    
-                    NavigationLink(destination: WordleView().environmentObject(sessionService).fullBackground(), tag: 8, selection: $ID) {EmptyView()}
                     
                     //only admin buttons
                     Group {
-                        NavigationLink(destination: ImagesView(checkImages: true).environmentObject(sessionService), tag: 9, selection: $ID) {EmptyView()}
+                        NavigationLink(destination: ImagesView(checkImages: true).environmentObject(sessionService), tag: 11, selection: $ID) {EmptyView()}
                     
-                        NavigationLink(destination: AddScoreView(teamNum: sessionService.teamNum), tag: 10, selection: $ID) {EmptyView()}
+                        NavigationLink(destination: AddScoreView(teamNum: sessionService.teamNum), tag: 12, selection: $ID) {EmptyView()}
                     
-                        NavigationLink(destination: NotificationAdminView(), tag: 11, selection: $ID) {EmptyView()}
+                        NavigationLink(destination: NotificationAdminView(), tag: 13, selection: $ID) {EmptyView()}
                         
-                        NavigationLink(destination: TreasureHuntAdminView().environmentObject(sessionService), tag: 12, selection: $ID) {EmptyView()}
+                        NavigationLink(destination: TreasureHuntAdminView().environmentObject(sessionService), tag: 14, selection: $ID) {EmptyView()}
                     }
                 }
                 

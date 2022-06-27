@@ -178,6 +178,8 @@
 		55AF151E2868B94700D29584 /* HiddenWordleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AF151D2868B94700D29584 /* HiddenWordleViewModel.swift */; };
 		55AF15212868E11C00D29584 /* TreasureHuntAdminView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AF15202868E11C00D29584 /* TreasureHuntAdminView.swift */; };
 		55AF15232868E1ED00D29584 /* TreasureHuntViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AF15222868E1ED00D29584 /* TreasureHuntViewModel.swift */; };
+		55AF15272869BB0900D29584 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AF15262869BB0900D29584 /* ScheduleView.swift */; };
+		55AF15292869BB1A00D29584 /* NappaliPortyaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55AF15282869BB1A00D29584 /* NappaliPortyaView.swift */; };
 		55B0E6D227EBDA9B0058A5B9 /* TiszAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55B0E6D127EBDA9B0058A5B9 /* TiszAppApp.swift */; };
 		55B0E6D627EBDAA00058A5B9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55B0E6D527EBDAA00058A5B9 /* Assets.xcassets */; };
 		55B0E6D927EBDAA00058A5B9 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55B0E6D827EBDAA00058A5B9 /* Preview Assets.xcassets */; };
@@ -387,6 +389,8 @@
 		55AF151D2868B94700D29584 /* HiddenWordleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HiddenWordleViewModel.swift; sourceTree = "<group>"; };
 		55AF15202868E11C00D29584 /* TreasureHuntAdminView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreasureHuntAdminView.swift; sourceTree = "<group>"; };
 		55AF15222868E1ED00D29584 /* TreasureHuntViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreasureHuntViewModel.swift; sourceTree = "<group>"; };
+		55AF15262869BB0900D29584 /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
+		55AF15282869BB1A00D29584 /* NappaliPortyaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NappaliPortyaView.swift; sourceTree = "<group>"; };
 		55B0E6CE27EBDA9B0058A5B9 /* TiszApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TiszApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55B0E6D127EBDA9B0058A5B9 /* TiszAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TiszAppApp.swift; sourceTree = "<group>"; };
 		55B0E6D527EBDAA00058A5B9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -683,6 +687,22 @@
 			path = TreasureHunt;
 			sourceTree = "<group>";
 		};
+		55AF15242869BADB00D29584 /* NappaliPortya */ = {
+			isa = PBXGroup;
+			children = (
+				55AF15282869BB1A00D29584 /* NappaliPortyaView.swift */,
+			);
+			path = NappaliPortya;
+			sourceTree = "<group>";
+		};
+		55AF15252869BAE600D29584 /* Schedule */ = {
+			isa = PBXGroup;
+			children = (
+				55AF15262869BB0900D29584 /* ScheduleView.swift */,
+			);
+			path = Schedule;
+			sourceTree = "<group>";
+		};
 		55B0E6C527EBDA9B0058A5B9 = {
 			isa = PBXGroup;
 			children = (
@@ -703,6 +723,8 @@
 		55B0E6D027EBDA9B0058A5B9 /* TiszApp */ = {
 			isa = PBXGroup;
 			children = (
+				55AF15252869BAE600D29584 /* Schedule */,
+				55AF15242869BADB00D29584 /* NappaliPortya */,
 				55AF151F2868E10400D29584 /* TreasureHunt */,
 				55622E572861DA23003A46DA /* Worlde */,
 				5569F4BC285D359400B9C794 /* Notifications */,
@@ -1088,6 +1110,7 @@
 				55B3954D2856B2630044389E /* SpecificSongView.swift in Sources */,
 				55622E5B2861DA9A003A46DA /* WordleViewModel.swift in Sources */,
 				55E8003827F0A27E007181E0 /* SessionService.swift in Sources */,
+				55AF15292869BB1A00D29584 /* NappaliPortyaView.swift in Sources */,
 				55149F562850CC7D007BECEF /* EjjeliPortyaViewModel.swift in Sources */,
 				55B39560285A115B0044389E /* MultipleTextQuizAnswersView.swift in Sources */,
 				5591E7C92805B20700C811F8 /* QuizHandler.swift in Sources */,
@@ -1099,6 +1122,7 @@
 				55B395552858E8F00044389E /* AdsViewModel.swift in Sources */,
 				5569F4C2285D35D800B9C794 /* NotificationViewModel.swift in Sources */,
 				5595DBD627F4AFC40063A424 /* NeumorphicStyle.swift in Sources */,
+				55AF15272869BB0900D29584 /* ScheduleView.swift in Sources */,
 				55962CB4285B760D00030BE7 /* ProfileView.swift in Sources */,
 				55962CB6285B81BF00030BE7 /* ProfileViewModel.swift in Sources */,
 				5591E7C72802229C00C811F8 /* QuizAdminView.swift in Sources */,
