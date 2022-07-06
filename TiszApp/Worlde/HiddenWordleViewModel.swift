@@ -248,5 +248,6 @@ final class HiddenWordleViewModel: ObservableObject {
         default:
             return .na
         }
+        
     }
 }
