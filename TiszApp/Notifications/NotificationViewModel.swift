@@ -130,7 +130,7 @@ final class NotificationViewModel: ObservableObject {
                         self.title = ""
                         self.message = ""
                     }
-                    //print("kikuldve!")
+                    print("kikuldve!")
                 })
                 .resume()
             }
