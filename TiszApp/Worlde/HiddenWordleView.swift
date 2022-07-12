@@ -19,7 +19,7 @@ struct HiddenWordleView: View {
                 ForEach(0..<7) { i in
                     HStack(spacing: 3) {
                         ForEach(Array(vm.letters[i*5..<(i+1)*5]), id:\.self) { letter in
-                            LetterView(l: letter, bg: vm.letterBGs[vm.letters.firstIndex(of: letter)!])
+                            LetterView(l: letter, bg: vm.letterBGs[vm.letters.firstIndex(of: letter)!], degrees: 0.0)
                         }
                     }
                     .padding([.leading, .trailing])

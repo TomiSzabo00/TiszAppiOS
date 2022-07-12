@@ -57,9 +57,10 @@ final class WordleViewModel: ObservableObject {
     
     @Published var backgrounds: [Color] = [Color](repeating: Color("wordle_button"), count: 37)
     
-    @Published var letters : [Letter] = [Letter](repeating: Letter(), count: 5*7)
+    @Published var letters = [Letter]()
     
     @Published var letterBGs: [Color] = [Color](repeating: .clear, count: 5*7)
+    @Published var letterRotationss: [Double] = [Double](repeating: 0.0, count: 5*7)
     
     private var words = [String]()
     
@@ -76,8 +77,13 @@ final class WordleViewModel: ObservableObject {
     @Published var gameState: GameState = .inProgress
     
     @Published var canSeeHidden : Bool = false
+
+    @Published var rotation = 0.0
     
     init() {
+        for _ in 0..<5*7 {
+            letters.append(Letter())
+        }
         getSolution()
         getWords()
         loadGame()
@@ -162,6 +168,7 @@ final class WordleViewModel: ObservableObject {
             if snapshot.key == Auth.auth().currentUser?.uid ?? "" {
                 let snapshotData = snapshot.value as? [[String : String]]
                 if let dataList = snapshotData {
+                    guard self.currRow == 0 else { return }
                     self.letters.removeAll()
                     for data in dataList {
                         let letter = data["letter"]
@@ -179,9 +186,11 @@ final class WordleViewModel: ObservableObject {
                         }
                         self.letters.append(loadedLetter)
                     }
-                    self.updateAllRowBackgrounds()
+
                     self.getCurrRowCount()
-                    
+                    self.updateAllRowBackgrounds()
+
+                    print("loaded game")
                     self.checkGameEnd()
                 } else {
                     print("loadin worlde failed")
@@ -266,18 +275,22 @@ final class WordleViewModel: ObservableObject {
                     updateRowBackgrounds()
                     
                     if(word == self.solution) {
-                        self.gameState = .win
-                        self.gameEnd = true
-                        self.gameOver = true
+                        DispatchQueue.main.asyncAfter(deadline: .now()+2.5) {
+                            self.gameState = .win
+                            self.gameEnd = true
+                            self.gameOver = true
+                        }
                     }
                     
                     self.sltn_copy = self.solution
                     self.currRow += 1
                     
                     if self.currRow == 7 {
-                        self.gameState = .lose
-                        self.gameEnd = true
-                        self.gameOver = true
+                        DispatchQueue.main.asyncAfter(deadline: .now()+2.5) {
+                            self.gameState = .lose
+                            self.gameEnd = true
+                            self.gameOver = true
+                        }
                     }
                     saveGame()
                 } else {
@@ -321,8 +334,11 @@ final class WordleViewModel: ObservableObject {
             }
             return .inWord
         }
-        
-        self.backgrounds[self.keys.firstIndex(of: char)!] = .gray
+
+        if self.backgrounds[self.keys.firstIndex(of: char)!] != .green && self.backgrounds[self.keys.firstIndex(of: char)!] != .yellow {
+            self.backgrounds[self.keys.firstIndex(of: char)!] = .gray
+        }
+
         return .no
     }
     
@@ -355,12 +371,28 @@ final class WordleViewModel: ObservableObject {
         }
     }
     
-    func updateRowBackgrounds() {
-        for i in currRow*5..<(currRow+1)*5 {
-            //DispatchQueue.main.asyncAfter(deadline: .now() + 1.0, execute: {
-                self.letterBGs[i] = self.updateBackground(state: self.letters[i].state)
-            //})
-            
+    func updateRowBackgrounds(_ row: Int? = nil) {
+        var delay = 0.0
+        if let row = row {
+            for i in row*5..<(row+1)*5 {
+                withAnimation(.linear(duration: 0.5).delay(delay)) {
+                    letterRotationss[i] += 180
+                }
+                withAnimation(.linear(duration: 0.5).delay(delay+0.25)) {
+                    self.letterBGs[i] = self.updateBackground(state: self.letters[i].state)
+                }
+                delay += 0.5
+            }
+        } else {
+            for i in currRow*5..<(currRow+1)*5 {
+                withAnimation(.linear(duration: 0.5).delay(delay)) {
+                    letterRotationss[i] += 180
+                }
+                withAnimation(.linear(duration: 0.5).delay(delay+0.25)) {
+                    self.letterBGs[i] = self.updateBackground(state: self.letters[i].state)
+                }
+                delay += 0.5
+            }
         }
     }
     

@@ -11,16 +11,21 @@ import AlertToast
 struct LetterView: View {
     
     @State var l : Letter
-    @State var bg: Color
+    var bg: Color
+    var degrees: Double
     
     var body: some View {
-        
-        Text(l.letter.uppercased())
-            .foregroundColor(.accentColor)
-            .frame(width: 50, height: 50)
-            .border(Color.accentColor)
-            .background(bg)
-        
+        ZStack {
+            Rectangle()
+                .strokeBorder(Color.accentColor, lineWidth: 1)
+                .background(Rectangle().fill(bg))
+                .frame(width: 50, height: 50)
+                .rotation3DEffect(.degrees(degrees), axis: (x: 0, y: 1, z: 0))
+
+            Text(l.letter.uppercased())
+                .foregroundColor(.accentColor)
+                .frame(width: 50, height: 50)
+        }
     }
     
 }
@@ -40,7 +45,7 @@ struct WordleView: View {
                 ForEach(0..<7) { i in
                     HStack(spacing: 3) {
                         ForEach(Array(vm.letters[i*5..<(i+1)*5]), id:\.self) { letter in
-                            LetterView(l: letter, bg: vm.letterBGs[vm.letters.firstIndex(of: letter)!])
+                            LetterView(l: letter, bg: vm.letterBGs[vm.letters.firstIndex(of: letter)!], degrees: vm.letterRotationss[vm.letters.firstIndex(of: letter)!])
                         }
                     }
                     .padding([.leading, .trailing])
@@ -74,9 +79,11 @@ struct WordleView: View {
             .alert(isPresented: $vm.gameEnd) {
                 switch vm.gameState {
                 case .lose:
-                    return Alert(title: Text("A játéknak vége"), message: Text("Nem sikerült kitalálni a megfejtést:\n\(vm.solution.uppercased())"), dismissButton: .default(Text("OK")))
+                    return Alert(title: Text("A játéknak vége"), message: Text("Nem sikerült kitalálni a megfejtést:\n\(vm.solution.uppercased())"),
+                                 dismissButton: .default(Text("OK")))
                 case .win:
-                    return Alert(title: Text("A játéknak vége"), message: Text("Gratulálok, kitaláltad a megfejtést!"), dismissButton: Alert.Button.default(Text("OK"), action: {
+                    return Alert(title: Text("A játéknak vége"), message: Text("Gratulálok, kitaláltad a megfejtést!"),
+                                 dismissButton: Alert.Button.default(Text("OK"), action: {
                         //check if player can see the hidden screen
                         if (vm.canSeeHidden) {
                             ID = 1
