@@ -215,6 +215,7 @@
 		55E8003B27F0B416007181E0 /* LoginService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E8003A27F0B416007181E0 /* LoginService.swift */; };
 		55E8003D27F0B571007181E0 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E8003C27F0B571007181E0 /* LoginViewModel.swift */; };
 		55F09596280DBB8900A56548 /* ScoresTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F09595280DBB8800A56548 /* ScoresTableView.swift */; };
+		EFDB53F4287EAC3B0093CE78 /* WordleHowTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDB53F3287EAC3B0093CE78 /* WordleHowTo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -412,6 +413,7 @@
 		55E8003A27F0B416007181E0 /* LoginService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginService.swift; sourceTree = "<group>"; };
 		55E8003C27F0B571007181E0 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		55F09595280DBB8800A56548 /* ScoresTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoresTableView.swift; sourceTree = "<group>"; };
+		EFDB53F3287EAC3B0093CE78 /* WordleHowTo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordleHowTo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -597,6 +599,7 @@
 				55622E5A2861DA9A003A46DA /* WordleViewModel.swift */,
 				55AF151B2868B91200D29584 /* HiddenWordleView.swift */,
 				55AF151D2868B94700D29584 /* HiddenWordleViewModel.swift */,
+				EFDB53F3287EAC3B0093CE78 /* WordleHowTo.swift */,
 			);
 			path = Worlde;
 			sourceTree = "<group>";
@@ -1076,6 +1079,7 @@
 			files = (
 				55B3955A28593BBC0044389E /* MultipleTextQuizAdminView.swift in Sources */,
 				5591E7A627F88D2100C811F8 /* ScoreItem.swift in Sources */,
+				EFDB53F4287EAC3B0093CE78 /* WordleHowTo.swift in Sources */,
 				5591E7BA2800ED5700C811F8 /* TextsHandler.swift in Sources */,
 				55149F542850C380007BECEF /* EjjeliPortyaView.swift in Sources */,
 				5591E7C028017BCE00C811F8 /* TextUploadView.swift in Sources */,
@@ -1261,6 +1265,7 @@
 				CODE_SIGN_ENTITLEMENTS = TiszApp/TiszApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_ASSET_PATHS = "\"TiszApp/Preview Content\"";
 				DEVELOPMENT_TEAM = 85XVJT6RC3;
 				ENABLE_PREVIEWS = YES;

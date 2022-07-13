@@ -74,6 +74,11 @@ struct NotificationAdminView: View {
     }
         .navigationBarTitle("Értesítés")
         .navigationBarTitleDisplayMode(.large)
+        .alert(vm.alertTitle, isPresented: $vm.isShowing) {
+            Button("OK") { }
+        } message: {
+            Text(vm.alertMessage)
+        }
     }
 }
 

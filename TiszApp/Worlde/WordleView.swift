@@ -94,16 +94,19 @@ struct WordleView: View {
                 }
             }
             
-            NavigationLink(destination: HiddenWordleView(), tag: 1, selection: $ID) {EmptyView()}
+            NavigationLink(destination: HiddenWordleView(), tag: 1, selection: $ID) { EmptyView() }
+
+            NavigationLink(destination: WordleHowTo().fullBackground(), tag: 2, selection: $ID) { EmptyView() }
         }
-        .navigationBarItems(trailing: (sessionService.userDetails?.admin ?? false) ? Button(action: {
-            ID = 1
+        .navigationBarItems(trailing: Button(action: {
+            ID = 2
         }, label: {
-            Image(systemName: "map")
-        }) : nil)
+            Image(systemName: "questionmark.circle")
+        }))
         .onAppear {
             self.vm.sessionService = sessionService
         }
+
         //this is an external package
         /// https://github.com/elai950/AlertToast
         .toast(isPresenting: $vm.noWord){

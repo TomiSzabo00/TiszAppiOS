@@ -39,23 +39,37 @@ final class SessionServiceImpl: ObservableObject, SessionService {
     @Published var state: SessionState = .loggedOut
     @Published var userDetails: SessionUserDetails?
     
-    @Published var buttonTitles: [String] = ["Feltöltés",
+    @Published var buttonTitles: [String] = ["Napirend",
                                              "Pontállás",
-                                             "AV Kvíz",
+                                             "Wordle",
+                                             "Feltöltés",
                                              "Képek",
+                                             "Daloskönyv",
                                              "Szövegek",
                                              "Portya",
                                              "Éjjeli portya",
-                                             "Daloskönyv",
+                                             "AV Kvíz",
                                              "Kvíz 2",
-                                             "Wordle",
-                                             "Ütemterv",
                                              "Képek ellenőrzése",
                                              "Pontok feltöltése",
                                              "Értesítés",
                                              "Kincskeresés"]
     
-    @Published var buttonIcons: [String] = ["square.and.arrow.up.fill", "chart.bar.xaxis", "play.rectangle.fill", "photo.on.rectangle.angled", "doc.text", "figure.walk.diamond.fill", "moon.zzz.fill", "music.note.list", "rectangle.and.pencil.and.ellipsis", "w.square.fill", "calendar", "eye.fill", "plus.square.fill", "exclamationmark.bubble.fill", "map"]
+    @Published var buttonIcons: [String] = ["calendar",
+                                            "chart.bar.xaxis",
+                                            "w.square.fill",
+                                            "square.and.arrow.up.fill",
+                                            "photo.on.rectangle.angled",
+                                            "music.note.list",
+                                            "doc.text",
+                                            "figure.walk.diamond.fill",
+                                            "moon.zzz.fill",
+                                            "play.rectangle.fill",
+                                            "rectangle.and.pencil.and.ellipsis",
+                                            "eye.fill",
+                                            "plus.square.fill",
+                                            "exclamationmark.bubble.fill",
+                                            "map"]
 
     @Published var btnStates = [Bool]()
     

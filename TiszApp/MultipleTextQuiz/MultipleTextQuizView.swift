@@ -40,7 +40,7 @@ struct MultipleTextQuizView: View {
                 .alert(isPresented: $areYouSure, content: {
                     return Alert(title: Text("Biztos vagy benne?"),
                                  message: Text("Biztosan be szeretnéd adni a válaszaidat?"),
-                                 primaryButton: Alert.Button.default(Text("Igen!"), action: {
+                                 primaryButton: Alert.Button.cancel(Text("Igen!"), action: {
                                     //submit
                                     self.vm.sumbitAnswers()
                                  }),

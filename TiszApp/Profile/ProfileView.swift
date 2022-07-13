@@ -48,6 +48,10 @@ struct ProfileView: View {
             })
             .buttonStyle(SimpleButtonStyle())
             .padding()
+
+            Button("Crash") {
+                fatalError("Crash was triggered")
+            }
         }
         .onAppear {
             self.vm.groupNum = sessionService.userDetails?.groupNumber ?? -1

@@ -36,6 +36,10 @@ final class NotificationViewModel: ObservableObject {
     
     private var tokenListUser = [String]()
     private var tokenListAdmin = [String]()
+
+    @Published var alertTitle = ""
+    @Published var alertMessage = ""
+    @Published var isShowing = false
     
     init() {
         self.getAllTokens()
@@ -83,6 +87,9 @@ final class NotificationViewModel: ObservableObject {
     func sendNotification(toUsers: Bool, toAdmins: Bool) {
         guard let url = URL(string: "https://fcm.googleapis.com/fcm/send") else {
             print("url hiba")
+            alertTitle = "Hiba"
+            alertMessage = "Hiba van az URL-lel."
+            isShowing = true
             return
         }
         
@@ -124,6 +131,9 @@ final class NotificationViewModel: ObservableObject {
                 session.dataTask(with: request, completionHandler: { _, _, err in
                     if let err = err {
                         print("ertesites kuldes (legacy) hiba: \(err.localizedDescription)")
+                        self.alertTitle = "Hiba"
+                        self.alertMessage = "Hiba van a szerverrel: \(err.localizedDescription)"
+                        self.isShowing = true
                         return
                     }
                     DispatchQueue.main.async {
@@ -131,6 +141,9 @@ final class NotificationViewModel: ObservableObject {
                         self.message = ""
                     }
                     print("kikuldve!")
+                    self.alertTitle = "Siker"
+                    self.alertMessage = "Értesítés kiküldve!"
+                    self.isShowing = true
                 })
                 .resume()
             }
