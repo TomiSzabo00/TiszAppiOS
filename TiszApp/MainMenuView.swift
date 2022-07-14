@@ -90,13 +90,8 @@ struct MainMenuView: View {
                         .onAppear {
                             self.root = UIApplication.shared.windows.first?.rootViewController
                         }
-                        .alert(isPresented: $adVm.rewardGiven, content: {
-                            return Alert(title: Text("Reklám megnézve"),
-                                         message: Text("Köszönjük, hogy végignézted a reklámot. Überkiráy vagy!"),
-                                         dismissButton: Alert.Button.default(
-                                            Text("Szívesen :)"), action: { adVm.canGiveReward = false }
-                                         )
-                                     )
+                        .alert(isPresented: $adVm.showAlert, content: {
+                            adVm.displayAlert()
                         })
                     } //LazyVGrid end
                     //.padding([.leading, .trailing], 20)
