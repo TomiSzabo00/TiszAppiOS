@@ -8,8 +8,22 @@
 import SwiftUI
 
 struct ScheduleView: View {
+    @StateObject private var vm = ScheduleViewModel()
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        TabView {
+            ForEach(vm.scheduleDays) { day in
+                ScheduleDayView(day: day)
+                    .navigationTitle(vm.getDayOfWeek(for: day.dayNum))
+            }
+        }
+        .tabViewStyle(.page(indexDisplayMode: .never))
+        .onAppear { // ADD THESE AFTER YOUR FORM VIEW
+            UITableView.appearance().backgroundColor = .clear
+        }
+        .onDisappear { // CHANGE BACK TO SYSTEM's DEFAULT
+            UITableView.appearance().backgroundColor = .systemGroupedBackground
+        }
     }
 }
 

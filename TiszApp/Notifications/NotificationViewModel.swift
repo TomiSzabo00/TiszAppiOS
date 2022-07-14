@@ -104,7 +104,7 @@ final class NotificationViewModel: ObservableObject {
             list = self.tokenList
         }
         
-        print(list)
+        //print(list)
 
         Database.database().reference().child("messagingKey").getData { error, snapshot in
             if let error = error {
@@ -118,7 +118,6 @@ final class NotificationViewModel: ObservableObject {
 
             if list.count > 0 {
                 for i in 0...list.count-1 {
-                    print("heo")
                     let json: [String: Any] = [
                         "to": list[i],
                         "notification": [

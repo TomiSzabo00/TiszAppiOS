@@ -105,7 +105,7 @@ struct MainMenuView: View {
                 
                 Group {
                     Group {
-                        NavigationLink(destination: ScheduleView(), tag: 0, selection: $ID) {EmptyView()}
+                        NavigationLink(destination: ScheduleView().fullBackground(), tag: 0, selection: $ID) {EmptyView()}
                         
                         NavigationLink(destination: ScoresTableView(handler: ScoresHandlerImpl(teamNum: sessionService.teamNum)).environmentObject(sessionService).fullBackground(), tag: 1, selection: $ID) {EmptyView()}
 
