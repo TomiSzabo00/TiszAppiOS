@@ -218,6 +218,7 @@
 		EF70B928287F1659005695EE /* ScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF70B927287F1659005695EE /* ScheduleViewModel.swift */; };
 		EF70B92A287FE95B005695EE /* ScheduleDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF70B929287FE95B005695EE /* ScheduleDay.swift */; };
 		EF70B92C287FEDE4005695EE /* ScheduleDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF70B92B287FEDE4005695EE /* ScheduleDayView.swift */; };
+		EF70B92E2880477A005695EE /* NappaliPortyaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF70B92D28804779005695EE /* NappaliPortyaViewModel.swift */; };
 		EFDB53F4287EAC3B0093CE78 /* WordleHowTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDB53F3287EAC3B0093CE78 /* WordleHowTo.swift */; };
 /* End PBXBuildFile section */
 
@@ -419,6 +420,7 @@
 		EF70B927287F1659005695EE /* ScheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewModel.swift; sourceTree = "<group>"; };
 		EF70B929287FE95B005695EE /* ScheduleDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDay.swift; sourceTree = "<group>"; };
 		EF70B92B287FEDE4005695EE /* ScheduleDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDayView.swift; sourceTree = "<group>"; };
+		EF70B92D28804779005695EE /* NappaliPortyaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NappaliPortyaViewModel.swift; sourceTree = "<group>"; };
 		EFDB53F3287EAC3B0093CE78 /* WordleHowTo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordleHowTo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -700,6 +702,7 @@
 			isa = PBXGroup;
 			children = (
 				55AF15282869BB1A00D29584 /* NappaliPortyaView.swift */,
+				EF70B92D28804779005695EE /* NappaliPortyaViewModel.swift */,
 			);
 			path = NappaliPortya;
 			sourceTree = "<group>";
@@ -1093,6 +1096,7 @@
 				55149F542850C380007BECEF /* EjjeliPortyaView.swift in Sources */,
 				5591E7C028017BCE00C811F8 /* TextUploadView.swift in Sources */,
 				55E37E2827F79480002ED658 /* AddScoreView.swift in Sources */,
+				EF70B92E2880477A005695EE /* NappaliPortyaViewModel.swift in Sources */,
 				5591E7B82800EB2700C811F8 /* TextItem.swift in Sources */,
 				557B8F9C27EDF6A200312433 /* RegisterView.swift in Sources */,
 				557B8FA627EE4D9800312433 /* User.swift in Sources */,
