@@ -219,6 +219,7 @@
 		EF70B92A287FE95B005695EE /* ScheduleDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF70B929287FE95B005695EE /* ScheduleDay.swift */; };
 		EF70B92C287FEDE4005695EE /* ScheduleDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF70B92B287FEDE4005695EE /* ScheduleDayView.swift */; };
 		EF70B92E2880477A005695EE /* NappaliPortyaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF70B92D28804779005695EE /* NappaliPortyaViewModel.swift */; };
+		EF70B9302880664F005695EE /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF70B92F2880664F005695EE /* MapView.swift */; };
 		EFDB53F4287EAC3B0093CE78 /* WordleHowTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDB53F3287EAC3B0093CE78 /* WordleHowTo.swift */; };
 /* End PBXBuildFile section */
 
@@ -421,6 +422,7 @@
 		EF70B929287FE95B005695EE /* ScheduleDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDay.swift; sourceTree = "<group>"; };
 		EF70B92B287FEDE4005695EE /* ScheduleDayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleDayView.swift; sourceTree = "<group>"; };
 		EF70B92D28804779005695EE /* NappaliPortyaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NappaliPortyaViewModel.swift; sourceTree = "<group>"; };
+		EF70B92F2880664F005695EE /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		EFDB53F3287EAC3B0093CE78 /* WordleHowTo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordleHowTo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -703,6 +705,7 @@
 			children = (
 				55AF15282869BB1A00D29584 /* NappaliPortyaView.swift */,
 				EF70B92D28804779005695EE /* NappaliPortyaViewModel.swift */,
+				EF70B92F2880664F005695EE /* MapView.swift */,
 			);
 			path = NappaliPortya;
 			sourceTree = "<group>";
@@ -1106,6 +1109,7 @@
 				55AF15212868E11C00D29584 /* TreasureHuntAdminView.swift in Sources */,
 				55B40DCB27F3125B00B5B065 /* TextFieldInputPrediction.swift in Sources */,
 				5591E7C52802223B00C811F8 /* QuizView.swift in Sources */,
+				EF70B9302880664F005695EE /* MapView.swift in Sources */,
 				5591E7B127FE193900C811F8 /* ImageItem.swift in Sources */,
 				55622E592861DA47003A46DA /* WordleView.swift in Sources */,
 				5591E7A427F877E200C811F8 /* ScoresView.swift in Sources */,

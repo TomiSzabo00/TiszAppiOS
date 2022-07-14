@@ -15,7 +15,8 @@ struct NappaliPortyaView: View {
 
     var body: some View {
         ZStack {
-            Map(coordinateRegion: Binding($vm.locationRegion) ?? $vm.tiszapuspokiFaluCoords, interactionModes: MapInteractionModes.all, showsUserLocation: true, userTrackingMode: $vm.trackingMode)
+            //Map(coordinateRegion: Binding($vm.locationRegion) ?? $vm.tiszapuspokiFaluCoords, interactionModes: MapInteractionModes.all, showsUserLocation: true, userTrackingMode: $vm.trackingMode)
+            MapView(vm: vm)
             .ignoresSafeArea()
             .onAppear {
                 vm.sessionService = self.sessionService
@@ -35,25 +36,26 @@ struct NappaliPortyaView: View {
             }
 
             VStack {
-                HStack {
-                    Spacer()
-                    Button {
-                        vm.centerMap()
-                    } label: {
-                        if !(vm.locationRegion?.center.equals(to: vm.getUsersLocation().center) ?? false) {
-                            Image(systemName: "location")
-                                //.padding(10)
-                        } else {
-                            Image(systemName: "location.fill")
-                                //.padding(10)
-                        }
-                    }
-                    .padding()
-                    .background(.ultraThickMaterial)
-                    .cornerRadius(10)
-                    .shadow(radius: 5)
-                    .padding()
-                }
+//                HStack {
+//                    Button {
+//                        vm.centerMap()
+//                    } label: {
+//                        if !.region.center.equals(to: vm.getUsersLocation().center) {
+//                            Image(systemName: "location")
+//                                //.padding(10)
+//                        } else {
+//                            Image(systemName: "location.fill")
+//                                //.padding(10)
+//                        }
+//                    }
+//                    .padding()
+//                    .background(.ultraThickMaterial)
+//                    .cornerRadius(10)
+//                    .shadow(radius: 5)
+//                    .padding()
+//
+//                    Spacer()
+//                }
                 Spacer()
                 if !vm.isSharing {
                 Button(action: {
