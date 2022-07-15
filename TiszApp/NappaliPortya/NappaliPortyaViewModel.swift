@@ -5,6 +5,7 @@
 //  Created by Szabo Tamas on 2022. 07. 14..
 //
 
+import Combine
 import Foundation
 import MapKit
 import FirebaseDatabase
@@ -22,6 +23,18 @@ final class NappaliPortyaViewModel: NSObject, ObservableObject, CLLocationManage
     @Published var alertType: LocationAlertMessage = .na
     @Published var showAlert: Bool = false
     @Published var isSharing: Bool = false
+
+    private var service: NappaliPortyaService?
+
+    private var cancellables = Set<AnyCancellable>()
+    @Published var lineCoordinates = [CLLocationCoordinate2D]()
+    @Published var currTeam = 0
+
+    override init() {
+        super.init()
+        self.service = NappaliPortyaService(service: sessionService)
+        asd()
+    }
 
     func checkIfLocationServicesIsEnabled() {
         if CLLocationManager.locationServicesEnabled() {
@@ -85,25 +98,56 @@ final class NappaliPortyaViewModel: NSObject, ObservableObject, CLLocationManage
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         self.isSharing = true
+        manager.distanceFilter = 3
         let last = locations.last
-        //print("l: \(last?.coordinate.latitude) lo:\(last?.coordinate.longitude)")
+
+        let date = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYYMMddHHmmssSSS"
+        let id = dateFormatter.string(from: date)
+        
         let locationData = ["lat" : last!.coordinate.latitude,
                             "long" : last!.coordinate.longitude] as [String: Any]
-        Database.database().reference().child("portya_locs").child(String(sessionService!.userDetails!.groupNumber)).child(sessionService!.userDetails!.uid).setValue(locationData)
+        Database.database().reference().child("nappali_porty_locs")
+            .child(String(sessionService!.userDetails!.groupNumber))
+            .child(sessionService!.userDetails!.uid)
+            .child(id)
+            .setValue(locationData)
     }
-}
 
-extension CLLocationCoordinate2D {
-    func equals(to loc: CLLocationCoordinate2D) -> Bool {
-        let places = 5
-        return self.latitude.rounded(toPlaces: places) == loc.latitude.rounded(toPlaces: places) &&
-        self.longitude.rounded(toPlaces: places) == loc.longitude.rounded(toPlaces: places)
+    func asd() {
+        service!.$allCoordinates
+            .sink { completion in
+                if case .failure(let error) = completion {
+                    print("Failed all coords: \(error.localizedDescription)")
+                }
+            } receiveValue: { [weak self] updatedArray in
+                guard let self = self else { return }
+                if updatedArray.indices.contains(self.sessionService?.userDetails?.groupNumber ?? 0) {
+                    self.lineCoordinates = updatedArray[self.sessionService?.userDetails?.groupNumber ?? 0]
+                }
+            }
+            .store(in: &cancellables)
+
+//        service.$currTeam
+//            .sink { newTeam in
+//                self.lineCoordinates = self.allCoordinates[newTeam]
+//                print("new coords")
+//            }
+//            .store(in: &cancellables)
     }
-}
 
-extension Double {
-    func rounded(toPlaces places:Int) -> Double {
-        let divisor = pow(10.0, Double(places))
-        return (self * divisor).rounded() / divisor
+    func up() {
+        currTeam += 1
+        print(currTeam)
+        lineCoordinates = service!.allCoordinates[currTeam]
+        print(lineCoordinates)
+    }
+
+    func down() {
+        currTeam -= 1
+        print(currTeam)
+        lineCoordinates = service!.allCoordinates[currTeam]
+        print(lineCoordinates)
     }
 }

@@ -87,7 +87,7 @@ final class EjjeliPortyaViewModel: NSObject, ObservableObject, CLLocationManager
     
     @Published var isSharing: Bool = false
     
-    private var colors: [Color] = []
+    private var colors: [Color] = [Color](repeating: .blue, count: 8)
     
     func checkIfLocationServicesIsEnabled() {
         if CLLocationManager.locationServicesEnabled() {
@@ -131,7 +131,7 @@ final class EjjeliPortyaViewModel: NSObject, ObservableObject, CLLocationManager
     func uploadLocationOnce() {
         let locationData = ["lat" : locationManager?.location?.coordinate.latitude ?? 0.00,
                             "long" : locationManager?.location?.coordinate.longitude ?? 0.00] as [String: Any]
-        Database.database().reference().child("portya_locs").child(String(sessionService!.userDetails!.groupNumber)).child(sessionService!.userDetails!.uid).setValue(locationData)
+        Database.database().reference().child("ejjeli_porty_locs").child(String(sessionService!.userDetails!.groupNumber)).child(sessionService!.userDetails!.uid).setValue(locationData)
     }
     
     func startLocationSharing() {
@@ -154,11 +154,13 @@ final class EjjeliPortyaViewModel: NSObject, ObservableObject, CLLocationManager
         //print("l: \(last?.coordinate.latitude) lo:\(last?.coordinate.longitude)")
         let locationData = ["lat" : last!.coordinate.latitude,
                             "long" : last!.coordinate.longitude] as [String: Any]
-        Database.database().reference().child("portya_locs").child(String(sessionService!.userDetails!.groupNumber)).child(sessionService!.userDetails!.uid).setValue(locationData)
+        Database.database().reference().child("ejjeli_porty_locs").child(String(sessionService!.userDetails!.groupNumber)).child(sessionService!.userDetails!.uid).setValue(locationData)
     }
     
     func getColors() {
-        Database.database().reference().child("colors").observe(.childAdded, with: { [self] (snapshot) -> Void in            if let colors = ColorList(snapshot: snapshot) {
+        Database.database().reference().child("colors").observe(.childAdded, with: { [self] (snapshot) -> Void in
+            if let colors = ColorList(snapshot: snapshot) {
+                self.colors.removeAll()
                 for color in colors.colors {
                     self.colors.append(hexStringToColor(hex: color))
                 }
@@ -214,7 +216,7 @@ final class EjjeliPortyaViewModel: NSObject, ObservableObject, CLLocationManager
         
         self.getColors()
         
-        Database.database().reference().child("portya_locs").observe(.childAdded, with: { (snapshot) -> Void in
+        Database.database().reference().child("ejjeli_porty_locs").observe(.childAdded, with: { (snapshot) -> Void in
 
             let groupNum = Int(snapshot.key)
 
@@ -230,7 +232,7 @@ final class EjjeliPortyaViewModel: NSObject, ObservableObject, CLLocationManager
             }
         })
         
-        Database.database().reference().child("portya_locs").observe(.childChanged, with: { (snapshot) -> Void in
+        Database.database().reference().child("ejjeli_porty_locs").observe(.childChanged, with: { (snapshot) -> Void in
             for children in snapshot.children {
                 let child = (children as! DataSnapshot)
                 

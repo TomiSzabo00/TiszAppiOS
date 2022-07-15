@@ -36,49 +36,57 @@ struct NappaliPortyaView: View {
             }
 
             VStack {
-//                HStack {
-//                    Button {
-//                        vm.centerMap()
-//                    } label: {
-//                        if !.region.center.equals(to: vm.getUsersLocation().center) {
-//                            Image(systemName: "location")
-//                                //.padding(10)
-//                        } else {
-//                            Image(systemName: "location.fill")
-//                                //.padding(10)
-//                        }
-//                    }
-//                    .padding()
-//                    .background(.ultraThickMaterial)
-//                    .cornerRadius(10)
-//                    .shadow(radius: 5)
-//                    .padding()
-//
-//                    Spacer()
-//                }
-                Spacer()
-                if !vm.isSharing {
-                Button(action: {
-                    vm.startLocationSharing()
-                }, label: {
-                    HStack {
-                        Image(systemName: "mappin.and.ellipse")
-                        Text("Helyzetmegosztás elindítása")
+                HStack {
+                    Button {
+                        vm.centerMap()
+                    } label: {
+                        Image(systemName: "location.fill")
                     }
-                })
-                .buttonStyle(SimpleButtonStyle())
-                .padding(.bottom, 20)
+                    .padding()
+                    .background(.ultraThickMaterial)
+                    .cornerRadius(10)
+                    .shadow(radius: 5)
+                    .padding()
+                    .opacity(0.8)
+
+                    Spacer()
+                }
+                Spacer()
+
+                if sessionService.userDetails?.admin ?? false {
+                    HStack {
+                        Button(action: { vm.down() }, label: {Image(systemName: "arrow.left").padding()})
+                            .disabled(vm.currTeam == 0)
+                        Text("\(vm.currTeam)")
+                        Button(action: { vm.up() }, label: {Image(systemName: "arrow.right").padding()})
+                            .disabled(vm.currTeam == sessionService.teamNum)
+                    }
+                    .padding()
+                    //.opacity(1.0)
                 } else {
+                    if !vm.isSharing {
                     Button(action: {
-                        vm.stopLocationSharing()
+                        vm.startLocationSharing()
                     }, label: {
                         HStack {
                             Image(systemName: "mappin.and.ellipse")
-                            Text("Helyzetmegosztás leállítása")
+                            Text("Helyzetmegosztás elindítása")
                         }
                     })
                     .buttonStyle(SimpleButtonStyle())
                     .padding(.bottom, 20)
+                    } else {
+                        Button(action: {
+                            vm.stopLocationSharing()
+                        }, label: {
+                            HStack {
+                                Image(systemName: "mappin.and.ellipse")
+                                Text("Helyzetmegosztás leállítása")
+                            }
+                        })
+                        .buttonStyle(SimpleButtonStyle())
+                        .padding(.bottom, 20)
+                    }
                 }
             }
         }

@@ -221,6 +221,7 @@
 		EF70B92E2880477A005695EE /* NappaliPortyaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF70B92D28804779005695EE /* NappaliPortyaViewModel.swift */; };
 		EF70B9302880664F005695EE /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF70B92F2880664F005695EE /* MapView.swift */; };
 		EFDB53F4287EAC3B0093CE78 /* WordleHowTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFDB53F3287EAC3B0093CE78 /* WordleHowTo.swift */; };
+		EFF20A602881C4D900A3E9E1 /* NappaliPortyaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF20A5F2881C4D900A3E9E1 /* NappaliPortyaService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -424,6 +425,7 @@
 		EF70B92D28804779005695EE /* NappaliPortyaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NappaliPortyaViewModel.swift; sourceTree = "<group>"; };
 		EF70B92F2880664F005695EE /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		EFDB53F3287EAC3B0093CE78 /* WordleHowTo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordleHowTo.swift; sourceTree = "<group>"; };
+		EFF20A5F2881C4D900A3E9E1 /* NappaliPortyaService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NappaliPortyaService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -706,6 +708,7 @@
 				55AF15282869BB1A00D29584 /* NappaliPortyaView.swift */,
 				EF70B92D28804779005695EE /* NappaliPortyaViewModel.swift */,
 				EF70B92F2880664F005695EE /* MapView.swift */,
+				EFF20A5F2881C4D900A3E9E1 /* NappaliPortyaService.swift */,
 			);
 			path = NappaliPortya;
 			sourceTree = "<group>";
@@ -1104,6 +1107,7 @@
 				557B8F9C27EDF6A200312433 /* RegisterView.swift in Sources */,
 				557B8FA627EE4D9800312433 /* User.swift in Sources */,
 				5591E7BE2800F12C00C811F8 /* TextDetailView.swift in Sources */,
+				EFF20A602881C4D900A3E9E1 /* NappaliPortyaService.swift in Sources */,
 				55B3955E2859ECCE0044389E /* MultipleTextQuizView.swift in Sources */,
 				55E8003D27F0B571007181E0 /* LoginViewModel.swift in Sources */,
 				55AF15212868E11C00D29584 /* TreasureHuntAdminView.swift in Sources */,
