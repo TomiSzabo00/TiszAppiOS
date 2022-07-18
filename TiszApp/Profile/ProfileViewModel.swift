@@ -33,7 +33,7 @@ final class ProfileViewModel: ObservableObject {
         Database.database().reference().child("users").observe(.childAdded, with: { (snapshot) in
             if let user = User(snapshot: snapshot) {
                 if user.groupNumber == self.groupNum && user.userName != self.name {
-                    self.user[0].teammates!.append(SimpleUser(name: user.userName))
+                    self.user[0].teammates?.append(SimpleUser(name: user.userName))
                 }
             }
         })

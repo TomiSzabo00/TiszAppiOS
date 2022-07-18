@@ -10,7 +10,7 @@ import SwiftUI
 import FirebaseDatabase
 import FirebaseStorage
 
-let placeholder: UIImage = UIImage(systemName: "arrow.2.circlepath")!
+let placeholder: UIImage = UIImage(systemName: "arrow.2.circlepath") ?? UIImage()
 
 struct ImageItem: Identifiable, Equatable {
     var id: UUID = UUID()
@@ -46,6 +46,14 @@ struct ImageItem: Identifiable, Equatable {
         self.author = author
         self.score = score
         self.scorerUID = scorerUID
+    }
+
+    init() {
+        self.title = "error"
+        self.fileName = "noFile"
+        self.author = ""
+        self.score = 0
+        self.scorerUID = "noUidInfo"
     }
 }
 
@@ -100,7 +108,14 @@ struct ImageItemView: View {
     
     var body: some View {
         VStack {
-            if image == nil {
+            if let image = image {
+                Image(uiImage: image)
+                    .resizable()
+                    .scaledToFill()
+                    .frame(maxHeight: 100)
+                    .mask(Rectangle()
+                        .frame(maxHeight: 190, alignment: .top))
+            } else {
                 Image(systemName: "arrow.2.circlepath")
                     .symbolVariant(.circle.fill)
                     .foregroundColor(Color.text)
@@ -111,13 +126,6 @@ struct ImageItemView: View {
                     .frame(maxWidth: UIScreen.main.bounds.width/2-20, maxHeight: 100)
                     .mask(Rectangle()
                         .frame(maxHeight: 190, alignment: .top))
-            } else {
-                Image(uiImage: image!)
-                                .resizable()
-                                .scaledToFill()
-                                .frame(maxHeight: 100)
-                                .mask(Rectangle()
-                                    .frame(maxHeight: 190, alignment: .top))
             }
             
             Text(text)

@@ -24,8 +24,8 @@ struct ImageUploadView: View {
             //Color.background.ignoresSafeArea()
             VStack {
                 
-                if image != nil {
-                    SimpleImage(image: image!, width: 350, height: 500)
+                if let image = image {
+                    SimpleImage(image: image, width: 350, height: 500)
                         .padding()
                 } else {
                         Text("Kérlek válassz egy képet.")
@@ -45,8 +45,8 @@ struct ImageUploadView: View {
                     
                     Button(action: {
                         //upload
-                        if image != nil {
-                            uploadImage(image: image!)
+                        if let image = image {
+                            uploadImage(image: image)
                             uploaded = true
                         }
                     }, label: {

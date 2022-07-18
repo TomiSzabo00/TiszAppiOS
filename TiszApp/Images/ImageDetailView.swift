@@ -30,8 +30,8 @@ struct ImageDetailView: View {
         self.handler = ImagesHandlerImpl(mode: .getDetails, checkImages: checkImages)
         self.imageLoader = Loader(imageInfo.fileName)
         handler.setChangeListener(for: imageInfo)
-        handler.getImageAuthorDetails(imageInfo: handler.detail!)
-        handler.getScorer(imageInfo: handler.detail!)
+        handler.getImageAuthorDetails(imageInfo: handler.detail ?? ImageItem())
+        handler.getScorer(imageInfo: handler.detail ?? ImageItem())
     }
     
     var image: UIImage? {
@@ -64,9 +64,9 @@ struct ImageDetailView: View {
                 .padding()
                 
                 
-                if handler.detail!.score == -1 {
+                if handler.detail?.score ?? 0 == -1 {
                     //add score to picture
-                    if sessionService.userDetails!.admin && !checkImages && (!(handler.user?.admin ?? false)) {
+                    if sessionService.userDetails?.admin ?? false && !checkImages && (!(handler.user?.admin ?? false)) {
                         //display element to add score
                         Text("Hány pontot adsz erre a képre?").padding(.top)
                         HStack {
@@ -79,17 +79,17 @@ struct ImageDetailView: View {
                         .padding()
                         
                         Button("Pont feltöltése") {
-                            handler.giveScoreForPic(imageInfo: handler.detail!, score: Int(picScore))
+                            handler.giveScoreForPic(imageInfo: handler.detail ?? ImageItem(), score: Int(picScore))
                         }
                         .padding()
                         
-                    } else if !sessionService.userDetails!.admin && (!(handler.user?.admin ?? false)) {
+                    } else if !(sessionService.userDetails?.admin ?? false) && (!(handler.user?.admin ?? false)) {
                         Text("Ezt a képet még nem pontozta egyik szervező sem.")
                             .padding(.bottom)
                     }
                     
                 } else {
-                    Text("Erre a képre már adott \(handler.detail!.score) pontot \(handler.scorer?.userName ?? "...").")
+                    Text("Erre a képre már adott \(handler.detail?.score ?? 0) pontot \(handler.scorer?.userName ?? "...").")
                         .padding(.bottom)
                         .lineLimit(5)
                 }
@@ -98,7 +98,7 @@ struct ImageDetailView: View {
             
         }
         .navigationBarTitleDisplayMode(.inline)
-        .navigationTitle(handler.detail!.title)
+        .navigationTitle(handler.detail?.title ?? "error: noData")
         .navigationBarItems(trailing: getButtons())
         .confirmationDialog(
             "Biztos ki akarod törölni a képet?",
@@ -107,8 +107,8 @@ struct ImageDetailView: View {
         ) {
             Button("Igen") {
                 //delete pic
-                Database.database().reference().child(checkImages ? "picsToDecide" : "pics").child(handler.detail!.fileName).removeValue()
-                Storage.storage().reference().child("images/\(handler.detail!.fileName)").delete { error in
+                Database.database().reference().child(checkImages ? "picsToDecide" : "pics").child(handler.detail?.fileName ?? "noFile").removeValue()
+                Storage.storage().reference().child("images/\(handler.detail?.fileName ?? "noFile")").delete { error in
                     if let error = error {
                         print(error.localizedDescription)
                     } else {
@@ -130,7 +130,7 @@ struct ImageDetailView: View {
             if self.checkImages {
                 view = AnyView(HStack {
                     Button(action: {
-                        handler.acceptImage(imageInfo: handler.detail!)
+                        handler.acceptImage(imageInfo: handler.detail ?? ImageItem())
                         dismiss()
                     }) {
                         Image(systemName: "checkmark.circle")

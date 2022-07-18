@@ -46,15 +46,15 @@ final class SongsViewModel: ObservableObject {
     }
     
     private func getAllFiles() {
-        let filepath = Bundle.main.path(forResource: "BIKA", ofType: "txt")
-        let index = filepath!.lastIndex(of: "/")
-        let afterEqualsTo = String(filepath!.prefix(upTo: index!).dropFirst())
+        guard let filepath = Bundle.main.path(forResource: "BIKA", ofType: "txt") else { return }
+        guard let index = filepath.lastIndex(of: "/") else { return }
+        let afterEqualsTo = String(filepath.prefix(upTo: index).dropFirst())
         if let enumerator = FileManager.default.enumerator(atPath: afterEqualsTo) {
-            let filePaths = enumerator.allObjects as! [String]
-            let txtFilePaths = filePaths.filter{$0.contains(".txt")}
+            let filePaths = enumerator.allObjects as? [String]
+            let txtFilePaths = filePaths?.filter{$0.contains(".txt")} ?? .init()
             for txtFilePath in txtFilePaths{
-                let index = txtFilePath.lastIndex(of: ".")
-                let afterEqualsTo = String(txtFilePath.prefix(upTo: index!))
+                guard let index = txtFilePath.lastIndex(of: ".") else { continue }
+                let afterEqualsTo = String(txtFilePath.prefix(upTo: index))
                 songs.append(afterEqualsTo)
                 songTitles.append(afterEqualsTo.lowercased().capitalized)
                 songLyrics.append(self.load(file: afterEqualsTo))

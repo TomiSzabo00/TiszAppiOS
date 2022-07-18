@@ -19,7 +19,7 @@ struct HiddenWordleView: View {
                 ForEach(0..<7) { i in
                     HStack(spacing: 3) {
                         ForEach(Array(vm.letters[i*5..<(i+1)*5]), id:\.self) { letter in
-                            LetterView(l: letter, bg: vm.letterBGs[vm.letters.firstIndex(of: letter)!], degrees: 0.0)
+                            LetterView(l: letter, bg: vm.letterBGs[vm.letters.firstIndex(of: letter) ?? 0], degrees: 0.0)
                         }
                     }
                     .padding([.leading, .trailing])
@@ -41,7 +41,7 @@ struct HiddenWordleView: View {
                             })
                             //.frame(maxWidth: .infinity)
                             .buttonStyle(WordleButtonStyle())
-                            .background(vm.backgrounds[vm.keys.firstIndex(of: key)!])
+                            .background(vm.backgrounds[vm.keys.firstIndex(of: key) ?? 0])
                             .cornerRadius(2)
                             .disabled(vm.gameOver)
                         }

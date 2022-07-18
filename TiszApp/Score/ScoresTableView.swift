@@ -92,7 +92,7 @@ struct ScoresTableView: View {
                     .listRowSeparator(.hidden)
                     .listRowBackground(Color.clear)
                     .swipeActions {
-                        if sessionService.userDetails!.admin {
+                        if sessionService.userDetails?.admin ?? false {
                             Button(role: .destructive) {
                                 handler.deleteScore(score: score)
                             } label: {

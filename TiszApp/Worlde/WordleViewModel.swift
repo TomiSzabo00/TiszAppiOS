@@ -95,7 +95,7 @@ final class WordleViewModel: ObservableObject {
             if snapshot.key == "treasureHunt" {
                 var toggles = [Bool]()
                 for child in snapshot.children {
-                    let number = (child as! DataSnapshot).value as! NSNumber
+                    let number = (child as? DataSnapshot)?.value as? NSNumber ?? 0
                     let shouldBeBool = Bool(truncating: number)
                     
                     if toggles.count <= self.sessionService.teamNum {
@@ -116,7 +116,7 @@ final class WordleViewModel: ObservableObject {
             if snapshot.key == "treasureHunt" {
                 var toggles = [Bool]()
                 for child in snapshot.children {
-                    let number = (child as! DataSnapshot).value as! NSNumber
+                    let number = (child as? DataSnapshot)?.value as? NSNumber ?? 0
                     let shouldBeBool = Bool(truncating: number)
                     
                     if toggles.count <= self.sessionService.teamNum {
@@ -176,13 +176,13 @@ final class WordleViewModel: ObservableObject {
                         var loadedLetter = Letter(letter ?? "-")
                         loadedLetter.state = self.stateFromString(s: state ?? "")
                         if loadedLetter.state == .inWord {
-                            self.backgrounds[self.keys.firstIndex(of: loadedLetter.letter)!] = .yellow
+                            self.backgrounds[self.keys.firstIndex(of: loadedLetter.letter) ?? 0] = .yellow
                         }
                         if loadedLetter.state == .match {
-                            self.backgrounds[self.keys.firstIndex(of: loadedLetter.letter)!] = .green
+                            self.backgrounds[self.keys.firstIndex(of: loadedLetter.letter) ?? 0] = .green
                         }
                         if loadedLetter.state == .no {
-                            self.backgrounds[self.keys.firstIndex(of: loadedLetter.letter)!] = .gray
+                            self.backgrounds[self.keys.firstIndex(of: loadedLetter.letter) ?? 0] = .gray
                         }
                         self.letters.append(loadedLetter)
                     }
@@ -322,21 +322,23 @@ final class WordleViewModel: ObservableObject {
         }
         
         if self.solution[index] == char {
-            self.sltn_copy.remove(at: self.sltn_copy.firstIndex(of: Character(char))!)
-            self.backgrounds[self.keys.firstIndex(of: char)!] = .green
+            guard let firstindex = self.sltn_copy.firstIndex(of: Character(char)) else { return .no }
+            self.sltn_copy.remove(at: firstindex)
+            self.backgrounds[self.keys.firstIndex(of: char) ?? 0] = .green
             return .match
         }
         
         if self.sltn_copy.contains(char) {
-            self.sltn_copy.remove(at: self.sltn_copy.firstIndex(of: Character(char))!)
-            if self.backgrounds[self.keys.firstIndex(of: char)!] != .green {
-                self.backgrounds[self.keys.firstIndex(of: char)!] = .yellow
+            guard let firstindex = self.sltn_copy.firstIndex(of: Character(char)) else { return .no }
+            self.sltn_copy.remove(at: firstindex)
+            if self.backgrounds[self.keys.firstIndex(of: char) ?? 0] != .green {
+                self.backgrounds[self.keys.firstIndex(of: char) ?? 0] = .yellow
             }
             return .inWord
         }
 
-        if self.backgrounds[self.keys.firstIndex(of: char)!] != .green && self.backgrounds[self.keys.firstIndex(of: char)!] != .yellow {
-            self.backgrounds[self.keys.firstIndex(of: char)!] = .gray
+        if self.backgrounds[self.keys.firstIndex(of: char) ?? 0] != .green && self.backgrounds[self.keys.firstIndex(of: char) ?? 0] != .yellow {
+            self.backgrounds[self.keys.firstIndex(of: char) ?? 0] = .gray
         }
 
         return .no

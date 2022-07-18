@@ -53,12 +53,13 @@ final class ImagesHandlerImpl: ImagesHandler, ObservableObject {
     func getImageInfos() {
         Database.database().reference().child(checkImages ? "picsToDecide" : "pics").observe(.childAdded, with: { (snapshot) -> Void in
             let imageInfo = ImageItem(snapshot: snapshot)
-            self.imageNames.insert(imageInfo!, at: 0)
+            self.imageNames.insert(imageInfo ?? ImageItem(), at: 0)
         })
         
         Database.database().reference().child(checkImages ? "picsToDecide" : "pics").observe(.childRemoved, with: { (snapshot) -> Void in
             let imageInfo = ImageItem(snapshot: snapshot)
-            self.imageNames.remove(at: self.imageNames.firstIndex(where: { $0.fileName == imageInfo!.fileName })!)
+            guard let firstIndex = self.imageNames.firstIndex(where: { $0.fileName == imageInfo?.fileName ?? "" }) else { return }
+            self.imageNames.remove(at: firstIndex)
         })
         
     }
@@ -67,9 +68,9 @@ final class ImagesHandlerImpl: ImagesHandler, ObservableObject {
         self.detail = `for`
         Database.database().reference().child("pics").observe(.childChanged, with: { (snapshot) -> Void in
             let imageInfo = ImageItem(snapshot: snapshot)
-            self.detail!.score = imageInfo!.score
-            self.detail!.scorerUID = imageInfo!.scorerUID
-            self.getScorer(imageInfo: imageInfo!)
+            self.detail?.score = imageInfo?.score ?? 0
+            self.detail?.scorerUID = imageInfo?.scorerUID ?? "errorNoUidInfo"
+            self.getScorer(imageInfo: imageInfo ?? ImageItem())
         })
     }
     
@@ -113,7 +114,7 @@ final class ImagesHandlerImpl: ImagesHandler, ObservableObject {
             var scoresArray = [Int](repeating: 0, count: self.teamNum)
             
             if user != nil {
-                scoresArray[user!.groupNumber-1] = score
+                scoresArray[(user?.groupNumber ?? 1)-1] = score
             }
             
             let scoreData = ["id" : dateFormatter.string(from: date),

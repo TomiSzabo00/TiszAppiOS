@@ -58,7 +58,7 @@ final class RegistrationServiceImpl: RegistrationService {
                 print(error)
             case .success(let admins):
                 for admin in admins {
-                    self?.adminUsers.append((admin.Név, Int(admin.ID)!, 0, true))
+                    self?.adminUsers.append((admin.Név, Int(admin.ID) ?? -1, 0, true))
                     self?.allUserNames.append(admin.Név)
                 }
                 self?.isloading = false
@@ -71,7 +71,7 @@ final class RegistrationServiceImpl: RegistrationService {
                 print(error)
             case .success(let users):
                 for user in users {
-                    self?.simpleUsers.append((user.Név, Int(user.ID)!, Int(user.Csapat)!, false))
+                    self?.simpleUsers.append((user.Név, Int(user.ID) ?? -1 , Int(user.Csapat) ?? -1, false))
                     self?.allUserNames.append(user.Név)
                 }
                 self?.allUserNames = Array(Set(self?.allUserNames ?? ["üres"]))
@@ -141,9 +141,6 @@ final class RegistrationServiceImpl: RegistrationService {
             do {
                 let decoder = JSONDecoder()
                 let admins = try decoder.decode([AdminInfo].self, from: data)
-                //for admin in admins {
-                //    self.adminUsers.append((admin.Név, Int(admin.ID)!, 0, true))
-                //}
                 completion(.success(admins))
             } catch {
                 print(error)
@@ -173,9 +170,6 @@ final class RegistrationServiceImpl: RegistrationService {
             do {
                 let decoder = JSONDecoder()
                 let users = try decoder.decode([UserInfo].self, from: data)
-                //for user in users {
-                //    self.simpleUsers.append((user.Név, Int(user.ID)!, Int(user.Csapat)!, false))
-                //}
                 completion(.success(users))
             } catch {
                 print(error)

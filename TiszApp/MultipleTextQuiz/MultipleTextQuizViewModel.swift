@@ -97,14 +97,14 @@ final class MultipleTextQuizViewModel: ObservableObject {
             answer_strings.append(self.answers[i].answer)
         }
         let answer = ["answers" : answer_strings] as [String : [String]]
-        Database.database().reference().child("text-quiz-answers").child(String(sessionService!.userDetails!.groupNumber)).child(sessionService!.userDetails!.uid).setValue(answer)
+        Database.database().reference().child("text-quiz-answers").child(String(sessionService?.userDetails?.groupNumber ?? -1)).child(sessionService?.userDetails?.uid ?? "error_noUidInfo").setValue(answer)
 
         self.canUpload = false
     }
     
     func initUploadListener() {
         Database.database().reference().child("text-quiz-answers").observe(.childAdded, with: { (snapshot) -> Void in
-            if snapshot.hasChild(self.sessionService!.userDetails!.uid) {
+            if snapshot.hasChild(self.sessionService?.userDetails?.uid ?? "error_noUidInfo") {
                 self.canUpload = false
                 print("van")
             } else {
@@ -113,7 +113,7 @@ final class MultipleTextQuizViewModel: ObservableObject {
         })
         
         Database.database().reference().child("text-quiz-answers").observe(.childRemoved, with: { (snapshot) -> Void in
-            if snapshot.hasChild(self.sessionService!.userDetails!.uid) {
+            if snapshot.hasChild(self.sessionService?.userDetails?.uid ?? "error_noUidInfo") {
                 self.canUpload = true
             }
         })
@@ -127,8 +127,8 @@ final class MultipleTextQuizViewModel: ObservableObject {
         Database.database().reference().child("text-quiz-answers").observe(.childAdded, with: { (snapshot) -> Void in
             let groupNum = (Int(snapshot.key) ?? 1)-1
             for child in snapshot.children {
-                let currChild = child as! DataSnapshot
-                let value = currChild.value as? [String: [String]],
+                let currChild = child as? DataSnapshot
+                let value = currChild?.value as? [String: [String]],
                     currAnswers = value?["answers"]
                 
                 if(self.allAnswers[groupNum].count != self.numOfQuestions) {
@@ -139,7 +139,7 @@ final class MultipleTextQuizViewModel: ObservableObject {
                 }
                 
                 for i in 0...self.numOfQuestions-1 {
-                    self.allAnswers[groupNum][i].append(Answer(answer: currAnswers![i]))
+                    self.allAnswers[groupNum][i].append(Answer(answer: currAnswers?[i] ?? "errorLoadingAnswers"))
                 }
             }
         })

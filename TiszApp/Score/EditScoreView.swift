@@ -68,14 +68,14 @@ struct EditScoreView: View {
                             }
                             
                             //upload sanitised inputs to db
-                            let score = ["id" : what!.id,
+                            let score = ["id" : what?.id ?? "noId",
                                          "scores" : sanitisedScores,
                                          "name" : program,
-                                         "author" : what!.author] as [String: Any]
+                                         "author" : what?.author ?? "noAuthor"] as [String: Any]
                             
                             
                             
-                            Database.database().reference().child("scores").child(what!.id).setValue(score)
+                            Database.database().reference().child("scores").child(what?.id ?? "error").setValue(score)
                             
                             //self.presentationMode.wrappedValue.dismiss()
                             
@@ -87,14 +87,14 @@ struct EditScoreView: View {
                     }
                 }
                 .onAppear {
-                    program = what!.name
+                    program = what?.name ?? "error"
                     self.scoreTFs.removeAll()
                     for _ in 1...self.teamNum {
                         self.scoreTFs.append("")
                     }
                     for i in 0...teamNum-1 {
-                        guard what!.scores.indices.contains(i) else { return }
-                        scoreTFs[i] = String(what!.scores[i])
+                        guard what?.scores.indices.contains(i) ?? false else { return }
+                        scoreTFs[i] = String(what?.scores[i] ?? 0)
                     }
                 }
                 .navigationTitle("Szerkesztés")

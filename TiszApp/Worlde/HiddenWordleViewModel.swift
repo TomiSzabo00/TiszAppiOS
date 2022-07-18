@@ -182,20 +182,22 @@ final class HiddenWordleViewModel: ObservableObject {
         }
         
         if self.solution[index] == char {
-            self.sltn_copy.remove(at: self.sltn_copy.firstIndex(of: Character(char))!)
-            self.backgrounds[self.keys.firstIndex(of: char)!] = .green
+            guard let firstindex = self.sltn_copy.firstIndex(of: Character(char)) else { return .no }
+            self.sltn_copy.remove(at: firstindex)
+            self.backgrounds[self.keys.firstIndex(of: char) ?? 0] = .green
             return .match
         }
         
         if self.sltn_copy.contains(char) {
-            self.sltn_copy.remove(at: self.sltn_copy.firstIndex(of: Character(char))!)
-            if self.backgrounds[self.keys.firstIndex(of: char)!] != .green {
-                self.backgrounds[self.keys.firstIndex(of: char)!] = .yellow
+            guard let firstindex = self.sltn_copy.firstIndex(of: Character(char)) else { return .no }
+            self.sltn_copy.remove(at: firstindex)
+            if self.backgrounds[self.keys.firstIndex(of: char) ?? 0] != .green {
+                self.backgrounds[self.keys.firstIndex(of: char) ?? 0] = .yellow
             }
             return .inWord
         }
         
-        self.backgrounds[self.keys.firstIndex(of: char)!] = .gray
+        self.backgrounds[self.keys.firstIndex(of: char) ?? 0] = .gray
         return .no
     }
     

@@ -56,7 +56,7 @@ final class QuizHandlerImpl : QuizHandler, ObservableObject {
     func initListeners() {
         Database.database().reference().child("signals").observe(.childAdded, with: { (snapshot) -> Void in
             
-            let signalInfo = snapshot.value as! String
+            let signalInfo = snapshot.value as? String
             
 
             if signalInfo == "disabled" {
@@ -69,15 +69,15 @@ final class QuizHandlerImpl : QuizHandler, ObservableObject {
                 }
                 
             } else {
-                    Database.database().reference().child("users").child(signalInfo).observe(DataEventType.value, with: { snapshot in
+                    Database.database().reference().child("users").child(signalInfo ?? "error_noSignalInfo").observe(DataEventType.value, with: { snapshot in
                         let author = User(snapshot: snapshot)
                 
-                        if(!self.teamSignals.contains(author!.groupNumber)) {
+                        if(!self.teamSignals.contains(author?.groupNumber ?? -1)) {
                             if author?.groupNumber == self.userDetails?.groupNumber {
                                 self.teamSignalled()
                             }
-                            self.teamSignals.append(author!.groupNumber)
-                            self.texts[self.nextTextNum] = "\(author!.groupNumber). csapat (\(author!.userName))"
+                            self.teamSignals.append(author?.groupNumber ?? -1)
+                            self.texts[self.nextTextNum] = "\(author?.groupNumber ?? -1). csapat (\(author?.userName ?? "error"))"
                             self.rtBGs[self.nextTextNum] = .color
                             self.textColors[self.nextTextNum] = .text
                             self.nextTextNum += 1

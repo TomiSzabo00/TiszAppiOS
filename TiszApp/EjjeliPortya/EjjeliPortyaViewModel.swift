@@ -26,9 +26,9 @@ struct LocationData {
         self.long = long
     }
     
-    init?(snapshot: DataSnapshot) {
+    init?(snapshot: DataSnapshot?) {
         guard
-            let value = snapshot.value as? [String: AnyObject],
+            let value = snapshot?.value as? [String: AnyObject],
             let lat = value["lat"] as? Double,
             let long = value["long"] as? Double
         else {
@@ -46,8 +46,8 @@ struct Marker: Identifiable {
     var coordinate : CLLocationCoordinate2D
     var tint: Color
     
-    init(id: String, coordinate: CLLocationCoordinate2D, tint: Color) {
-        self.id = id
+    init(id: String?, coordinate: CLLocationCoordinate2D, tint: Color) {
+        self.id = id ?? UUID().description
         self.coordinate = coordinate
         self.tint = tint
     }
@@ -131,7 +131,7 @@ final class EjjeliPortyaViewModel: NSObject, ObservableObject, CLLocationManager
     func uploadLocationOnce() {
         let locationData = ["lat" : locationManager?.location?.coordinate.latitude ?? 0.00,
                             "long" : locationManager?.location?.coordinate.longitude ?? 0.00] as [String: Any]
-        Database.database().reference().child("ejjeli_porty_locs").child(String(sessionService!.userDetails!.groupNumber)).child(sessionService!.userDetails!.uid).setValue(locationData)
+        Database.database().reference().child("ejjeli_porty_locs").child(String(sessionService?.userDetails?.groupNumber ?? -1)).child(sessionService?.userDetails?.uid ?? "error_noUidInfo").setValue(locationData)
     }
     
     func startLocationSharing() {
@@ -152,9 +152,9 @@ final class EjjeliPortyaViewModel: NSObject, ObservableObject, CLLocationManager
         self.isSharing = true
         let last = locations.last
         //print("l: \(last?.coordinate.latitude) lo:\(last?.coordinate.longitude)")
-        let locationData = ["lat" : last!.coordinate.latitude,
-                            "long" : last!.coordinate.longitude] as [String: Any]
-        Database.database().reference().child("ejjeli_porty_locs").child(String(sessionService!.userDetails!.groupNumber)).child(sessionService!.userDetails!.uid).setValue(locationData)
+        let locationData = ["lat" : last?.coordinate.latitude ?? 0,
+                            "long" : last?.coordinate.longitude ?? 0] as [String: Any]
+        Database.database().reference().child("ejjeli_porty_locs").child(String(sessionService?.userDetails?.groupNumber ?? -1)).child(sessionService?.userDetails?.uid ?? "error_noUidInfo").setValue(locationData)
     }
     
     func getColors() {
@@ -218,15 +218,15 @@ final class EjjeliPortyaViewModel: NSObject, ObservableObject, CLLocationManager
         
         Database.database().reference().child("ejjeli_porty_locs").observe(.childAdded, with: { (snapshot) -> Void in
 
-            let groupNum = Int(snapshot.key)
+            let groupNum = Int(snapshot.key) ?? 0
 
             for children in snapshot.children {
-                let child = (children as! DataSnapshot)
+                let child = (children as? DataSnapshot)
 
                 let locData = LocationData(snapshot: child)
                 let coords = CLLocationCoordinate2D(latitude: locData?.lat ?? 0.00, longitude: locData?.long ?? 0.00)
 
-                let marker = Marker(id: child.key, coordinate: coords, tint: self.colors[groupNum!])
+                let marker = Marker(id: child?.key, coordinate: coords, tint: self.colors[groupNum])
 
                 self.markers.append(marker)
             }
@@ -234,18 +234,18 @@ final class EjjeliPortyaViewModel: NSObject, ObservableObject, CLLocationManager
         
         Database.database().reference().child("ejjeli_porty_locs").observe(.childChanged, with: { (snapshot) -> Void in
             for children in snapshot.children {
-                let child = (children as! DataSnapshot)
+                let child = (children as? DataSnapshot)
                 
                 let locData = LocationData(snapshot: child)
                 let coords = CLLocationCoordinate2D(latitude: locData?.lat ?? 0.00, longitude: locData?.long ?? 0.00)
                 
                 //find old one
-                if let marker_index = self.markers.firstIndex(where: {$0.id == child.key}) {
+                if let marker_index = self.markers.firstIndex(where: {$0.id == child?.key}) {
                     //change to new
                     self.markers[marker_index].coordinate = coords
                 } else {
-                    let groupNum = Int(snapshot.key)
-                    let marker = Marker(id: child.key, coordinate: coords, tint: self.colors[groupNum!])
+                    let groupNum = Int(snapshot.key) ?? 0
+                    let marker = Marker(id: child?.key, coordinate: coords, tint: self.colors[groupNum])
                     self.markers.append(marker)
                 }
                 

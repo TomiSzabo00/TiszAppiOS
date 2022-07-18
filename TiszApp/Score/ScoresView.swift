@@ -25,7 +25,7 @@ struct ScoresView: View {
         
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle("Pontok megtekintése")
-        .navigationBarItems(trailing: sessionService.userDetails!.admin ? Button(
+        .navigationBarItems(trailing: sessionService.userDetails?.admin ?? false ? Button(
             role: .destructive,
             action: { confirmationShown = true }
         ) {

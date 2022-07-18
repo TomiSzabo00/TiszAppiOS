@@ -78,8 +78,8 @@ struct MainMenuView: View {
                         ForEach($sessionService.buttonTitles, id: \.self) { $e in
                             if(sessionService.btnStates[sessionService.buttonTitles.firstIndex(of: e) ?? 0] || sessionService.userDetails?.admin ?? false) {
                                 IconButton(text: e,
-                                           icon: sessionService.buttonIcons[sessionService.buttonTitles.firstIndex(of: e)!],
-                                           action: { ID = sessionService.buttonTitles.firstIndex(of: e)! })
+                                           icon: sessionService.buttonIcons[sessionService.buttonTitles.firstIndex(of: e) ?? 0],
+                                           action: { ID = sessionService.buttonTitles.firstIndex(of: e) ?? 0 })
                             }
 
                         }

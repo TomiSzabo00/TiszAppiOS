@@ -27,7 +27,7 @@ final class TreasureHuntViewModel : ObservableObject {
         Database.database().reference().child("wordle").observe(.childAdded, with: { (snapshot) in
             if snapshot.key == "treasureHunt" {
                 for child in snapshot.children {
-                    let number = (child as! DataSnapshot).value as! NSNumber
+                    let number = (child as? DataSnapshot)?.value as? NSNumber ?? 0
                     let shouldBeBool = Bool(truncating: number)
                     
                     if self.toggles.count <= self.sessionService.teamNum {
@@ -41,7 +41,7 @@ final class TreasureHuntViewModel : ObservableObject {
             if snapshot.key == "treasureHunt" {
                 self.toggles.removeAll()
                 for child in snapshot.children {
-                    let number = (child as! DataSnapshot).value as! NSNumber
+                    let number = (child as? DataSnapshot)?.value as? NSNumber ?? 0
                     let shouldBeBool = Bool(truncating: number)
                     
                     if self.toggles.count <= self.sessionService.teamNum {

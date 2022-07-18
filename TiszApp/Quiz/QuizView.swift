@@ -35,7 +35,7 @@ struct QuizView: View {
             }
         }
         .onAppear {
-            handler.userDetails = sessionService.userDetails!
+            handler.userDetails = sessionService.userDetails ?? SessionUserDetails(fullName: "Error", groupNumber: -1, admin: false, uid: "error_notExistingUser")
             handler.initListeners()
         }
         .navigationTitle("AV Kvíz")

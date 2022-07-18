@@ -40,6 +40,13 @@ struct TextItem: Identifiable, Equatable {
         self.author = author
         self.text = text
     }
+
+    init() {
+        self.title = "error"
+        self.text = ""
+        self.author = ""
+        self.id = UUID().description
+    }
 }
 
 
