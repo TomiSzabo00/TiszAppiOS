@@ -67,7 +67,7 @@ struct HiddenWordleView: View {
                 }
             }
         }
-        .navigationBarTitle("\(self.vm.stage)/\(self.vm.solutions.count)")
+        .navigationBarTitle("Titkos worlde \(self.vm.stage)/\(self.vm.solutions.count)")
         
         //this is an external package
         /// https://github.com/elai950/AlertToast

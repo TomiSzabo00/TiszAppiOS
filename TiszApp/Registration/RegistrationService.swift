@@ -82,9 +82,7 @@ final class RegistrationServiceImpl: RegistrationService {
     
     func register(with details: RegistrationDetails) -> AnyPublisher<Void, Error> {
         Deferred {
-            
             Future { promise in
-                
                 Auth.auth().createUser(withEmail: details.userName+"@tiszap.hu", password: details.password, completion: { [self] res, error in
                     
                     if let err = error {

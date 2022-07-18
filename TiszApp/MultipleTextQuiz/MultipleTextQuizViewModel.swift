@@ -33,6 +33,8 @@ final class MultipleTextQuizViewModel: ObservableObject {
     @Published var canUpload = true
     
     @Published var itemColors = [Color]()
+
+    @Published var errorAlert = false
     
     init() {
         self.initNumListener()
@@ -97,7 +99,12 @@ final class MultipleTextQuizViewModel: ObservableObject {
             answer_strings.append(self.answers[i].answer)
         }
         let answer = ["answers" : answer_strings] as [String : [String]]
-        Database.database().reference().child("text-quiz-answers").child(String(sessionService?.userDetails?.groupNumber ?? -1)).child(sessionService?.userDetails?.uid ?? "error_noUidInfo").setValue(answer)
+        Database.database().reference().child("text-quiz-answers").child(String(sessionService?.userDetails?.groupNumber ?? -1)).child(sessionService?.userDetails?.uid ?? "error_noUidInfo").setValue(answer) { error, _ in
+            if let error = error {
+                print(error.localizedDescription)
+                self.errorAlert = true
+            }
+        }
 
         self.canUpload = false
     }

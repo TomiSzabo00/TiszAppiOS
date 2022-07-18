@@ -155,8 +155,8 @@ public extension View {
        return background(
                 Image("bg2_day")
                     .resizable()
-                    .scaledToFill()
                     .edgesIgnoringSafeArea(.all)
+                    .scaledToFill()
        )
     }
 }

@@ -53,7 +53,12 @@ final class ImagesHandlerImpl: ImagesHandler, ObservableObject {
     func getImageInfos() {
         Database.database().reference().child(checkImages ? "picsToDecide" : "pics").observe(.childAdded, with: { (snapshot) -> Void in
             let imageInfo = ImageItem(snapshot: snapshot)
-            self.imageNames.insert(imageInfo ?? ImageItem(), at: 0)
+            guard let imageInfo = imageInfo, imageInfo.author != "noAthor" else { return }
+            if self.checkImages {
+                self.imageNames.append(imageInfo)
+            } else {
+                self.imageNames.insert(imageInfo, at: 0)
+            }
         })
         
         Database.database().reference().child(checkImages ? "picsToDecide" : "pics").observe(.childRemoved, with: { (snapshot) -> Void in

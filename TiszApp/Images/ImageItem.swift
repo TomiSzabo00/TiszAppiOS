@@ -51,7 +51,7 @@ struct ImageItem: Identifiable, Equatable {
     init() {
         self.title = "error"
         self.fileName = "noFile"
-        self.author = ""
+        self.author = "noAthor"
         self.score = 0
         self.scorerUID = "noUidInfo"
     }

@@ -55,6 +55,7 @@ final class SongsViewModel: ObservableObject {
             for txtFilePath in txtFilePaths{
                 guard let index = txtFilePath.lastIndex(of: ".") else { continue }
                 let afterEqualsTo = String(txtFilePath.prefix(upTo: index))
+                guard afterEqualsTo != "magyar_szavak" else { continue }
                 songs.append(afterEqualsTo)
                 songTitles.append(afterEqualsTo.lowercased().capitalized)
                 songLyrics.append(self.load(file: afterEqualsTo))

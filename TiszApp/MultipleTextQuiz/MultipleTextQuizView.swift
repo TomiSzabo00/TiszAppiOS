@@ -36,18 +36,16 @@ struct MultipleTextQuizView: View {
                     .buttonStyle(SimpleButtonStyle())
                 }
                 .padding()
-                
-                .alert(isPresented: $areYouSure, content: {
-                    return Alert(title: Text("Biztos vagy benne?"),
-                                 message: Text("Biztosan be szeretnéd adni a válaszaidat?"),
-                                 primaryButton: Alert.Button.cancel(Text("Igen!"), action: {
-                                    //submit
-                                    self.vm.sumbitAnswers()
-                                 }),
-                                 secondaryButton: Alert.Button.destructive(Text("Nem"), action: {
-                                    //do nothing
-                                 })
-                    )
+
+                .confirmationDialog("Biztos vagy benne?", isPresented: $areYouSure, actions: {
+                    Button("Igen!") {
+                        vm.sumbitAnswers()
+                    }
+                    Button("Nem", role: .cancel) { }
+                })
+                .alert(isPresented: $vm.errorAlert, content: {
+                    return Alert(title: Text("Hiba"),
+                                 message: Text("Valami hiba történt..."))
                 })
             }
             .onAppear {

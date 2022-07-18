@@ -41,7 +41,8 @@ final class TextsHandlerImpl: TextsHandler, ObservableObject {
     func getTextInfos() {
         Database.database().reference().child("texts").observe(.childAdded, with: { (snapshot) -> Void in
             let textInfo = TextItem(snapshot: snapshot)
-            self.textInfos.insert(textInfo ?? TextItem(), at: 0)
+            guard let textInfo = textInfo, textInfo.author != "noAuthor" else { return }
+            self.textInfos.insert(textInfo, at: 0)
         })
         
         Database.database().reference().child("texts").observe(.childRemoved, with: { (snapshot) -> Void in

@@ -134,7 +134,7 @@ struct ImageDetailView: View {
                         dismiss()
                     }) {
                         Image(systemName: "checkmark.circle")
-                            .foregroundStyle(LinearGradient(Color.gradientDark, Color.gradientLight))
+                            .foregroundStyle(.green)
                         
                     }
                     Button(
@@ -142,7 +142,7 @@ struct ImageDetailView: View {
                         action: { confirmationShown = true }
                     ) {
                         Image(systemName: "trash")
-                            .foregroundStyle(LinearGradient(Color.gradientDark, Color.gradientLight))
+                            .foregroundStyle(.red)
                     }
                 })
             } else {
