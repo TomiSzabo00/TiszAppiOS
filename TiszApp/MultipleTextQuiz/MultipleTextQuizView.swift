@@ -42,6 +42,8 @@ struct MultipleTextQuizView: View {
                         vm.sumbitAnswers()
                     }
                     Button("Nem", role: .cancel) { }
+                }, message: {
+                    Text("Biztosan beküldöd a válaszokat?")
                 })
                 .alert(isPresented: $vm.errorAlert, content: {
                     return Alert(title: Text("Hiba"),

@@ -108,39 +108,36 @@ struct ImageItemView: View {
     
     var body: some View {
         VStack {
-            if let image = image {
-                Image(uiImage: image)
-                    .resizable()
-                    .scaledToFill()
-                    .frame(maxHeight: 100)
-                    .mask(Rectangle()
-                        .frame(maxHeight: 190, alignment: .top))
-            } else {
-                Image(systemName: "arrow.2.circlepath")
-                    .symbolVariant(.circle.fill)
-                    .foregroundColor(Color.text)
-                    .font(.largeTitle)
-                    .rotationEffect(.init(degrees: isSyncing ? 360 : 0))
-                    .animation(isSyncing ? rotationAnimation : .default, value: isSyncing)
-                    .padding(70)
-                    .frame(maxWidth: UIScreen.main.bounds.width/2-20, maxHeight: 100)
-                    .mask(Rectangle()
-                        .frame(maxHeight: 190, alignment: .top))
-            }
-            
+                if let image = image {
+                    Image(uiImage: image)
+                        .resizable()
+                        .scaledToFill()
+                        .frame(height: 100, alignment: .top)
+                        //.mask(Rectangle()
+                            //.frame(height: 120, alignment: .top))
+                } else {
+                    Image(systemName: "arrow.2.circlepath")
+                        .symbolVariant(.circle.fill)
+                        .foregroundColor(Color.text)
+                        .font(.largeTitle)
+                        .rotationEffect(.init(degrees: isSyncing ? 360 : 0))
+                        .animation(isSyncing ? rotationAnimation : .default, value: isSyncing)
+                        .padding(70)
+                        .frame(maxWidth: UIScreen.main.bounds.width/2-20, maxHeight: 100)
+                        .mask(Rectangle()
+                            .frame(height: 190, alignment: .top))
+                }
+
             Text(text)
                 .foregroundColor(Color.text)
-                .scaledToFit()
-                .padding([.leading, .trailing, .bottom], 5)
+                .padding(5)
+                .frame(maxWidth: .infinity)
+                .background(Color.btn)
         }
-        //.background(Color(.secondarySystemBackground))
         .cornerRadius(10)
         .background(RoundedRectangle(cornerRadius: 10)
             .fill(Color.btn)
             .shadow(color: Color.main, radius: 0, x: 0, y: 3))
-        //.frame(alignment: .center)
-//        .shadow(color: Color.shadow, radius: 3, x: 3, y: 3)
-//        .shadow(color: Color.highlight, radius: 3, x: -2, y: -2)
         .onAppear {
             isSyncing = true
         }
