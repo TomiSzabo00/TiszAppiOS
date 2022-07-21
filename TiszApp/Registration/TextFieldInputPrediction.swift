@@ -90,8 +90,8 @@ struct PredictingTextField: View {
             }
             for value in self.predictedValues {
                 if value == self.textFieldInput {
-                    predictedValues.removeAll()
                     self.green = true
+                    predictedValues.removeAll()
                 }
             }
         }
