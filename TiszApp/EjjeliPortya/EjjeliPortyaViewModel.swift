@@ -248,24 +248,8 @@ final class EjjeliPortyaViewModel: NSObject, ObservableObject, CLLocationManager
                     let marker = Marker(id: child?.key, coordinate: coords, tint: self.colors[groupNum])
                     self.markers.append(marker)
                 }
-                
             }
-
         })
-
-        // MARK: individual team listeners
-        for i in 0..<(sessionService?.teamNum ?? 0) {
-            Database.database().reference().child("ejjeli_porty_locs").child(String(i)).observe(.childAdded, with: { (snapshot) -> Void in
-
-                let groupNum = i
-                let locData = LocationData(snapshot: snapshot)
-                let coords = CLLocationCoordinate2D(latitude: locData?.lat ?? 0.00, longitude: locData?.long ?? 0.00)
-
-                let marker = Marker(id: snapshot.key, coordinate: coords, tint: self.colors[groupNum])
-
-                self.markers.append(marker)
-            })
-        }
     }
     
 }
