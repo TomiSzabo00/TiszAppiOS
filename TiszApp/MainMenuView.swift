@@ -115,7 +115,11 @@ struct MainMenuView: View {
                         NavigationLink(destination: TextsView().environmentObject(sessionService).fullBackground(), tag: 6, selection: $ID) {EmptyView()}
 
                         Group {
-                            NavigationLink(destination: NappaliPortyaView().environmentObject(sessionService), tag: 7, selection: $ID) {EmptyView()}
+                            if sessionService.userDetails?.admin ?? false {
+                                NavigationLink(destination: WorkoutView().environmentObject(sessionService), tag: 7, selection: $ID) {EmptyView()}
+                            } else {
+                                NavigationLink(destination: NappaliPortyaView().environmentObject(sessionService), tag: 7, selection: $ID) {EmptyView()}
+                            }
 
                             if (sessionService.userDetails?.admin != nil) && sessionService.userDetails?.admin == true {
                                 NavigationLink(destination: EjjeliPortyaAdminView().environmentObject(sessionService), tag: 8, selection: $ID) {EmptyView()}

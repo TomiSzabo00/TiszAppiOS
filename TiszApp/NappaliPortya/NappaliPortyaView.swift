@@ -2,94 +2,49 @@
 //  NappaliPortyaView.swift
 //  TiszApp
 //
-//  Created by Szabó Tamás on 2022. 06. 27..
+//  Created by Szabo Tamas on 2022. 07. 25..
 //
 
-import MapKit
 import SwiftUI
+import FirebaseDatabase
 
 struct NappaliPortyaView: View {
-    @EnvironmentObject var sessionService: SessionServiceImpl
+    @Environment(\.openURL) var openURL
 
-    @StateObject private var vm = NappaliPortyaViewModel()
+    @EnvironmentObject var sessionService: SessionServiceImpl
+    @State private var ID: Int?
+
+    @State private var links = [URL]()
+    @State private var isLoading = true
+
+    @StateObject var vm = NappaliPortyaViewModel()
 
     var body: some View {
         ZStack {
-            //Map(coordinateRegion: Binding($vm.locationRegion) ?? $vm.tiszapuspokiFaluCoords, interactionModes: MapInteractionModes.all, showsUserLocation: true, userTrackingMode: $vm.trackingMode)
-            MapView(vm: vm)
-            .ignoresSafeArea()
-            .onAppear {
-                vm.sessionService = self.sessionService
-                vm.checkIfLocationServicesIsEnabled()
-            }
-            .alert("Helymeghatározás hiba", isPresented: $vm.showAlert, actions: {}) {
-                switch(vm.alertType) {
-                case .disabled:
-                    Text("A helymeghatározási beállítások le vannak tiltva. Kérlek engedélyezd őket. Beállítások > Adatvédelem > Helymeghatározás")
-                case .denied:
-                    Text("Az alkalmazásnak nem adtál engedélyt a helyzeted megtekintésére. Kérlek engedélyzed, a funkció használatához. Beállítások > Adatvédelem > Helymeghatározás")
-                case .restricted:
-                    Text("A helymeghatározás le van tiltva a telefonon, valószínűleg szülői felügyelet miatt. Kérlek engedélyeztesd a funkció használatához.")
-                case .na:
-                    Text("A helymeghatározás nem működik jelenleg. Próbáld meg később.")
-                }
-            }
-
-            VStack {
-                HStack {
-                    Button {
-                        vm.centerMap()
-                    } label: {
-                        Image(systemName: "location.fill")
-                    }
-                    .padding()
-                    .background(.ultraThickMaterial)
-                    .cornerRadius(10)
-                    .shadow(radius: 5)
-                    .padding()
-                    .opacity(0.8)
-
-                    Spacer()
-                }
+            Image("bg2_day")
+                .resizable()
+                .edgesIgnoringSafeArea(.all)
+                .scaledToFill()
+            HStack {
                 Spacer()
 
-                if sessionService.userDetails?.admin ?? false {
-                    HStack {
-                        Button(action: { vm.down() }, label: {Image(systemName: "arrow.left").padding()})
-                            .disabled(vm.currTeam == 0)
-                        Text("\(vm.currTeam)")
-                        Button(action: { vm.up() }, label: {Image(systemName: "arrow.right").padding()})
-                            .disabled(vm.currTeam == sessionService.teamNum)
-                    }
-                    .padding()
-                    //.opacity(1.0)
-                } else {
-                    if !vm.isSharing {
-                    Button(action: {
-                        vm.startLocationSharing()
-                    }, label: {
-                        HStack {
-                            Image(systemName: "mappin.and.ellipse")
-                            Text("Helyzetmegosztás elindítása")
-                        }
-                    })
-                    .buttonStyle(SimpleButtonStyle())
-                    .padding(.bottom, 20)
-                    } else {
-                        Button(action: {
-                            vm.stopLocationSharing()
-                        }, label: {
-                            HStack {
-                                Image(systemName: "mappin.and.ellipse")
-                                Text("Helyzetmegosztás leállítása")
-                            }
-                        })
-                        .buttonStyle(SimpleButtonStyle())
-                        .padding(.bottom, 20)
-                    }
-                }
+                IconButton(text: "Tértkép", icon: "map", action: {
+                    ID = 1
+                })
+
+                Spacer()
+
+                IconButton(text: "Képek, videók", icon: "icloud.and.arrow.up.fill", action: {
+                    openURL(vm.links[(sessionService.userDetails?.groupNumber ?? 1) - 1])
+                })
+
+                Spacer()
             }
+            .padding()
+
         }
+
+        NavigationLink(destination: WorkoutView().environmentObject(sessionService), tag: 1, selection: $ID) { EmptyView() }
     }
 }
 

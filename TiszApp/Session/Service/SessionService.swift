@@ -189,30 +189,12 @@ final class SessionServiceImpl: ObservableObject, SessionService {
     }
     
     func getTeamNumFromApi(completion: @escaping(Result<Int, Error>) -> Void) {
-        //use API to get arrays
-        let adminURLstring = "https://opensheet.elk.sh/10JPtOuuQAMpGmorEHFW_yU-M2M99AAhpZn09CRcGPK4/team_num"
-        
-        guard let urlAdmin = URL(string: adminURLstring) else {
-            print("teamNum url not working")
-            fatalError()
-        }
-        
-        let adminJSONtask = URLSession.shared.dataTask(with: urlAdmin){
-            data, response, error in
-            
-            guard let data = data else {
-                completion(.failure(NSError()))
-                return
+        Database.database().reference().child("number_of_teams").observe(.value, with: { snapshot in
+            if let num = snapshot.value as? Int {
+                completion(.success(num))
+            } else {
+                completion(.failure(NSError(domain: "cant read number of teams", code: 10)))
             }
-            do {
-                let decoder = JSONDecoder()
-                let num = try decoder.decode([TeamNumInfo].self, from: data)
-                completion(.success(Int(num[0].Num) ?? 4))
-            } catch {
-                print(error)
-                completion(.failure(error))
-            }
-        }
-        adminJSONtask.resume()
+        })
     }
 }

@@ -57,7 +57,7 @@ final class MultipleTextQuizViewModel: ObservableObject {
         if(`for` > 0) {
             for _ in 1...`for` {
                 self.answers.append(Answer(answer: ""))
-                self.itemColors.append(Color("listItem"))
+                self.itemColors.append(.white)
             }
         } else {
             self.answers.removeAll()
@@ -150,6 +150,11 @@ final class MultipleTextQuizViewModel: ObservableObject {
                 }
             }
         })
+    }
+
+    func saveScores() {
+        let score = Double(vm.itemColors.filter{$0 == .green}.count) + Double(vm.itemColors.filter{$0 == .yellow}.count)
+        Database.database().reference().child("text-quiz-scores")
     }
     
 }
