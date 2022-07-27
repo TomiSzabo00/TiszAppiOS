@@ -145,7 +145,7 @@ struct MainMenuView: View {
                     Group {
                         NavigationLink(destination: ImagesView(checkImages: true).environmentObject(sessionService), tag: 11, selection: $ID) {EmptyView()}
                     
-                        NavigationLink(destination: AddScoreView(teamNum: sessionService.teamNum), tag: 12, selection: $ID) {EmptyView()}
+                        NavigationLink(destination: AddScoreView(teamNum: sessionService.teamNum).fullBackground(), tag: 12, selection: $ID) {EmptyView()}
                     
                         NavigationLink(destination: NotificationAdminView(), tag: 13, selection: $ID) {EmptyView()}
                         

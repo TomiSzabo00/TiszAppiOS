@@ -115,7 +115,7 @@ struct ScoresTableView: View {
             .listStyle(PlainListStyle())
             //end List
             
-            NavigationLink(destination: EditScoreView(what: scoreToEdit, teamNum: sessionService.teamNum), tag: 0, selection: $ID) {EmptyView()}
+            NavigationLink(destination: EditScoreView(what: scoreToEdit, teamNum: sessionService.teamNum).fullBackground(), tag: 0, selection: $ID) {EmptyView()}
             
             if (self.isPicScoresShowing) {
                 HStack{
