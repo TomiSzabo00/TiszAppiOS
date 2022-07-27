@@ -12,6 +12,8 @@ struct MultipleTextQuizAnswersView: View {
     @StateObject var vm : MultipleTextQuizViewModel
     
     @State var answers: [[Answer]]
+
+    var currTeam: Int
     
     var body: some View {
         
@@ -55,8 +57,18 @@ struct MultipleTextQuizAnswersView: View {
                     .tint(.red)
                 }
             }
+
+            Button("Pontok mentése") {
+                vm.saveScores()
+            }
+            .padding()
+            .disabled(vm.itemColors.contains(.white))
+
             .navigationBarTitle("Válaszok")
             .navigationBarTitleDisplayMode(.inline)
+        }
+        .onAppear {
+            vm.currTeam = currTeam
         }
         
     }
@@ -64,6 +76,6 @@ struct MultipleTextQuizAnswersView: View {
 
 struct MultipleTextQuizAnswersView_Previews: PreviewProvider {
     static var previews: some View {
-        MultipleTextQuizAnswersView(vm: MultipleTextQuizViewModel(), answers: [[Answer(answer: "")]])
+        MultipleTextQuizAnswersView(vm: MultipleTextQuizViewModel(), answers: [[Answer(answer: "")]], currTeam: 0)
     }
 }

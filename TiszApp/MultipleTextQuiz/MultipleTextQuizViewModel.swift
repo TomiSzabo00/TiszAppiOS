@@ -35,6 +35,11 @@ final class MultipleTextQuizViewModel: ObservableObject {
     @Published var itemColors = [Color]()
 
     @Published var errorAlert = false
+
+    @Published var saves = [String]()
+    @Published var savedSnapshots = [DataSnapshot]()
+
+    var currTeam = -1
     
     init() {
         self.initNumListener()
@@ -153,8 +158,79 @@ final class MultipleTextQuizViewModel: ObservableObject {
     }
 
     func saveScores() {
-        let score = Double(vm.itemColors.filter{$0 == .green}.count) + Double(vm.itemColors.filter{$0 == .yellow}.count)
-        Database.database().reference().child("text-quiz-scores")
+        let score = Double(itemColors.filter{$0 == .green}.count) + Double(itemColors.filter{$0 == .yellow}.count) / 2
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYYMMddHHmmssSSS"
+        let id = dateFormatter.string(from: Date())
+
+        Database.database().reference().child("text-quiz-scores").child(String(currTeam)).child(id)
+            .setValue(score)
     }
-    
+
+    func saveAnswers() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYYMMddHHmmssSSS"
+        let id = dateFormatter.string(from: Date())
+
+        Database.database().reference().child("text-quiz-answers").observeSingleEvent(of: .value) { snapshot in
+            Database.database().reference().child("text-quiz-saves").child(id).setValue(snapshot.value)
+        }
+
+        removeNumOfQuestions()
+    }
+
+    func getSavedAnswers(from snapshot: DataSnapshot) {
+        self.allAnswers.removeAll()
+        for _ in 1...(self.sessionService?.teamNum ?? 1) {
+            self.allAnswers.append([])
+        }
+        snapshot.children.forEach { teams in
+            if let teamSnapshot = teams as? DataSnapshot {
+                let groupNum = (Int(teamSnapshot.key) ?? 1)-1
+                for child in teamSnapshot.children {
+                    let currChild = child as? DataSnapshot
+
+                    let numOfAnswers = Int(currChild?.childSnapshot(forPath: "answers").childrenCount ?? 0)
+
+                    let value = currChild?.value as? [String: [String]],
+                        currAnswers = value?["answers"]
+
+                    if(self.allAnswers[groupNum].count != numOfAnswers) {
+                        self.allAnswers[groupNum].removeAll()
+                        self.itemColors.removeAll()
+                        for _ in 0..<numOfAnswers {
+                            self.allAnswers[groupNum].append([])
+                            self.itemColors.append(.white)
+                        }
+                    }
+
+                    for i in 0..<numOfAnswers {
+                        self.allAnswers[groupNum][i].append(Answer(answer: currAnswers?[i] ?? "errorLoadingAnswers"))
+                    }
+                }
+            } else {
+                print("hiba a mentes beolvasasakor")
+            }
+        }
+    }
+
+    func getSaves() {
+        self.saves.removeAll()
+        self.savedSnapshots.removeAll()
+        Database.database().reference().child("text-quiz-saves").observe(.childAdded) { snapshot in
+            let data = snapshot.key
+
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "YYYYMMddHHmmssSSS"
+
+            let decoded = dateFormatter.date(from:data) ?? Date()
+
+            dateFormatter.dateFormat = "YYYY-MM-dd HH:mm:ss"
+
+
+            self.saves.append(dateFormatter.string(from: decoded))
+            self.savedSnapshots.append(snapshot)
+        }
+    }
 }

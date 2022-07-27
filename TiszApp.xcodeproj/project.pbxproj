@@ -216,6 +216,8 @@
 		55F09596280DBB8900A56548 /* ScoresTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55F09595280DBB8800A56548 /* ScoresTableView.swift */; };
 		EF0A5D2C288F38A5003A0134 /* NappaliPortyaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0A5D2B288F38A5003A0134 /* NappaliPortyaView.swift */; };
 		EF0A5D3628903A71003A0134 /* NappaliPortyaViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0A5D3528903A71003A0134 /* NappaliPortyaViewModel.swift */; };
+		EF0A5D3828908DA5003A0134 /* SavedAnswersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0A5D3728908DA5003A0134 /* SavedAnswersView.swift */; };
+		EF0A5D3A28910F3D003A0134 /* SavesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF0A5D3928910F3D003A0134 /* SavesView.swift */; };
 		EF66CE77288C32990021C043 /* FloatingMapButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF66CE66288C32990021C043 /* FloatingMapButtons.swift */; };
 		EF66CE7D288C32990021C043 /* WorkoutInfoBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF66CE6D288C32990021C043 /* WorkoutInfoBar.swift */; };
 		EF66CE7E288C32990021C043 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF66CE6E288C32990021C043 /* MapView.swift */; };
@@ -444,6 +446,8 @@
 		55F09595280DBB8800A56548 /* ScoresTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoresTableView.swift; sourceTree = "<group>"; };
 		EF0A5D2B288F38A5003A0134 /* NappaliPortyaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NappaliPortyaView.swift; sourceTree = "<group>"; };
 		EF0A5D3528903A71003A0134 /* NappaliPortyaViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NappaliPortyaViewModel.swift; sourceTree = "<group>"; };
+		EF0A5D3728908DA5003A0134 /* SavedAnswersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedAnswersView.swift; sourceTree = "<group>"; };
+		EF0A5D3928910F3D003A0134 /* SavesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavesView.swift; sourceTree = "<group>"; };
 		EF66CE66288C32990021C043 /* FloatingMapButtons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatingMapButtons.swift; sourceTree = "<group>"; };
 		EF66CE6D288C32990021C043 /* WorkoutInfoBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutInfoBar.swift; sourceTree = "<group>"; };
 		EF66CE6E288C32990021C043 /* MapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
@@ -859,6 +863,8 @@
 				55B3955B28593BE00044389E /* MultipleTextQuizViewModel.swift */,
 				55B3955D2859ECCE0044389E /* MultipleTextQuizView.swift */,
 				55B3955F285A115A0044389E /* MultipleTextQuizAnswersView.swift */,
+				EF0A5D3728908DA5003A0134 /* SavedAnswersView.swift */,
+				EF0A5D3928910F3D003A0134 /* SavesView.swift */,
 			);
 			path = MultipleTextQuiz;
 			sourceTree = "<group>";
@@ -1253,6 +1259,7 @@
 				55622E5B2861DA9A003A46DA /* WordleViewModel.swift in Sources */,
 				55E8003827F0A27E007181E0 /* SessionService.swift in Sources */,
 				EF70B928287F1659005695EE /* ScheduleViewModel.swift in Sources */,
+				EF0A5D3828908DA5003A0134 /* SavedAnswersView.swift in Sources */,
 				55149F562850CC7D007BECEF /* EjjeliPortyaViewModel.swift in Sources */,
 				55B39560285A115B0044389E /* MultipleTextQuizAnswersView.swift in Sources */,
 				EF70B92C287FEDE4005695EE /* ScheduleDayView.swift in Sources */,
@@ -1273,6 +1280,7 @@
 				55962CB6285B81BF00030BE7 /* ProfileViewModel.swift in Sources */,
 				5591E7C72802229C00C811F8 /* QuizAdminView.swift in Sources */,
 				5591E7AF27FE13D200C811F8 /* ImagesView.swift in Sources */,
+				EF0A5D3A28910F3D003A0134 /* SavesView.swift in Sources */,
 				55149F522850C361007BECEF /* EjjeliPortyaAdminView.swift in Sources */,
 				55E8002F27F07FCC007181E0 /* RegistrationService.swift in Sources */,
 				EF66CE85288C329A0021C043 /* NewWorkoutInfoBar.swift in Sources */,

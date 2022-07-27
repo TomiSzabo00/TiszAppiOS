@@ -16,6 +16,8 @@ struct MultipleTextQuizAdminView: View {
     @State var numText: String = "0"
     
     @State var areYouSure = false
+
+    @State private var navID: Int? = 0
     
     var body: some View {
         if(vm.numOfQuestions == 0) {
@@ -65,6 +67,16 @@ struct MultipleTextQuizAdminView: View {
                 .disabled((Int(self.numText) ?? 0 <= 0) || (Int(self.numText) ?? 50 >= 50))
                 .padding()
                 .buttonStyle(SimpleButtonStyle())
+
+                Text("vagy")
+                    .padding()
+                Button("Mentett válaszok betöltése") {
+                    vm.getSaves()
+                    navID = 1
+                }
+                .padding()
+
+                NavigationLink(destination: SavesView(vm: vm), tag: 1, selection: $navID) { EmptyView() }
                 
             }//vstack end
         } else {
@@ -82,18 +94,26 @@ struct MultipleTextQuizAdminView: View {
                 
                 List(vm.allAnswers, id: \.self) { group in
                     if !group.isEmpty {
-                        NavigationLink("\(((vm.allAnswers.firstIndex(of: group)) ?? 0)+1). csapat válasza(i)", destination: MultipleTextQuizAnswersView(vm: self.vm, answers: group))
+                        NavigationLink("\(((vm.allAnswers.firstIndex(of: group)) ?? 0)+1). csapat válasza(i)", destination: MultipleTextQuizAnswersView(vm: vm, answers: group, currTeam: (vm.allAnswers.firstIndex(of: group) ?? 0)+1))
                     }
                 }
                 .padding([.leading, .trailing])
                 
                 Spacer()
+
+                Button("Válaszok mentése majd törlése") {
+                    vm.saveAnswers()
+                }
+                .padding()
+                .disabled(vm.allAnswers.isEmpty)
+
                 Button(action: {
                     self.areYouSure = true
                 }, label: {
                     Text("Visszaállítás")
                         .padding()
                 })
+                .padding()
             }
             .onAppear {
                 vm.sessionService = self.sessionService
