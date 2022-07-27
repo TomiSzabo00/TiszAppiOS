@@ -121,6 +121,20 @@ final class SessionServiceImpl: ObservableObject, SessionService {
         Database.database().reference().child("deviceTokens").child(Auth.auth().currentUser?.uid ?? "nil").removeValue()
         try? Auth.auth().signOut()
     }
+
+    func deleteUser() {
+        let user = Auth.auth().currentUser
+
+        Database.database().reference().child("deviceTokens").child(user?.uid ?? "nil").removeValue()
+
+        user?.delete { error in
+            if let error = error {
+                print(error.localizedDescription)
+            } else {
+                print("Account deleted")
+            }
+        }
+    }
     
     func setupFirebaseAuthHandler() {
         handler = Auth.auth().addStateDidChangeListener {

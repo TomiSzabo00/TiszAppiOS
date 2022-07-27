@@ -12,6 +12,8 @@ struct ProfileView: View {
     @EnvironmentObject var sessionService: SessionServiceImpl
     
     @StateObject var vm = ProfileViewModel(groupNum: -1, name: "")
+
+    @State private var areYouSure = false
     
     var body: some View {
         VStack {
@@ -49,9 +51,15 @@ struct ProfileView: View {
             .buttonStyle(SimpleButtonStyle())
             .padding()
 
-//            Button("Crash") {
-//                fatalError("Crash was triggered")
-//            }
+            Button("Fiók törlése") {
+                areYouSure = true
+            }
+            .padding()
+            .confirmationDialog("Biztos vagy benne?", isPresented: $areYouSure) {
+                Button("Igen :(", role: .destructive) {
+                    sessionService.deleteUser()
+                }
+            }
         }
         .onAppear {
             self.vm.groupNum = sessionService.userDetails?.groupNumber ?? -1
