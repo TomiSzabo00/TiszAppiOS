@@ -75,6 +75,9 @@ struct MultipleTextQuizAdminView: View {
                     navID = 1
                 }
                 .padding()
+                .onAppear {
+                    vm.sessionService = self.sessionService
+                }
 
                 NavigationLink(destination: SavesView(vm: vm), tag: 1, selection: $navID) { EmptyView() }
                 
@@ -118,6 +121,7 @@ struct MultipleTextQuizAdminView: View {
             .onAppear {
                 vm.sessionService = self.sessionService
                 vm.getAllAnswers()
+                vm.resetItemColor()
             }
             .alert(isPresented: $areYouSure, content: {
                 return Alert(title: Text("Biztos vagy benne?"),

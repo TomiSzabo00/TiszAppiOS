@@ -22,6 +22,7 @@ struct SavedAnswersView: View {
         .padding(.leading)
         .onAppear {
             vm.getSavedAnswers(from: snapshot)
+            vm.resetItemColor()
         }
 
         List(vm.allAnswers, id: \.self) { group in

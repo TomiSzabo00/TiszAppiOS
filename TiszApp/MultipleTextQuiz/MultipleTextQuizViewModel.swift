@@ -60,11 +60,15 @@ final class MultipleTextQuizViewModel: ObservableObject {
     private func setUpAnswers(for: Int) {
         self.numOfQuestions = `for`
         if(`for` > 0) {
+            self.canUpload = true
+            print("canupload true in setUpAnswers")
             for _ in 1...`for` {
                 self.answers.append(Answer(answer: ""))
                 self.itemColors.append(.white)
             }
         } else {
+            self.canUpload = false
+            print("canupload false in setUpAnswers")
             self.answers.removeAll()
             self.itemColors.removeAll()
         }
@@ -76,15 +80,14 @@ final class MultipleTextQuizViewModel: ObservableObject {
                 let value = snapshot.value as? [String: Int],
                 let num = value["num"]
             else {
+                print("num not found in childAdded")
                 return
             }
             self.setUpAnswers(for: num)
         })
         
         Database.database().reference().child("text-quiz-num").observe(.childRemoved, with: { (snapshot) -> Void in
-            self.numOfQuestions = 0
-            self.answers.removeAll()
-            self.itemColors.removeAll()
+            self.setUpAnswers(for: 0)
         })
         
         Database.database().reference().child("text-quiz-num").observe(.childChanged, with: { (snapshot) -> Void in
@@ -92,6 +95,7 @@ final class MultipleTextQuizViewModel: ObservableObject {
                 let value = snapshot.value as? [String: Int],
                 let num = value["num"]
             else {
+                print("num not found in childChanged")
                 return
             }
             self.setUpAnswers(for: num)
@@ -112,21 +116,24 @@ final class MultipleTextQuizViewModel: ObservableObject {
         }
 
         self.canUpload = false
+        print("canupload false in sumbitAnswers")
     }
     
     func initUploadListener() {
         Database.database().reference().child("text-quiz-answers").observe(.childAdded, with: { (snapshot) -> Void in
             if snapshot.hasChild(self.sessionService?.userDetails?.uid ?? "error_noUidInfo") {
                 self.canUpload = false
-                print("van")
+                print("canupload false in initUploadListeners childAdded")
             } else {
                 self.canUpload = true
+                print("canupload true in initUploadListeners childAdded")
             }
         })
         
         Database.database().reference().child("text-quiz-answers").observe(.childRemoved, with: { (snapshot) -> Void in
             if snapshot.hasChild(self.sessionService?.userDetails?.uid ?? "error_noUidInfo") {
                 self.canUpload = true
+                print("canupload true in initUploadListeners childRemoved")
             }
         })
     }
@@ -232,5 +239,9 @@ final class MultipleTextQuizViewModel: ObservableObject {
             self.saves.append(dateFormatter.string(from: decoded))
             self.savedSnapshots.append(snapshot)
         }
+    }
+
+    func resetItemColor() {
+        itemColors = itemColors.map { _ in .white }
     }
 }
