@@ -245,8 +245,7 @@ final class WordleViewModel: ObservableObject {
                         //do nothing
                     }
                 } else {
-                    print("wordle empty")
-                    //do nothing, game board is empty
+                    self.letters[letters.count - 1].letter = ""
                 }
                 break
             

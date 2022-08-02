@@ -75,13 +75,15 @@ struct MainMenuView: View {
                 
                 ScrollView {
                     LazyVGrid(columns: gridItemLayout, spacing: 40) {
-                        ForEach($sessionService.buttonTitles, id: \.self) { $e in
-                            if(sessionService.btnStates[sessionService.buttonTitles.firstIndex(of: e) ?? 0] || sessionService.userDetails?.admin ?? false) {
-                                IconButton(text: e,
-                                           icon: sessionService.buttonIcons[sessionService.buttonTitles.firstIndex(of: e) ?? 0],
-                                           action: { ID = sessionService.buttonTitles.firstIndex(of: e) ?? 0 })
-                            }
+                        if sessionService.userDetails?.groupNumber != 99 {
+                            ForEach($sessionService.buttonTitles, id: \.self) { $e in
+                                if(sessionService.btnStates[sessionService.buttonTitles.firstIndex(of: e) ?? 0] || sessionService.userDetails?.admin ?? false) {
+                                    IconButton(text: e,
+                                               icon: sessionService.buttonIcons[sessionService.buttonTitles.firstIndex(of: e) ?? 0],
+                                               action: { ID = sessionService.buttonTitles.firstIndex(of: e) ?? 0 })
+                                }
 
+                            }
                         }
                         
                         IconButton(text: "Támogasd a fejlesztőket", icon: "dollarsign.circle.fill", action: {

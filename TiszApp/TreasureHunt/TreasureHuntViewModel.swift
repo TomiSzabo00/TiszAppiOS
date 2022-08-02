@@ -26,13 +26,12 @@ final class TreasureHuntViewModel : ObservableObject {
     func initToggles() {
         Database.database().reference().child("wordle").observe(.childAdded, with: { (snapshot) in
             if snapshot.key == "treasureHunt" {
+                self.toggles.removeAll()
                 for child in snapshot.children {
                     let number = (child as? DataSnapshot)?.value as? NSNumber ?? 0
                     let shouldBeBool = Bool(truncating: number)
-                    
-                    if self.toggles.count <= self.sessionService.teamNum {
-                        self.toggles.append(TreasureToggle(state: shouldBeBool))
-                    }
+
+                    self.toggles.append(TreasureToggle(state: shouldBeBool))
                 }
             }
         })
@@ -43,10 +42,8 @@ final class TreasureHuntViewModel : ObservableObject {
                 for child in snapshot.children {
                     let number = (child as? DataSnapshot)?.value as? NSNumber ?? 0
                     let shouldBeBool = Bool(truncating: number)
-                    
-                    if self.toggles.count <= self.sessionService.teamNum {
-                        self.toggles.append(TreasureToggle(state: shouldBeBool))
-                    }
+
+                    self.toggles.append(TreasureToggle(state: shouldBeBool))
                 }
             }
         })

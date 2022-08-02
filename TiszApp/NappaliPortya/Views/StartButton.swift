@@ -18,6 +18,7 @@ struct StartButton: View {
         }, label: {
             Label("Útvonal rögzítése", systemImage: "record.circle")
         })
+        .padding()
         .buttonStyle(SimpleButtonStyle())
         .alert(isPresented: $newWorkoutManager.showAlert) {
             Alert(

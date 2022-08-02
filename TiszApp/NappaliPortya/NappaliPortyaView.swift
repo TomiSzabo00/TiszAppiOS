@@ -35,7 +35,7 @@ struct NappaliPortyaView: View {
                 Spacer()
 
                 IconButton(text: "Képek, videók", icon: "icloud.and.arrow.up.fill", action: {
-                    openURL(vm.links[(sessionService.userDetails?.groupNumber ?? 1) - 1])
+                    openURL(vm.links[sessionService.userDetails?.groupNumber ?? 0])
                 })
 
                 Spacer()

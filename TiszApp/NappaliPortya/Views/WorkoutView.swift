@@ -42,7 +42,7 @@ struct WorkoutView: View {
         .environmentObject(mapManager)
         .preferredColorScheme(mapManager.mapType == .standard ? .none : .dark)
         .onAppear {
-            newWorkoutManager.currTeam = sessionService.teamNum
+            newWorkoutManager.currTeam = sessionService.userDetails?.groupNumber ?? 0
         }
     }
 }
