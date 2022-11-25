@@ -929,8 +929,6 @@
 				EF66CE87288C32A20021C043 /* View Models */,
 				EF66CE65288C32990021C043 /* Views */,
 				EF66CE90288C32BC0021C043 /* Models */,
-				EF0A5D2B288F38A5003A0134 /* NappaliPortyaView.swift */,
-				EF0A5D3528903A71003A0134 /* NappaliPortyaViewModel.swift */,
 			);
 			path = NappaliPortya;
 			sourceTree = "<group>";
@@ -1097,6 +1095,7 @@
 		EF66CE65288C32990021C043 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				EF0A5D2B288F38A5003A0134 /* NappaliPortyaView.swift */,
 				EF66CE66288C32990021C043 /* FloatingMapButtons.swift */,
 				EF66CE6D288C32990021C043 /* WorkoutInfoBar.swift */,
 				EF66CE6E288C32990021C043 /* MapView.swift */,
@@ -1112,6 +1111,7 @@
 		EF66CE87288C32A20021C043 /* View Models */ = {
 			isa = PBXGroup;
 			children = (
+				EF0A5D3528903A71003A0134 /* NappaliPortyaViewModel.swift */,
 				EF66CE88288C32A20021C043 /* MapManager.swift */,
 				EF66CE89288C32A20021C043 /* WorkoutsManager.swift */,
 				EF66CE8A288C32A20021C043 /* NewWorkoutManager.swift */,
