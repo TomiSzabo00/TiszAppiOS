@@ -9,7 +9,7 @@ import SwiftUI
 
 
 struct Page: View {
-    @ObservedObject var handler: ImagesHandlerImpl
+    @ObservedObject var handler: ImagesViewModelImpl
     @EnvironmentObject var sessionService: SessionServiceImpl
     
     @State var checkImages: Bool
@@ -20,7 +20,7 @@ struct Page: View {
     
     private var gridItemLayout = [GridItem(.flexible(minimum: 10, maximum: 200), spacing: 20), GridItem(.flexible(minimum: 10, maximum: 200), spacing: 20)]
     
-    init(handler: ImagesHandlerImpl, checkImages: Bool, images: [ImageItem]) {
+    init(handler: ImagesViewModelImpl, checkImages: Bool, images: [ImageItem]) {
         self.handler = handler
         self.checkImages = checkImages
         self.images = images
@@ -50,12 +50,12 @@ struct ImagesView: View {
     
     @State var checkImages: Bool
     
-    @ObservedObject var handler: ImagesHandlerImpl
+    @ObservedObject var handler: ImagesViewModelImpl
     @EnvironmentObject var sessionService: SessionServiceImpl
     
     init(checkImages: Bool) {
         self.checkImages = checkImages
-        self.handler = ImagesHandlerImpl(mode: .loadImages, checkImages: checkImages)
+        self.handler = ImagesViewModelImpl(mode: .loadImages, checkImages: checkImages)
         
         UIPageControl.appearance().currentPageIndicatorTintColor = UIColor(Color(.label).opacity(0.8))
         UIPageControl.appearance().pageIndicatorTintColor = UIColor(Color(.label).opacity(0.2))

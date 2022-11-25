@@ -11,7 +11,6 @@ import FirebaseDatabase
 import FirebaseAuth
 
 struct TextUploadView: View {
-    
     @State var text: String = ""
     @State var textTitle: String = ""
     

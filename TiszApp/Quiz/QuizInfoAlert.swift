@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct QuizInfoAlert: View {
-    
     @Binding var shown: Bool
     
     var body: some View {

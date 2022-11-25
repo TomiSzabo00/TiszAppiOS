@@ -8,7 +8,7 @@
 import Foundation
 import FirebaseDatabase
 
-protocol ScoresHandler {
+protocol ScoresViewModel {
     var scoresList: [ScoreItem] { get }
     var sums: [Int] { get }
     var picSums: [Int] { get }
@@ -17,7 +17,7 @@ protocol ScoresHandler {
     func deleteScore(score: ScoreItem)
 }
 
-final class ScoresHandlerImpl: ScoresHandler, ObservableObject {
+final class ScoresViewModelImpl: ScoresViewModel, ObservableObject {
     @Published var scoresList: [ScoreItem] = []
     
     @Published var sums: [Int] = []

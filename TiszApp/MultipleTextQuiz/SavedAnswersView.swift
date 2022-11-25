@@ -9,7 +9,6 @@ import SwiftUI
 import FirebaseDatabase
 
 struct SavedAnswersView: View {
-
     @StateObject var vm: MultipleTextQuizViewModel
 
     @State var snapshot: DataSnapshot

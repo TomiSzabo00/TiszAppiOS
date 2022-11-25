@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct SpecificSongView: View {
-    
     var title: String
     var lyrics: String
     

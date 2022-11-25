@@ -8,15 +8,12 @@
 import SwiftUI
 
 struct ScoresTableView: View {
-    
     @EnvironmentObject var sessionService: SessionServiceImpl
     
-    @ObservedObject var handler: ScoresHandlerImpl
+    @ObservedObject var handler: ScoresViewModelImpl
     
     @State var ID: Int? = nil
-    
     @State var scoreToEdit: ScoreItem? = nil
-    
     @State var isPicScoresShowing: Bool = true
     
     var body: some View {
@@ -168,6 +165,6 @@ struct ScoresTableView: View {
 
 struct ScoresTableView_Previews: PreviewProvider {
     static var previews: some View {
-        ScoresTableView(handler: ScoresHandlerImpl(teamNum: 4)).environmentObject(SessionServiceImpl())
+        ScoresTableView(handler: ScoresViewModelImpl(teamNum: 4)).environmentObject(SessionServiceImpl())
     }
 }

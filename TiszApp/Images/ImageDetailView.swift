@@ -10,12 +10,10 @@ import FirebaseDatabase
 import FirebaseStorage
 
 struct ImageDetailView: View {
-    
     @State var checkImages: Bool = false
-    //@State var imageInfo: ImageItem? = nil
     
     @ObservedObject private var imageLoader : Loader
-    @ObservedObject var handler: ImagesHandlerImpl
+    @ObservedObject var handler: ImagesViewModelImpl
     
     @EnvironmentObject var sessionService: SessionServiceImpl
     @State private var confirmationShown = false
@@ -27,7 +25,7 @@ struct ImageDetailView: View {
     init(imageInfo: ImageItem, checkImages: Bool, teamNum: Int) {
         //self.imageInfo = imageInfo
         self._checkImages = State(initialValue: checkImages)
-        self.handler = ImagesHandlerImpl(mode: .getDetails, checkImages: checkImages)
+        self.handler = ImagesViewModelImpl(mode: .getDetails, checkImages: checkImages)
         self.imageLoader = Loader(imageInfo.fileName)
         handler.setChangeListener(for: imageInfo)
         handler.getImageAuthorDetails(imageInfo: handler.detail ?? ImageItem())

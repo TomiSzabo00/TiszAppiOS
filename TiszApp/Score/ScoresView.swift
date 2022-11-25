@@ -8,10 +8,9 @@
 import SwiftUI
 
 struct ScoresView: View {
-    
     @EnvironmentObject var sessionService: SessionServiceImpl
     
-    @ObservedObject private var handler = ScoresHandlerImpl(teamNum: 4)
+    @ObservedObject private var handler = ScoresViewModelImpl(teamNum: 4)
     
     @State private var confirmationShown = false
     

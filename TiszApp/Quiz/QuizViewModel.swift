@@ -10,7 +10,7 @@ import FirebaseDatabase
 import FirebaseAuth
 import SwiftUI
 
-protocol QuizHandler {
+protocol QuizViewModel {
     var isEnabled: Bool { get }
     var bgColor: Color { get }
     var userDetails: SessionUserDetails? { get set }
@@ -26,8 +26,7 @@ protocol QuizHandler {
     func disable()
 }
 
-final class QuizHandlerImpl : QuizHandler, ObservableObject {
-    
+final class QuizViewModelImpl : QuizViewModel, ObservableObject {
     @Published var teamNum: Int = 6
     
     @Published var isEnabled: Bool = true

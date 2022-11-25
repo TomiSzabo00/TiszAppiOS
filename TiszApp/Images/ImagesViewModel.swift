@@ -17,7 +17,7 @@ enum ImageHandlerMode {
     case getDetails
 }
 
-protocol ImagesHandler {
+protocol ImagesViewModel {
     var user: User? { get }
     var detail: ImageItem? { get set }
     var imageNames: [ImageItem] { get }
@@ -28,8 +28,7 @@ protocol ImagesHandler {
     func getScorer(imageInfo: ImageItem)
 }
 
-final class ImagesHandlerImpl: ImagesHandler, ObservableObject {
-    
+final class ImagesViewModelImpl: ImagesViewModel, ObservableObject {
     var teamNum: Int = 0
     
     var mode: ImageHandlerMode = .na

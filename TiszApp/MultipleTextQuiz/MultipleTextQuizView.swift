@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct MultipleTextQuizView: View {
-    
     @EnvironmentObject var sessionService: SessionServiceImpl
     
     @StateObject var vm = MultipleTextQuizViewModel()

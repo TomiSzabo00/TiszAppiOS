@@ -10,11 +10,8 @@ import FirebaseDatabase
 
 struct EditScoreView: View {
     @State var what: ScoreItem?
-    
     @State var program: String = ""
-    
     @State var scoreTFs: [String] = ["","","","","",""]
-    
     @State var teamNum: Int
     
     init(what: ScoreItem?, teamNum: Int) {

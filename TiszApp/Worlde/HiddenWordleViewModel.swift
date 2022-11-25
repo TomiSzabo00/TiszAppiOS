@@ -10,7 +10,6 @@ import SwiftUI
 import Firebase
 
 final class HiddenWordleViewModel: ObservableObject {
-    
     var stage: Int
     
     @Published var keys : [String] = ["q", "w", "e", "r", "t", "z", "u", "i", "o", "p", "ő", "ú",

@@ -16,14 +16,14 @@ enum TextHandlerMode {
     case getDetails
 }
 
-protocol TextsHandler {
+protocol TextsViewModel {
     var textInfos: [TextItem] { get }
     var user: User? { get }
     func getTextInfos()
     func getTextAuthorDetails(textInfo: TextItem)
 }
 
-final class TextsHandlerImpl: TextsHandler, ObservableObject {
+final class TextsViewModelImpl: TextsViewModel, ObservableObject {
     
     @Published var textInfos: [TextItem] = []
     var mode: TextHandlerMode = .na

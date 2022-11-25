@@ -10,7 +10,7 @@ import SwiftUI
 
 struct TextsView: View {
     
-    @ObservedObject var handler: TextsHandlerImpl = TextsHandlerImpl(mode: .loadTexts)
+    @ObservedObject var handler: TextsViewModelImpl = TextsViewModelImpl(mode: .loadTexts)
     @EnvironmentObject var sessionService: SessionServiceImpl
     
     var body: some View {

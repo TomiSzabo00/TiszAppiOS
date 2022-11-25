@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct SongsView: View {
-    
     @StateObject var vm = SongsViewModel()
     
     @State var predictableValues: Array<String> = []
@@ -19,7 +18,6 @@ struct SongsView: View {
     
     var body: some View {
         TabView {
-            
                 //first page
                 VStack {
                     HStack {
@@ -58,9 +56,7 @@ struct SongsView: View {
                 SpecificSongView(title: vm.songs[i-1], lyrics: vm.songLyrics[i-1])
             }
         }
-        .tabViewStyle(.page)
-        //.background(LinearGradient(gradient: Gradient(colors: [.gradientDark, .gradientLight, .gradientEnd]), startPoint: .top, endPoint: .bottom))
-        
+        .tabViewStyle(.page)        
         .navigationTitle("Daloskönyv")
         .navigationBarTitleDisplayMode(.inline)
     }

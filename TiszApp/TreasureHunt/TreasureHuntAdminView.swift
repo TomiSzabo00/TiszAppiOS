@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct TreasureHuntAdminView: View {
-    
     @EnvironmentObject var sessionService: SessionServiceImpl
     
     @StateObject var vm = TreasureHuntViewModel()

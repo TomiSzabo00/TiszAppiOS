@@ -8,7 +8,6 @@
 import Foundation
 
 final class SongsViewModel: ObservableObject {
-    
     @Published var data: String = ""
     
     @Published var songs = [String]()

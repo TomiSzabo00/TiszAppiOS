@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct NotificationAdminView: View {
-    
     @StateObject var vm = NotificationViewModel()
     
     @State var toUsers = true

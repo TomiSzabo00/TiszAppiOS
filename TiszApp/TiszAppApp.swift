@@ -13,12 +13,9 @@ import UserNotifications
 
 @main
 struct TiszAppApp: App {
-    
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     
     @StateObject var sessionService = SessionServiceImpl()
-    
-    //@EnvironmentObject var sessionService: SessionServiceImpl
     
     var body: some Scene {
         WindowGroup {
@@ -32,10 +29,8 @@ struct TiszAppApp: App {
                         }
                 case .loggedOut:
                     LoginView().fullBackground()
-                    //PredictedTextTest()
                 }
             }
-            //.accentColor(Color.main)
         }
     }
 }
@@ -46,8 +41,6 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         
         FirebaseApp.configure()
-        
-        //sessionService = SessionServiceImpl()
         
         GADMobileAds.sharedInstance().start(completionHandler: nil)
 
@@ -62,17 +55,17 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         }
 
         if #available(iOS 10.0, *) {
-          // For iOS 10 display notification (sent via APNS)
-          UNUserNotificationCenter.current().delegate = self
+            // For iOS 10 display notification (sent via APNS)
+            UNUserNotificationCenter.current().delegate = self
 
-          let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
-          UNUserNotificationCenter.current().requestAuthorization(
-            options: authOptions,
-            completionHandler: {_, _ in })
+            let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+            UNUserNotificationCenter.current().requestAuthorization(
+                options: authOptions,
+                completionHandler: {_, _ in })
         } else {
-          let settings: UIUserNotificationSettings =
-          UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
-          application.registerUserNotificationSettings(settings)
+            let settings: UIUserNotificationSettings =
+            UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+            application.registerUserNotificationSettings(settings)
         }
 
         application.registerForRemoteNotifications()
@@ -81,44 +74,21 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any],
                      fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-
-//      if let messageID = userInfo[gcmMessageIDKey] {
-//        //print("Message ID: \(messageID)")
-//      }
-
-      //print(userInfo)
-
-      completionHandler(UIBackgroundFetchResult.newData)
+        completionHandler(UIBackgroundFetchResult.newData)
     }
 }
 
 extension AppDelegate: MessagingDelegate {
-    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
-
-//      let deviceToken:[String: String] = ["token": fcmToken ?? ""]
-//        print("Device token: ", deviceToken) // This token can be used for testing notifications on FCM
-        
-    }
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {}
 }
 
 @available(iOS 10, *)
 extension AppDelegate : UNUserNotificationCenterDelegate {
-
-  // Receive displayed notifications for iOS 10 devices.
-  func userNotificationCenter(_ center: UNUserNotificationCenter,
-                              willPresent notification: UNNotification,
-    withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-    //let userInfo = notification.request.content.userInfo
-
-//    if let messageID = userInfo[gcmMessageIDKey] {
-//        //print("Message ID: \(messageID)")
-//    }
-
-    //print(userInfo)
-
-    // Change this to your preferred presentation option
-    completionHandler([[.banner, .badge, .sound]])
-  }
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                willPresent notification: UNNotification,
+                                withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([[.banner, .badge, .sound]])
+    }
 
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
 
@@ -128,35 +98,27 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
 
     }
 
-  func userNotificationCenter(_ center: UNUserNotificationCenter,
-                              didReceive response: UNNotificationResponse,
-                              withCompletionHandler completionHandler: @escaping () -> Void) {
-    //let userInfo = response.notification.request.content.userInfo
-
-//    if let messageID = userInfo[gcmMessageIDKey] {
-//      //print("Message ID from userNotificationCenter didReceive: \(messageID)")
-//    }
-
-    //print(userInfo)
-
-    completionHandler()
-  }
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                didReceive response: UNNotificationResponse,
+                                withCompletionHandler completionHandler: @escaping () -> Void) {
+        completionHandler()
+    }
 }
 
 extension View {
-  func endTextEditing() {
-    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder),
-                                    to: nil, from: nil, for: nil)
-  }
+    func endTextEditing() {
+        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder),
+                                        to: nil, from: nil, for: nil)
+    }
 }
 
 public extension View {
     func fullBackground() -> some View {
-       return background(
-                Image("bg2_day")
-                    .resizable()
-                    .edgesIgnoringSafeArea(.all)
-                    .scaledToFill()
-       )
+        return background(
+            Image("bg2_day")
+                .resizable()
+                .edgesIgnoringSafeArea(.all)
+                .scaledToFill()
+        )
     }
 }

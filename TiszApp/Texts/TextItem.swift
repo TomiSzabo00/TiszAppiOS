@@ -10,7 +10,6 @@ import SwiftUI
 import FirebaseDatabase
 import FirebaseStorage
 
-
 struct TextItem: Identifiable, Equatable {
     var id: String
     var title: String

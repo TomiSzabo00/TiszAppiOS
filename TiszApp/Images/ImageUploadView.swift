@@ -11,7 +11,6 @@ import FirebaseDatabase
 import FirebaseAuth
 
 struct ImageUploadView: View {
-    
     @State var showImagePicker = false
     @State var image: UIImage?
     

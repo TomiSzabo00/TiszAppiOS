@@ -21,21 +21,14 @@ struct Answer: Identifiable, Hashable {
 
 
 final class MultipleTextQuizViewModel: ObservableObject {
-    
     var sessionService: SessionServiceImpl?
     
     @Published private(set) var numOfQuestions: Int = 0
-    
     @Published var allAnswers = [[[Answer]]]()
-    
     @Published var answers = [Answer]()
-    
     @Published var canUpload = true
-    
     @Published var itemColors = [Color]()
-
     @Published var errorAlert = false
-
     @Published var saves = [String]()
     @Published var savedSnapshots = [DataSnapshot]()
 

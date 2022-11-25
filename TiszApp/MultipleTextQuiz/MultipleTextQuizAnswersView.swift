@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct MultipleTextQuizAnswersView: View {
-    
     @StateObject var vm : MultipleTextQuizViewModel
     
     @State var answers: [[Answer]]

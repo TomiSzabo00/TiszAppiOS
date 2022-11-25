@@ -9,7 +9,6 @@ import SwiftUI
 import MapKit
 
 struct EjjeliPortyaAdminView: View {
-    
     @EnvironmentObject var sessionService: SessionServiceImpl
     
     @StateObject private var vm: EjjeliPortyaViewModel = EjjeliPortyaViewModel()

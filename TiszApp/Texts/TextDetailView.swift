@@ -12,7 +12,7 @@ import FirebaseStorage
 struct TextDetailView: View {
     
     var textInfo: TextItem
-    @ObservedObject var handler: TextsHandlerImpl = TextsHandlerImpl(mode: .getDetails)
+    @ObservedObject var handler: TextsViewModelImpl = TextsViewModelImpl(mode: .getDetails)
     
     @EnvironmentObject var sessionService: SessionServiceImpl
     @State private var confirmationShown = false

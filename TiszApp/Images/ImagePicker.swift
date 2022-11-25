@@ -9,7 +9,6 @@ import Foundation
 import SwiftUI
 
 struct imagePicker : UIViewControllerRepresentable {
-    
     @Binding var image: UIImage?
     @Binding var showPicker: Bool
     

@@ -32,17 +32,12 @@ protocol RegistrationViewModel {
 }
 
 final class RegistrationViewModelImpl: ObservableObject, RegistrationViewModel {
-    
     @Published var errorType: AuthErrorType = .na
-    
     @Published var hasError: Bool = false
-    
-    var service: RegistrationService
-    
     @Published var state: RegistrationState = .na
-    
     @Published var userDetails: RegistrationDetails = RegistrationDetails.new
-    
+
+    var service: RegistrationService
     private var subscriptions = Set<AnyCancellable>()
     
     init(service: RegistrationService) {

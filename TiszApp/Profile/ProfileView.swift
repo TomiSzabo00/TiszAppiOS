@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct ProfileView: View {
-    
     @EnvironmentObject var sessionService: SessionServiceImpl
     
     @StateObject var vm = ProfileViewModel(groupNum: -1, name: "")

@@ -9,7 +9,6 @@ import SwiftUI
 import FirebaseDatabase
 import FirebaseAuth
 
-
 func SanitiseInput(input: String) -> Int{
     var correctLenghtInput = ""
     if input.count == 0 {
@@ -25,11 +24,8 @@ func SanitiseInput(input: String) -> Int{
 
 
 struct AddScoreView: View {
-    
     @State var program: String = ""
-    
     @State var scoreTFs: [String] = ["","","","","",""]
-    
     @State var teamNum: Int
     
     init(teamNum: Int) {

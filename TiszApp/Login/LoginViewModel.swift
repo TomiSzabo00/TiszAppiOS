@@ -24,7 +24,6 @@ protocol LoginViewModel {
 }
 
 final class LoginViewModelImpl: ObservableObject, LoginViewModel {
-    
     @Published var details: LoginDetails = LoginDetails.new
     @Published var state: LoginState = .na
     @Published var hasError: Bool = false

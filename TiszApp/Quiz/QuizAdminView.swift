@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct QuizAdminView: View {
-    
-    @ObservedObject var handler: QuizHandlerImpl = QuizHandlerImpl()
+    @ObservedObject var handler: QuizViewModelImpl = QuizViewModelImpl()
     
     @State var teamNum: Int
     

@@ -32,7 +32,6 @@ struct Scores: Decodable, Hashable {
 }
 
 struct ScoreItem: Decodable, Identifiable, Hashable {
-
     var id: String
     var scores: [Int]
     var name: String

@@ -8,10 +8,9 @@
 import SwiftUI
 
 struct QuizView: View {
-    
     @EnvironmentObject var sessionService: SessionServiceImpl
     
-    @ObservedObject var handler: QuizHandlerImpl = QuizHandlerImpl()
+    @ObservedObject var handler: QuizViewModelImpl = QuizViewModelImpl()
     
     @State var isInfo: Bool = false
     

@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct EjjeliPortyaView: View {
-    
     @EnvironmentObject var sessionService : SessionServiceImpl
     
     @StateObject var vm = EjjeliPortyaViewModel()

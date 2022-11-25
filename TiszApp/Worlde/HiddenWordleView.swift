@@ -9,7 +9,6 @@ import SwiftUI
 import AlertToast
 
 struct HiddenWordleView: View {
-    
     @StateObject var vm = HiddenWordleViewModel(stage: 1)
     
     var body: some View {
@@ -39,7 +38,6 @@ struct HiddenWordleView: View {
                                     .frame(maxWidth: .infinity, minHeight: 50, maxHeight: 50)
                                     .contentShape(RoundedRectangle(cornerRadius: 2))
                             })
-                            //.frame(maxWidth: .infinity)
                             .buttonStyle(WordleButtonStyle())
                             .background(vm.backgrounds[vm.keys.firstIndex(of: key) ?? 0])
                             .cornerRadius(2)

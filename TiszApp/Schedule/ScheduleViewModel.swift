@@ -9,7 +9,6 @@ import FirebaseDatabase
 import Foundation
 
 final class ScheduleViewModel: ObservableObject {
-
     @Published var scheduleDays = [ScheduleDay]()
 
     let days = ["Hétfő", "Kedd", "Szerda", "Csütörtök", "Péntek", "Szombat", "Vasárnap"]

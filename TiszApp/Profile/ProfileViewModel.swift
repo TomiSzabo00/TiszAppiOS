@@ -15,7 +15,6 @@ struct SimpleUser: Identifiable, Hashable {
 }
 
 final class ProfileViewModel: ObservableObject {
-    
     var groupNum : Int
     var name : String
     
