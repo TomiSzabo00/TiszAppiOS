@@ -11,6 +11,7 @@
 		55090E9729313836006DE5E6 /* LetterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55090E9629313836006DE5E6 /* LetterView.swift */; };
 		55090E9929313897006DE5E6 /* Letter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55090E9829313897006DE5E6 /* Letter.swift */; };
 		55090E9B293138D5006DE5E6 /* States.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55090E9A293138D5006DE5E6 /* States.swift */; };
+		55090EA1293139A7006DE5E6 /* TreasureToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55090EA0293139A7006DE5E6 /* TreasureToggle.swift */; };
 		5510518B281D5F5900F31076 /* EditScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5510518A281D5F5900F31076 /* EditScoreView.swift */; };
 		5512548F285661B4006A14CB /* SongsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5512548E285661B4006A14CB /* SongsView.swift */; };
 		55125491285681E1006A14CB /* SongsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55125490285681E1006A14CB /* SongsViewModel.swift */; };
@@ -302,6 +303,7 @@
 		55090E9629313836006DE5E6 /* LetterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterView.swift; sourceTree = "<group>"; };
 		55090E9829313897006DE5E6 /* Letter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Letter.swift; sourceTree = "<group>"; };
 		55090E9A293138D5006DE5E6 /* States.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = States.swift; sourceTree = "<group>"; };
+		55090EA0293139A7006DE5E6 /* TreasureToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreasureToggle.swift; sourceTree = "<group>"; };
 		5510518A281D5F5900F31076 /* EditScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditScoreView.swift; sourceTree = "<group>"; };
 		5512548E285661B4006A14CB /* SongsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongsView.swift; sourceTree = "<group>"; };
 		55125490285681E1006A14CB /* SongsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongsViewModel.swift; sourceTree = "<group>"; };
@@ -689,6 +691,21 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		55090E9E29313989006DE5E6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		55090E9F29313999006DE5E6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				55090EA0293139A7006DE5E6 /* TreasureToggle.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		5512548928565AB1006A14CB /* Songs */ = {
 			isa = PBXGroup;
 			children = (
@@ -912,6 +929,7 @@
 		5569F4BC285D359400B9C794 /* Notifications */ = {
 			isa = PBXGroup;
 			children = (
+				55090E9E29313989006DE5E6 /* Model */,
 				55090E9D29313935006DE5E6 /* ViewModel */,
 				55090E9C2931392F006DE5E6 /* View */,
 			);
@@ -982,6 +1000,7 @@
 		55AF151F2868E10400D29584 /* TreasureHunt */ = {
 			isa = PBXGroup;
 			children = (
+				55090E9F29313999006DE5E6 /* Model */,
 				55090E9229313762006DE5E6 /* View */,
 				55090E912931375B006DE5E6 /* ViewModel */,
 			);
@@ -1488,6 +1507,7 @@
 				55E37E2827F79480002ED658 /* AddScoreView.swift in Sources */,
 				EF66CE80288C32990021C043 /* EndButton.swift in Sources */,
 				EF66CE9D288C32BC0021C043 /* MulticolourPolyline.swift in Sources */,
+				55090EA1293139A7006DE5E6 /* TreasureToggle.swift in Sources */,
 				5591E7B82800EB2700C811F8 /* TextItem.swift in Sources */,
 				557B8F9C27EDF6A200312433 /* RegisterView.swift in Sources */,
 				557B8FA627EE4D9800312433 /* User.swift in Sources */,

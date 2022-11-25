@@ -8,15 +8,6 @@
 import Foundation
 import FirebaseDatabase
 
-struct TreasureToggle: Identifiable, Hashable {
-    let id = UUID()
-    var state: Bool = false
-    
-    init(state: Bool = false) {
-        self.state = state
-    }
-}
-
 final class TreasureHuntViewModel : ObservableObject {
     
     var sessionService: SessionServiceImpl!
