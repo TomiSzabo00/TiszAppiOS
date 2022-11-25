@@ -1,8 +1,12 @@
-//
-//  ScheduleData.swift
-//  TiszApp
-//
-//  Created by Szabó Tamás on 2022. 11. 25..
-//
-
 import Foundation
+
+struct ScheduleData: Codable {
+    var Day: String
+    var Breakfast: String
+    var BeforenoonTask: String
+    var Lunch: String
+    var AfternoonTask: String
+    var Dinner: String
+    var NightTask: String
+    var MidnightTask: String?
+}

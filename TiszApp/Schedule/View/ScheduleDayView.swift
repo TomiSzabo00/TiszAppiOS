@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ScheduleDayView: View {
     var day: ScheduleDay
+
     var body: some View {
         Form {
             Section {
@@ -64,6 +65,15 @@ struct ScheduleDayView: View {
 
 struct ScheduleDayView_Previews: PreviewProvider {
     static var previews: some View {
-        ScheduleDayView(day: ScheduleDay())
+        ScheduleDayView(day: ScheduleDay(
+            dayNum: 1,
+            breakfast: "Reggeli",
+            beforenoonTask: "Program 1",
+            lunch: "Ebéd",
+            afternoonTask: "Promgram 2",
+            dinner: "Vacsora",
+            nightTask: "Program 3",
+            midnightTask: "")
+        )
     }
 }

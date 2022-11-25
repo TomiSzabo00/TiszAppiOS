@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		55090E8E293135C0006DE5E6 /* ScheduleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55090E8D293135C0006DE5E6 /* ScheduleData.swift */; };
 		5510518B281D5F5900F31076 /* EditScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5510518A281D5F5900F31076 /* EditScoreView.swift */; };
 		5512548F285661B4006A14CB /* SongsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5512548E285661B4006A14CB /* SongsView.swift */; };
 		55125491285681E1006A14CB /* SongsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55125490285681E1006A14CB /* SongsViewModel.swift */; };
@@ -294,6 +295,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		55090E8D293135C0006DE5E6 /* ScheduleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleData.swift; sourceTree = "<group>"; };
 		5510518A281D5F5900F31076 /* EditScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditScoreView.swift; sourceTree = "<group>"; };
 		5512548E285661B4006A14CB /* SongsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongsView.swift; sourceTree = "<group>"; };
 		55125490285681E1006A14CB /* SongsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongsViewModel.swift; sourceTree = "<group>"; };
@@ -594,6 +596,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		55090E8C293135B1006DE5E6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				55090E8D293135C0006DE5E6 /* ScheduleData.swift */,
+				EF70B929287FE95B005695EE /* ScheduleDay.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		55090E8F293135F7006DE5E6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				EF70B927287F1659005695EE /* ScheduleViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		55090E9029313601006DE5E6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				55AF15262869BB0900D29584 /* ScheduleView.swift */,
+				EF70B92B287FEDE4005695EE /* ScheduleDayView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		5512548928565AB1006A14CB /* Songs */ = {
 			isa = PBXGroup;
 			children = (
@@ -910,10 +938,9 @@
 		55AF15252869BAE600D29584 /* Schedule */ = {
 			isa = PBXGroup;
 			children = (
-				55AF15262869BB0900D29584 /* ScheduleView.swift */,
-				EF70B927287F1659005695EE /* ScheduleViewModel.swift */,
-				EF70B929287FE95B005695EE /* ScheduleDay.swift */,
-				EF70B92B287FEDE4005695EE /* ScheduleDayView.swift */,
+				55090E9029313601006DE5E6 /* View */,
+				55090E8F293135F7006DE5E6 /* ViewModel */,
+				55090E8C293135B1006DE5E6 /* Model */,
 			);
 			path = Schedule;
 			sourceTree = "<group>";
@@ -1460,6 +1487,7 @@
 				55B3954F2857377B0044389E /* FilterSongsTextField.swift in Sources */,
 				EF70B92A287FE95B005695EE /* ScheduleDay.swift in Sources */,
 				5591E7AD27FDA01000C811F8 /* ImageUploadView.swift in Sources */,
+				55090E8E293135C0006DE5E6 /* ScheduleData.swift in Sources */,
 				55AF15232868E1ED00D29584 /* TreasureHuntViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
