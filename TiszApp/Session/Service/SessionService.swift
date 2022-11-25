@@ -7,7 +7,7 @@
 
 import Foundation
 import Combine
-import Firebase
+import FirebaseDatabase
 import SwiftUI
 
 enum SessionState {
