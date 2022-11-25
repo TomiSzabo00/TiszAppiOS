@@ -673,6 +673,22 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		55090E9C2931392F006DE5E6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5569F4BD285D35AE00B9C794 /* NotificationAdminView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		55090E9D29313935006DE5E6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				5569F4C1285D35D800B9C794 /* NotificationViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		5512548928565AB1006A14CB /* Songs */ = {
 			isa = PBXGroup;
 			children = (
@@ -896,8 +912,8 @@
 		5569F4BC285D359400B9C794 /* Notifications */ = {
 			isa = PBXGroup;
 			children = (
-				5569F4BD285D35AE00B9C794 /* NotificationAdminView.swift */,
-				5569F4C1285D35D800B9C794 /* NotificationViewModel.swift */,
+				55090E9D29313935006DE5E6 /* ViewModel */,
+				55090E9C2931392F006DE5E6 /* View */,
 			);
 			path = Notifications;
 			sourceTree = "<group>";
