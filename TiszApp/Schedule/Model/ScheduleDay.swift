@@ -5,7 +5,6 @@
 //  Created by Szabo Tamas on 2022. 07. 14..
 //
 
-import FirebaseDatabase
 import Foundation
 
 struct ScheduleDay: Identifiable {
@@ -18,17 +17,6 @@ struct ScheduleDay: Identifiable {
     var dinner: String
     var nightTask: String
     var midnightTask: String
-
-    init() {
-        self.dayNum = 0
-        self.breakfast = "kenyer"
-        self.beforenoonTask = "sport"
-        self.lunch = "moslek"
-        self.afternoonTask = "gyumolcsjatek"
-        self.dinner = "moslek kenyerrel"
-        self.nightTask = "fele sem igaz"
-        self.midnightTask = "ejjeli portya"
-    }
 
     init(dayNum: Int, breakfast: String, beforenoonTask: String, lunch: String, afternoonTask: String, dinner: String, nightTask: String, midnightTask: String) {
         self.dayNum = dayNum
@@ -51,15 +39,4 @@ struct ScheduleDay: Identifiable {
         self.nightTask = data.NightTask
         self.midnightTask = data.MidnightTask ?? ""
     }
-}
-
-struct ScheduleData: Codable {
-    var Day: String
-    var Breakfast: String
-    var BeforenoonTask: String
-    var Lunch: String
-    var AfternoonTask: String
-    var Dinner: String
-    var NightTask: String
-    var MidnightTask: String?
 }
