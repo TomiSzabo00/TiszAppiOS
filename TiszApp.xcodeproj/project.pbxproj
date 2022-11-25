@@ -622,6 +622,22 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		55090E912931375B006DE5E6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				55AF15222868E1ED00D29584 /* TreasureHuntViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		55090E9229313762006DE5E6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				55AF15202868E11C00D29584 /* TreasureHuntAdminView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		5512548928565AB1006A14CB /* Songs */ = {
 			isa = PBXGroup;
 			children = (
@@ -917,8 +933,8 @@
 		55AF151F2868E10400D29584 /* TreasureHunt */ = {
 			isa = PBXGroup;
 			children = (
-				55AF15202868E11C00D29584 /* TreasureHuntAdminView.swift */,
-				55AF15222868E1ED00D29584 /* TreasureHuntViewModel.swift */,
+				55090E9229313762006DE5E6 /* View */,
+				55090E912931375B006DE5E6 /* ViewModel */,
 			);
 			path = TreasureHunt;
 			sourceTree = "<group>";
