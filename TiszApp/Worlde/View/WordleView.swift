@@ -8,30 +8,7 @@
 import SwiftUI
 import AlertToast
 
-struct LetterView: View {
-    
-    @State var l : Letter
-    var bg: Color
-    var degrees: Double
-    
-    var body: some View {
-        ZStack {
-            Rectangle()
-                .strokeBorder(Color.accentColor, lineWidth: 1)
-                .background(Rectangle().fill(bg))
-                .frame(width: 50, height: 50)
-                .rotation3DEffect(.degrees(degrees), axis: (x: 0, y: 1, z: 0))
-
-            Text(l.letter.uppercased())
-                .foregroundColor(.accentColor)
-                .frame(width: 50, height: 50)
-        }
-    }
-    
-}
-
 struct WordleView: View {
-    
     @EnvironmentObject var sessionService: SessionServiceImpl
     
     @StateObject var vm = WordleViewModel()
@@ -65,7 +42,6 @@ struct WordleView: View {
                                     .frame(maxWidth: .infinity, minHeight: 50, maxHeight: 50)
                                     .contentShape(RoundedRectangle(cornerRadius: 2))
                             })
-                            //.frame(maxWidth: .infinity)
                             .buttonStyle(WordleButtonStyle())
                             .background(vm.backgrounds[vm.keys.firstIndex(of: key) ?? 0])
                             .cornerRadius(2)

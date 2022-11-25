@@ -10,44 +10,7 @@ import SwiftUI
 import FirebaseDatabase
 import FirebaseAuth
 
-enum GameState {
-    case inProgress
-    case win
-    case lose
-}
-
-enum LetterState {
-    case na
-    case no
-    case inWord
-    case match
-    
-    var name: String {
-        switch self {
-        case .na:
-            return "na"
-        case .no:
-            return "no"
-        case .inWord:
-            return "inWord"
-        case .match:
-            return "match"
-        }
-    }
-}
-
-struct Letter: Identifiable, Hashable {
-    let id = UUID()
-    var letter: String
-    var state: LetterState = .na
-    
-    init(_ letter : String = "") {
-        self.letter = letter
-    }
-}
-
 final class WordleViewModel: ObservableObject {
-    
     var sessionService: SessionServiceImpl!
     
     @Published var keys : [String] = ["q", "w", "e", "r", "t", "z", "u", "i", "o", "p", "ő", "ú",
@@ -206,8 +169,6 @@ final class WordleViewModel: ObservableObject {
                     if let startWords = try? String(contentsOfFile: startWordsPath)
                     {
                         self.words = startWords.components(separatedBy: "\r\n")
-                        //self.words = allWords.map { $0.trimmingCharacters(in: .whitespaces) }
-                        //print(self.words)
                     }
                     else
                     {

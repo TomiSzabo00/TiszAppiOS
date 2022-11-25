@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		55090E8E293135C0006DE5E6 /* ScheduleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55090E8D293135C0006DE5E6 /* ScheduleData.swift */; };
+		55090E9729313836006DE5E6 /* LetterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55090E9629313836006DE5E6 /* LetterView.swift */; };
+		55090E9929313897006DE5E6 /* Letter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55090E9829313897006DE5E6 /* Letter.swift */; };
+		55090E9B293138D5006DE5E6 /* States.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55090E9A293138D5006DE5E6 /* States.swift */; };
 		5510518B281D5F5900F31076 /* EditScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5510518A281D5F5900F31076 /* EditScoreView.swift */; };
 		5512548F285661B4006A14CB /* SongsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5512548E285661B4006A14CB /* SongsView.swift */; };
 		55125491285681E1006A14CB /* SongsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55125490285681E1006A14CB /* SongsViewModel.swift */; };
@@ -296,6 +299,9 @@
 
 /* Begin PBXFileReference section */
 		55090E8D293135C0006DE5E6 /* ScheduleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleData.swift; sourceTree = "<group>"; };
+		55090E9629313836006DE5E6 /* LetterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterView.swift; sourceTree = "<group>"; };
+		55090E9829313897006DE5E6 /* Letter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Letter.swift; sourceTree = "<group>"; };
+		55090E9A293138D5006DE5E6 /* States.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = States.swift; sourceTree = "<group>"; };
 		5510518A281D5F5900F31076 /* EditScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditScoreView.swift; sourceTree = "<group>"; };
 		5512548E285661B4006A14CB /* SongsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongsView.swift; sourceTree = "<group>"; };
 		55125490285681E1006A14CB /* SongsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongsViewModel.swift; sourceTree = "<group>"; };
@@ -638,6 +644,35 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		55090E93293137EB006DE5E6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EFDB53F3287EAC3B0093CE78 /* WordleHowTo.swift */,
+				55AF151B2868B91200D29584 /* HiddenWordleView.swift */,
+				55622E582861DA47003A46DA /* WordleView.swift */,
+				55090E9629313836006DE5E6 /* LetterView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		55090E94293137F1006DE5E6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				55AF151D2868B94700D29584 /* HiddenWordleViewModel.swift */,
+				55622E5A2861DA9A003A46DA /* WordleViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		55090E95293137F6006DE5E6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				55090E9829313897006DE5E6 /* Letter.swift */,
+				55090E9A293138D5006DE5E6 /* States.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		5512548928565AB1006A14CB /* Songs */ = {
 			isa = PBXGroup;
 			children = (
@@ -843,12 +878,10 @@
 		55622E572861DA23003A46DA /* Worlde */ = {
 			isa = PBXGroup;
 			children = (
+				55090E95293137F6006DE5E6 /* Model */,
+				55090E94293137F1006DE5E6 /* ViewModel */,
+				55090E93293137EB006DE5E6 /* View */,
 				55261650286310E50055D7D6 /* magyar_szavak.txt */,
-				55622E582861DA47003A46DA /* WordleView.swift */,
-				55622E5A2861DA9A003A46DA /* WordleViewModel.swift */,
-				55AF151B2868B91200D29584 /* HiddenWordleView.swift */,
-				55AF151D2868B94700D29584 /* HiddenWordleViewModel.swift */,
-				EFDB53F3287EAC3B0093CE78 /* WordleHowTo.swift */,
 			);
 			path = Worlde;
 			sourceTree = "<group>";
@@ -1475,8 +1508,10 @@
 				55E8003827F0A27E007181E0 /* SessionService.swift in Sources */,
 				EF70B928287F1659005695EE /* ScheduleViewModel.swift in Sources */,
 				EF0A5D3828908DA5003A0134 /* SavedAnswersView.swift in Sources */,
+				55090E9B293138D5006DE5E6 /* States.swift in Sources */,
 				55149F562850CC7D007BECEF /* EjjeliPortyaViewModel.swift in Sources */,
 				55B39560285A115B0044389E /* MultipleTextQuizAnswersView.swift in Sources */,
+				55090E9929313897006DE5E6 /* Letter.swift in Sources */,
 				EF70B92C287FEDE4005695EE /* ScheduleDayView.swift in Sources */,
 				EF66CE8E288C32A20021C043 /* NewWorkoutManager.swift in Sources */,
 				5591E7C92805B20700C811F8 /* QuizViewModel.swift in Sources */,
@@ -1498,6 +1533,7 @@
 				EF0A5D3A28910F3D003A0134 /* SavesView.swift in Sources */,
 				55149F522850C361007BECEF /* EjjeliPortyaAdminView.swift in Sources */,
 				55E8002F27F07FCC007181E0 /* RegistrationService.swift in Sources */,
+				55090E9729313836006DE5E6 /* LetterView.swift in Sources */,
 				EF66CE85288C329A0021C043 /* NewWorkoutInfoBar.swift in Sources */,
 				55B0E6D227EBDA9B0058A5B9 /* TiszAppApp.swift in Sources */,
 				55B3954F2857377B0044389E /* FilterSongsTextField.swift in Sources */,
