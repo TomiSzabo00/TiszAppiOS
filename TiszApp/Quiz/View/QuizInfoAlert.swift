@@ -24,7 +24,7 @@ struct QuizInfoAlert: View {
             }
             .padding(10)
             HStack {
-                Text("Szürke gomb").foregroundColor(.gray).bold()//.shadow(color: .foreground, radius: 3)
+                Text("Szürke gomb").foregroundColor(.gray).bold()
                 Text(": nem lehet jelezni").lineLimit(2)
             }
             .padding(10)
