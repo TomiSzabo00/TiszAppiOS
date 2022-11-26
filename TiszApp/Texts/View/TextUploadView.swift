@@ -44,8 +44,8 @@ struct TextUploadView: View {
                         if text != "" && textTitle != "" {
                             vm.uploadText(title: textTitle, text: text) { isSuccess in
                                 self.succesfulUpload = isSuccess
+                                uploaded = true
                             }
-                            uploaded = true
                         }
                     }, label: {
                         Text("Feltöltés")
