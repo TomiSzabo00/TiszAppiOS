@@ -6,49 +6,8 @@
 //
 
 import SwiftUI
-import FirebaseAuth
-
-func customAlert(errTpye: AuthErrorType) -> Alert {
-    return Alert(title: Text("Hiba"),
-                 message: {
-        switch errTpye {
-        case .noMatchingPasswords:
-            return Text("A két jelszó nem egyezik.")
-        case .noFullNameInDatabase:
-            return Text("Nincs ilyen nevű táborozó az adatbázisban.")
-        case .noMatchingNameAndID:
-            return Text("Ehhez a névhez nem ez az azonosító tartozik. Azonosítás sikertelen.")
-        default:
-            return Text("Ismeretlen hiba történt. Próbáld újra.")
-        }
-    }())
-}
-
-func customError(error: Error) -> String {
-    var myError: String = "No match found for error type..."
-    if let errCode = AuthErrorCode(rawValue: error._code) {
-        switch errCode {
-        case .emailAlreadyInUse:
-            myError = "Ez a felhasználónév már foglalt."
-        case .invalidEmail:
-            myError = "Hibás formátum: A felhasználónév 1 szóból állhat csak, speciális karakterek nélkül."
-        case .userNotFound:
-            myError = "Ilyen felhasználónév nincs regisztrálva."
-        case .networkError:
-            myError = "Hálózat nem elérhető. Kapcsold be a mobilnetet, vagy próbáld meg később."
-        case .weakPassword:
-            myError = "A jelszó túl rövid. Legalább 6 karakter hosszúnak kell lennie."
-        case .wrongPassword:
-            myError = "Hibás jelszó."
-        default:
-            myError = "Ismeretlen a hiba oka."
-        }
-    }
-    return myError
-}
 
 struct RegisterView: View {
-    
     @Environment(\.presentationMode) var presentationMode
     
     @StateObject private var vm = RegistrationViewModelImpl(service: RegistrationServiceImpl())
@@ -64,12 +23,9 @@ struct RegisterView: View {
     }
     
     var body: some View {
-        switch loading {
-        case true:
-            ProgressView{
-                
-            }
-        default:
+        if loading {
+            ProgressView{}
+        } else {
             NavigationView{
                 ScrollView{
                     VStack{
@@ -107,13 +63,10 @@ struct RegisterView: View {
                                     .cornerRadius(20)
                                     .frame(height: 200, alignment: .center)
                                 }
-                                
                             } //ZStack
-                            
                         }
                         .padding()
-                        
-                        
+
                         VStack{
                             TextField("Felhasználónév", text: $vm.userDetails.userName)
                                 .padding()
@@ -134,16 +87,9 @@ struct RegisterView: View {
                             HStack{
                                 Spacer()
                                 Button(action: {
-                                    
-                                    //register
                                     vm.register()
-                                    
                                 }, label: { Text("Regisztrálok")})
                                 .buttonStyle(ElevatedButtonStyle())
-//                                .frame(width: 200, height: 50)
-//                                .background(Color.blue)
-//                                .foregroundColor(Color.white)
-//                                .cornerRadius(10)
                                 .padding(.top)
                             }
                         }
@@ -177,7 +123,22 @@ struct RegisterView: View {
                 }
             }
         }
-        
+    }
+
+    private func customAlert(errTpye: AuthErrorType) -> Alert {
+        return Alert(title: Text("Hiba"),
+                     message: {
+            switch errTpye {
+            case .noMatchingPasswords:
+                return Text("A két jelszó nem egyezik.")
+            case .noFullNameInDatabase:
+                return Text("Nincs ilyen nevű táborozó az adatbázisban.")
+            case .noMatchingNameAndID:
+                return Text("Ehhez a névhez nem ez az azonosító tartozik. Azonosítás sikertelen.")
+            default:
+                return Text("Ismeretlen hiba történt. Próbáld újra.")
+            }
+        }())
     }
 }
 

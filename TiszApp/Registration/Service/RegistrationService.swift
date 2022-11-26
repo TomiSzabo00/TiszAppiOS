@@ -25,9 +25,7 @@ struct RegisterInfo {
     var fullName: String
     var groupNumber: Int
     var admin: Bool
-}
 
-extension RegisterInfo {
     static var new: RegisterInfo {
         RegisterInfo(fullName: "", groupNumber: -1, admin: false)
     }
@@ -177,4 +175,27 @@ final class RegistrationServiceImpl: RegistrationService {
         }
         userJSONtask.resume()
     }
+}
+
+func customError(error: Error) -> String {
+    var myError: String = "No match found for error type..."
+    if let errCode = AuthErrorCode(rawValue: error._code) {
+        switch errCode {
+        case .emailAlreadyInUse:
+            myError = "Ez a felhasználónév már foglalt."
+        case .invalidEmail:
+            myError = "Hibás formátum: A felhasználónév 1 szóból állhat csak, speciális karakterek nélkül."
+        case .userNotFound:
+            myError = "Ilyen felhasználónév nincs regisztrálva."
+        case .networkError:
+            myError = "Hálózat nem elérhető. Kapcsold be a mobilnetet, vagy próbáld meg később."
+        case .weakPassword:
+            myError = "A jelszó túl rövid. Legalább 6 karakter hosszúnak kell lennie."
+        case .wrongPassword:
+            myError = "Hibás jelszó."
+        default:
+            myError = "Ismeretlen a hiba oka."
+        }
+    }
+    return myError
 }

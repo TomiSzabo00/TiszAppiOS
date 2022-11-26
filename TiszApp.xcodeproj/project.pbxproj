@@ -987,6 +987,31 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
+		55090EDD29323830006DE5E6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				55B40DCA27F3125B00B5B065 /* TextFieldInputPrediction.swift */,
+				557B8F9B27EDF6A200312433 /* RegisterView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		55090EDE29323835006DE5E6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				55E8003027F09CBC007181E0 /* RegistrationViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		55090EDF2932383A006DE5E6 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				55E8002E27F07FCC007181E0 /* RegistrationService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		5512548928565AB1006A14CB /* Songs */ = {
 			isa = PBXGroup;
 			children = (
@@ -1402,10 +1427,9 @@
 		55E8002D27F07FB6007181E0 /* Registration */ = {
 			isa = PBXGroup;
 			children = (
-				55B40DCA27F3125B00B5B065 /* TextFieldInputPrediction.swift */,
-				557B8F9B27EDF6A200312433 /* RegisterView.swift */,
-				55E8002E27F07FCC007181E0 /* RegistrationService.swift */,
-				55E8003027F09CBC007181E0 /* RegistrationViewModel.swift */,
+				55090EDF2932383A006DE5E6 /* Service */,
+				55090EDE29323835006DE5E6 /* ViewModel */,
+				55090EDD29323830006DE5E6 /* View */,
 			);
 			path = Registration;
 			sourceTree = "<group>";
