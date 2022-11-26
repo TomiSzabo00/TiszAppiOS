@@ -16,18 +16,17 @@ struct QuizView: View {
     
     var body: some View {
         ZStack {
-        VStack {
-            Spacer()
-            Button(action: {
-                handler.singnal()
-            }, label: {
-                Text("")
-                    .frame(maxWidth: .infinity, maxHeight: .infinity)
-            })
-            .background(handler.bgColor)
-            .disabled(!handler.isEnabled)
-        }
-        //.blur(radius: isInfo ? 30 : 0)
+            VStack {
+                Spacer()
+                Button(action: {
+                    handler.singnal()
+                }, label: {
+                    Text("")
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                })
+                .background(handler.bgColor)
+                .disabled(!handler.isEnabled)
+            }
             
             if isInfo {
                 QuizInfoAlert(shown: $isInfo)
@@ -43,7 +42,6 @@ struct QuizView: View {
             isInfo = true
         }, label: {
             Image(systemName: "info.circle")
-                //.foregroundStyle(LinearGradient(Color.gradientDark, Color.gradientLight))
         }))
     }
 }

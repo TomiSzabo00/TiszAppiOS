@@ -19,7 +19,6 @@ struct QuizAdminView: View {
     
     var body: some View {
         ScrollView {
-            //Color.background.ignoresSafeArea()
             VStack {
                 VStack(spacing: 20) {
                     ForEach((0...teamNum-1), id: \.self) { i in
@@ -62,7 +61,7 @@ struct QuizAdminView: View {
                 handler.initListeners()
             }
         }
-    } // body end
+    }
 }
 
 struct QuizAdminView_Previews: PreviewProvider {

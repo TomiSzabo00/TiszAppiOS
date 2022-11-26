@@ -816,6 +816,24 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		55090EBA293226A3006DE5E6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5591E7C62802229C00C811F8 /* QuizAdminView.swift */,
+				5591E7C42802223A00C811F8 /* QuizView.swift */,
+				553F69A52805DAF500511E1E /* QuizInfoAlert.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		55090EBB293226A8006DE5E6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				5591E7C82805B20700C811F8 /* QuizViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		5512548928565AB1006A14CB /* Songs */ = {
 			isa = PBXGroup;
 			children = (
@@ -1080,10 +1098,8 @@
 		5591E7C3280221E900C811F8 /* Quiz */ = {
 			isa = PBXGroup;
 			children = (
-				5591E7C42802223A00C811F8 /* QuizView.swift */,
-				5591E7C62802229C00C811F8 /* QuizAdminView.swift */,
-				5591E7C82805B20700C811F8 /* QuizViewModel.swift */,
-				553F69A52805DAF500511E1E /* QuizInfoAlert.swift */,
+				55090EBB293226A8006DE5E6 /* ViewModel */,
+				55090EBA293226A3006DE5E6 /* View */,
 			);
 			path = Quiz;
 			sourceTree = "<group>";
