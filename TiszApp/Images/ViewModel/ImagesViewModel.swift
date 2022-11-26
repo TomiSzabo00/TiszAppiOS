@@ -17,18 +17,7 @@ enum ImageHandlerMode {
     case getDetails
 }
 
-protocol ImagesViewModel {
-    var user: User? { get }
-    var detail: ImageItem? { get set }
-    var imageNames: [ImageItem] { get }
-    func getImageInfos()
-    func getImageAuthorDetails(imageInfo: ImageItem)
-    func acceptImage(imageInfo: ImageItem)
-    func giveScoreForPic(imageInfo: ImageItem, score: Int)
-    func getScorer(imageInfo: ImageItem)
-}
-
-final class ImagesViewModelImpl: ImagesViewModel, ObservableObject {
+final class ImagesViewModel: ObservableObject {
     var teamNum: Int = 0
     
     var mode: ImageHandlerMode = .na
@@ -137,5 +126,47 @@ final class ImagesViewModelImpl: ImagesViewModel, ObservableObject {
             let author = User(snapshot: snapshot)
             self.scorer = author
           })
+    }
+
+    func uploadImage(title: String, image: UIImage, completion: @escaping (Bool) -> Void) {
+        if let imageData = image.jpegData(compressionQuality: 0.2) {
+            let date = Date()
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "YYYYMMddHHmmssSSS"
+            let fileName = dateFormatter.string(from: date)
+
+            let imageRef = Storage.storage().reference().child("images/\(fileName)")
+            let metadata = StorageMetadata()
+            metadata.contentType = "image/jpeg"
+
+            imageRef.putData(imageData, metadata: metadata) { (_, err) in
+                if let err = err {
+                    print("error: \(err.localizedDescription)")
+                    completion(false)
+                } else {
+                    completion(true)
+
+                    //upload to realtime db
+                    let imageInfo = ["author" : Auth.auth().currentUser?.uid ?? "unknown",
+                                     "fileName" : fileName,
+                                     "title" : title.isEmpty ? fileName : title,
+                                     "score" : -1,
+                                     "scorerUID" : "none"] as [String: Any]
+
+                    Database.database().reference().child("picsToDecide").child(fileName).setValue(imageInfo)
+                }
+            }
+        }
+    }
+
+    func deletePic(checkImages: Bool, completion: @escaping () -> Void) {
+        Database.database().reference().child(checkImages ? "picsToDecide" : "pics").child(detail?.fileName ?? "noFile").removeValue()
+        Storage.storage().reference().child("images/\(detail?.fileName ?? "noFile")").delete { error in
+            if let error = error {
+                print(error.localizedDescription)
+            } else {
+                completion()
+            }
+        }
     }
 }

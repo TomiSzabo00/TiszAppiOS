@@ -13,7 +13,7 @@ struct ImageDetailView: View {
     @State var checkImages: Bool = false
     
     @ObservedObject private var imageLoader : Loader
-    @ObservedObject var handler: ImagesViewModelImpl
+    @ObservedObject var handler: ImagesViewModel
     
     @EnvironmentObject var sessionService: SessionServiceImpl
     @State private var confirmationShown = false
@@ -25,7 +25,7 @@ struct ImageDetailView: View {
     init(imageInfo: ImageItem, checkImages: Bool, teamNum: Int) {
         //self.imageInfo = imageInfo
         self._checkImages = State(initialValue: checkImages)
-        self.handler = ImagesViewModelImpl(mode: .getDetails, checkImages: checkImages)
+        self.handler = ImagesViewModel(mode: .getDetails, checkImages: checkImages)
         self.imageLoader = Loader(imageInfo.fileName)
         handler.setChangeListener(for: imageInfo)
         handler.getImageAuthorDetails(imageInfo: handler.detail ?? ImageItem())
@@ -104,15 +104,8 @@ struct ImageDetailView: View {
             titleVisibility: .visible
         ) {
             Button("Igen") {
-                //delete pic
-                Database.database().reference().child(checkImages ? "picsToDecide" : "pics").child(handler.detail?.fileName ?? "noFile").removeValue()
-                Storage.storage().reference().child("images/\(handler.detail?.fileName ?? "noFile")").delete { error in
-                    if let error = error {
-                        print(error.localizedDescription)
-                    } else {
-                        dismiss()
-                        //handler.getImageInfos()
-                    }
+                handler.deletePic(checkImages: checkImages) {
+                    dismiss()
                 }
             }
         }
