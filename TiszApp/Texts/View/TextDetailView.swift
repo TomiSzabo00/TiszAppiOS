@@ -10,7 +10,6 @@ import FirebaseDatabase
 import FirebaseStorage
 
 struct TextDetailView: View {
-    
     var textInfo: TextItem
     @ObservedObject var handler: TextsViewModelImpl = TextsViewModelImpl(mode: .getDetails)
     
@@ -25,33 +24,29 @@ struct TextDetailView: View {
     }
     
     var body: some View {
-        ZStack{
-            //Color.background.ignoresSafeArea()
-            
-            ScrollView{
-                VStack(spacing: 20) {
-                    HStack {
-                        Text("Feltöltötte:\n\(handler.user?.userName ?? "Unknown") (\(handler.user?.groupNumber ?? -1). csapat)")
-                            .padding()
-                            .lineLimit(3)
-                            .multilineTextAlignment(.leading)
-                        Spacer()
-                    }
-                    .frame(maxWidth: UIScreen.main.bounds.width)
+        ScrollView {
+            VStack(spacing: 20) {
+                HStack {
+                    Text("Feltöltötte:\n\(handler.user?.userName ?? "Unknown") (\(handler.user?.groupNumber ?? -1). csapat)")
+                        .padding()
+                        .lineLimit(3)
+                        .multilineTextAlignment(.leading)
+                    Spacer()
+                }
+                .frame(maxWidth: UIScreen.main.bounds.width)
+                .background(RoundedRectangle(cornerRadius: 10)
+                    .fill(Color(.systemBackground))
+                    .shadow(color: Color(.label).opacity(0.2), radius: 4, x: 0, y: 3))
+
+                Text(textInfo.text)
+                    .padding(20)
+                    .lineLimit(1000)
+                    .frame(maxWidth: UIScreen.main.bounds.width, alignment: .topLeading)
                     .background(RoundedRectangle(cornerRadius: 10)
                         .fill(Color(.systemBackground))
                         .shadow(color: Color(.label).opacity(0.2), radius: 4, x: 0, y: 3))
-                    
-                    Text(textInfo.text)
-                        .padding(20)
-                        .lineLimit(1000)
-                        .frame(maxWidth: UIScreen.main.bounds.width, alignment: .topLeading)
-                        .background(RoundedRectangle(cornerRadius: 10)
-                            .fill(Color(.systemBackground))
-                            .shadow(color: Color(.label).opacity(0.2), radius: 4, x: 0, y: 3))
-                }
-                .padding()
             }
+            .padding()
         }
         .navigationBarTitleDisplayMode(.inline)
         .navigationTitle(textInfo.title)
@@ -68,8 +63,7 @@ struct TextDetailView: View {
             titleVisibility: .visible
         ) {
             Button("Igen") {
-                //delete pic
-                Database.database().reference().child("texts").child(self.textInfo.id).removeValue()
+                handler.deleteText(id: self.textInfo.id)
                 dismiss()
             }
         }

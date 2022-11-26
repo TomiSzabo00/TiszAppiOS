@@ -18,6 +18,7 @@
 		55090EB52932252B006DE5E6 /* Marker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55090EB42932252B006DE5E6 /* Marker.swift */; };
 		55090EB729322570006DE5E6 /* LocationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55090EB629322570006DE5E6 /* LocationData.swift */; };
 		55090EB92932259F006DE5E6 /* ColorList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55090EB82932259F006DE5E6 /* ColorList.swift */; };
+		55090EC029322717006DE5E6 /* TextItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55090EBF29322717006DE5E6 /* TextItemView.swift */; };
 		5510518B281D5F5900F31076 /* EditScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5510518A281D5F5900F31076 /* EditScoreView.swift */; };
 		5512548F285661B4006A14CB /* SongsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5512548E285661B4006A14CB /* SongsView.swift */; };
 		55125491285681E1006A14CB /* SongsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55125490285681E1006A14CB /* SongsViewModel.swift */; };
@@ -316,6 +317,7 @@
 		55090EB42932252B006DE5E6 /* Marker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Marker.swift; sourceTree = "<group>"; };
 		55090EB629322570006DE5E6 /* LocationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationData.swift; sourceTree = "<group>"; };
 		55090EB82932259F006DE5E6 /* ColorList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorList.swift; sourceTree = "<group>"; };
+		55090EBF29322717006DE5E6 /* TextItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextItemView.swift; sourceTree = "<group>"; };
 		5510518A281D5F5900F31076 /* EditScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditScoreView.swift; sourceTree = "<group>"; };
 		5512548E285661B4006A14CB /* SongsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongsView.swift; sourceTree = "<group>"; };
 		55125490285681E1006A14CB /* SongsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongsViewModel.swift; sourceTree = "<group>"; };
@@ -834,6 +836,33 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		55090EBC293226EB006DE5E6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5591E7B72800EB2700C811F8 /* TextItem.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		55090EBD293226F0006DE5E6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5591E7BF28017BCD00C811F8 /* TextUploadView.swift */,
+				5591E7BD2800F12C00C811F8 /* TextDetailView.swift */,
+				5591E7BB2800EE1300C811F8 /* TextsView.swift */,
+				55090EBF29322717006DE5E6 /* TextItemView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		55090EBE293226F4006DE5E6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				5591E7B92800ED5700C811F8 /* TextsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		5512548928565AB1006A14CB /* Songs */ = {
 			isa = PBXGroup;
 			children = (
@@ -1086,11 +1115,9 @@
 		5591E7B62800EAEC00C811F8 /* Texts */ = {
 			isa = PBXGroup;
 			children = (
-				5591E7B72800EB2700C811F8 /* TextItem.swift */,
-				5591E7B92800ED5700C811F8 /* TextsViewModel.swift */,
-				5591E7BB2800EE1300C811F8 /* TextsView.swift */,
-				5591E7BD2800F12C00C811F8 /* TextDetailView.swift */,
-				5591E7BF28017BCD00C811F8 /* TextUploadView.swift */,
+				55090EBE293226F4006DE5E6 /* ViewModel */,
+				55090EBD293226F0006DE5E6 /* View */,
+				55090EBC293226EB006DE5E6 /* Model */,
 			);
 			path = Texts;
 			sourceTree = "<group>";
@@ -1638,6 +1665,7 @@
 				5591E7BE2800F12C00C811F8 /* TextDetailView.swift in Sources */,
 				55B3955E2859ECCE0044389E /* MultipleTextQuizView.swift in Sources */,
 				55E8003D27F0B571007181E0 /* LoginViewModel.swift in Sources */,
+				55090EC029322717006DE5E6 /* TextItemView.swift in Sources */,
 				EF66CE99288C32BC0021C043 /* Workout.swift in Sources */,
 				55AF15212868E11C00D29584 /* TreasureHuntAdminView.swift in Sources */,
 				55B40DCB27F3125B00B5B065 /* TextFieldInputPrediction.swift in Sources */,

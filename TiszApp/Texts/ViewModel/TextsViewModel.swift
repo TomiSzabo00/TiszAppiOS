@@ -7,7 +7,7 @@
 
 import Foundation
 import FirebaseDatabase
-import FirebaseStorage
+import FirebaseAuth
 import SwiftUI
 
 enum TextHandlerMode {
@@ -57,6 +57,30 @@ final class TextsViewModelImpl: TextsViewModel, ObservableObject {
             let author = User(snapshot: snapshot)
             self.user = author
           })
+    }
+
+    func deleteText(id: String) {
+        Database.database().reference().child("texts").child(id).removeValue()
+    }
+
+    func uploadText(title: String, text: String, completion: @escaping (Bool) -> Void) {
+        let date = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYYMMddHHmmssSSS"
+        let id = dateFormatter.string(from: date)
+
+        let textInfo = ["author" : Auth.auth().currentUser?.uid ?? "unknown",
+                        "id" : id,
+                        "title" : title,
+                        "text" : text] as [String: Any]
+
+        Database.database().reference().child("texts").child(id).setValue(textInfo) { (err, _) in
+            if let err = err {
+                print(err.localizedDescription)
+                completion(false)
+            }
+            completion(true)
+        }
     }
 }
 

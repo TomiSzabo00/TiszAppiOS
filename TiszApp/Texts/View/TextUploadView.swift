@@ -6,11 +6,9 @@
 //
 
 import SwiftUI
-import FirebaseStorage
-import FirebaseDatabase
-import FirebaseAuth
 
 struct TextUploadView: View {
+    @StateObject var vm = TextsViewModelImpl(mode: .na)
     @State var text: String = ""
     @State var textTitle: String = ""
     
@@ -18,14 +16,12 @@ struct TextUploadView: View {
     @State var uploaded: Bool = false
     
     init() {
-            UITextView.appearance().backgroundColor = .clear
+        UITextView.appearance().backgroundColor = .clear
     }
     
     var body: some View {
         ScrollView {
-            //Color.background.ignoresSafeArea()
             VStack {
-                
                 SimpleTextFieldWithIcon(textField: TextField("Cím", text: $textTitle), imageName: "pencil")
                     .padding()
                 VStack {
@@ -40,13 +36,15 @@ struct TextUploadView: View {
                     
                 }
                 
-                HStack(){
+                HStack {
                     Spacer()
                     
                     Button(action: {
                         //upload
                         if text != "" && textTitle != "" {
-                            uploadText(title: textTitle, text: text)
+                            vm.uploadText(title: textTitle, text: text) { isSuccess in
+                                self.succesfulUpload = isSuccess
+                            }
                             uploaded = true
                         }
                     }, label: {
@@ -55,20 +53,21 @@ struct TextUploadView: View {
                     .buttonStyle(SimpleButtonStyle())
                 }
                 .padding()
+
                 Spacer()
             }
             .alert(isPresented: $uploaded, content: {
                 if succesfulUpload != nil {
-                if succesfulUpload == false {
-                    return Alert(title: Text("Hiba"),
-                                 message: Text("A szöveg feltöltése sikertelen. Próbáld meg később."))
-                } else {
-                    return Alert(title: Text("Siker"),
-                                 message: Text("A szöveg feltöltve, megtekintheted a Szövegek menüpont alatt"), dismissButton: .default(Text("Ok"), action: {
-                        text = ""
-                        textTitle = ""
-                    }))
-                }
+                    if succesfulUpload == false {
+                        return Alert(title: Text("Hiba"),
+                                     message: Text("A szöveg feltöltése sikertelen. Próbáld meg később."))
+                    } else {
+                        return Alert(title: Text("Siker"),
+                                     message: Text("A szöveg feltöltve, megtekintheted a Szövegek menüpont alatt"), dismissButton: .default(Text("Ok"), action: {
+                            text = ""
+                            textTitle = ""
+                        }))
+                    }
                 } else {
                     return Alert(title: Text(""), message: Text("Feltöltés folyamatban..."))
                 }
@@ -78,29 +77,6 @@ struct TextUploadView: View {
         .onTapGesture {
             endTextEditing()
         }
-    }
-    
-    func uploadText(title: String, text: String) {
-        let date = Date()
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "YYYYMMddHHmmssSSS"
-        let id = dateFormatter.string(from: date)
-        
-        let textInfo = ["author" : Auth.auth().currentUser?.uid ?? "unknown",
-                        "id" : id,
-                        "title" : title,
-                        "text" : text] as [String: Any]
-        
-        Database.database().reference().child("texts").child(id).setValue(textInfo) { (err, _) in
-            if let err = err {
-                print(err.localizedDescription)
-                succesfulUpload = false
-            }
-            succesfulUpload = true
-            
-        }
-        
-        
     }
 }
 
