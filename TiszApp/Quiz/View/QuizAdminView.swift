@@ -23,7 +23,7 @@ struct QuizAdminView: View {
                 VStack(spacing: 20) {
                     ForEach((0...teamNum-1), id: \.self) { i in
                         ZStack {
-                            SimpleRectangle(width: UIScreen.main.bounds.width-100, height: 80, bg: handler.rtBGs[i])
+                            SignalBGRectangle(width: UIScreen.main.bounds.width-100, height: 80, bg: handler.rtBGs[i])
                             Text(handler.texts[i])
                                 .bold()
                                 .foregroundColor(handler.textColors[i])
@@ -42,7 +42,7 @@ struct QuizAdminView: View {
                     }, label: {
                         Text("Visszaállít")
                     })
-                    .buttonStyle(SimpleButtonStyle())
+                    .buttonStyle(ElevatedButtonStyle())
                     
                     Button(action: {
                         //disable
@@ -50,7 +50,7 @@ struct QuizAdminView: View {
                     }, label: {
                         Text("Letilt")
                     })
-                    .buttonStyle(SimpleButtonStyle())
+                    .buttonStyle(ElevatedButtonStyle())
                 }
                 .padding(.bottom)
             }

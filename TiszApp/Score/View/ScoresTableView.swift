@@ -115,7 +115,7 @@ struct ScoresTableView: View {
             
             if (self.isPicScoresShowing) {
                 HStack{
-                    SimpleText(text: Text("Képek:"))
+                    SumText(text: Text("Képek:"))
                     
                     ForEach (0...sessionService.teamNum-1, id: \.self) { i in
                         Text(String(handler.picSums[i]))
@@ -135,7 +135,7 @@ struct ScoresTableView: View {
             }
             
             HStack{
-                SimpleText(text: Text("Összesen:"))
+                SumText(text: Text("Összesen:"))
 
                 ForEach (0...sessionService.teamNum-1, id: \.self) { i in
                     Text(String(handler.sums[i]))

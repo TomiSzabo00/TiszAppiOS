@@ -22,7 +22,7 @@ struct EjjeliPortyaView: View {
             }, label: {
                 Text("Helymeghatározás indítása")
             })
-            .buttonStyle(SimpleButtonStyle())
+            .buttonStyle(ElevatedButtonStyle())
             .padding()
             
             Button(action: {
@@ -30,7 +30,7 @@ struct EjjeliPortyaView: View {
             }, label: {
                 Text("Helymeghatározás leállítása")
             })
-            .buttonStyle(SimpleButtonStyle())
+            .buttonStyle(ElevatedButtonStyle())
             .padding()
             
         }

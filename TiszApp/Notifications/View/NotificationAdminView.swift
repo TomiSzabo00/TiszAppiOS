@@ -68,7 +68,7 @@ struct NotificationAdminView: View {
                 Text("Küldés")
             })
             .padding()
-            .buttonStyle(SimpleButtonStyle())
+            .buttonStyle(ElevatedButtonStyle())
         }
     }
         .navigationBarTitle("Értesítés")

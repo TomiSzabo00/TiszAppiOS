@@ -20,14 +20,14 @@ struct ImageUploadView: View {
         ScrollView {
             VStack {
                 if let image = image {
-                    SimpleImage(image: image, width: 350, height: 500)
+                    SizedImage(image: image, width: 350, height: 500)
                         .padding()
                 } else {
                     Text("Kérlek válassz egy képet.")
                         .frame(height: 250)
                 }
                 
-                SimpleTextFieldWithIcon(textField: TextField("Cím (ha van)", text: $imageTitle), imageName: "pencil")
+                TextFieldWithIcon(textField: TextField("Cím (ha van)", text: $imageTitle), imageName: "pencil")
                     .padding()
                 
                 HStack(spacing: 30){
@@ -36,7 +36,7 @@ struct ImageUploadView: View {
                     }, label: {
                         Text("Kép kiválasztása")
                     })
-                    .buttonStyle(SimpleButtonStyle())
+                    .buttonStyle(ElevatedButtonStyle())
                     
                     Button(action: {
                         //upload
@@ -49,7 +49,7 @@ struct ImageUploadView: View {
                     }, label: {
                         Text("Feltöltés")
                     })
-                    .buttonStyle(SimpleButtonStyle())
+                    .buttonStyle(ElevatedButtonStyle())
                 }
                 .padding()
                 Spacer()

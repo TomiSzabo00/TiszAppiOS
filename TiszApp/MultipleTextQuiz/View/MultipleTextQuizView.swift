@@ -32,7 +32,7 @@ struct MultipleTextQuizView: View {
                     }, label: {
                         Text("Beadás")
                     })
-                    .buttonStyle(SimpleButtonStyle())
+                    .buttonStyle(ElevatedButtonStyle())
                 }
                 .padding()
 

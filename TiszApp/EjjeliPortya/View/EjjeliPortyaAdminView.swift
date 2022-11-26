@@ -46,7 +46,7 @@ struct EjjeliPortyaAdminView: View {
                         Text("Helyzet frissítése")
                     }
                 })
-                .buttonStyle(SimpleButtonStyle())
+                .buttonStyle(ElevatedButtonStyle())
                 .padding(.bottom, 20)
             }
         }

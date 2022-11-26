@@ -19,7 +19,7 @@ struct StartButton: View {
             Label("Útvonal rögzítése", systemImage: "record.circle")
         })
         .padding()
-        .buttonStyle(SimpleButtonStyle())
+        .buttonStyle(ElevatedButtonStyle())
         .alert(isPresented: $newWorkoutManager.showAlert) {
             Alert(
                 title: Text("Hiba történt."),

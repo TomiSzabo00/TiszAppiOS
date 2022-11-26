@@ -47,7 +47,7 @@ struct ProfileView: View {
                     Text("Kijelentkezés")
                 }
             })
-            .buttonStyle(SimpleButtonStyle())
+            .buttonStyle(ElevatedButtonStyle())
             .padding()
 
             Button("Fiók törlése") {

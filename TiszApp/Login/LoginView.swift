@@ -27,11 +27,11 @@ struct LoginView: View {
 
                 VStack{
                     VStack{
-                        SimpleTextFieldWithIcon(textField:
+                        TextFieldWithIcon(textField:
                                                     TextField("Felhasználónév", text: $vm.details.userName), imageName: "person.fill")
                         .padding(.bottom, 5)
                         .autocapitalization(.none)
-                        SimpleSecureTextField(secureFied: SecureField("Jelszó", text: $vm.details.password), imageName: "lock.fill")
+                        SecureTextField(secureFied: SecureField("Jelszó", text: $vm.details.password), imageName: "lock.fill")
                     }
                     .padding()
 
@@ -41,7 +41,7 @@ struct LoginView: View {
                             //login
                             vm.login()
                         }, label: { Text("Bejelentkezés")})
-                        .buttonStyle(SimpleButtonStyle())
+                        .buttonStyle(ElevatedButtonStyle())
                         .padding(.bottom, 30)
                     }
                     .padding(.trailing)

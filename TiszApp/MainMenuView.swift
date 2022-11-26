@@ -36,7 +36,7 @@ struct IconButton: View {
             .frame(width: min(UIScreen.main.bounds.width/2-70,UIScreen.main.bounds.height/2-70), height: min(UIScreen.main.bounds.width/2-70,UIScreen.main.bounds.height/2-70), alignment: .center)
             
         })
-        .buttonStyle(SimpleButtonStyle())
+        .buttonStyle(ElevatedButtonStyle())
     }
 }
 
@@ -141,7 +141,7 @@ struct MainMenuView: View {
                     }
                 })
                 .padding()
-                .buttonStyle(SimpleButtonStyle())
+                .buttonStyle(ElevatedButtonStyle())
             }
         }
         .navigationBarTitle("TiszApp")

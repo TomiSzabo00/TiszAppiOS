@@ -139,7 +139,7 @@ struct RegisterView: View {
                                     vm.register()
                                     
                                 }, label: { Text("Regisztrálok")})
-                                .buttonStyle(SimpleButtonStyle())
+                                .buttonStyle(ElevatedButtonStyle())
 //                                .frame(width: 200, height: 50)
 //                                .background(Color.blue)
 //                                .foregroundColor(Color.white)

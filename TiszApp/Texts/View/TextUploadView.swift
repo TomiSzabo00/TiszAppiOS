@@ -22,7 +22,7 @@ struct TextUploadView: View {
     var body: some View {
         ScrollView {
             VStack {
-                SimpleTextFieldWithIcon(textField: TextField("Cím", text: $textTitle), imageName: "pencil")
+                TextFieldWithIcon(textField: TextField("Cím", text: $textTitle), imageName: "pencil")
                     .padding()
                 VStack {
                     Text("Tartalom:")
@@ -50,7 +50,7 @@ struct TextUploadView: View {
                     }, label: {
                         Text("Feltöltés")
                     })
-                    .buttonStyle(SimpleButtonStyle())
+                    .buttonStyle(ElevatedButtonStyle())
                 }
                 .padding()
 

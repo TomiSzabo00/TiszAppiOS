@@ -40,7 +40,7 @@ struct MultipleTextQuizAdminView: View {
                     })
                     .disabled(Int(self.numText) ?? 0 <= 0)
                     
-                    SimpleNumberTextField(text: $numText)
+                    NumberTextField(text: $numText)
                         .frame(maxWidth: 100)
                     
                     Button(action: {
@@ -65,7 +65,7 @@ struct MultipleTextQuizAdminView: View {
                 })
                 .disabled((Int(self.numText) ?? 0 <= 0) || (Int(self.numText) ?? 50 >= 50))
                 .padding()
-                .buttonStyle(SimpleButtonStyle())
+                .buttonStyle(ElevatedButtonStyle())
 
                 Text("vagy")
                     .padding()

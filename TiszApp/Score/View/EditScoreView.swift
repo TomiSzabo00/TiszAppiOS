@@ -28,7 +28,7 @@ struct EditScoreView: View {
                         Text("Program neve:").padding(.leading)
                         Spacer()
                     }
-                    SimpleTextFieldWithIcon(textField: TextField("Program neve", text: $program), imageName: "puzzlepiece.fill")
+                    TextFieldWithIcon(textField: TextField("Program neve", text: $program), imageName: "puzzlepiece.fill")
                         .padding([.leading, .trailing, .bottom])
                     HStack{
                         Text("Módosítsd a pontokat:")
@@ -49,7 +49,7 @@ struct EditScoreView: View {
                     HStack(spacing: 5){
                         Spacer()
                         ForEach(0...teamNum-1, id:\.self) { i in
-                            SimpleNumberTextField(text: $scoreTFs[i])
+                            NumberTextField(text: $scoreTFs[i])
                         }
                         Spacer()
                     }
@@ -62,7 +62,7 @@ struct EditScoreView: View {
                         }, label: {
                             Text("Szerkesztés")
                         })
-                        .buttonStyle(SimpleButtonStyle())
+                        .buttonStyle(ElevatedButtonStyle())
                         .padding()
                     }
                 }
