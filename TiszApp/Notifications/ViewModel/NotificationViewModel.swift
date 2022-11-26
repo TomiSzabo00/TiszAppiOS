@@ -9,7 +9,6 @@ import Foundation
 import Firebase
 
 final class NotificationViewModel: ObservableObject {
-    
     @Published var title: String = ""
     @Published var message: String = ""
     

@@ -8,12 +8,6 @@
 import Foundation
 import FirebaseDatabase
 
-struct SimpleUser: Identifiable, Hashable {
-    let id = UUID()
-    let name: String
-    var teammates: [SimpleUser]?
-}
-
 final class ProfileViewModel: ObservableObject {
     var groupNum : Int
     var name : String
