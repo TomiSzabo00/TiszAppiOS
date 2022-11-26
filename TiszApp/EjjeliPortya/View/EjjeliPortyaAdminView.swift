@@ -45,7 +45,6 @@ struct EjjeliPortyaAdminView: View {
                         Image(systemName: "mappin.and.ellipse")
                         Text("Helyzet frissítése")
                     }
-                    //.frame(width: 130, height: 15)
                 })
                 .buttonStyle(SimpleButtonStyle())
                 .padding(.bottom, 20)
