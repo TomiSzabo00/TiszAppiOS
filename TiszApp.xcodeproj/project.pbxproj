@@ -765,14 +765,30 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		55090EAF29321D89006DE5E6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				55B3954E2857377B0044389E /* FilterSongsTextField.swift */,
+				55B3954C2856B2630044389E /* SpecificSongView.swift */,
+				5512548E285661B4006A14CB /* SongsView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		55090EB029321D8F006DE5E6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				55125490285681E1006A14CB /* SongsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		5512548928565AB1006A14CB /* Songs */ = {
 			isa = PBXGroup;
 			children = (
+				55090EB029321D8F006DE5E6 /* ViewModel */,
+				55090EAF29321D89006DE5E6 /* View */,
 				551255AE285687BC006A14CB /* files */,
-				5512548E285661B4006A14CB /* SongsView.swift */,
-				55125490285681E1006A14CB /* SongsViewModel.swift */,
-				55B3954C2856B2630044389E /* SpecificSongView.swift */,
-				55B3954E2857377B0044389E /* FilterSongsTextField.swift */,
 			);
 			path = Songs;
 			sourceTree = "<group>";
