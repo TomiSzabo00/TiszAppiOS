@@ -17,60 +17,6 @@ enum LocationAlertMessage {
     case denied
 }
 
-struct LocationData {
-    var lat: Double
-    var long: Double
-    
-    init(lat: Double, long: Double) {
-        self.lat = lat
-        self.long = long
-    }
-    
-    init?(snapshot: DataSnapshot?) {
-        guard
-            let value = snapshot?.value as? [String: AnyObject],
-            let lat = value["lat"] as? Double,
-            let long = value["long"] as? Double
-        else {
-            return nil
-        }
-        
-        self.lat = lat
-        self.long = long
-    }
-}
-
-struct Marker: Identifiable {
-    
-    var id: String
-    var coordinate : CLLocationCoordinate2D
-    var tint: Color
-    
-    init(id: String?, coordinate: CLLocationCoordinate2D, tint: Color) {
-        self.id = id ?? UUID().description
-        self.coordinate = coordinate
-        self.tint = tint
-    }
-}
-
-struct ColorList: Decodable {
-    var colors: [String]
-    
-    init(colors: [String]) {
-        self.colors = colors
-    }
-    
-    init?(snapshot: DataSnapshot) {
-        guard
-            let value = snapshot.value as? [String]
-            //let colors = value["colors"] as? [String]
-        else {
-            return nil
-        }
-        self.colors = value
-    }
-}
-
 final class EjjeliPortyaViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     
     var sessionService: SessionServiceImpl?

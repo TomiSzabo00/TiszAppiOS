@@ -15,6 +15,9 @@
 		55090EA3293139F0006DE5E6 /* Token.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55090EA2293139F0006DE5E6 /* Token.swift */; };
 		55090EA8293217B6006DE5E6 /* SimpleUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55090EA7293217B6006DE5E6 /* SimpleUser.swift */; };
 		55090EAD2932186D006DE5E6 /* Answer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55090EAC2932186D006DE5E6 /* Answer.swift */; };
+		55090EB52932252B006DE5E6 /* Marker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55090EB42932252B006DE5E6 /* Marker.swift */; };
+		55090EB729322570006DE5E6 /* LocationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55090EB629322570006DE5E6 /* LocationData.swift */; };
+		55090EB92932259F006DE5E6 /* ColorList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55090EB82932259F006DE5E6 /* ColorList.swift */; };
 		5510518B281D5F5900F31076 /* EditScoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5510518A281D5F5900F31076 /* EditScoreView.swift */; };
 		5512548F285661B4006A14CB /* SongsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5512548E285661B4006A14CB /* SongsView.swift */; };
 		55125491285681E1006A14CB /* SongsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55125490285681E1006A14CB /* SongsViewModel.swift */; };
@@ -310,6 +313,9 @@
 		55090EA2293139F0006DE5E6 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		55090EA7293217B6006DE5E6 /* SimpleUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleUser.swift; sourceTree = "<group>"; };
 		55090EAC2932186D006DE5E6 /* Answer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Answer.swift; sourceTree = "<group>"; };
+		55090EB42932252B006DE5E6 /* Marker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Marker.swift; sourceTree = "<group>"; };
+		55090EB629322570006DE5E6 /* LocationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationData.swift; sourceTree = "<group>"; };
+		55090EB82932259F006DE5E6 /* ColorList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorList.swift; sourceTree = "<group>"; };
 		5510518A281D5F5900F31076 /* EditScoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditScoreView.swift; sourceTree = "<group>"; };
 		5512548E285661B4006A14CB /* SongsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongsView.swift; sourceTree = "<group>"; };
 		55125490285681E1006A14CB /* SongsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongsViewModel.swift; sourceTree = "<group>"; };
@@ -783,6 +789,33 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		55090EB1293224D5006DE5E6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				55090EB42932252B006DE5E6 /* Marker.swift */,
+				55090EB629322570006DE5E6 /* LocationData.swift */,
+				55090EB82932259F006DE5E6 /* ColorList.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		55090EB2293224DB006DE5E6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				55149F512850C361007BECEF /* EjjeliPortyaAdminView.swift */,
+				55149F532850C380007BECEF /* EjjeliPortyaView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		55090EB3293224E0006DE5E6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				55149F552850CC7D007BECEF /* EjjeliPortyaViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		5512548928565AB1006A14CB /* Songs */ = {
 			isa = PBXGroup;
 			children = (
@@ -1183,9 +1216,9 @@
 		55CBA8A32850C1AF004A5750 /* EjjeliPortya */ = {
 			isa = PBXGroup;
 			children = (
-				55149F512850C361007BECEF /* EjjeliPortyaAdminView.swift */,
-				55149F532850C380007BECEF /* EjjeliPortyaView.swift */,
-				55149F552850CC7D007BECEF /* EjjeliPortyaViewModel.swift */,
+				55090EB3293224E0006DE5E6 /* ViewModel */,
+				55090EB2293224DB006DE5E6 /* View */,
+				55090EB1293224D5006DE5E6 /* Model */,
 			);
 			path = EjjeliPortya;
 			sourceTree = "<group>";
@@ -1573,6 +1606,7 @@
 				EFDB53F4287EAC3B0093CE78 /* WordleHowTo.swift in Sources */,
 				EF66CE8D288C32A20021C043 /* WorkoutsManager.swift in Sources */,
 				5591E7BA2800ED5700C811F8 /* TextsViewModel.swift in Sources */,
+				55090EB92932259F006DE5E6 /* ColorList.swift in Sources */,
 				EF0A5D3628903A71003A0134 /* NappaliPortyaViewModel.swift in Sources */,
 				EF66CE7F288C32990021C043 /* StartButton.swift in Sources */,
 				55149F542850C380007BECEF /* EjjeliPortyaView.swift in Sources */,
@@ -1618,6 +1652,8 @@
 				55E8003827F0A27E007181E0 /* SessionService.swift in Sources */,
 				EF70B928287F1659005695EE /* ScheduleViewModel.swift in Sources */,
 				EF0A5D3828908DA5003A0134 /* SavedAnswersView.swift in Sources */,
+				55090EB52932252B006DE5E6 /* Marker.swift in Sources */,
+				55090EB729322570006DE5E6 /* LocationData.swift in Sources */,
 				55090E9B293138D5006DE5E6 /* States.swift in Sources */,
 				55090EA3293139F0006DE5E6 /* Token.swift in Sources */,
 				55149F562850CC7D007BECEF /* EjjeliPortyaViewModel.swift in Sources */,
