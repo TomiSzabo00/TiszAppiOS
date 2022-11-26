@@ -23,7 +23,6 @@ struct ImageDetailView: View {
     @Environment(\.dismiss) var dismiss
     
     init(imageInfo: ImageItem, checkImages: Bool, teamNum: Int) {
-        //self.imageInfo = imageInfo
         self._checkImages = State(initialValue: checkImages)
         self.handler = ImagesViewModel(mode: .getDetails, checkImages: checkImages)
         self.imageLoader = Loader(imageInfo.fileName)
@@ -37,10 +36,8 @@ struct ImageDetailView: View {
     }
     
     var body: some View {
-        VStack{
-            //Color.background.ignoresSafeArea()
-            
-            ScrollView{
+        VStack {
+            ScrollView {
                 VStack(spacing: 20) {
                     HStack {
                         Text("Feltöltötte:\n\(handler.user?.userName ?? "Unknown") (\(handler.user?.groupNumber ?? -1). csapat)")
