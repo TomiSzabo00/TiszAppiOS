@@ -963,6 +963,30 @@
 			path = TextFields;
 			sourceTree = "<group>";
 		};
+		55090EDA293237D4006DE5E6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				557B8F9D27EE1CEF00312433 /* LoginView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		55090EDB293237DA006DE5E6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				55E8003C27F0B571007181E0 /* LoginViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		55090EDC293237E3006DE5E6 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				55E8003A27F0B416007181E0 /* LoginService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
 		5512548928565AB1006A14CB /* Songs */ = {
 			isa = PBXGroup;
 			children = (
@@ -1414,9 +1438,9 @@
 		55E8003927F0B3A9007181E0 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				557B8F9D27EE1CEF00312433 /* LoginView.swift */,
-				55E8003A27F0B416007181E0 /* LoginService.swift */,
-				55E8003C27F0B571007181E0 /* LoginViewModel.swift */,
+				55090EDC293237E3006DE5E6 /* Service */,
+				55090EDB293237DA006DE5E6 /* ViewModel */,
+				55090EDA293237D4006DE5E6 /* View */,
 			);
 			path = Login;
 			sourceTree = "<group>";

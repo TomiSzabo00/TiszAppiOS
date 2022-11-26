@@ -24,11 +24,10 @@ struct LoginView: View {
                     .frame(width: 180, height: 180)
                     .padding()
 
-
-                VStack{
-                    VStack{
+                VStack {
+                    VStack {
                         TextFieldWithIcon(textField:
-                                                    TextField("Felhasználónév", text: $vm.details.userName), imageName: "person.fill")
+                                            TextField("Felhasználónév", text: $vm.details.userName), imageName: "person.fill")
                         .padding(.bottom, 5)
                         .autocapitalization(.none)
                         SecureTextField(secureFied: SecureField("Jelszó", text: $vm.details.password), imageName: "lock.fill")
@@ -45,9 +44,6 @@ struct LoginView: View {
                         .padding(.bottom, 30)
                     }
                     .padding(.trailing)
-
-
-
 
                     HStack{
                         Text("Nincs még fiókod?")

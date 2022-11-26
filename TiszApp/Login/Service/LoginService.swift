@@ -16,7 +16,6 @@ protocol LoginService {
 final class LoginServiceImpl: LoginService {
     func login(with details: LoginDetails) -> AnyPublisher<Void, Error> {
         Deferred {
-            
             Future { promise in
                 Auth.auth().signIn(withEmail: details.userName+"@tiszap.hu", password: details.password) {
                     res, error in
@@ -28,7 +27,6 @@ final class LoginServiceImpl: LoginService {
                     }
                 }
             }
-            
         }
         .receive(on: RunLoop.main)
         .eraseToAnyPublisher()
