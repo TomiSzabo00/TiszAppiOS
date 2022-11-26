@@ -23,7 +23,6 @@ struct ScoresTableView: View {
                     .frame(minWidth: 100, maxWidth: 140)
                 Text("Csapatok pontjai")
                     .frame(minWidth: 100, maxWidth: 200)
-                //.padding(.trailing)
                     .padding(10)
                     .background(RoundedRectangle(cornerRadius: 10)
                         .fill(Color(.systemBackground))
@@ -72,17 +71,17 @@ struct ScoresTableView: View {
                             .background(RoundedRectangle(cornerRadius: 10)
                                 .fill(Color(.systemBackground))
                                 .shadow(color: Color(.label).opacity(0.2), radius: 3, x: 0, y: 3))
-                            
+
                         ForEach (0...sessionService.teamNum-1, id: \.self) { i in
                             Text(score.scores.indices.contains(i) ? String(score.scores[i]) : "0")
-                                    .frame(maxWidth:70)
-                                    .minimumScaleFactor(0.1)
-                                    .lineLimit(1)
-                                    .padding(5)
-                                    .background(RoundedRectangle(cornerRadius: 10)
-                                        .fill(Color(.systemBackground))
-                                        .shadow(color: Color(.label).opacity(0.2), radius: 3, x: 0, y: 3))
-                            }
+                                .frame(maxWidth:70)
+                                .minimumScaleFactor(0.1)
+                                .lineLimit(1)
+                                .padding(5)
+                                .background(RoundedRectangle(cornerRadius: 10)
+                                    .fill(Color(.systemBackground))
+                                    .shadow(color: Color(.label).opacity(0.2), radius: 3, x: 0, y: 3))
+                        }
                         Spacer()
                     }
                     .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10))
@@ -106,9 +105,9 @@ struct ScoresTableView: View {
                         
                     }
                 }
-                    
-                    
-                }
+
+
+            }
             .listStyle(PlainListStyle())
             //end List
             
@@ -137,7 +136,7 @@ struct ScoresTableView: View {
             
             HStack{
                 SimpleText(text: Text("Összesen:"))
-                    
+
                 ForEach (0...sessionService.teamNum-1, id: \.self) { i in
                     Text(String(handler.sums[i]))
                         .frame(maxWidth:70)

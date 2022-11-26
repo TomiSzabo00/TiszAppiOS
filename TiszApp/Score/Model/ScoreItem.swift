@@ -9,28 +9,6 @@ import Foundation
 import FirebaseDatabase
 import SwiftUI
 
-struct Scores: Decodable, Hashable {
-    var id: Int
-    var score: Int
-    
-    init(id: Int, score: Int) {
-        self.id = id
-        self.score = score
-    }
-    
-    init?(snapshot: DataSnapshot) {
-        guard
-            let value = snapshot.value as? [String: AnyObject],
-            let id = value["id"] as? Int,
-            let score = value["score"] as? Int
-        else {
-            return nil
-        }
-        self.id = id
-        self.score = score
-    }
-}
-
 struct ScoreItem: Decodable, Identifiable, Hashable {
     var id: String
     var scores: [Int]

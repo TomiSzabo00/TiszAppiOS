@@ -896,6 +896,33 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		55090EC829322E8C006DE5E6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5591E7A527F88D2100C811F8 /* ScoreItem.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		55090EC929322E91006DE5E6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				5591E7A727F8985700C811F8 /* ScoresViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		55090ECA29322E9B006DE5E6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				55E37E2727F79480002ED658 /* AddScoreView.swift */,
+				5510518A281D5F5900F31076 /* EditScoreView.swift */,
+				55F09595280DBB8800A56548 /* ScoresTableView.swift */,
+				5591E7A327F877E200C811F8 /* ScoresView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		5512548928565AB1006A14CB /* Songs */ = {
 			isa = PBXGroup;
 			children = (
@@ -1299,12 +1326,9 @@
 		55E37E2627F79460002ED658 /* Score */ = {
 			isa = PBXGroup;
 			children = (
-				55E37E2727F79480002ED658 /* AddScoreView.swift */,
-				5591E7A327F877E200C811F8 /* ScoresView.swift */,
-				5591E7A527F88D2100C811F8 /* ScoreItem.swift */,
-				5591E7A727F8985700C811F8 /* ScoresViewModel.swift */,
-				55F09595280DBB8800A56548 /* ScoresTableView.swift */,
-				5510518A281D5F5900F31076 /* EditScoreView.swift */,
+				55090ECA29322E9B006DE5E6 /* View */,
+				55090EC929322E91006DE5E6 /* ViewModel */,
+				55090EC829322E8C006DE5E6 /* Model */,
 			);
 			path = Score;
 			sourceTree = "<group>";

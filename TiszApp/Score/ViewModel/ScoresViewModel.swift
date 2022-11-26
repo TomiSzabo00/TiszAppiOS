@@ -7,6 +7,7 @@
 
 import Foundation
 import FirebaseDatabase
+import FirebaseAuth
 
 protocol ScoresViewModel {
     var scoresList: [ScoreItem] { get }
@@ -24,7 +25,7 @@ final class ScoresViewModelImpl: ScoresViewModel, ObservableObject {
     
     @Published var picSums: [Int] = []
     
-    private var teamNum: Int
+    var teamNum: Int
     
     init(teamNum: Int){
         self.teamNum = teamNum
@@ -96,7 +97,6 @@ final class ScoresViewModelImpl: ScoresViewModel, ObservableObject {
                     }
                 }
             }
-            
         })
     }
     
@@ -106,5 +106,52 @@ final class ScoresViewModelImpl: ScoresViewModel, ObservableObject {
     
     func deleteScore(score: ScoreItem) {
         Database.database().reference().child("scores").child(score.id).removeValue()
+    }
+
+    func sanitiseInput(input: String) -> Int{
+        var correctLenghtInput = ""
+        if input.count == 0 {
+            return 0
+        }
+        if input.count > 3 {
+            correctLenghtInput = String(input.prefix(3))
+        } else {
+            correctLenghtInput = input
+        }
+        return Int(correctLenghtInput) ?? 0
+    }
+
+    func editScore(what: ScoreItem?, scores scoreTFs: [String], title: String) {
+        var sanitisedScores: [Int] = []
+        for score in scoreTFs {
+            sanitisedScores.append(sanitiseInput(input: score))
+        }
+
+        //upload sanitised inputs to db
+        let score = ["id" : what?.id ?? "noId",
+                     "scores" : sanitisedScores,
+                     "name" : title,
+                     "author" : what?.author ?? "noAuthor"] as [String: Any]
+
+        Database.database().reference().child("scores").child(what?.id ?? "error").setValue(score)
+    }
+
+    func uploadScore(title: String, scores: [String]) {
+        let date = Date()
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "YYYYMMddHHmmssSSS"
+
+        var sanitisedScores: [Int] = []
+        for score in scores {
+            sanitisedScores.append(sanitiseInput(input: score))
+        }
+
+        //upload sanitised inputs to fb
+        let score = ["id" : dateFormatter.string(from: date),
+                     "scores" : sanitisedScores,
+                     "name" : title,
+                     "author" : Auth.auth().currentUser?.uid ?? "unknown"] as [String: Any]
+
+        Database.database().reference().child("scores").child(dateFormatter.string(from: date)).setValue(score)
     }
 }

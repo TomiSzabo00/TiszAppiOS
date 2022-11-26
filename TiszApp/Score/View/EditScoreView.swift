@@ -6,9 +6,9 @@
 //
 
 import SwiftUI
-import FirebaseDatabase
 
 struct EditScoreView: View {
+    @StateObject var vm = ScoresViewModelImpl(teamNum: 4)
     @State var what: ScoreItem?
     @State var program: String = ""
     @State var scoreTFs: [String] = ["","","","","",""]
@@ -17,6 +17,7 @@ struct EditScoreView: View {
     init(what: ScoreItem?, teamNum: Int) {
         self.what = what
         self.teamNum = teamNum
+        vm.teamNum = teamNum
     }
     
     var body: some View {
@@ -32,7 +33,6 @@ struct EditScoreView: View {
                     HStack{
                         Text("Módosítsd a pontokat:")
                             .padding([.top, .leading])
-                        //.foregroundColor(.foreground)
                         Spacer()
                     }
                     HStack(spacing: 5){
@@ -58,24 +58,7 @@ struct EditScoreView: View {
                     HStack{
                         Spacer()
                         Button(action: {
-                            
-                            var sanitisedScores: [Int] = []
-                            for score in scoreTFs {
-                                sanitisedScores.append(SanitiseInput(input: score))
-                            }
-                            
-                            //upload sanitised inputs to db
-                            let score = ["id" : what?.id ?? "noId",
-                                         "scores" : sanitisedScores,
-                                         "name" : program,
-                                         "author" : what?.author ?? "noAuthor"] as [String: Any]
-                            
-                            
-                            
-                            Database.database().reference().child("scores").child(what?.id ?? "error").setValue(score)
-                            
-                            //self.presentationMode.wrappedValue.dismiss()
-                            
+                            vm.editScore(what: what, scores: scoreTFs, title: program)
                         }, label: {
                             Text("Szerkesztés")
                         })
@@ -97,7 +80,7 @@ struct EditScoreView: View {
                 .navigationTitle("Szerkesztés")
                 .navigationBarTitleDisplayMode(.inline)
             }
-    }
+        }
     }
 }
 
