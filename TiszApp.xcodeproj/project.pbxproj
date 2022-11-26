@@ -891,6 +891,7 @@
 		55090EC229322A2F006DE5E6 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5591E7C12801C00900C811F8 /* UploadView.swift */,
 				5591E7B428005E7C00C811F8 /* ImageDetailView.swift */,
 				5591E7AC27FDA00F00C811F8 /* ImageUploadView.swift */,
 				5591E7AA27FD9AA300C811F8 /* ImagePicker.swift */,
@@ -1373,7 +1374,6 @@
 				55B0E6DF27EC53F30058A5B9 /* GoogleService-Info.plist */,
 				55B0E6D727EBDAA00058A5B9 /* Preview Content */,
 				557B8F9F27EE334F00312433 /* MainMenuView.swift */,
-				5591E7C12801C00900C811F8 /* UploadView.swift */,
 			);
 			path = TiszApp;
 			sourceTree = "<group>";
